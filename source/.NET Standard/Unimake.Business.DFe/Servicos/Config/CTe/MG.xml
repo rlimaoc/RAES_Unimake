@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="CTe">
+		<!-- Versão 2.00 do CTe -->
+
+		<ConsultaCadastro versao="2.00">
+			<Descricao>Consulta cadastro do contribuinte</Descricao>
+			<WebEnderecoHomologacao>https://nfe.fazenda.mg.gov.br/nfe2/services/CadConsultaCadastro4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.fazenda.mg.gov.br/nfe2/services/CadConsultaCadastro4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionProducao>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cad="{ActionWeb}"><soap:Header><cad:nfeCabecMsg><cad:cUF>31</cad:cUF><cad:versaoDados>2.00</cad:versaoDados></cad:nfeCabecMsg></soap:Header><soap:Body><cad:nfeDadosMsg>{xmlBody}</cad:nfeDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>consultaCadastro4Result</WebTagRetorno>
+			<SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaCadastro>
+
+		<!-- Versão 3.00 do CTe -->
+
+		<StatusServico versao="3.00">
+			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CteStatusServico?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CteStatusServico</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionProducao>
+			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
+			<SchemaArquivo>consStatServCTe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</StatusServico>
+		<ConsultaProtocolo versao="3.00">
+			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CteConsulta?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CteConsulta</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionProducao>
+			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
+			<SchemaArquivo>consSitCTe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="3.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/RecepcaoEvento?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/RecepcaoEvento</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionProducao>
+			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110113</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evEPECCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110180</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110181</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110190</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>610110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>610111</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>eventoCTe</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RecepcaoEvento>
+		<Autorizacao versao="3.00">
+			<Descricao>Autorização do CTe</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CteRecepcao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CteRecepcao</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao</WebActionProducao>
+			<WebTagRetorno>cteRecepcaoLoteResult</WebTagRetorno>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>1</ID>
+					<SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalRodoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>2</ID>
+					<SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAereo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>3</ID>
+					<SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAquaviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>4</ID>
+					<SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalFerroviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>5</ID>
+					<SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalDutoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>6</ID>
+					<SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteMultiModal_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>CTe</TagAssinatura>
+			<TagAtributoID>infCte</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<UrlQrCodeHomologacao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+		</Autorizacao>
+		<RetAutorizacao versao="3.00">
+			<Descricao>Consulta recibo do conhecimento de transporte eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CteRetRecepcao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CteRetRecepcao</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao</WebActionProducao>
+			<WebTagRetorno>cteRetRecepcaoResult</WebTagRetorno>
+			<SchemaArquivo>consReciCTe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RetAutorizacao>
+
+		<!-- Versão 4.00 do CTe -->
+
+		<StatusServico versao="4.00">
+			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeStatusServicoV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeStatusServicoV4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
+			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
+			<SchemaArquivo>consStatServCTe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</StatusServico>
+		<ConsultaProtocolo versao="4.00">
+			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeConsultaV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeConsultaV4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
+			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
+			<SchemaArquivo>consSitCTe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="4.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeRecepcaoEventoV4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
+			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110113</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evEPECCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110180</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110181</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110190</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110191</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancIECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>				
+				<Tipo>
+					<ID>610110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>610111</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>eventoCTe</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RecepcaoEvento>
+		<AutorizacaoSinc versao="4.00">
+			<Descricao>Autorização do CTe - Síncrono</Descricao>
+			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeRecepcaoSincV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeRecepcaoSincV4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionProducao>
+			<GZIPCompress>true</GZIPCompress>
+			<WebTagRetorno>cteRecepcaoResult</WebTagRetorno>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>1</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalRodoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>2</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAereo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>3</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAquaviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>4</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalFerroviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>5</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalDutoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>6</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteMultiModal_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>CTe</TagAssinatura>
+			<TagAtributoID>infCte</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<UrlQrCodeHomologacao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+		</AutorizacaoSinc>
+	</Servicos>
+</Configuracoes>
