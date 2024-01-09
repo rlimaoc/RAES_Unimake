@@ -65,6 +65,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Uni.NFCom">
+      <HintPath>C:\repositorios\git\pessoal\Unimake\source\Uni.NFCom\Compilacao\netstandard2.0\Uni.NFCom.dll</HintPath>
+    </Reference>
     <Reference Include="Unimake.Business.DFe, Version=2023.11.6.1651, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Unimake.DFe.20231106.1651.36\lib\net472\Unimake.Business.DFe.dll</HintPath>
     </Reference>
@@ -86,6 +89,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormNFCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNFCom.Designer.cs">
+      <DependentUpon>FormNFCom.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTestes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +103,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormNFCom.resx">
+      <DependentUpon>FormNFCom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTestes.resx">
       <DependentUpon>FormTestes.cs</DependentUpon>
     </EmbeddedResource>

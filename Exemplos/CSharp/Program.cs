@@ -16,7 +16,8 @@ namespace TreinamentoDLL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTestes());
+            //Application.Run(new FormTestes());
+            Application.Run(new FormNFCom());
         }
     }
 }
