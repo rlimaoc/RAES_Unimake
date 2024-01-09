@@ -25,7 +25,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// </summary>
         /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public StatusServico(ConsStatServ consStatServ, Configuracao configuracao) : base(consStatServ, configuracao) { }
+        public StatusServico(ConsStatServNFCom consStatServ, Configuracao configuracao) : base(consStatServ, configuracao) { }
 
         /// <summary>
         /// Construtor

@@ -7,16 +7,15 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
 
-namespace Unimake.Business.DFe.Xml.NFe
+namespace Unimake.Business.DFe.Xml.NFCom
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFe.ConsStatServ")]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ConsStatServNFCom")]
     [ComVisible(true)]
 #endif
-    [XmlRoot("consStatServ", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    [XmlRoot("consStatServNFCom", Namespace = "http://www.portalfiscal.inf.br/nfcom", IsNullable = false)]
     public class ConsStatServNFCom : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
@@ -24,16 +23,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
-
-        [XmlIgnore]
-        public UFBrasil CUF { get; set; }
-
-        [XmlElement("cUF")]
-        public int CUFField
-        {
-            get => (int)CUF;
-            set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
-        }
 
         [XmlElement("xServ")]
         public string XServ { get; set; } = "STATUS";

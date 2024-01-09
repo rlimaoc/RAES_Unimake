@@ -1,9 +1,10 @@
-﻿using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.NFe;
-using Unimake.Business.DFe.Xml.NFe;
+﻿using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos.NFCom;
+using Unimake.Business.DFe.Xml.NFCom;
 using Xunit;
 
-namespace Unimake.DFe.Test.NFe
+namespace Unimake.DFe.Test.NFCom
 {
     /// <summary>
     /// Testar o serviço de consulta protocolo da NFe
@@ -77,23 +78,22 @@ namespace Unimake.DFe.Test.NFe
             var xml = new ConsStatServNFCom
             {
                 Versao = "4.00",
-                CUF = ufBrasil,
                 TpAmb = tipoAmbiente
             };
 
             var configuracao = new Configuracao
             {
-                TipoDFe = TipoDFe.NFe,
+                TipoDFe = TipoDFe.NFCom,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var statusServico = new StatusServico(xml, configuracao);
+            var statusServico = new StatusServicoNFCom(xml, configuracao);
             statusServico.Executar();
 
-            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            //Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            //Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(statusServico.Result.CStat.Equals(107) || statusServico.Result.CStat.Equals(656), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
         }

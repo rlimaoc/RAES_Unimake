@@ -1498,7 +1498,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
         /// 3 - NF-e de ajuste
         /// </summary>
         [XmlEnum("3")]
-        Auste = 3,
+        Ajuste = 3,
 
         /// <summary>
         /// 4 - Devolução de mercadoria
@@ -1532,7 +1532,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
         /// 4 - NFCom de ajuste
         /// </summary>
         [XmlEnum("4")]
-        Auste = 4
+        Ajuste = 4
     }
 
     #endregion
@@ -8803,34 +8803,6 @@ namespace Unimake.Business.DFe.Servicos.Enums
 
     #endregion
 
-    #region Tipo de Processo (NFCom)
-
-    /// <summary>
-    /// Tipo de Processo (NFCom)
-    /// </summary>
-    public enum TipoProcessoNFCom
-    {
-        /// <summary>
-        /// 0 - SEFAZ
-        /// </summary>
-        [XmlEnum("0")]
-        SEFAZ = 0,
-
-        /// <summary>
-        /// 1 - Justiça Federal
-        /// </summary>
-        [XmlEnum("1")]
-        JusticaFederal = 1,
-
-        /// <summary>
-        /// 2 - Justiça Estadual
-        /// </summary>
-        [XmlEnum("2")]
-        JusticaEstadual = 2,
-    }
-
-    #endregion
-
     #region Unidade Básica de Medida (NFCom)
 
     /// <summary>
@@ -8864,4 +8836,5 @@ namespace Unimake.Business.DFe.Servicos.Enums
     }
 
     #endregion
+
 }

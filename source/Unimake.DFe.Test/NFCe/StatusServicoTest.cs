@@ -74,7 +74,7 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            var xml = new ConsStatServ
+            var xml = new ConsStatServNFCom
             {
                 Versao = "4.00",
                 CUF = ufBrasil,

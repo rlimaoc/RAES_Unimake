@@ -3,23 +3,22 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Servicos.Interop.Contract;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Business.DFe.Xml.NFCom;
 
-namespace Unimake.Business.DFe.Servicos.NFe
+namespace Unimake.Business.DFe.Servicos.NFCom
 {
     /// <summary>
     /// Enviar o XML de consulta status do serviço da NFe para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.NFe.StatusServico")]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.StatusServicoNFCom")]
     [ComVisible(true)]
 #endif
-    public class StatusServico : ServicoBase, IInteropService<ConsStatServNFCom>
+    public class StatusServicoNFCom : ServicoBase, IInteropService<ConsStatServNFCom>
     {
         #region Protected Methods
 
@@ -34,7 +33,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
             if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFeStatusServico;
-                Configuracoes.CodigoUF = (int)xml.CUF;
                 Configuracoes.TipoAmbiente = xml.TpAmb;
                 Configuracoes.SchemaVersao = xml.Versao;
 
@@ -49,16 +47,16 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
-        public RetConsStatServ Result
+        public RetConsStatServNFCom Result
         {
             get
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetConsStatServ>(RetornoWSXML);
+                    return XMLUtility.Deserializar<RetConsStatServNFCom>(RetornoWSXML);
                 }
 
-                return new RetConsStatServ
+                return new RetConsStatServNFCom
                 {
                     CStat = 0,
                     XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
@@ -78,16 +76,16 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Construtor
         /// </summary>
-        /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
+        /// <param name="consStatServNFCom">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public StatusServico(ConsStatServNFCom consStatServ, Configuracao configuracao) : this()
+        public StatusServico(ConsStatServNFCom consStatServNFCom, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
+            Inicializar(consStatServNFCom?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServNFCom)), configuracao);
         }
 
         #endregion Public Constructors
@@ -102,7 +100,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ConsStatServ consStatServ, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ConsStatServNFCom consStatServNFCom, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
@@ -111,7 +109,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
+                Inicializar(consStatServNFCom?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServNFCom)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
