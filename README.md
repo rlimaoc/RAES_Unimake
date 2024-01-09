@@ -1,9 +1,40 @@
-# DFe
-DLL desenvolvida com o intuito de facilitar a integração dos Softwares ERP com o sistema de documentos fiscais eletrônicos da SEFAZ (NFe, NFCe, MDFe, CTe, NFSe, etc.).
+# Uni.NFCom
+DLL desenvolvida apenas para NFCom - Nota Eletrônica Fatura de Seriços de Comunicação.
+O projeto foi baseado na DLL da Unimake.DFe e foi alterado epenas para comportar a NFCom, não causando conflito com a biblioteca na Unimake.
 
-# Documentação
+
+# Alterações
++ 2024.01.09 - 1.00
+  + Alteração dos Enums para NFCom
+  + Implementação da consulta de serviço da SEFAZ
+
+
+# Braking changes
+Informações importantes sobre a compatibilidade desse projeto com a DLL Unimake.DFe em [Breaking Changes](https://github.com/rlimaoc/Unimake/blob/main/Breaking-Changes.md) 
+
+
+### Documentações
+https://dfe-portal.svrs.rs.gov.br/Nfcom/Servicos
 https://wiki.unimake.com.br/index.php/Manuais:Unimake.DFe
 
-# Breaking Changes
 
-Antes de fazer a atualização de pacotes pelo <https://www.nuget.org/packages/Unimake.DFe>, atente-se para as alterações em [Breaking Changes](https://github.com/Unimake/DFe/blob/main/Breaking-Changes.md)
+### Webservices utilizados da NFCom (SVRS)
++ **Produção**
+  + NFComConsulta 1.00 https://nfcom.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx
+  + NFComRecepcao 1.00 https://nfcom.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx
+  + NFComRecepcaoEvento 1.00 https://nfcom.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx
+  + NFComStatusServico 1.00 https://nfcom.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx
+
++ **Homologação**
+  + NFComConsulta 1.00 https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx
+  + NFComRecepcao 1.00 https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx
+  + NFComRecepcaoEvento 1.00 https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx
+  + NFComStatusServico 1.00 https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx
+
+
+### Bug Fixes ref. a DLL (Unimake.DFe)
+> [!CAUTION]
+> **Essas alterações foram feitas SOMENTE neste projeto e NÃO SÃO compatíveis com a DLL Unimake.DFe**
+
++ Enums
+  FinalidadeNFe.Auste => Enum FinalidadeNFe.Ajuste

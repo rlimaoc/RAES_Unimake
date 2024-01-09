@@ -121,11 +121,22 @@ namespace Unimake.Business.DFe.Security
         /// Metodo que verifica se a string encontra-se criptografada, pode ser utilizada
         /// antes de se tentar descriptografar uma senha evitando exceções na aplicação.
         /// </summary>
-        /// <param name="senhaCripto">string com a senha</param>
+        /// <param name="strCriptografada"></param>
+        /// <param name="chave"></param>
         /// <returns>booleano que se a senha esta criptografda</returns>
         /// <author>Renan Borges</author>
         public static bool IsCriptografadaSenha(string strCriptografada, string chave)
         {
+            if (string.IsNullOrEmpty(strCriptografada))
+            {
+                throw new ArgumentException($"'{nameof(strCriptografada)}' cannot be null or empty.", nameof(strCriptografada));
+            }
+
+            if (string.IsNullOrEmpty(chave))
+            {
+                throw new ArgumentException($"'{nameof(chave)}' cannot be null or empty.", nameof(chave));
+            }
+
             try
             {
                 TripleDESCryptoServiceProvider objdescriptografaSenha = new TripleDESCryptoServiceProvider();

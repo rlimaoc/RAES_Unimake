@@ -2163,6 +2163,12 @@
 	  </EmbeddedResource>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Servicos\NFCom\" />
+	  <Folder Include="Xml\NFCom\" />
+	  <Folder Include="Xml\Schemas\NFCom\" />
+	</ItemGroup>
+
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 	  <Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir)" IgnoreExitCode="true" />
 	</Target>

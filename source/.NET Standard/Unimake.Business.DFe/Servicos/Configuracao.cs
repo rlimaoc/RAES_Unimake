@@ -1257,20 +1257,16 @@ namespace Unimake.Business.DFe.Servicos
         }
 
         /// <summary>
-        /// Versão da configuração definido no XML de configurações da UF ou Município
+        /// Versão da configuração definido no XML de configurações da UF ou Município.
         /// Esta versão só vai existir se a configuração foi alterada e o ERP deseja usar ela na pasta sem precisar atualizar a DLL.
         /// A DLL vai verificar se a versão da configuração que está na pasta é maior que a versão da DLL, se for, vai priorizar o que está na pasta, caso contrário vai pegar a configuração embutida na DLL, pois é mais atual.
-        /// Tag que deve ser informada no arquivo de configuração: Exemplo:
         /// 
-        /// AC.XML
-        /// 
-        /// <?xml version="1.0" encoding="utf-8"?>
+        /// Tag que deve ser informada no arquivo de configuração: Exemplo: AC.xml
         /// <Configuracoes>
-        /// 	<VersaoConfiguracao>202312061103</VersaoConfiguracao>
-        /// 	<Heranca>SVRS.xml</Heranca>
+        ///     <VersaoConfiguracao>202312061103</VersaoConfiguracao>
+        ///     <Heranca>SVRS.xml</Heranca>
         /// </Configuracoes>
         /// 
-        /// Formato deve ser conforme acima: ano com 4 dígitos + mês com 2 dígitos (zeros a esquerda) + dia com 2 dígitos (zeros a esquerda) + horas com 2 dígitos (zeros a esquerda) + minutos com 2 dígitos (zeros a esquerda)
         /// </summary>
         public string VersaoConfiguracao { get; set; }
 
