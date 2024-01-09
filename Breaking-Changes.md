@@ -7,6 +7,7 @@ Sobre mudanças recentes que podem exigir ação dos desenvolvedores que utiliza
 ### Alterações realizadas em 2024-01-09
 
 1. ***INDICADORES***
+
    Para os indicadores abaixo será utilizado o enum SinNao. Pois as TAGs só precisam ser enviadas se o valor for 1, elas não seráo enviadas se o valor for 0.
    Essa validação será realizada na serialização do XML.
 
@@ -40,7 +41,9 @@ Sobre mudanças recentes que podem exigir ação dos desenvolvedores que utiliza
       </ide>
    ```
 
+
 1. ***TIPO DE PROCESSO***
+
    Para a TAG tpProc (Tipo de Processo) deve ser usado o Enum TipoOrigemProcesso, pois os valores utilizados pela NFCom (modelo 62) são os mesmos:
 
    ```
@@ -49,7 +52,9 @@ Sobre mudanças recentes que podem exigir ação dos desenvolvedores que utiliza
    2 - Justiça Estadual
    ```
 
+
 1. ***TIPO DE EMISSÃO***
+
    Na TAG tpEmis (Tipo de Emissão) da NFCom (modelo 62) são aceitos apenas dois valores possíveis:
    1 - Normal
    2 - Contingência
