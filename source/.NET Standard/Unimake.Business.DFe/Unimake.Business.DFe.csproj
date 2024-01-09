@@ -197,6 +197,8 @@
 		<None Remove="Servicos\Config\NFCe\SP.xml" />
 		<None Remove="Servicos\Config\NFCe\SVRS.xml" />
 		<None Remove="Servicos\Config\NFCe\TO.xml" />
+		<None Remove="Servicos\Config\NFCom\Config.xml" />
+		<None Remove="Servicos\Config\NFCom\SVRS.xml" />
 		<None Remove="Servicos\Config\NFe\AC.xml" />
 		<None Remove="Servicos\Config\NFe\AL.xml" />
 		<None Remove="Servicos\Config\NFe\AM.xml" />
@@ -820,6 +822,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFCom\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDeRibamarMA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
