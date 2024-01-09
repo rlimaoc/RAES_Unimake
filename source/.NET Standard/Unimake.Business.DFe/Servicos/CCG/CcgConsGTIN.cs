@@ -2,14 +2,14 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos.Interop.Contract;
-using RUnimake.Business.DFe.Xml.CCG;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CCG;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.Servicos.CCG
+namespace Unimake.Business.DFe.Servicos.CCG
 {
     /// <summary>
     /// Enviar o XML de consulta de códigos GTIN para o web-service

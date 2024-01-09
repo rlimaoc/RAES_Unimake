@@ -5,7 +5,7 @@ using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Business.DFe.Xml.NFe;
 
-namespace RUnimake.Business.DFe.Servicos.Enums
+namespace Unimake.Business.DFe.Servicos.Enums
 {
     #region Servico
 

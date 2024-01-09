@@ -1,4 +1,4 @@
-﻿namespace RUnimake.Business.DFe
+﻿namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Configurações gerais

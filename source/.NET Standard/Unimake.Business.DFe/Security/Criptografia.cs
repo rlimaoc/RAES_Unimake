@@ -3,7 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RUnimake.Business.DFe.Security
+namespace Unimake.Business.DFe.Security
 {
     internal static class Criptografia
     {

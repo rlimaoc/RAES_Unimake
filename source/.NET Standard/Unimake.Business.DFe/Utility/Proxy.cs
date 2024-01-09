@@ -5,9 +5,17 @@ using System.Runtime.InteropServices;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System.Net;
 
-namespace RUnimake.Business.DFe.Utility
+namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
     /// Definições para conexão com servidor de proxy

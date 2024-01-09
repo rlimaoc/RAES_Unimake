@@ -1,12 +1,12 @@
-﻿using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Validator.Abstractions;
-using RUnimake.Business.DFe.Xml.CTe;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Unimake;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Validator.Abstractions;
+using Unimake.Business.DFe.Xml.CTe;
 
-namespace RUnimake.Business.DFe.Validator.CTe
+namespace Unimake.Business.DFe.Validator.CTe
 {
     /// <summary>
     /// <inheritdoc cref="XmlValidatorBase"/>

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace RUnimake.Business.DFe.Utility
+namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
     /// Informações diversas sobre a DLL

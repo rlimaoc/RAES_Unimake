@@ -1,10 +1,10 @@
-﻿using RUnimake.Business.DFe.Validator.Contract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Unimake.Business.DFe.Validator.Contract;
 
-namespace RUnimake.Business.DFe.Validator.Abstractions
+namespace Unimake.Business.DFe.Validator.Abstractions
 {
     /// <summary>
     /// Faz a validação do XML antes de enviar para o serviço correspondente

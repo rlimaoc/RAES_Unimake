@@ -1,10 +1,10 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos;
 using System.Xml;
+using Unimake.Business.DFe.Servicos;
 
-namespace RUnimake.Business.DFe.Servicos.NFSe
+namespace Unimake.Business.DFe.Servicos.NFSe
 {
     /// <summary>
     /// Consulta ao requerimento de cancelamento - Implementado em 23/11 para o Padrão AGILI

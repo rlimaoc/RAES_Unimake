@@ -1,13 +1,13 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Utility;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
 
-namespace RUnimake.Business.DFe.Xml
+namespace Unimake.Business.DFe.Xml
 {
     /// <summary>
     /// Classe Base para criação de classes de serialização de XML

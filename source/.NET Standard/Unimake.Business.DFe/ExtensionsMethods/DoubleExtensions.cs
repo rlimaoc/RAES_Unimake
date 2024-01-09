@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RUnimake.Business.DFe.ExtensionsMethods
+namespace Unimake.Business.DFe.ExtensionsMethods
 {
     /// <summary>
     /// Extensão da classe double

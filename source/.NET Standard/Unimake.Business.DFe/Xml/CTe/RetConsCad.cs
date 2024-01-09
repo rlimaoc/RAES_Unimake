@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 
-namespace RUnimake.Business.DFe.Xml.CTe
+namespace Unimake.Business.DFe.Xml.CTe
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

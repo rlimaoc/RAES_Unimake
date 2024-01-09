@@ -1,15 +1,15 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Security;
-using RUnimake.Business.DFe.Servicos;
 using System;
 using System.IO;
 using System.Text;
 using System.Xml;
+using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Exceptions;
 
-namespace RUnimake.Business.DFe.Servicos.NFSe
+namespace Unimake.Business.DFe.Servicos.NFSe
 {
     /// <summary>
     /// Classe base para os serviços da NFSe

@@ -1,8 +1,8 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Xml.CTe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos.CTe;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
 
 namespace Unimake.DFe.Test.CTe

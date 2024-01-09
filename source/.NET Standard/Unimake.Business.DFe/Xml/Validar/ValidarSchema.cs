@@ -1,15 +1,15 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
+using Unimake.Business.DFe;
 
-namespace RUnimake.Business.DFe.Xml.Validar
+namespace Unimake.Business.DFe.Xml.Validar
 {
     /// <summary>
     /// Validador de schemas de XML (XML x XSD)

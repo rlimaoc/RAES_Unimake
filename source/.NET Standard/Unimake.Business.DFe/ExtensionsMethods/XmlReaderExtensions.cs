@@ -1,12 +1,12 @@
-﻿using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml;
-using System;
+﻿using System;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
-using static RUnimake.Business.DFe.Utility.Converter;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
+using static Unimake.Business.DFe.Utility.Converter;
 
-namespace RUnimake.Business.DFe.ExtensionsMethods
+namespace Unimake.Business.DFe.ExtensionsMethods
 {
     /// <summary>
     ///

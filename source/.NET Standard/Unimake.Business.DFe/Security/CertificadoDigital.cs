@@ -1,11 +1,11 @@
-﻿using RUnimake.Business.DFe.Exceptions;
-using System;
+﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Unimake.Business.DFe.Exceptions;
 
-namespace RUnimake.Business.DFe.Security
+namespace Unimake.Business.DFe.Security
 {
     /// <summary>
     /// Trabalhar com certificado digital

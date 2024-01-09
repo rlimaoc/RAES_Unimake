@@ -3,14 +3,13 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Xml;
 using System;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.Xml.GNRE
+namespace Unimake.Business.DFe.Xml.GNRE
 {
 
 #if INTEROP

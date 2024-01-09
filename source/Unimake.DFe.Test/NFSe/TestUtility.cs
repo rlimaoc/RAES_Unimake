@@ -1,8 +1,8 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos.Enums;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFSe

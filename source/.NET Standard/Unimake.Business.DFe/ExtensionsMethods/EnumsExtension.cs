@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace RUnimake.Business.DFe.ExtensionsMethods
+namespace Unimake.Business.DFe.ExtensionsMethods
 {
     /// <summary>
     /// Extensão da Classe Enums

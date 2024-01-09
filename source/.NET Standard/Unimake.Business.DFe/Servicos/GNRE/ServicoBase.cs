@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 
-namespace RUnimake.Business.DFe.Servicos.GNRE
+namespace Unimake.Business.DFe.Servicos.GNRE
 {
     /// <summary>
     /// Classe base para os serviços da GNRE

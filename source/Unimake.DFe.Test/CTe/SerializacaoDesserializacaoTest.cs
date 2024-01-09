@@ -1,8 +1,8 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.CTe;
+﻿using RUnimake.Business.DFe.Xml.CTe;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
 
@@ -64,7 +64,7 @@ namespace Unimake.DFe.Test.CTe
             doc.Load(arqXML);
 
             var xml = new Unimake.Business.DFe.Xml.CTe.CTe();
-            xml = xml.LerXML<RUnimake.Business.DFe.Xml.CTe.CTe>(doc);
+            xml = xml.LerXML<Business.DFe.Xml.CTe.CTe>(doc);
 
             var configuracao = new Configuracao
             {
@@ -93,7 +93,7 @@ namespace Unimake.DFe.Test.CTe
             doc.Load(arqXML);
 
             var xml = new Unimake.Business.DFe.Xml.CTeOS.CTeOS();
-            xml = xml.LerXML<RUnimake.Business.DFe.Xml.CTeOS.CTeOS>(doc);
+            xml = xml.LerXML<Business.DFe.Xml.CTeOS.CTeOS>(doc);
 
             var configuracao = new Configuracao
             {

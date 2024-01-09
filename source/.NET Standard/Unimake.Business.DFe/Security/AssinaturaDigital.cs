@@ -1,13 +1,13 @@
-﻿using RUnimake.Business.DFe;
-using RUnimake.Business.DFe.ExtensionsMethods;
-using System;
+﻿using System;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
+using Unimake.Business.DFe;
+using Unimake.Business.DFe.ExtensionsMethods;
 using Unimake.Exceptions;
 
-namespace RUnimake.Business.DFe.Security
+namespace Unimake.Business.DFe.Security
 {
     /// <summary>
     /// Classe para realizar assinatura digital de XMLs

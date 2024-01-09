@@ -3,17 +3,17 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFe;
 
-namespace RUnimake.Business.DFe.Xml.CTe
+namespace Unimake.Business.DFe.Xml.CTe
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using Unimake.Compression;
 using System.Xml;
 
-namespace RUnimake.Business.DFe.Utility
+namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
     /// Classe para compactação e descompactação de objetos, strings, etc...

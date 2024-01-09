@@ -2,9 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Validator;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,8 +10,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Validator;
 
-namespace RUnimake.Business.DFe.Utility
+namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
     /// Utilitários diversos para trabalhar com XML
@@ -320,15 +320,15 @@ namespace RUnimake.Business.DFe.Utility
         }
 
         /// <summary>
-                 /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
-                 /// </summary>
-                 /// <returns>Retorna string sem os espaços desnecessários</returns>
-                 /// <example>
-                 /// var texto = " Eu    vou   ao    supermercado comprar alimentos.    ";
-                 /// texto = XMLUtility.LimparEspacoDesnecessario(texto);
-                 /// MessageBox.Show(texto); // Retorno será: "Eu vou ao supermercado comprar alimentos."
-                 /// </example>
-                 /// <seealso cref="UnescapeReservedCharacters(string)"/>
+        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
+        /// </summary>
+        /// <returns>Retorna string sem os espaços desnecessários</returns>
+        /// <example>
+        /// var texto = " Eu    vou   ao    supermercado comprar alimentos.    ";
+        /// texto = XMLUtility.LimparEspacoDesnecessario(texto);
+        /// MessageBox.Show(texto); // Retorno será: "Eu vou ao supermercado comprar alimentos."
+        /// </example>
+        /// <seealso cref="UnescapeReservedCharacters(string)"/>
         public static string ClearExtraSpaces(string content)
         {
             if (string.IsNullOrWhiteSpace(content))

@@ -11,9 +11,23 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices;
 #endif
 
+
+// Ignore Spelling: Interop
+
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
+
+// Ignore Spelling: Interop
+
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System.Net;
 
-namespace RUnimake.Business.DFe.Utility
+namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
     /// Utilitários de rede

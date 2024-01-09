@@ -2,7 +2,7 @@
 using System.Xml;
 using Unimake.Business.DFe.Xml.CTeOS;
 
-namespace RUnimake.Business.DFe.Contract.Serialization
+namespace Unimake.Business.DFe.Contract.Serialization
 {
     /// <summary>
     /// Implementa métodos para serialização e deserialização de XMLs

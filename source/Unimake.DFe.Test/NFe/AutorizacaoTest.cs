@@ -1,8 +1,8 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Xml.NFe;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Servicos.NFe;
+using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFe
@@ -83,7 +83,7 @@ namespace Unimake.DFe.Test.NFe
                 Versao = "4.00",
                 IdLote = "000000000000001",
                 IndSinc = SimNao.Nao,
-                NFe = new List<RUnimake.Business.DFe.Xml.NFe.NFe> {
+                NFe = new List<Business.DFe.Xml.NFe.NFe> {
                         new Business.DFe.Xml.NFe.NFe
                         {
                             InfNFe = new List<InfNFe> {
@@ -395,7 +395,7 @@ namespace Unimake.DFe.Test.NFe
                 Versao = "4.00",
                 IdLote = "000000000000001",
                 IndSinc = SimNao.Sim,
-                NFe = new List<RUnimake.Business.DFe.Xml.NFe.NFe> {
+                NFe = new List<Business.DFe.Xml.NFe.NFe> {
                         new Business.DFe.Xml.NFe.NFe
                         {
                             InfNFe = new List<InfNFe> {

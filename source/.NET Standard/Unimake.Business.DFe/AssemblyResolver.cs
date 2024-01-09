@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace RUnimake.Business.DFe
+namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Resolve as referências dos assemblies e ignora as versões

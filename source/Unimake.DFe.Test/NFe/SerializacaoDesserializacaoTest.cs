@@ -1,8 +1,8 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.NFe;
+﻿using RUnimake.Business.DFe.Xml.NFe;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
@@ -60,9 +60,9 @@ namespace Unimake.DFe.Test.NFe
             {
                 IdLote = "000000000000001",
                 Versao = "4.00",
-                NFe = new System.Collections.Generic.List<RUnimake.Business.DFe.Xml.NFe.NFe>
+                NFe = new System.Collections.Generic.List<Business.DFe.Xml.NFe.NFe>
             {
-                XMLUtility.Deserializar<RUnimake.Business.DFe.Xml.NFe.NFe>(doc.OuterXml)
+                XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc.OuterXml)
             }
             };
 

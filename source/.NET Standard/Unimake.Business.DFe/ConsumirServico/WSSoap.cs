@@ -1,7 +1,7 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using System.Net;
+﻿using System.Net;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe.ConsumirServico
 {
     /// <summary>
     /// Classe para definição de parâmetros do SOAP dos Webservices

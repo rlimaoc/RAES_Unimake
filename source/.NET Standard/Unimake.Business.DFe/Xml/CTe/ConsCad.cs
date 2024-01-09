@@ -9,9 +9,21 @@ using System.Runtime.InteropServices;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+
+#pragma warning disable CS1591
+
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
+#pragma warning disable CS1591
+
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System.Xml.Serialization;
 
-namespace RUnimake.Business.DFe.Xml.CTe
+namespace Unimake.Business.DFe.Xml.CTe
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

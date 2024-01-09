@@ -6,13 +6,12 @@ using System.Xml;
 using Unimake.Exceptions;
 using Unimake.Business.Security;
 using System.IO;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe;
-using RUnimake.Business.DFe.Validator;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Security;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.Validator;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.Servicos
+namespace Unimake.Business.DFe.Servicos
 {
     /// <summary>
     /// Classe base abstrata para elaboração dos serviços dos documentos fiscais eletrônicos (NFe, NFCe, MDFe, NFSe, CTe, GNRE, etc...)

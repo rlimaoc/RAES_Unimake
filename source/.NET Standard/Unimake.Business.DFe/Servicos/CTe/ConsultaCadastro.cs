@@ -1,10 +1,10 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Xml.NFe;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.NFe;
 
-namespace RUnimake.Business.DFe.Servicos.CTe
+namespace Unimake.Business.DFe.Servicos.CTe
 {
     /// <summary>
     /// Envio do XML de consulta cadastro do contribuinte para o WebService

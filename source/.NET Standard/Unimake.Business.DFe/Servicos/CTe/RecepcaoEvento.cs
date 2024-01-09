@@ -1,15 +1,15 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.CTe;
 using System;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CTe;
 
-namespace RUnimake.Business.DFe.Servicos.CTe
+namespace Unimake.Business.DFe.Servicos.CTe
 {
     /// <summary>
     /// Envio do XML de eventos do CTe para o WebService

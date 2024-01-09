@@ -3,7 +3,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace RUnimake.Business.DFe.Xml
+namespace Unimake.Business.DFe.Xml
 {
     internal class DynamicXml : DynamicObject, IEnumerable<XElement>
     {

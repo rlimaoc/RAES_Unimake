@@ -3,16 +3,16 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
 
-namespace RUnimake.Business.DFe.Xml.SNCM
+namespace Unimake.Business.DFe.Xml.SNCM
 {
     /// <summary>
     /// XML para o serviço para recepção e/ou atualização dos parâmetros do SNCM necessários para o Sistema Cliente funcionar

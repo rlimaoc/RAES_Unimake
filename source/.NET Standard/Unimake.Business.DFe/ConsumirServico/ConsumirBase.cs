@@ -1,7 +1,4 @@
-﻿using RUnimake.Business.DFe.Security;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Net.Security;
@@ -9,9 +6,12 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
 
-namespace RUnimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe.ConsumirServico
 {
     /// <summary>
     /// Classe para consumir webservices e API´s

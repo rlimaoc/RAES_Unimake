@@ -1,17 +1,17 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Servicos.Interop.Contract;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.NFe;
 using System;
 using System.Collections.Generic;
 using System.Xml;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.NFe;
 
-namespace RUnimake.Business.DFe.Servicos.NFe
+namespace Unimake.Business.DFe.Servicos.NFe
 {
     /// <summary>
     /// Enviar o XML de consulta documentos fiscais eletrônicos destinados para o web-service (NFe)

@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Xml;
 
-namespace RUnimake.Business.DFe.Servicos.Interop.Contract
+namespace Unimake.Business.DFe.Servicos.Interop.Contract
 {
     /// <summary>
     /// Os objetos que irão se comunicar via interop, deverão implementar esta interface,

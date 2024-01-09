@@ -1,15 +1,14 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Servicos.Interop.Contract;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.GNRE;
 using System;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 
-namespace RUnimake.Business.DFe.Servicos.GNRE
+namespace Unimake.Business.DFe.Servicos.GNRE
 {
     /// <summary>
     /// Envio do XML de lote da GNRE para o WebService

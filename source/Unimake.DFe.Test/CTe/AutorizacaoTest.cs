@@ -1,8 +1,8 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Xml.CTe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos.CTe;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
 
 namespace Unimake.DFe.Test.CTe
@@ -82,7 +82,7 @@ namespace Unimake.DFe.Test.CTe
             {
                 Versao = "3.00",
                 IdLote = "000000000000001",
-                CTe = new List<RUnimake.Business.DFe.Xml.CTe.CTe> {
+                CTe = new List<Business.DFe.Xml.CTe.CTe> {
                         new Business.DFe.Xml.CTe.CTe
                         {
                             InfCTe = new InfCTe

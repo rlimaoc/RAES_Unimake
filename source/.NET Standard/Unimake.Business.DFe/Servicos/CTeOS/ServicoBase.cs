@@ -1,10 +1,10 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Exceptions;
 
-namespace RUnimake.Business.DFe.Servicos.CTeOS
+namespace Unimake.Business.DFe.Servicos.CTeOS
 {
     /// <summary>
     /// Classe base para consumo dos webservices do CTeOS

@@ -1,7 +1,7 @@
-﻿using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.GNRE;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 using Xunit;
 
 namespace Unimake.DFe.Test.GNRE

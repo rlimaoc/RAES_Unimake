@@ -8,11 +8,11 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Text;
-using RUnimake.Business.DFe.Xml;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.Xml.CTe
+namespace Unimake.Business.DFe.Xml.CTe
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

@@ -1,7 +1,7 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Servicos.NFSe;
 using Xunit;
 

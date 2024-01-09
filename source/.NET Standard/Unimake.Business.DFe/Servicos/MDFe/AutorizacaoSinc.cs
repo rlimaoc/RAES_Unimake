@@ -1,18 +1,18 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Servicos.Interop.Contract;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.MDFe;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.MDFe;
 
-namespace RUnimake.Business.DFe.Servicos.MDFe
+namespace Unimake.Business.DFe.Servicos.MDFe
 {
     /// <summary>
     /// Enviar o XML de MDFe para o webservice no modo síncrono

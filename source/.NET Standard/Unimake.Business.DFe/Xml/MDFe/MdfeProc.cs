@@ -8,10 +8,10 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Text;
-using RUnimake.Business.DFe.Xml;
-using RUnimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Utility;
 
-namespace RUnimake.Business.DFe.Xml.MDFe
+namespace Unimake.Business.DFe.Xml.MDFe
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

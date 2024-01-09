@@ -7,11 +7,11 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Globalization;
-using RUnimake.Business.DFe.Xml;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.Xml.CCG
+namespace Unimake.Business.DFe.Xml.CCG
 {
     /// <summary>
     /// Classe para serialização e deserialização do XML de consulta centralizada do código GTIN

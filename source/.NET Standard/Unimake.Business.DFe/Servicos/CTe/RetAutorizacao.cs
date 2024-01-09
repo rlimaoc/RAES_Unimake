@@ -1,14 +1,14 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.CTe;
 using System;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CTe;
 
-namespace RUnimake.Business.DFe.Servicos.CTe
+namespace Unimake.Business.DFe.Servicos.CTe
 {
     /// <summary>
     /// Envio do XML de consulta recibo do lote de CTe para o WebService

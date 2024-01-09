@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 using System.Globalization;
-using RUnimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.Xml.EFDReinf
+namespace Unimake.Business.DFe.Xml.EFDReinf
 {
     /// <summary>
     /// Configurações Cultura para o REINF

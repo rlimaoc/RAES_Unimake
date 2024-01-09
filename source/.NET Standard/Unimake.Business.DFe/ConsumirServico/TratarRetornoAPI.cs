@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -8,8 +6,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
 
-namespace RUnimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe.ConsumirServico
 {
     /// <summary>
     /// Classe para tratar o retornos das comunicações por API

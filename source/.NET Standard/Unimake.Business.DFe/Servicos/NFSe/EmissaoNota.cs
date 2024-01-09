@@ -1,10 +1,10 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos;
 using System.Xml;
+using Unimake.Business.DFe.Servicos;
 
-namespace RUnimake.Business.DFe.Servicos.NFSe
+namespace Unimake.Business.DFe.Servicos.NFSe
 {
     /// <summary>
     /// Enviar o XML de Emissão NFSe para o webservice

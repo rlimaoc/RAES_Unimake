@@ -1,13 +1,13 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Xml.NFe;
 using System;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
-namespace RUnimake.Business.DFe.Servicos.NFCe
+namespace Unimake.Business.DFe.Servicos.NFCe
 {
     /// <summary>
     /// Enviar o XML da consulta recibo do lote da NFCe para o web-service

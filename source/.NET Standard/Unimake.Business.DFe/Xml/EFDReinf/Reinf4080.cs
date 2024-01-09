@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 using System.Collections.Generic;
-using RUnimake.Business.DFe.Xml;
-using RUnimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos.Enums;
 
-namespace RUnimake.Business.DFe.Xml.EFDReinf
+namespace Unimake.Business.DFe.Xml.EFDReinf
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

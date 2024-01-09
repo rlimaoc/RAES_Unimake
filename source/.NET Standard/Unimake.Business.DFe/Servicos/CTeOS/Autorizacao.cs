@@ -1,17 +1,17 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Servicos.Interop.Contract;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Xml.CTe;
-using RUnimake.Business.DFe.Xml.CTeOS;
 using System;
 using System.Collections.Generic;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Business.DFe.Xml.CTeOS;
 
-namespace RUnimake.Business.DFe.Servicos.CTeOS
+namespace Unimake.Business.DFe.Servicos.CTeOS
 {
     /// <summary>
     /// Envio do XML de CTeOS para webservice
@@ -29,7 +29,7 @@ namespace RUnimake.Business.DFe.Servicos.CTeOS
 
             if (CTeOS.InfCTeSupl == null)
             {
-                CTeOS.InfCTeSupl = new Xml.CTeOS.InfCTeSupl();
+                CTeOS.InfCTeSupl = new InfCTeSupl();
 
                 var urlQrCode = Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao;
 

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 
-namespace RUnimake.Business.DFe.Servicos.MDFe
+namespace Unimake.Business.DFe.Servicos.MDFe
 {
     /// <summary>
     /// Classe base para os servidos de MDFe

@@ -1,12 +1,13 @@
-﻿using RUnimake.Business.DFe.Exceptions;
-using RUnimake.Business.DFe.Validator.Contract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using Unimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Validator.Contract;
 
-namespace RUnimake.Business.DFe.Validator
+namespace Unimake.Business.DFe.Validator
 {
     /// <summary>
     /// Constrói
@@ -99,7 +100,7 @@ namespace RUnimake.Business.DFe.Validator
                 {
                     var exception = (XmlException)ex.GetLastException();
 
-                    Utility.XMLUtility.ImproveInvalidCharacterExceptionInXML(xml, exception);
+                    XMLUtility.ImproveInvalidCharacterExceptionInXML(xml, exception);
                 }
 
                 ThrowHelper.Instance.Throw(ex);

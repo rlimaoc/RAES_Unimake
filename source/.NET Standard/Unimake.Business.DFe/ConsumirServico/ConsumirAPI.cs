@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,9 +8,11 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
 
-namespace RUnimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe.ConsumirServico
 {
     /// <summary>{
     /// Classe para consumir API

@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace RUnimake.Business.DFe.Security
+namespace Unimake.Business.DFe.Security
 {
     /// <summary>
     /// Classe criada para o consumo do padrão AGILI, com possibilidade de generalização de padrões com necessidade de um token para emissão de DFe

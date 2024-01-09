@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace RUnimake.Business.DFe.Validator.Contract
+namespace Unimake.Business.DFe.Validator.Contract
 {
     /// <summary>
     /// Faz a validação do XML antes de enviar para o serviço correspondente

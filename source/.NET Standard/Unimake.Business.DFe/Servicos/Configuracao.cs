@@ -1,18 +1,18 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe;
-using RUnimake.Business.DFe.ExtensionsMethods;
-using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using Unimake.Business.DFe;
+using Unimake.Business.DFe.ExtensionsMethods;
+using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Utility;
 
-namespace RUnimake.Business.DFe.Servicos
+namespace Unimake.Business.DFe.Servicos
 {
     /// <summary>
     /// Classe das configurações para conexão e envio dos XMLs para os webservices

@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace RUnimake.Business.DFe.Security
+namespace Unimake.Business.DFe.Security
 {
     internal static class IIBRASIL
     {

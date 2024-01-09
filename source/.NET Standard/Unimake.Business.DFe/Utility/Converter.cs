@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using Unimake;
 using Unimake.Cryptography;
 
-namespace RUnimake.Business.DFe.Utility
+namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
     /// Classe para conversão de objetos

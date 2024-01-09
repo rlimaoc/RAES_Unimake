@@ -1,7 +1,7 @@
-﻿using RUnimake.Business.DFe.Servicos.Enums;
-using RUnimake.Business.DFe.Xml.GNRE;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Servicos.GNRE;
+using Unimake.Business.DFe.Xml.GNRE;
 using Xunit;
 
 namespace Unimake.DFe.Test.GNRE

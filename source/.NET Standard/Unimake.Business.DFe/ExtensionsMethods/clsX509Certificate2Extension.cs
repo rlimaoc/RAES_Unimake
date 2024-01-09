@@ -1,13 +1,13 @@
-﻿using RUnimake.Business.DFe.Security;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using Unimake.Business.DFe.Security;
 
-namespace RUnimake.Business.DFe.ExtensionsMethods
+namespace Unimake.Business.DFe.ExtensionsMethods
 {
     /// <summary>
     /// Extensão da classe X509Certificate2

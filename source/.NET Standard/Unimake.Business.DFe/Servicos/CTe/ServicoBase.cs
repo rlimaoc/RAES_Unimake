@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 
-namespace RUnimake.Business.DFe.Servicos.CTe
+namespace Unimake.Business.DFe.Servicos.CTe
 {
     /// <summary>
     /// Classe base dos serviços de CTe

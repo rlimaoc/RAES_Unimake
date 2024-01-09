@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Xml;
 
-namespace RUnimake.Business.DFe.Exceptions
+namespace Unimake.Business.DFe.Exceptions
 {
     /// <summary>
     /// Classe para capturar dados da exception para disponibilizar a outras linguagens de programação, que não .NET, com tipos simples.

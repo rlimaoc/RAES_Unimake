@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Xml;
 using System;
-using RUnimake.Business.DFe.Servicos;
-using RUnimake.Business.DFe.Utility;
-using RUnimake.Business.DFe.Exceptions;
+using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Exceptions;
 
-namespace RUnimake.Business.DFe.Servicos.NFSe
+namespace Unimake.Business.DFe.Servicos.NFSe
 {
     /// <summary>
     /// Enviar o XML de Consulta/Download do PDF da NFSe para o webservice

@@ -6,10 +6,10 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Exceptions;
-using RUnimake.Business.DFe.Xml;
-using RUnimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Utility;
 
-namespace RUnimake.Business.DFe.Xml.CCG
+namespace Unimake.Business.DFe.Xml.CCG
 {
     /// <summary>
     /// Classe para serialização e deserialização do XML de consulta centralizada do código GTIN
