@@ -15,7 +15,7 @@ Informações importantes sobre a compatibilidade desse projeto com a DLL Unimak
 https://wiki.unimake.com.br/index.php/Manuais:Unimake.DFe
 
 # Bug Fixes ref. a DLL (Unimake.DFe)
-> [!COUTION]
+> [!CAUTION]
 > Essas alterações foram feitas SOMENTE neste projeto e NÃO SÃO compatíveis com a DLL Unimake.DFe
 
 + Enums
