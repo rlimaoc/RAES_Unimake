@@ -2,12 +2,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -19,7 +17,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
     [ProgId("Unimake.Business.DFe.Servicos.NFe.StatusServico")]
     [ComVisible(true)]
 #endif
-    public class StatusServico : ServicoBase, IInteropService<ConsStatServNFCom>
+    public class StatusServico : ServicoBase, IInteropService<ConsStatServ>
     {
         #region Protected Methods
 
@@ -28,8 +26,8 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            var xml = new ConsStatServNFCom();
-            xml = xml.LerXML<ConsStatServNFCom>(ConteudoXML);
+            var xml = new ConsStatServ();
+            xml = xml.LerXML<ConsStatServ>(ConteudoXML);
 
             if (!Configuracoes.Definida)
             {
@@ -80,7 +78,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public StatusServico(ConsStatServNFCom consStatServ, Configuracao configuracao) : this()
+        public StatusServico(ConsStatServ consStatServ, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {

@@ -1,4 +1,4 @@
-﻿using Unimake.Business.DFe.Servicos.Enums;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFCe;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
@@ -74,7 +74,7 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            var xml = new ConsStatServNFCom
+            var xml = new ConsStatServ
             {
                 Versao = "4.00",
                 CUF = ufBrasil,

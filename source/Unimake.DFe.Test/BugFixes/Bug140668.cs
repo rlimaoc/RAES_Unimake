@@ -1,5 +1,4 @@
-﻿using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml.NFe;
+﻿using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
 namespace Unimake.DFe.Test.BugFixes
@@ -20,7 +19,7 @@ namespace Unimake.DFe.Test.BugFixes
                 XBairro = "lorem ipsum",
                 CMun = 9999999,
                 XMun = "lorem",
-                UF = UFBrasil.PR,
+                UF = Business.DFe.Servicos.UFBrasil.PR,
                 CEP = "00000-000",
                 CPais = 1058,
                 XPais = "BRASIL"

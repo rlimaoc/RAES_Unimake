@@ -8,9 +8,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.GNRE
 {
@@ -112,7 +110,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string ValorGNREField
         {
             get => ValorGNRE.ToString("F2", CultureInfo.InvariantCulture);
-            set => ValorGNRE = Converter.ToDouble(value);
+            set => ValorGNRE = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -400,14 +398,14 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("parcela")]
         public string Parcela { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializePeriodo() => Periodo != null;
         public bool ShouldSerializeMes() => Mes != null && Mes != (Meses)(-1);
         public bool ShouldSerializeAno() => !string.IsNullOrWhiteSpace(Ano) && Mes != null && Mes != (Meses)(-1);
         public bool ShouldSerializeParcela() => !string.IsNullOrWhiteSpace(Parcela);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -429,7 +427,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string Value
         {
             get => ValorOriginal.ToString("F2", CultureInfo.InvariantCulture);
-            set => ValorOriginal = Converter.ToDouble(value);
+            set => ValorOriginal = Utility.Converter.ToDouble(value);
         }
 
         public enum ItemValorTipo

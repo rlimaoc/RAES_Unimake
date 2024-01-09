@@ -1,6 +1,6 @@
 ﻿using System;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
 

@@ -3,9 +3,7 @@ using System.Runtime.InteropServices;
 using Unimake.Exceptions;
 #endif
 using System;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 

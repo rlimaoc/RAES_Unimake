@@ -5,9 +5,8 @@ using System.Text;
 using System;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Exceptions;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Utility;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Xml.CCG
 {

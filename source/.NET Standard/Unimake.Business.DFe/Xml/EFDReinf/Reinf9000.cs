@@ -5,8 +5,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -66,7 +65,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("perApur")]
         public string PerApurField
         {
-            get => PerApur.ToString(TpEvento == EventosEFDReinf.R3010 ? "yyyy-MM-dd" : "yyyy-MM");
+            get => PerApur.ToString((TpEvento == EventosEFDReinf.R3010 ? "yyyy-MM-dd": "yyyy-MM"));
 #if INTEROP
             set => PerApur = DateTime.Parse(value);
 #else

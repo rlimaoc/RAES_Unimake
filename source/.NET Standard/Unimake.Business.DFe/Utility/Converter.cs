@@ -9,7 +9,6 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
-using Unimake;
 using Unimake.Cryptography;
 
 namespace Unimake.Business.DFe.Utility
@@ -35,7 +34,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="contentConvert">Conteúdo a ser convertido</param>
         /// <returns>Conteúdo convertido para MemoryStrem com UTF8 Encoding</returns>
-        public static MemoryStream StringToStreamUTF8(string contentConvert) => UConvert.ToMemoryStream(contentConvert, Encoding.UTF8);
+        public static MemoryStream StringToStreamUTF8(string contentConvert) => UConvert.ToMemoryStream(contentConvert, System.Text.Encoding.UTF8);
 
         /// <summary>
         /// Tenta converter qualquer objeto passado em value para o tipo esperado em T

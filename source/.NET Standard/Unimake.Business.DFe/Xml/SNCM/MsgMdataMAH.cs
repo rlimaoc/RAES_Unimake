@@ -5,9 +5,8 @@ using System;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.SNCM
 {
@@ -91,7 +90,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string UsrAgt
         {
             get => UsrAgtField;
-            set => UsrAgtField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => UsrAgtField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         /// <summary>
@@ -188,7 +187,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Reason
         {
             get => ReasonField;
-            set => ReasonField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => ReasonField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
     }
 }

@@ -9,7 +9,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -105,12 +104,12 @@ namespace Unimake.Business.DFe.Xml.CTe
             return XMLUtility.Deserializar<CteProc>(doc);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeIpTransmissor() => !string.IsNullOrWhiteSpace(IpTransmissor);
         public bool ShouldSerializeNPortaCon() => NPortaCon > 0;
         public bool ShouldSerializeDhConexaoField() => DhConexao > DateTime.MinValue;
 
-        #endregion
+#endregion
     }
 }

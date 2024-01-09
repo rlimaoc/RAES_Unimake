@@ -2,8 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Exceptions;

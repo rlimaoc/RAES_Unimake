@@ -5,9 +5,7 @@ using Unimake.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 
@@ -46,7 +44,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                         var xMotivo = RetornoWSXML.GetElementsByTagName("xMotivo")[0].InnerText;
                         if (xMotivo.Contains("[nItem:"))
                         {
-                            var nItem = Convert.ToInt32(xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7).Substring(0, xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7).Length - 1));
+                            var nItem = Convert.ToInt32((xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Substring(0, (xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Length - 1));
                             RetornoWSString = RetornoWSString.Replace(xMotivo, xMotivo + " [cProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.CProd + "] [xProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.XProd + "]");
 
                             RetornoWSXML = new XmlDocument

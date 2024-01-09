@@ -3,8 +3,6 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
-using Unimake.Business.DFe;
-using Unimake.Business.DFe.ExtensionsMethods;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Security
@@ -38,7 +36,7 @@ namespace Unimake.Business.DFe.Security
         {
             if (!string.IsNullOrEmpty(tagAssinatura))
             {
-                AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolver.AssemblyResolve;
+                AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
 
                 if (!verificaAssinatura || !EstaAssinado(conteudoXML, tagAssinatura))
                 {
@@ -188,7 +186,7 @@ namespace Unimake.Business.DFe.Security
         {
             if (!string.IsNullOrEmpty(tagAssinatura))
             {
-                AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolver.AssemblyResolve;
+                AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
 
                 if (!verificaAssinatura || !EstaAssinado(conteudoXML, tagAssinatura))
                 {

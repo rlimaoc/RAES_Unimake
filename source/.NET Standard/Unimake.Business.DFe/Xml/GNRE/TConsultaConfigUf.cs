@@ -7,8 +7,7 @@ using System;
 using System.Dynamic;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.GNRE
 {
@@ -19,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlRoot("TConsultaConfigUf", Namespace = "http://www.gnre.pe.gov.br", IsNullable = false)]
-    public class TConsultaConfigUf : XMLBase
+    public class TConsultaConfigUf: XMLBase
     {
         [XmlElement("ambiente")]
         public TipoAmbiente Ambiente { get; set; }
@@ -47,6 +46,6 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public SimNaoLetra Courier { get; set; } = SimNaoLetra.Nao;
 
         [XmlText()]
-        public int Value { get; set; }
+        public Int32 Value { get; set; }
     }
 }

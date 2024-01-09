@@ -6,10 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Globalization;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Servicos.Enums;
+using System.Globalization;
 
 namespace Unimake.Business.DFe.Xml.CCG
 {

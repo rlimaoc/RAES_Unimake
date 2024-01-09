@@ -7,7 +7,6 @@ using System;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -18,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable()]
     [XmlRoot("procInutNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public class ProcInutNFe : XMLBase
+    public class ProcInutNFe: XMLBase
     {
         #region Public Fields
 

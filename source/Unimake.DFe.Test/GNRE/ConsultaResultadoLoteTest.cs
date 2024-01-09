@@ -1,4 +1,4 @@
-﻿using Unimake.Business.DFe.Servicos.Enums;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.GNRE;
 using Unimake.Business.DFe.Xml.GNRE;
 using Xunit;

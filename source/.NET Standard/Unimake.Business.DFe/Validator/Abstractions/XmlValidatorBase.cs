@@ -25,7 +25,7 @@ namespace Unimake.Business.DFe.Validator.Abstractions
         private bool Validate(IEnumerable<XElement> elements)
         {
             //faz um loop pelas tags do XML
-            foreach (var tag in elements)
+            foreach(var tag in elements)
             {
                 var validate = FindMap(tag);
                 validate?.Invoke(tag);

@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -58,7 +57,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// Nome do arquivo de distribuição
         /// </summary>
         [XmlIgnore]
-        public string NomeArquivoDistribuicao => EventoCTe.InfEvento.ChCTe + "_" + ((int)EventoCTe.InfEvento.TpEvento).ToString("000000") + "_" + EventoCTe.InfEvento.NSeqEvento.ToString(EventoCTe.Versao.Equals("3.00") ? "00" : "000") + "-proceventocte.xml";
+        public string NomeArquivoDistribuicao => EventoCTe.InfEvento.ChCTe + "_" + ((int)EventoCTe.InfEvento.TpEvento).ToString("000000") + "_" + EventoCTe.InfEvento.NSeqEvento.ToString((EventoCTe.Versao.Equals("3.00") ? "00" : "000")) + "-proceventocte.xml";
 
         public override XmlDocument GerarXML()
         {

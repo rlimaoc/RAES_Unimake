@@ -3,9 +3,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using Unimake.Business.DFe.Exceptions;
+using Unimake.Exceptions;
 
-namespace Unimake.Business.DFe.Security
+namespace Unimake.Business.Security
 {
     /// <summary>
     /// Trabalhar com certificado digital

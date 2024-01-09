@@ -3,13 +3,13 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml;
+using Unimake.Business.DFe.Security;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
+using Unimake.Business.DFe.Validator;
 using Unimake.Business.Security;
 using System.IO;
-using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Validator;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -38,8 +38,8 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
         private void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
-
-            if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
+            
+                if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
             {
                 if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
                 {
@@ -133,14 +133,14 @@ namespace Unimake.Business.DFe.Servicos
             }
 
             //Esta linha tem que ficar fora do if acima, pois tem que carregar esta parte, independente, pois o que é carregado sempre é automático. Mudar isso, vai gerar falha no UNINFE, principalmente no envio dos eventos, onde eu defino as configurações manualmente. Wandrey 07/12/2020
-            Configuracoes.Load(GetType().Name);
+           Configuracoes.Load(GetType().Name);
 
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
             //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
-            _ = ConteudoXMLAssinado;
-        }
-
+                _ = ConteudoXMLAssinado;
+            }
+            
         #endregion Protected Internal Methods
 
         #region Public Properties
@@ -238,7 +238,7 @@ namespace Unimake.Business.DFe.Servicos
                 var apiConfig = new APIConfig
                 {
                     ContentType = Configuracoes.WebContentType,
-                    RequestURI = Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao,
+                    RequestURI = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao),
                     TagRetorno = Configuracoes.WebTagRetorno,
                     GZipCompress = Configuracoes.GZIPCompress,
                     WebSoapString = Configuracoes.WebSoapString,
@@ -265,8 +265,8 @@ namespace Unimake.Business.DFe.Servicos
             {
                 var soap = new WSSoap
                 {
-                    EnderecoWeb = Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebEnderecoProducao : Configuracoes.WebEnderecoHomologacao,
-                    ActionWeb = Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao,
+                    EnderecoWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebEnderecoProducao : Configuracoes.WebEnderecoHomologacao),
+                    ActionWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao),
                     TagRetorno = Configuracoes.WebTagRetorno,
                     TagRetornoHomologacao = Configuracoes.WebTagRetornoHomologacao,
                     EncodingRetorno = Configuracoes.WebEncodingRetorno,
@@ -283,9 +283,9 @@ namespace Unimake.Business.DFe.Servicos
                     MunicipioUsuario = Configuracoes.MunicipioUsuario,
                     Token = Configuracoes.MunicipioToken,
                     EncriptaTagAssinatura = Configuracoes.EncriptaTagAssinatura,
-                    Proxy = Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
+                    Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
-                                                                            Configuracoes.ProxyPassword) : null
+                                                                            Configuracoes.ProxyPassword) : null)
                 };
 
                 var consumirWS = new ConsumirWS();

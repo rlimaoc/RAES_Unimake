@@ -4,12 +4,10 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Xml;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTe
 {
@@ -33,7 +31,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 {
                     EnviCTe.CTe[i].InfCTeSupl = new InfCTeSupl();
 
-                    var urlQrCode = Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao;
+                    var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
 
                     var paramLinkQRCode = urlQrCode +
                         "?chCTe=" + EnviCTe.CTe[i].InfCTe.Chave +
@@ -475,7 +473,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 

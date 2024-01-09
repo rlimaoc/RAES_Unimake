@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFSe

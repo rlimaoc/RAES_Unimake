@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTeOS;
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Xml.CTeOS;
 using Xunit;
 

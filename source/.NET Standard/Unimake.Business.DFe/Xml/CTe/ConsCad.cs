@@ -3,24 +3,6 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-
-#pragma warning disable CS1591
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-
-#pragma warning disable CS1591
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-
-#pragma warning disable CS1591
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.CTe

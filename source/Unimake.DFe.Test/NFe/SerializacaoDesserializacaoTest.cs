@@ -1,7 +1,6 @@
-﻿using RUnimake.Business.DFe.Xml.NFe;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;

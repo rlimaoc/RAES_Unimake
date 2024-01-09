@@ -4,8 +4,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -15,7 +14,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [ComVisible(true)]
 #endif
     [XmlRoot("consReciCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class ConsReciCTe : XMLBase
+    public class ConsReciCTe: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }

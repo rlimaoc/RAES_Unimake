@@ -10,9 +10,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Validator;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -141,7 +141,7 @@ namespace Unimake.Business.DFe.Utility
         #region Public Methods
 
         /// <summary>
-        /// Gerar o dígito da chave da NFe, CTe, MDFe, NFCe ou NFCom
+        /// Gerar o dígito da chave da NFe, CTe, MDFe ou NFCe
         /// </summary>
         /// <param name="chave">Chave do DFe (sem o dígito) que deve ser calculado o dígito verificador.</param>
         /// <returns>Dígito verificador</returns>
@@ -171,8 +171,8 @@ namespace Unimake.Business.DFe.Utility
                         j += Convert.ToInt32(chave.Substring(i, 1)) * Convert.ToInt32(PESO.Substring(i, 1));
                     }
 
-                    Digito = 11 - j % 11;
-                    if (j % 11 < 2)
+                    Digito = 11 - (j % 11);
+                    if ((j % 11) < 2)
                     {
                         Digito = 0;
                     }
@@ -189,7 +189,7 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Executa uma verificação simples para garantir que a chave do DFe (NFe, CTe, MDfe, NFCe, CTeOS, NFCom) é valida, se tiver erros retorna exceção.
+        /// Executa uma verificação simples para garantir que a chave do DFe (NFe, CTe, MDfe, NFCe, CTeOS) é valida, se tiver erros retorna exceção.
         /// </summary>
         /// <param name="chave">Chave do DFe a ser verificada</param>
         /// <example>
@@ -1252,7 +1252,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="xmlElement">Elemento do XML onde será pesquisado o Nome da TAG</param>
         /// <param name="tagName">Nome da Tag que será pesquisado</param>
         /// <returns>Conteúdo da tag</returns>
-        public static bool TagExist(XmlElement xmlElement, string tagName) => xmlElement.TagExist(tagName);
+        public static bool TagExist(XmlElement xmlElement, string tagName) => XmlHelper.TagExist(xmlElement, tagName);
 
         /// <summary>
         /// Busca o nome de uma determinada TAG em um Elemento do XML para ver se existe, se existir retorna seu conteúdo da TAG.
@@ -1260,7 +1260,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="xmlElement">Elemento do XML onde será pesquisado o Nome da TAG</param>
         /// <param name="tagName">Nome da Tag que será pesquisado</param>
         /// <returns>Conteúdo da tag</returns>
-        public static string TagRead(XmlElement xmlElement, string tagName) => xmlElement.ReadTagValue(tagName);
+        public static string TagRead(XmlElement xmlElement, string tagName) => XmlHelper.ReadTagValue(xmlElement, tagName);
 
         /// <summary>
         /// Tratar caracteres especiais existentes na string substituindo por escape.
@@ -1333,8 +1333,6 @@ namespace Unimake.Business.DFe.Utility
 
         #endregion Public Methods
 
-        #region Public Statics Methods
-
         /// <summary>
         /// Gerar a chave dos seguintes documentos fiscais eletrônicos: NFe, NFCe, CTe, MFDe e CTeOS.
         /// </summary>
@@ -1351,7 +1349,7 @@ namespace Unimake.Business.DFe.Utility
         {
             if (string.IsNullOrWhiteSpace(cNF))
             {
-                cNF = GerarCodigoNumerico(nNF).ToString("00000000");
+                cNF = XMLUtility.GerarCodigoNumerico(nNF).ToString("00000000");
             }
 
             var chaveDFe = ((int)cUF).ToString() +
@@ -1363,50 +1361,12 @@ namespace Unimake.Business.DFe.Utility
                 ((int)tpEmis).ToString() +
                 cNF.PadLeft(8, '0');
 
-            var cDV = CalcularDVChave(chaveDFe);
+            var cDV = XMLUtility.CalcularDVChave(chaveDFe);
 
             chaveDFe += cDV.ToString();
 
             return chaveDFe;
         }
-
-        /// <summary>
-        /// Gerar a chave da Nota Eletrônica Fatura de Comunicação (NFCom) modelo 62.
-        /// </summary>
-        /// <param name="cUF">UF do emitente</param>
-        /// <param name="dhEmi">Data de emissão do documento</param>
-        /// <param name="cnpjcpf">CNPJ ou CPF do emitente</param>
-        /// <param name="mod">Código do modelo do documento fiscal eletrônicos</param>
-        /// <param name="serie">Série do documento fiscal eletrônico</param>
-        /// <param name="nNF">Número da nota fiscal</param>
-        /// <param name="tpEmis">Tipo de emissão (Tag tpEmis)</param>
-        /// <param name="nSiteAutoriz">Número do site de autorização da NFCom (Deixe em branco ou nulo será considerado como site único: nsiteAutoriz = 0)</param>
-        /// <param name="cNF">Código numérico randômico (Deixe em branco ou nulo para que a DLL gera este código para você)</param>
-        /// <returns>Retorna a chave, completa, do documento fiscal eletrônico com o dígito verificar calculado e concatenado a chave</returns>
-        public static string MontarChaveNFCom(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, int nSiteAutoriz = 0, string cNF = "")
-        {
-            if (string.IsNullOrWhiteSpace(cNF))
-            {
-                cNF = GerarCodigoNumerico(nNF).ToString("0000000");
-            }
-
-            var chaveDFe = ((int)cUF).ToString() +
-                dhEmi.ToString("yyMM") +
-                cnpjcpf.PadLeft(14, '0') +
-                ((int)mod).ToString().PadLeft(2, '0') +
-                serie.ToString().PadLeft(3, '0') +
-                nNF.ToString().PadLeft(9, '0') +
-                ((int)tpEmis).ToString() +
-                nSiteAutoriz.ToString() +
-                cNF.PadLeft(7, '0');
-
-            var cDV = CalcularDVChave(chaveDFe);
-
-            chaveDFe += cDV.ToString();
-
-            return chaveDFe;
-        }
-        #endregion
     }
 
 #if INTEROP

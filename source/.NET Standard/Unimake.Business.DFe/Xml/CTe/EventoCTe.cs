@@ -3,7 +3,6 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using RUnimake.Business.DFe.ExtensionsMethods;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,10 +11,8 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.ExtensionsMethods;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -186,10 +183,10 @@ namespace Unimake.Business.DFe.Xml.CTe
             if (pi?.Name == nameof(InfCorrecao))
             {
                 XmlReader.Read();
-                var grupoAlterado = XmlReader.GetValue<string>(nameof(CTe.InfCorrecao.GrupoAlterado));
-                var campoAlterado = XmlReader.GetValue<string>(nameof(CTe.InfCorrecao.CampoAlterado));
-                var valorAlterado = XmlReader.GetValue<string>(nameof(CTe.InfCorrecao.ValorAlterado));
-                var nroItemAlterado = XmlReader.GetValue<string>(nameof(CTe.InfCorrecao.NroItemAlterado));
+                var grupoAlterado = XmlReader.GetValue<string>(nameof(Xml.CTe.InfCorrecao.GrupoAlterado));
+                var campoAlterado = XmlReader.GetValue<string>(nameof(Xml.CTe.InfCorrecao.CampoAlterado));
+                var valorAlterado = XmlReader.GetValue<string>(nameof(Xml.CTe.InfCorrecao.ValorAlterado));
+                var nroItemAlterado = XmlReader.GetValue<string>(nameof(Xml.CTe.InfCorrecao.NroItemAlterado));
 
                 InfCorrecao.Add(new InfCorrecao
                 {
@@ -648,7 +645,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 XmlReader.Read();
                 InfEntrega.Add(new InfEntrega
                 {
-                    ChNFe = XmlReader.GetValue<string>(nameof(CTe.InfEntrega.ChNFe))
+                    ChNFe = XmlReader.GetValue<string>(nameof(Xml.CTe.InfEntrega.ChNFe))
                 });
                 return;
             }
@@ -1123,7 +1120,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(DetEventoPrestDesacordo))]
     [XmlInclude(typeof(DetEventoFiscoMDFeCancelado))]
     [XmlInclude(typeof(DetEventoFiscoMDFeAutorizado))]
-    public class EventoDetalhe : IXmlSerializable
+    public class EventoDetalhe : System.Xml.Serialization.IXmlSerializable
     {
         #region Private Fields
 
@@ -1455,7 +1452,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlAttribute(DataType = "ID", AttributeName = "Id")]
         public string Id
         {
-            get => "ID" + ((int)TpEvento).ToString() + ChCTe + NSeqEvento.ToString(DetEvento.VersaoEvento == "3.00" ? "00" : "000");
+            get => "ID" + ((int)TpEvento).ToString() + ChCTe + NSeqEvento.ToString((DetEvento.VersaoEvento == "3.00" ? "00" : "000"));
             set => _ = value;
         }
 
@@ -1494,7 +1491,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 XmlReader.Read();
                 InfEntrega.Add(new InfEntrega
                 {
-                    ChNFe = XmlReader.GetValue<string>(nameof(CTe.InfEntrega.ChNFe))
+                    ChNFe = XmlReader.GetValue<string>(nameof(Xml.CTe.InfEntrega.ChNFe))
                 });
 
                 return;
@@ -1778,7 +1775,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         private string HashTentativaEntregaField;
 
         [XmlElement("hashTentativaEntrega")]
-        public string HashTentativaEntrega
+        public string HashTentativaEntrega 
         {
             get => HashTentativaEntregaField;
             set

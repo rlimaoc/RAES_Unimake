@@ -3,13 +3,11 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.CTeOS;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTeOS
 {
@@ -29,9 +27,9 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
             if (CTeOS.InfCTeSupl == null)
             {
-                CTeOS.InfCTeSupl = new InfCTeSupl();
+                CTeOS.InfCTeSupl = new Xml.CTeOS.InfCTeSupl();
 
-                var urlQrCode = Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao;
+                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
 
                 var paramLinkQRCode = urlQrCode +
                     "?chCTe=" + CTeOS.InfCTe.Chave +

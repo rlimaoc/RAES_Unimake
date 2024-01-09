@@ -5,12 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -79,7 +77,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             if (Configuracoes.SchemasEspecificos.Count > 0)
             {
-                var tpEvento = (int)xml.Evento[0].InfEvento.TpEvento;
+                var tpEvento = ((int)xml.Evento[0].InfEvento.TpEvento);
 
                 schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
                 schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;

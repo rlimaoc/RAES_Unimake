@@ -5,12 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.MDFe
 {
@@ -42,7 +40,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             {
                 MDFe.InfMDFeSupl = new InfMDFeSupl();
 
-                var urlQrCode = Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao;
+                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
 
                 var paramLinkQRCode = urlQrCode +
                     "?chMDFe=" + MDFe.InfMDFe.Chave +

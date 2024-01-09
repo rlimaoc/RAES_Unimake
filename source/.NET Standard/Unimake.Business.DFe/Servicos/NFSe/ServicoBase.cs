@@ -6,7 +6,6 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
@@ -91,7 +90,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
 
             if (Configuracoes.UsaCertificadoDigital && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
-            {
+            {                   
                 if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
                 {
                     AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");

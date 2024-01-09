@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTeOS
 {
@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     [XmlRoot("retCTeOS", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class RetCTeOS : XMLBase
+    public class RetCTeOS: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }

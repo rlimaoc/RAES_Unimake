@@ -5,10 +5,9 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Xml;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {

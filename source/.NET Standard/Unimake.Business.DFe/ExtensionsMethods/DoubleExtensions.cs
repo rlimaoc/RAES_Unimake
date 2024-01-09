@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Unimake.Business.DFe.ExtensionsMethods
+﻿namespace System
 {
     /// <summary>
     /// Extensão da classe double
@@ -43,7 +41,7 @@ namespace Unimake.Business.DFe.ExtensionsMethods
             }
 
             return double.Parse($"{value}") * Math.Pow(10, -15) * Math.Pow(10, 15);
-        }
+        }        
 
         #endregion Public Methods
     }

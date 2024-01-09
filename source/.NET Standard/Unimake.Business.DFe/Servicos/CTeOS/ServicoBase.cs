@@ -1,7 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTeOS

@@ -6,8 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -17,7 +16,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [ComVisible(true)]
 #endif
     [XmlRoot("consStatServ", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public class ConsStatServNFCom : XMLBase
+    public class ConsStatServ: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }

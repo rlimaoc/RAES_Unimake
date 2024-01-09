@@ -7,9 +7,6 @@ using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using Unimake.Business.DFe;
-using Unimake.Business.DFe.ExtensionsMethods;
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos
@@ -212,7 +209,7 @@ namespace Unimake.Business.DFe.Servicos
 
                             if (XMLUtility.TagExist(elementPropriedades, "GZIPCompress"))
                             {
-                                GZIPCompress = XMLUtility.TagRead(elementPropriedades, "GZIPCompress").ToLower() == "true" ? true : false;
+                                GZIPCompress = (XMLUtility.TagRead(elementPropriedades, "GZIPCompress").ToLower() == "true" ? true : false);
                             }
 
                             if (XMLUtility.TagExist(elementPropriedades, "WebSoapVersion"))
@@ -399,11 +396,11 @@ namespace Unimake.Business.DFe.Servicos
                         throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de " + (TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
                     }
                 }
-                else if (TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(WebEnderecoHomologacao) && string.IsNullOrWhiteSpace(RequestURIHomologacao))
+                else if (TipoAmbiente == TipoAmbiente.Homologacao && (string.IsNullOrWhiteSpace(WebEnderecoHomologacao) && string.IsNullOrWhiteSpace(RequestURIHomologacao)))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de homologação.");
                 }
-                else if (TipoAmbiente == TipoAmbiente.Producao && string.IsNullOrWhiteSpace(WebEnderecoProducao) && string.IsNullOrWhiteSpace(RequestURIProducao))
+                else if (TipoAmbiente == TipoAmbiente.Producao && (string.IsNullOrWhiteSpace(WebEnderecoProducao) && string.IsNullOrWhiteSpace(RequestURIProducao)))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de produção.");
                 }
@@ -649,7 +646,7 @@ namespace Unimake.Business.DFe.Servicos
             //    MunicipioToken = token.AccessToken;
             //}
 
-            WebSoapString = WebSoapString.Replace("{ActionWeb}", TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao);
+            WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
         }
@@ -670,7 +667,7 @@ namespace Unimake.Business.DFe.Servicos
             }
             else
             {
-                throw new Exception("Não foi localizado o arquivo de configuração padrão do serviço de " + arqConfig);
+                throw new System.Exception("Não foi localizado o arquivo de configuração padrão do serviço de " + arqConfig);
             }
 
             var achouConfigVersao = false;
@@ -711,7 +708,7 @@ namespace Unimake.Business.DFe.Servicos
 
                         if (XMLUtility.TagExist(elementVersao, "GZIPCompress"))
                         {
-                            GZIPCompress = XMLUtility.TagRead(elementVersao, "GZIPCompress").ToLower() == "true" ? true : false;
+                            GZIPCompress = (XMLUtility.TagRead(elementVersao, "GZIPCompress").ToLower() == "true" ? true : false);
                         }
 
                         if (XMLUtility.TagExist(elementVersao, "WebTagRetorno"))
@@ -817,7 +814,7 @@ namespace Unimake.Business.DFe.Servicos
         {
             get
             {
-                var codigo = CodigoUF != 0 ? CodigoUF : CodigoMunicipio;
+                var codigo = (CodigoUF != 0 ? CodigoUF : CodigoMunicipio);
                 return codigo;
             }
         }
@@ -1045,7 +1042,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Propriedade criada para atender o padrão DSF Versão 1.0.
         /// </summary>
-        public bool EncriptaTagAssinatura { get; set; }
+        public bool EncriptaTagAssinatura {  get; set; }
 
         /// <summary>
         /// O serviço consome API? true ou false
@@ -1250,7 +1247,7 @@ namespace Unimake.Business.DFe.Servicos
             {
                 if (string.IsNullOrWhiteSpace(_PastaDLL))
                 {
-                    _PastaDLL = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
+                    _PastaDLL = System.IO.Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
                 }
 
                 return _PastaDLL;

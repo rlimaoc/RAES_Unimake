@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Globalization;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
         private static CultureInfo InfoField = new CultureInfo("pt-BR");
 
-        public static CultureInfo Info
+        public static CultureInfo Info 
         {
             get
             {

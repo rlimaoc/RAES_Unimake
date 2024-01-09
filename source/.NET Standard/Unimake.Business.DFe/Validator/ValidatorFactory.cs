@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator.Contract;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator
 {
@@ -100,7 +99,7 @@ namespace Unimake.Business.DFe.Validator
                 {
                     var exception = (XmlException)ex.GetLastException();
 
-                    XMLUtility.ImproveInvalidCharacterExceptionInXML(xml, exception);
+                    Utility.XMLUtility.ImproveInvalidCharacterExceptionInXML(xml, exception);
                 }
 
                 ThrowHelper.Instance.Throw(ex);

@@ -9,7 +9,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {

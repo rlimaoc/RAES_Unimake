@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {

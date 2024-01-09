@@ -5,7 +5,7 @@ using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Business.DFe.Xml.NFe;
 
-namespace Unimake.Business.DFe.Servicos.Enums
+namespace Unimake.Business.DFe.Servicos
 {
     #region Servico
 
@@ -35,9 +35,9 @@ namespace Unimake.Business.DFe.Servicos.Enums
         NFeConsultaRecibo = 2,
 
         /// <summary>
-        /// 3 - Inutilização de números da NFe/NFCe
+        /// 3 - Inutilização de números da nota fiscal eletrônica
         /// </summary>
-        [Description("Inutilização de números da NFe/NFCe")]
+        [Description("Inutilização de números da NFe/NFCE")]
         NFeInutilizacao = 3,
 
         /// <summary>
@@ -398,50 +398,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
         /// 64 - Consulta Requerimento de Cancelamento da NFSe
         /// </summary>
         [Description("Consulta Requerimento de Cancelamento NFSe")]
-        NFSeConsultarRequerimentoCancelamento = 64,
-
-
-        /// <summary>
-        /// 65 - Consulta status serviço NFCom
-        /// </summary>
-        [Description("Consulta status do serviço da NFCom")]
-        NFComStatusServico = 65,
-
-        /// <summary>
-        /// 66 - Consulta protocolo da NFCom
-        /// </summary>
-        [Description("Consulta situação da NFCom")]
-        NFComConsultaProtocolo = 66,
-
-        /// <summary>
-        /// 67 - Consulta recibo NFCom
-        /// </summary>
-        [Description("Consulta recibo da NFCom")]
-        NFComConsultaRecibo = 67,
-
-        /// <summary>
-        /// 68 - Inutilização de números da NFCom
-        /// </summary>
-        [Description("Inutilização de números da NFCom")]
-        NFComInutilizacao = 68,
-
-        /// <summary>
-        /// 69 - Envio de Eventos (Cancelamento, CCe, EPEC, etc...)
-        /// </summary>
-        [Description("Envio de eventos da NFCom")]
-        NFComRecepcaoEvento = 69,
-
-        /// <summary>
-        /// 70 - Envio do XML de lote de NFCom
-        /// </summary>
-        [Description("Autorização da NFCom")]
-        NFComAutorizacao = 70,
-
-        /// <summary>
-        /// 71 - Envio do XML de consulta dos documentos fiscais eletrônicos destinados - NFCom
-        /// </summary>
-        [Description("Distribuição de documentos fiscais eletrônicos da NFCom")]
-        NFComDistribuicaoDFe = 71,
+        NFSeConsultarRequerimentoCancelamento= 64,
         #endregion
 
         #region Gerais
@@ -514,11 +471,8 @@ namespace Unimake.Business.DFe.Servicos.Enums
         /// <summary>
         /// 11 - EFDReinf - Escrituração Fiscal Digital de Retenções e Outras Informações Fiscais
         /// </summary>
-        EFDReinf = 11,
-        /// <summary>
-        /// 12 - NFCom - Nota Fiscal Fatura de Serviço de Comunicação Eletrônica
-        /// </summary>
-        NFCom = 12
+        EFDReinf = 11
+
     }
 
     #endregion       
@@ -708,7 +662,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
     #region TipoAmbiente
 
     /// <summary>
-    /// Tipo ambiente DFe (NFe, CTe, MDFe, NFCe, NFCom, etc...)
+    /// Tipo ambiente DFe (NFe, CTe, MDFe, NFCe, etc...)
     /// </summary>
     public enum TipoAmbiente
     {
@@ -729,7 +683,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
     #region ModeloDFe
 
     /// <summary>
-    /// Modelos dos DFes (NFe, CTe, MDFe, NFCe, NFCom, etc...)
+    /// Modelos dos DFes (NFe, CTe, MDFe, NFCe, etc...)
     /// </summary>
     public enum ModeloDFe
     {
@@ -761,13 +715,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
         /// CTeOS (Modelo: 67)
         /// </summary>
         [XmlEnum("67")]
-        CTeOS = 67,
-
-        /// <summary>
-        /// NFCom (Modelo: 62)
-        /// </summary>
-        [XmlEnum("62")]
-        NFCom = 62
+        CTeOS = 67
     }
 
     #endregion
@@ -1221,28 +1169,6 @@ namespace Unimake.Business.DFe.Servicos.Enums
 
     #endregion
 
-    #region TipoEventoNFCom
-
-    /// <summary>
-    /// Tipos de eventos da NFCom
-    /// </summary>
-    public enum TipoEventoNFCom
-    {
-        /// <summary>
-        /// 0 - Evento desconhecido
-        /// </summary>
-        [XmlEnum("0")]
-        Desconhecido = 0,
-
-        /// <summary>
-        /// 110111 - Cancelamento NFe
-        /// </summary>
-        [XmlEnum("110111")]
-        Cancelamento = 110111,
-    }
-
-    #endregion
-
     #region SimNao
 
     /// <summary>
@@ -1408,7 +1334,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
     #region TipoEmissao
 
     /// <summary>
-    /// Tipo de emissão do DF-e (NFe, NFCe, CTe, MDFe, NFCom, etc...)
+    /// Tipo de emissão do DF-e (NFe, NFCe, CTe, MDFe, etc...)
     /// </summary>
     public enum TipoEmissao
     {
@@ -1417,12 +1343,6 @@ namespace Unimake.Business.DFe.Servicos.Enums
         /// </summary>
         [XmlEnum("1")]
         Normal = 1,
-
-        /// <summary>
-        /// 2 - Contingência da NFCom
-        /// </summary>
-        [XmlEnum("2")]
-        ContingenciaNFCom = 2,
 
         /// <summary>
         /// 2 - Contingência FS-IA, com impressão do DANFE em formulário de segurança ou Para MDFe é impressão em formulário branco (sulfite)
@@ -1498,41 +1418,13 @@ namespace Unimake.Business.DFe.Servicos.Enums
         /// 3 - NF-e de ajuste
         /// </summary>
         [XmlEnum("3")]
-        Ajuste = 3,
+        Auste = 3,
 
         /// <summary>
         /// 4 - Devolução de mercadoria
         /// </summary>
         [XmlEnum("4")]
         Devolucao = 4
-    }
-
-    #endregion
-
-    #region FinalidadeNFCom
-
-    /// <summary>
-    /// Finalidades da NFCom
-    /// </summary>
-    public enum FinalidadeNFCom
-    {
-        /// <summary>
-        /// 1 - NF-e normal
-        /// </summary>
-        [XmlEnum("1")]
-        Normal = 1,
-
-        /// <summary>
-        /// 3 - NFCom de substituição
-        /// </summary>
-        [XmlEnum("3")]
-        Substituicao = 3,
-
-        /// <summary>
-        /// 4 - NFCom de ajuste
-        /// </summary>
-        [XmlEnum("4")]
-        Ajuste = 4
     }
 
     #endregion
@@ -4960,7 +4852,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
 
     #endregion
 
-    #region Informações de manuseio CTe - Modal Aereo
+    #region 
 
     /// <summary>
     /// Informações de manuseio CTe - Modal Aereo
@@ -7440,6 +7332,7 @@ namespace Unimake.Business.DFe.Servicos.Enums
     }
     #endregion
 
+
     #region Indicativo Retificação
 
     /// <summary>
@@ -7489,7 +7382,6 @@ namespace Unimake.Business.DFe.Servicos.Enums
         [XmlEnum("4")]
         CNO = 4
     }
-    #endregion
 
     #region Indicativo Obra
 
@@ -8539,302 +8431,5 @@ namespace Unimake.Business.DFe.Servicos.Enums
         SemMovimento = 3,
     }
     #endregion
-
-    #region Tipo de Faturamento (NFCom)
-
-    /// <summary>
-    /// Tipo de Faturamento (NFCom)
-    /// </summary>
-    public enum TipoFaturamento
-    {
-        /// <summary>
-        /// 0 - Faturamento Normal
-        /// </summary>
-        [XmlEnum("0")]
-        Normal = 0,
-
-        /// <summary>
-        /// 1 - Faturamento Centralizado
-        /// </summary>
-        [XmlEnum("1")]
-        Centralizado = 1,
-
-        /// <summary>
-        /// 2 - Cofaturamento
-        /// </summary>
-        [XmlEnum("2")]
-        Cofaturamento = 2
-    }
-    #endregion
-
-    #region Tipo de Assinante (NFCom)
-
-    /// <summary>
-    /// Tipo de Assinante (NFCom)
-    /// </summary>
-    public enum TipoAssinante
-    {
-        /// <summary>
-        /// 1 - Comercial,
-        /// </summary>
-        [XmlEnum("1")]
-        Comercial = 1,
-
-        /// <summary>
-        /// 2 - Industrial,
-        /// </summary>
-        [XmlEnum("2")]
-        Industrial = 2,
-
-        /// <summary>
-        /// 3 - Residencial/Pessoa Física,
-        /// </summary>
-        [XmlEnum("3")]
-        Residencial = 3,
-
-        /// <summary>
-        /// 3 - Residencial/Pessoa Física,
-        /// </summary>
-        [XmlEnum("3")]
-        PessoaFisica = 3,
-
-        /// <summary>
-        /// 4 - Produtor Rural,
-        /// </summary>
-        [XmlEnum("4")]
-        ProdutorRural = 4,
-
-        /// <summary>
-        /// 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; ,
-        /// </summary>
-        [XmlEnum("5")]
-        OrgaosPublicosEstaduais = 5,
-
-        /// <summary>
-        /// 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; ,
-        /// </summary>
-        [XmlEnum("5")]
-        FundacoesEstaduais = 5,
-
-        /// <summary>
-        /// 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; ,
-        /// </summary>
-        [XmlEnum("5")]
-        AutarquiasEstaduais = 5,
-
-        /// <summary>
-        /// 6 - Prestador de serviço de telecomunicação responsável pelo recolhimento do imposto incidente sobre a cessão dos meios de rede do prestador do serviço ao usuário final, nos termos do Convênio ICMS 17/13 ;,
-        /// </summary>
-        [XmlEnum("6")]
-        PrestadorDeServico = 6,
-
-        /// <summary>
-        /// 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;,
-        /// </summary>
-        [XmlEnum("7")]
-        MissoesDiplomaticas = 7,
-
-        /// <summary>
-        /// 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;,
-        /// </summary>
-        [XmlEnum("7")]
-        Consulados = 7,
-
-        /// <summary>
-        /// 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;,
-        /// </summary>
-        [XmlEnum("7")]
-        OrganismosInternacionais = 7,
-
-        /// <summary>
-        /// 8 - Igrejas e Templos de qualquer natureza,
-        /// </summary>
-        [XmlEnum("8")]
-        IgrejasETemplos = 8,
-
-        /// <summary>
-        /// 99 - Outros não especificados anteriormente,
-        /// </summary>
-        [XmlEnum("99")]
-        Outros = 99,
-    }
-
-    #endregion
-
-    #region Tipo de Seriviço Utilizado (NFCom)
-
-    /// <summary>
-    /// Tipo de Seriviço Utilizado (NFCom)
-    /// </summary>
-    public enum TipoServicoUtilizado
-    {
-        /// <summary>
-        /// 1 - Telefonia
-        /// </summary>
-        [XmlEnum("1")]
-        Telefonia = 1,
-
-        /// <summary>
-        /// 2 - Comunicação de dados
-        /// </summary>
-        [XmlEnum("2")]
-        ComunicacaoDeDados = 2,
-
-        /// <summary>
-        /// 3 - TV por Assinatura
-        /// </summary>
-        [XmlEnum("3")]
-        TVPorAssinatura = 3,
-
-        /// <summary>
-        /// 4 - Provimento de acesso à Internet
-        /// </summary>
-        [XmlEnum("4")]
-        Internet = 4,
-
-        /// <summary>
-        /// 5 - Multimídia
-        /// </summary>
-        [XmlEnum("5")]
-        Multimidia = 5,
-
-        /// <summary>
-        /// 6 - Outros
-        /// </summary>
-        [XmlEnum("6")]
-        Outros = 6,
-
-        /// <summary>
-        /// 7 - Varios
-        /// </summary>
-        [XmlEnum("7")]
-        Varios = 7,
-    }
-
-    #endregion
-
-    #region Modelo da NF Papel (21 e 22)
-
-    /// <summary>
-    /// Modelo da NF Papel (21 e 22)
-    /// </summary>
-    public enum ModeloNFPapel
-    {
-        /// <summary>
-        /// Nota Fiscal de Comunicação
-        /// </summary>
-        [XmlEnum("21")]
-        Comunicacao = 21,
-
-        /// <summary>
-        /// Nota Fiscal de Telecomunicação
-        /// </summary>
-        [XmlEnum("22")]
-        Telecomunicacao = 22,
-    }
-
-    #endregion
-
-    #region Motivo de Substituição (NFCom)
-
-    /// <summary>
-    /// Motivo de Substituição (NFCom)
-    /// </summary>
-    public enum MotivoSubstituicao
-    {
-        /// <summary>
-        /// 01 - Erro de Preço
-        /// </summary>
-        [XmlEnum("01")]
-        ErroPreco = 1,
-
-        /// <summary>
-        /// 02 - Erro Cadastral
-        /// </summary>
-        [XmlEnum("02")]
-        ErroCadastral = 2,
-
-        /// <summary>
-        /// 03 - Decisão Judicial
-        /// </summary>
-        [XmlEnum("03")]
-        DecisaoJudicial = 3,
-
-        /// <summary>
-        /// 04 - Erro de Tributação
-        /// </summary>
-        [XmlEnum("04")]
-        ErroTributacao = 4,
-
-        /// <summary>
-        /// 05 - Descontinuidade do Serviço,
-        /// </summary>
-        [XmlEnum("05")]
-        DescontinuidadeDoServico = 5,
-    }
-
-    #endregion
-
-    #region Tipo de Ressarcimento (NFCom)
-
-    /// <summary>
-    /// Tipo de Ressarcimento (NFCom)
-    /// </summary>
-    public enum TipoRessarcimento
-    {
-        /// <summary>
-        /// 1 - Cobrança Indevida
-        /// </summary>
-        [XmlEnum("1")]
-        CobrancaIndevida = 1,
-
-        /// <summary>
-        /// 2 - Interrupção
-        /// </summary>
-        [XmlEnum("2")]
-        Interrupcao = 2,
-
-        /// <summary>
-        /// 99 - Outros
-        /// </summary>
-        [XmlEnum("99")]
-        Outros = 99,
-    }
-
-    #endregion
-
-    #region Unidade Básica de Medida (NFCom)
-
-    /// <summary>
-    /// Unidade Básica de Medida (NFCom)
-    /// </summary>
-    public enum UnidadeBasicaMedida
-    {
-        /// <summary>
-        /// 1 - Minuto
-        /// </summary>
-        [XmlEnum("1")]
-        Minuto = 1,
-
-        /// <summary>
-        /// 2 - MB
-        /// </summary>
-        [XmlEnum("2")]
-        MB = 2,
-
-        /// <summary>
-        /// 3 - GB
-        /// </summary>
-        [XmlEnum("3")]
-        GB = 3,
-
-        /// <summary>
-        /// 4 - UN
-        /// </summary>
-        [XmlEnum("4")]
-        UN = 4,
-    }
-
-    #endregion
-
 }
+#endregion

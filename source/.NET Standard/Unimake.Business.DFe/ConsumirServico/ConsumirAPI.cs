@@ -8,11 +8,11 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
 
-namespace Unimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe
 {
     /// <summary>{
     /// Classe para consumir API
@@ -82,7 +82,7 @@ namespace Unimake.Business.DFe.ConsumirServico
             {
                 if (ex.Response == null)
                 {
-                    throw ex;
+                    throw (ex);
                 }
                 else
                 {
@@ -101,7 +101,7 @@ namespace Unimake.Business.DFe.ConsumirServico
             {
                 if (webException != null)
                 {
-                    throw webException;
+                    throw (webException);
                 }
 
                 throw new Exception(responsePost);
@@ -167,7 +167,7 @@ namespace Unimake.Business.DFe.ConsumirServico
                 case PadraoNFSe.NACIONAL:
                     var startIndex = xml.OuterXml.IndexOf("Id=\"") + 7;
                     var endIndex = xml.OuterXml.IndexOf("\"", startIndex);
-                    var chave = xml.OuterXml.Substring(startIndex, endIndex - startIndex);
+                    var chave = xml.OuterXml.Substring(startIndex, (endIndex - startIndex));
                     apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
                     break;
 
@@ -214,7 +214,7 @@ namespace Unimake.Business.DFe.ConsumirServico
                     dicionario.Add("senha", apiConfig.MunicipioSenha);
                 }
 
-                dicionario.Add(string.IsNullOrWhiteSpace(apiConfig.WebAction) ? "xml" : apiConfig.WebAction, xmlBody);
+                dicionario.Add((string.IsNullOrWhiteSpace(apiConfig.WebAction) ? "xml" : apiConfig.WebAction), xmlBody);
 
                 Json = JsonConvert.SerializeObject(dicionario);
 

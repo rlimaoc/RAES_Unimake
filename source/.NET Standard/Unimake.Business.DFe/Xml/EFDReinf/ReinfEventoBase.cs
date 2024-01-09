@@ -1,18 +1,9 @@
 ﻿#pragma warning disable CS1591
 
-
-#pragma warning disable CS1591
-
-
-#pragma warning disable CS1591
-
-
-#pragma warning disable CS1591
-
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
-{
+{   
     /// <summary>
     /// Classe base para Reinf.
     /// </summary>

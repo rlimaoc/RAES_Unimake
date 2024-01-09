@@ -15,7 +15,7 @@ namespace Unimake.Business.DFe.Security
         public static string GerarIntegridade(string xmlDoc, string token)
         {
             string conteudo = xmlDoc;
-            conteudo = Regex.Replace(conteudo, "/[^\x20-\x7E]+/", "");
+            conteudo = Regex.Replace(conteudo, "/[^\x20-\x7E]+/","");
             conteudo = Regex.Replace(conteudo, "/[ ]+/", "");
             string integridade = Criptografia.GerarRSASHA512(conteudo + token);
 

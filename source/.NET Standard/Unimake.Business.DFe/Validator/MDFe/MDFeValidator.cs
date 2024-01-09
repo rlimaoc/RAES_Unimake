@@ -1,10 +1,9 @@
 ﻿using System.Xml.Linq;
-using Unimake;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator.Abstractions;
 using Unimake.Business.DFe.Xml.MDFe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator.MDFe
 {

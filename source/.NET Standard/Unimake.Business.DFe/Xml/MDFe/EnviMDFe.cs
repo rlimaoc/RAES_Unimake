@@ -9,10 +9,9 @@ using System.Globalization;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Text;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Servicos.Enums;
+using System.Text;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -168,7 +167,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
                     ((int)Ide.TpEmis).ToString() +
                     Ide.CMDF.PadLeft(8, '0');
 
-                Ide.CDV = XMLUtility.CalcularDVChave(ChaveField);
+                Ide.CDV = Utility.XMLUtility.CalcularDVChave(ChaveField);
 
                 ChaveField += Ide.CDV.ToString();
 
@@ -342,7 +341,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
                         throw new Exception("Defina o conteúdo da TAG <nMDF>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
 
-                    retorno = XMLUtility.GerarCodigoNumerico(NMDF).ToString("00000000");
+                    retorno = Utility.XMLUtility.GerarCodigoNumerico(NMDF).ToString("00000000");
                 }
                 else
                 {
@@ -1074,7 +1073,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string VValePedField
         {
             get => VValePed.ToString("F2", CultureInfo.InvariantCulture);
-            set => VValePed = Converter.ToDouble(value);
+            set => VValePed = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("tpValePed")]
@@ -1159,7 +1158,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string VContratoField
         {
             get => VContrato.ToString("F2", CultureInfo.InvariantCulture);
-            set => VContrato = Converter.ToDouble(value);
+            set => VContrato = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("indAltoDesemp")]
@@ -1187,7 +1186,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string VAdiantField
         {
             get => VAdiant.ToString("F2", CultureInfo.InvariantCulture);
-            set => VAdiant = Converter.ToDouble(value);
+            set => VAdiant = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("infPrazo")]
@@ -1296,7 +1295,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string VCompField
         {
             get => VComp.ToString("F2", CultureInfo.InvariantCulture);
-            set => VComp = Converter.ToDouble(value);
+            set => VComp = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("xComp")]
@@ -1334,7 +1333,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string VParcelaField
         {
             get => VParcela.ToString("F2", CultureInfo.InvariantCulture);
-            set => VParcela = Converter.ToDouble(value);
+            set => VParcela = Utility.Converter.ToDouble(value);
         }
 
         //#region ShouldSerialize
@@ -1725,7 +1724,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string PesoBCField
         {
             get => PesoBC.ToString("F3", CultureInfo.InvariantCulture);
-            set => PesoBC = Converter.ToDouble(value);
+            set => PesoBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1735,7 +1734,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string PesoRField
         {
             get => PesoR.ToString("F3", CultureInfo.InvariantCulture);
-            set => PesoR = Converter.ToDouble(value);
+            set => PesoR = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("tpVag")]
@@ -1757,7 +1756,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string TUField
         {
             get => TU.ToString("F3", CultureInfo.InvariantCulture);
-            set => TU = Converter.ToDouble(value);
+            set => TU = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -2456,7 +2455,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string QtdRatField
         {
             get => QtdRat.ToString("F2", CultureInfo.InvariantCulture);
-            set => QtdRat = Converter.ToDouble(value);
+            set => QtdRat = Utility.Converter.ToDouble(value);
         }
 
 
@@ -2573,7 +2572,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string QtdRatField
         {
             get => QtdRat.ToString("F2", CultureInfo.InvariantCulture);
-            set => QtdRat = Converter.ToDouble(value);
+            set => QtdRat = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -2683,7 +2682,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string QtdTotalField
         {
             get => QtdTotal.ToString("F4", CultureInfo.InvariantCulture);
-            set => QtdTotal = Converter.ToDouble(value);
+            set => QtdTotal = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2693,7 +2692,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string QtdParcialField
         {
             get => QtdParcial.ToString("F4", CultureInfo.InvariantCulture);
-            set => QtdParcial = Converter.ToDouble(value);
+            set => QtdParcial = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -3116,7 +3115,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string VCargaField
         {
             get => VCarga.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCarga = Converter.ToDouble(value);
+            set => VCarga = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("cUnid")]
@@ -3129,7 +3128,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string QCargaField
         {
             get => QCarga.ToString("F4", CultureInfo.InvariantCulture);
-            set => QCarga = Converter.ToDouble(value);
+            set => QCarga = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize

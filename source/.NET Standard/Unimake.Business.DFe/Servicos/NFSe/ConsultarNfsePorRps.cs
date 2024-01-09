@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -14,7 +13,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")]
     [ComVisible(true)]
 #endif
-    public class ConsultarNfsePorRps : ConsultarNfse
+    public class ConsultarNfsePorRps: ConsultarNfse
     {
         /// <summary>
         /// Construtor

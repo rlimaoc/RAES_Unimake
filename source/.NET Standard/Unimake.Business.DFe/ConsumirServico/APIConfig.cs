@@ -1,7 +1,7 @@
 ﻿using System.Net;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 
-namespace Unimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Classe para definição de parâmetros da API

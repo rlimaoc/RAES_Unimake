@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Unimake.Business.DFe
+namespace Unimake.Business.DFe.Xml
 {
     /// <summary>
     /// Resolve as referências dos assemblies e ignora as versões
@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe
         {
             var result = Assembly.GetExecutingAssembly().CodeBase;
 
-            if (string.IsNullOrWhiteSpace(result))
+            if(string.IsNullOrWhiteSpace(result))
             {
                 return "";
             }
@@ -56,7 +56,7 @@ namespace Unimake.Business.DFe
             {
                 var parts = args?.Name?.Split(',');
 
-                if ((parts?.Length ?? 0) == 0)
+                if((parts?.Length ?? 0) == 0)
                 {
                     return default;
                 }
@@ -67,7 +67,7 @@ namespace Unimake.Business.DFe
                 var searchPath = AppDomain.CurrentDomain.RelativeSearchPath ?? "";
                 var result = AssemblyResolve(Path.Combine(searchPath, $"{name}.dll"));
 
-                if (result != null)
+                if(result != null)
                 {
                     return result;
                 }
@@ -76,7 +76,7 @@ namespace Unimake.Business.DFe
                 searchPath = GetCodeBaseDirectory();
                 result = AssemblyResolve(Path.Combine(searchPath, $"{name}.dll"));
 
-                if (result != null)
+                if(result != null)
                 {
                     return result;
                 }
@@ -85,7 +85,7 @@ namespace Unimake.Business.DFe
                 searchPath = Directory.GetCurrentDirectory();
                 result = AssemblyResolve(Path.Combine(searchPath, $"{name}.dll"));
 
-                if (result != null)
+                if(result != null)
                 {
                     return result;
                 }

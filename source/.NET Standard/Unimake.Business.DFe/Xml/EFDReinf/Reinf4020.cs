@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -86,7 +85,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IsencaoEImunidade IsenImun { get; set; } = (IsencaoEImunidade)(-1);
 #else
-        public IsencaoEImunidade? IsenImun { get; set; }
+        public IsencaoEImunidade ? IsenImun { get; set; }
 #endif
 
         [XmlElement("ideEvtAdic")]
@@ -247,7 +246,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IndicativoFundoDeInvestimento IndFciScp { get; set; } = (IndicativoFundoDeInvestimento)(-1);
 #else
-        public IndicativoFundoDeInvestimento? IndFciScp { get; set; }
+        public IndicativoFundoDeInvestimento ? IndFciScp { get; set; }
 #endif
 
         [XmlElement("nrInscFciScp")]
@@ -388,7 +387,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #else
         public bool ShouldSerializeIndJud() => IndJud != null;
 #endif
-
+        
         public bool ShouldSereializePaisResidExt() => !string.IsNullOrEmpty(PaisResidExt);
 
         public bool ShouldSerializeDtEscrContField() => DtEscrCont > DateTime.MinValue;

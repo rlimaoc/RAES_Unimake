@@ -2,12 +2,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
+using Unimake.Exceptions;
 using Unimake.Business.DFe.Xml.CCG;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Servicos.CCG
 {

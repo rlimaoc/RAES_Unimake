@@ -1,8 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Exceptions;
 

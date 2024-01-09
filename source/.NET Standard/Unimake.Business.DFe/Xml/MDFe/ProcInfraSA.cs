@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {

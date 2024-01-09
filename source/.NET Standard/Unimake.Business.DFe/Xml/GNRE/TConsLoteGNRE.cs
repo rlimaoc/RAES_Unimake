@@ -6,8 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.GNRE
 {
@@ -18,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlRoot("TConsLote_GNRE", Namespace = "http://www.gnre.pe.gov.br", IsNullable = false)]
-    public class TConsLoteGNRE : XMLBase
+    public class TConsLoteGNRE: XMLBase
     {
         private string NumeroReciboField;
 
@@ -32,7 +31,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
             get => NumeroReciboField;
             set
             {
-                if (value.Length != 10)
+                if(value.Length != 10)
                 {
                     throw new Exception("Conteúdo da tag <numeroRecibo> deve ter exatamente 10 caracteres.");
                 }
@@ -50,7 +49,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// <summary>
         /// Indica se as notícias vigentes publicadas no Portal GNRE devem ser incluídas no retorno da consulta do Lote.
         /// </summary>
-        [XmlElement("incluirNoticias")]
+        [XmlElement("incluirNoticias")] 
         public SimNaoLetra IncluirNoticias { get; set; }
     }
 }

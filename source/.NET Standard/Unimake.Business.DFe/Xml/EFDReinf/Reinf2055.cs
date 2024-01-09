@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -285,9 +284,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
         public bool ShouldSerializeVlrTotalNRetPrinc() => VlrCPNRet > 0;
-
+        
         public bool ShouldSerializeVlrRatNRet() => VlrRatNRet > 0;
-
+        
         public bool ShouldSerializeVlrSenarNRet() => VlrSenarNRet > 0;
 
         #endregion

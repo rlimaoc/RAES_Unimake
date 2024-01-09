@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -284,7 +283,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #region ShouldSerialize
 
         public bool ShouldSerializeVlrLiq() => VlrLiq > 0;
-
+       
         public bool ShouldSerializeVlrIR() => VlrIR > 0;
 
         public bool ShouldSerializeDtEscrContField() => DtEscrCont > DateTime.MinValue;
@@ -344,9 +343,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
         public bool ShouldSerializeVlrBaseSuspIR() => VlrBaseSuspIR > 0;
-
+        
         public bool ShouldSerializeVlrNIR() => VlrNIR > 0;
-
+        
         public bool ShouldSerializeVlrDepIR() => VlrDepIR > 0;
 
         #endregion

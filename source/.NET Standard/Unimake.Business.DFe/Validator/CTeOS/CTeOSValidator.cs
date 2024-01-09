@@ -1,10 +1,8 @@
 ﻿using System.Xml.Linq;
-using Unimake;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator.Abstractions;
 using Unimake.Business.DFe.Xml.CTeOS;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator.CTeOS
 {
@@ -167,7 +165,7 @@ namespace Unimake.Business.DFe.Validator.CTeOS
         /// </summary>
         /// <param name="element"><inheritdoc cref="XmlValidatorBase.CanValidate(XElement)"/></param>
         /// <returns></returns>
-        public override bool CanValidate(XElement element) => XMLUtility.DetectDFeType(element.ToString()) == TipoDFe.CTeOS;
+        public override bool CanValidate(XElement element) => XMLUtility.DetectDFeType(element.ToString()) == Servicos.TipoDFe.CTeOS;
 
         #endregion Public Methods
     }

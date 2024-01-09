@@ -7,11 +7,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
 
-namespace Unimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Classe para consumir webservices e API´s
@@ -106,7 +106,7 @@ namespace Unimake.Business.DFe.ConsumirServico
                     xmlBody = doc.OuterXml;
                     xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
                 }
-
+                
                 if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
                 {
                     var doc = new XmlDocument();
@@ -114,7 +114,7 @@ namespace Unimake.Business.DFe.ConsumirServico
                     retorna += IIBRASIL.cabecalho;
                     var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
 
-                    var teste = doc.FirstChild.AppendChild(doc.CreateNode(XmlNodeType.DocumentFragment, "Integridade", integridade));
+                    var teste = doc.FirstChild.AppendChild(doc.CreateNode(XmlNodeType.DocumentFragment,"Integridade",integridade));
                     var teste2 = doc.CreateNode(XmlNodeType.Text, "Integridade", integridade);
                     var teste3 = doc.CreateNode(XmlNodeType.Element, "Integridade", integridade);
 
@@ -193,11 +193,11 @@ namespace Unimake.Business.DFe.ConsumirServico
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(urlpost);
+            var httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(urlpost);
             httpWebRequest.Headers.Add("SOAPAction: " + soap.ActionWeb);
             httpWebRequest.CookieContainer = cookies;
             httpWebRequest.Timeout = soap.TimeOutWebServiceConnect;
-            httpWebRequest.ContentType = string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType;
+            httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
             if (soap.UsaCertificadoDigital)
             {
@@ -228,7 +228,7 @@ namespace Unimake.Business.DFe.ConsumirServico
 
                 if (ex.Response == null)
                 {
-                    throw ex;
+                    throw (ex);
                 }
             }
 
@@ -248,14 +248,14 @@ namespace Unimake.Business.DFe.ConsumirServico
             {
                 if (webException != null)
                 {
-                    throw webException;
+                    throw (webException);
                 }
 
-                throw ex;
+                throw (ex);
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw (ex);
             }
 
             if (soap.TagRetorno.ToLower() != "prop:innertext")

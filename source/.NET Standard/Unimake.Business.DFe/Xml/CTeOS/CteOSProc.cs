@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public CTeOS CTeOS { get; set; }
 
         [XmlElement("protCTe")]
-        public CTe.ProtCTe ProtCTe { get; set; }
+        public Xml.CTe.ProtCTe ProtCTe { get; set; }
 
         [XmlAttribute("ipTransmissor")]
         public string IpTransmissor { get; set; }

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.GNRE
 {

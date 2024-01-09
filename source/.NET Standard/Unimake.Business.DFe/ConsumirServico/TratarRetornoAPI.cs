@@ -6,10 +6,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 
-namespace Unimake.Business.DFe.ConsumirServico
+namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Classe para tratar o retornos das comunicações por API
@@ -32,16 +32,16 @@ namespace Unimake.Business.DFe.ConsumirServico
             }
 
             var resultadoRetorno = new XmlDocument();
-            var tipoRetorno = string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType;
+            var tipoRetorno = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
 
             if (!responseString.StartsWith("<") && Response.IsSuccessStatusCode)
-            {
-                if (responseString.StartsWith(" "))
+            {   
+                if(responseString.StartsWith(" "))
                 {
                     responseString = responseString.Substring(1);
                 }
             }
-
+            
             //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
             switch (tipoRetorno)             //(Config.ContentType)
             {
@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.ConsumirServico
                     }
                     catch
                     {
-                        resultadoRetorno.LoadXml(StringToXml(responseString));
+                        resultadoRetorno.LoadXml(StringToXml( responseString));
                     }
 
                     break;
@@ -84,7 +84,7 @@ namespace Unimake.Business.DFe.ConsumirServico
                 case "application/pdf":
                     responseString = responseString.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
                     responseString = Convert.ToBase64String(Encoding.UTF8.GetBytes(responseString));
-                    stream = Response.IsSuccessStatusCode ? Response.Content.ReadAsStreamAsync().Result : null;
+                    stream  = Response.IsSuccessStatusCode ?  Response.Content.ReadAsStreamAsync().Result : null;
                     resultadoRetorno = CreateXmlDocument(responseString);
                     break;
 

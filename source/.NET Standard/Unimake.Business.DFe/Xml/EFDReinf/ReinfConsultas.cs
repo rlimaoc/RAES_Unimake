@@ -5,8 +5,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -179,7 +178,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public bool ShouldSerializeTpInscAdq() => TpInscAdq != (TipoInscricaoAdquirente)(-1);
 #else
-        public bool ShouldSerializeTpInscAdq() => TpInscAdq != null;
+        public bool ShouldSerializeTpInscAdq()=> TpInscAdq != null;        
 #endif
 
 #if INTEROP

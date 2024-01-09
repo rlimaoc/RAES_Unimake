@@ -1,12 +1,10 @@
-﻿using System;
-using System.Reflection;
-using System.Xml;
+﻿using System.Reflection;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using static Unimake.Business.DFe.Utility.Converter;
 
-namespace Unimake.Business.DFe.ExtensionsMethods
+namespace System.Xml
 {
     /// <summary>
     ///
@@ -42,11 +40,11 @@ namespace Unimake.Business.DFe.ExtensionsMethods
 
             var elements = DynamicXml.Parse(reader.ReadInnerXml());
 
-            foreach (XElement el in elements)
+            foreach(XElement el in elements)
             {
                 var pi = GetProperty(result, el);
 
-                if (pi == null)
+                if(pi == null)
                 {
                     continue;
                 }
@@ -69,27 +67,27 @@ namespace Unimake.Business.DFe.ExtensionsMethods
         {
             T result = default;
 
-            if (reader.NodeType == XmlNodeType.EndElement)
+            if(reader.NodeType == XmlNodeType.EndElement)
             {
                 _ = reader.Read();
             }
 
             do
             {
-                if (reader.NodeType == XmlNodeType.Element &&
-                   !reader.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase) ||
+                if((reader.NodeType == XmlNodeType.Element &&
+                   !reader.Name.Equals(name, System.StringComparison.InvariantCultureIgnoreCase)) ||
                    reader.NodeType == XmlNodeType.EndElement)
                 {
                     return result;
                 }
 
-                if (reader.HasValue)
+                if(reader.HasValue)
                 {
                     result = propertyInfo != null ? (T)ToAny(reader.Value, propertyInfo.PropertyType) : ToAny<T>(reader.Value);
 
                     break;
                 }
-            } while (reader.Read());
+            } while(reader.Read());
 
             _ = reader.Read();
             return result;

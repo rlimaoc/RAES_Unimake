@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -418,7 +417,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IndicativoFundoDeInvestimento IndFciScp { get; set; } = (IndicativoFundoDeInvestimento)(-1);
 #else
-        public IndicativoFundoDeInvestimento? IndFciScp { get; set; }
+        public IndicativoFundoDeInvestimento ? IndFciScp { get; set; }
 #endif
 
         [XmlElement("nrInscFciScp")]
@@ -648,7 +647,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public SimNaoLetra InfoEntid { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra? InfoEntid { get; set; }
+        public SimNaoLetra ? InfoEntid { get; set; }
 #endif
 
         [XmlElement("nrInscPrevComp")]

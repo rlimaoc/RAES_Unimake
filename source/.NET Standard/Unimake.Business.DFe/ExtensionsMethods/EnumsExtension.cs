@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Unimake.Business.DFe.ExtensionsMethods
+namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Extensão da Classe Enums
@@ -16,13 +16,13 @@ namespace Unimake.Business.DFe.ExtensionsMethods
         /// <typeparam name="T">Tipo</typeparam>
         /// <param name="valorEnum">Valor do enumerador que é para recuperar os atributos</param>
         /// <returns>Atributos do Enum</returns>
-        public static T GetAttribute<T>(this Enum valorEnum) where T : Attribute
+        public static T GetAttribute<T>(this Enum valorEnum) where T : System.Attribute
         {
             var type = valorEnum.GetType();
             var memInfo = type.GetMember(valorEnum.ToString());
             var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
 
-            return attributes.Length > 0 ? (T)attributes[0] : null;
+            return (attributes.Length > 0) ? (T)attributes[0] : null;
         }
 
         /// <summary>

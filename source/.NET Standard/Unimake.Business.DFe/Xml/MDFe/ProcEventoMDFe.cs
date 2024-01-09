@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.MDFe
@@ -30,7 +29,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         [XmlElement("retEventoMDFe")]
         public RetEventoMDFe RetEventoMDFe { get; set; }
-
+         
         /// <summary>
         /// Nome do arquivo de distribuição
         /// </summary>

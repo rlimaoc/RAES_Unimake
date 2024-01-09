@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -82,7 +81,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         {
                             nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature:Signature");
 
-                            if (nodeListEventoSignature.Count > 0 && ((XmlElement)nodeListEventoSignature[0]).OuterXml.Contains("Signature:Signature"))
+                            if (nodeListEventoSignature.Count > 0 && (((XmlElement)nodeListEventoSignature[0]).OuterXml.Contains("Signature:Signature")))
                             {
                                 Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml.Replace("Signature:Signature", "Signature").Replace("xmlns:Signature=\"http://www.w3.org/2000/09/xmldsig#\"", ""));
                             }

@@ -1,72 +1,64 @@
 # Breaking changes
-Saiba mais sobre as alterações recentes e futuras desse projeto para NFCom (modelo 62) comaptível com a DLL Unimake.DFe.
+Saiba mais sobre as alterações recentes e futuras na DLL Unimake.DFe.
 
 ## Sobre o breaking changes
 Sobre mudanças recentes que podem exigir ação dos desenvolvedores que utilizam o projeto.
 
-### Alterações realizadas em 2024-01-09
+### Alterações realizadas em 2023-12-21
 
-1. ***INDICADORES***
+Para compatibilizar a DLL Unimake.DFe com os pacotes de schema mais atuais da NFe/NFCe efetuamos uma mudança na classe de serialização/desserialização dentro do grupo de tag <imposto>, conforme segue:
 
-   Para os indicadores abaixo será utilizado o enum SinNao. Pois as TAGs só precisam ser enviadas se o valor for 1, elas não seráo enviadas se o valor for 0.
-   Essa validação será realizada na serialização do XML.
+Até então era permitido criar, dentro do grupo de tag <imposto>, mais de um grupo de tag <ICMS>, <II> e <ISSQN> (o que era bem estranho e praticamente todos só utilizam uma vez cada uma das tags, mas o schema permitia isso em um determinado momento da história), mas analisando novamente o pacote de schema da SEFAZ percebemos que eles mudaram e não permitem mais, ou seja, agora só pode informar uma única vez o grupo de tag <ICMS>, <II> e <ISSQN> dentro do grupo <imposto>.
 
-   + TAG indPrePago - Indicador de serviço pré-pago
-   + TAG indCessaoMeiosRede - Indicador de Sessão de Meios de Rede
-   + TAG indNotaEntrada - Indicador de nota de entrada
-   + TAG indDevolucao - Indicador de devolução do valor do item
-   + TAG indSN - Indica se o contribuinte é Simples Nacional
+Desta forma modificamos o tipo das propriedades "ICMS", "II" e "ISSQN", da classe "Imposto", retirando o LIST para compatibilizar.
 
-   **Como fica o código:**
+Esta mudança simplifica a forma de utilização e naturalmente reduz o suporte, pois não confunde o desenvolvedor que conhece bem e lida com os schemas.
 
-   ```
-   var = new Ide
+Por não ser possível manter as duas formas de utilização, optamos por deixar somente a nova, com isso, ao atualizar a DLL seu sistema gerará um erro de compilação nestas propriedades, mas a correção é bem simples.
+
+A seguir envio um código em C# demonstrando como era e como ficou.
+
+**Como era antes da alteração:**
+
+```
+Imposto = new XmlNFe.Imposto
+{
+   VTotTrib = 12.63,
+   ICMS = new List<XmlNFe.ICMS>
    {
-      ...
-      VerProc = "1.00",
-      IndPrePago = SimNao.Nao,
-      IndSessaoMeioRede = SimNao.Sim,
-      IndNotaEntrada = SimNao.Nao,
-      ...
+      new XmlNFe.ICMS
+      {
+         new ICMSSN101 = new XmlNFe.ICMSSN101
+         {
+            Orig = OrigemMercadoria.Nacional,
+            PCredSN = 2.8255,
+            VCredICMSSN = 2.40
+         }
+      }
+   },
+   ...
+   ...
+   ...
+},
+```
+
+**Como ficou depois da alteração:**
+
+```
+Imposto = new XmlNFe.Imposto
+{
+   VTotTrib = 12.63,
+   ICMS = new XmlNFe.ICMS
+   {
+      new ICMSSN101 = new XmlNFe.ICMSSN101
+      {
+         Orig = OrigemMercadoria.Nacional,
+         PCredSN = 2.8255,
+         VCredICMSSN = 2.40
+      }
    }
-   ```
-
-   **Como fica o XML:**
-
-   ```
-      <ide>
-         ...
-         <verProc>1.00</verProc>
-         <indCessaoMeiosRede>1</indCessaoMeiosRede>
-      </ide>
-   ```
-
-
-1. ***TIPO DE PROCESSO***
-
-   Para a TAG tpProc (Tipo de Processo) deve ser usado o Enum TipoOrigemProcesso, pois os valores utilizados pela NFCom (modelo 62) são os mesmos:
-
-   ```
-   0 - SEFAZ
-   1 - Justiça Federal
-   2 - Justiça Estadual
-   ```
-
-
-1. ***TIPO DE EMISSÃO***
-
-   Na TAG tpEmis (Tipo de Emissão) da NFCom (modelo 62) são aceitos apenas dois valores possíveis:
-   1 - Normal
-   2 - Contingência
-
-   O Enum TipoEmissao da DLL Unimake.DFe o valor 2 corresponde a ContingenciaFSIA: Contingência FS-IA, com impressão do DANFE em formulário de segurança ou Para MDFe é impressão em formulário branco (sulfite).
-
-   Para facilitar o uso da biblioteca e a clareza das informações, o valor 2 foi repetido com o texto: ContingenciaNFCom, deixando o Enum TipoEmissao como abaixo:
-
-   ```
-   1 - TipoEmissao.Normal
-   2 - TipoEmissao.ContingenciaNFCom
-   2 - TipoEmissao.ContingenciaFSIA
-   3 - TipoEmissao.RegimeEspecialNFF
-   ...   
-   ```
+   ...
+   ...
+   ...
+},
+```

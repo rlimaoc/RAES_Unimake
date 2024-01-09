@@ -7,9 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
-using Unimake.Business.DFe;
 
-namespace Unimake.Business.DFe.Xml.Validar
+namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Validador de schemas de XML (XML x XSD)

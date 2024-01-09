@@ -2,8 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
@@ -17,7 +15,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
     [ProgId("Unimake.Business.DFe.Servicos.NFCe.RetAutorizacao")]
     [ComVisible(true)]
 #endif
-    public class RetAutorizacao : NFe.RetAutorizacao
+    public class RetAutorizacao: NFe.RetAutorizacao
     {
         #region Public Constructors
 
@@ -43,7 +41,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.NFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if (!validar.Success)
+            if(!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }

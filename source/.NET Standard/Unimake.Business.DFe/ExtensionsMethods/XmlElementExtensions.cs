@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Xml;
+﻿using System.Linq;
 using static Unimake.Business.DFe.Utility.Converter;
 
-namespace Unimake.Business.DFe.ExtensionsMethods
+namespace System.Xml
 {
     /// <summary>
     /// Extensões para os nós dos XMLs

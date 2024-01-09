@@ -13,7 +13,7 @@ namespace Unimake.Business.DFe.Security
         {
             try
             {
-                if (string.IsNullOrEmpty(senhaCripto))
+                if (String.IsNullOrEmpty(senhaCripto))
                     return "";
                 else
                     return criptografaSenha(senhaCripto, _chave);
@@ -29,7 +29,7 @@ namespace Unimake.Business.DFe.Security
         {
             try
             {
-                if (string.IsNullOrEmpty(senhaDescripto))
+                if (String.IsNullOrEmpty(senhaDescripto))
                     return "";
                 else
                     if (IsCriptografadaSenha(senhaDescripto))
@@ -53,12 +53,12 @@ namespace Unimake.Business.DFe.Security
                 byte[] byteHash, byteBuff;
                 string strTempKey = chave;
 
-                byteHash = objcriptoMd5.ComputeHash(Encoding.ASCII.GetBytes(strTempKey));
+                byteHash = objcriptoMd5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(strTempKey));
                 objcriptoMd5 = null;
                 objcriptografaSenha.Key = byteHash;
                 objcriptografaSenha.Mode = CipherMode.ECB;
 
-                byteBuff = Encoding.ASCII.GetBytes(senhaCripto);
+                byteBuff = ASCIIEncoding.ASCII.GetBytes(senhaCripto);
                 return Convert.ToBase64String(objcriptografaSenha.CreateEncryptor().TransformFinalBlock(byteBuff, 0, byteBuff.Length));
             }
             catch (Exception ex)
@@ -77,13 +77,13 @@ namespace Unimake.Business.DFe.Security
                 byte[] byteHash, byteBuff;
                 string strTempKey = chave;
 
-                byteHash = objcriptoMd5.ComputeHash(Encoding.ASCII.GetBytes(strTempKey));
+                byteHash = objcriptoMd5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(strTempKey));
                 objcriptoMd5 = null;
                 objdescriptografaSenha.Key = byteHash;
                 objdescriptografaSenha.Mode = CipherMode.ECB;
 
                 byteBuff = Convert.FromBase64String(strCriptografada);
-                string strDecrypted = Encoding.ASCII.GetString(objdescriptografaSenha.CreateDecryptor().TransformFinalBlock(byteBuff, 0, byteBuff.Length));
+                string strDecrypted = ASCIIEncoding.ASCII.GetString(objdescriptografaSenha.CreateDecryptor().TransformFinalBlock(byteBuff, 0, byteBuff.Length));
                 objdescriptografaSenha = null;
 
                 return strDecrypted;
@@ -105,7 +105,7 @@ namespace Unimake.Business.DFe.Security
         {
             try
             {
-                if (string.IsNullOrEmpty(senhaCripto))
+                if (String.IsNullOrEmpty(senhaCripto))
                     return false;
                 else
                     return IsCriptografadaSenha(senhaCripto, _chave);
@@ -134,13 +134,13 @@ namespace Unimake.Business.DFe.Security
                 byte[] byteHash, byteBuff;
                 string strTempKey = chave;
 
-                byteHash = objcriptoMd5.ComputeHash(Encoding.ASCII.GetBytes(strTempKey));
+                byteHash = objcriptoMd5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(strTempKey));
                 objcriptoMd5 = null;
                 objdescriptografaSenha.Key = byteHash;
                 objdescriptografaSenha.Mode = CipherMode.ECB;
 
                 byteBuff = Convert.FromBase64String(strCriptografada);
-                string strDecrypted = Encoding.ASCII.GetString(objdescriptografaSenha.CreateDecryptor().TransformFinalBlock(byteBuff, 0, byteBuff.Length));
+                string strDecrypted = ASCIIEncoding.ASCII.GetString(objdescriptografaSenha.CreateDecryptor().TransformFinalBlock(byteBuff, 0, byteBuff.Length));
                 objdescriptografaSenha = null;
 
                 return true;
@@ -171,7 +171,7 @@ namespace Unimake.Business.DFe.Security
         /// <param name="cert">certificado utilizado para assinar a string</param>
         /// <param name="value">Valor a ser assinado</param>
         /// <returns></returns>
-        public static string SignWithRSASHA1(X509Certificate2 cert, string value)
+        public static string SignWithRSASHA1(X509Certificate2 cert, String value)
         {
             //Regras retiradas da página 39 do manual da Prefeitura Municipal de Blumenau
             // Converta a cadeia de caracteres ASCII para bytes. 
@@ -214,8 +214,8 @@ namespace Unimake.Business.DFe.Security
         public static string GetSHA1HashData(string data, bool toUpper)
         {
             HashAlgorithm algorithm = new SHA1CryptoServiceProvider();
-            byte[] buffer = algorithm.ComputeHash(Encoding.ASCII.GetBytes(data));
-            StringBuilder builder = new StringBuilder(buffer.Length);
+            byte[] buffer = algorithm.ComputeHash(System.Text.Encoding.ASCII.GetBytes(data));
+            System.Text.StringBuilder builder = new System.Text.StringBuilder(buffer.Length);
             foreach (byte num in buffer)
             {
                 if (toUpper)

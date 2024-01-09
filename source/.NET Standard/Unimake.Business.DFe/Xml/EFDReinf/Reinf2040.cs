@@ -6,8 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.MDFe;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf

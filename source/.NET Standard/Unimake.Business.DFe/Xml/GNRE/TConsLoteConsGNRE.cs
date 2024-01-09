@@ -6,8 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.GNRE
 {
@@ -32,7 +31,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
             get => NumeroReciboField;
             set
             {
-                if (value.Length != 10)
+                if(value.Length != 10)
                 {
                     throw new Exception("Conteúdo da tag <numeroRecibo> deve ter exatamente 10 caracteres.");
                 }

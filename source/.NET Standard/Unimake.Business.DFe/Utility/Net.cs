@@ -4,27 +4,6 @@
 using System.Runtime.InteropServices;
 #endif
 
-
-// Ignore Spelling: Interop
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-
-
-// Ignore Spelling: Interop
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-
-
-// Ignore Spelling: Interop
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-
 using System.Net;
 
 namespace Unimake.Business.DFe.Utility

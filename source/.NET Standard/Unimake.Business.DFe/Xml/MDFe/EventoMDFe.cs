@@ -12,11 +12,8 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using Unimake;
-using Unimake.Business.DFe.ExtensionsMethods;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -225,9 +222,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 XmlReader.Read();
                 InfDoc.Add(new InfDoc
                 {
-                    CMunDescarga = XmlReader.GetValue<string>(nameof(MDFe.InfDoc.CMunDescarga)),
-                    XMunDescarga = XmlReader.GetValue<string>(nameof(MDFe.InfDoc.XMunDescarga)),
-                    ChNFe = XmlReader.GetValue<string>(nameof(MDFe.InfDoc.ChNFe))
+                    CMunDescarga = XmlReader.GetValue<string>(nameof(Xml.MDFe.InfDoc.CMunDescarga)),
+                    XMunDescarga = XmlReader.GetValue<string>(nameof(Xml.MDFe.InfDoc.XMunDescarga)),
+                    ChNFe = XmlReader.GetValue<string>(nameof(Xml.MDFe.InfDoc.ChNFe))
                 });
                 return;
             }
@@ -508,7 +505,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             if (InfEvento.DetEvento is DetEventoPagtoOperMDFe detEvento)
             {
-                var infViagensElement = (XmlElement)infViagens[0];
+                var infViagensElement = ((XmlElement)infViagens[0]);
 
                 detEvento.InfViagens = new InfViagens
                 {
@@ -587,7 +584,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             if (InfEvento.DetEvento is DetEventoPagtoOperMDFe detEvento)
             {
-                var infBancElement = (XmlElement)infBanc[0];
+                var infBancElement = ((XmlElement)infBanc[0]);
 
                 detEvento.InfPag[detEvento.InfPag.Count - 1].InfBanc = new InfBanc
                 {
@@ -1228,7 +1225,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string VContratoField
         {
             get => VContrato.ToString("F2", CultureInfo.InvariantCulture);
-            set => VContrato = Converter.ToDouble(value);
+            set => VContrato = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]

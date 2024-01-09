@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Text;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.MDFe

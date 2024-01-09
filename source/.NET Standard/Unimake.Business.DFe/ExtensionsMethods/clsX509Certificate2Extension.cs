@@ -5,9 +5,8 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
-using Unimake.Business.DFe.Security;
 
-namespace Unimake.Business.DFe.ExtensionsMethods
+namespace Unimake.Business.DFe.Security
 {
     /// <summary>
     /// Extensão da classe X509Certificate2

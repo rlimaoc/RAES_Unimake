@@ -90,11 +90,11 @@ namespace Unimake.Business.DFe.Security
                     response = request.GetResponse();
 
                 }
-                catch (WebException e)
+                catch(WebException e)
                 {
                     response = e.Response;
                 }
-
+                
                 var streamDados = response.GetResponseStream();
                 var reader = new StreamReader(streamDados);
                 result = reader.ReadToEnd();

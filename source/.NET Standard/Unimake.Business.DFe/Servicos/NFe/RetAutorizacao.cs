@@ -3,12 +3,10 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -51,7 +49,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                                 if (xMotivo.Contains("[nItem:"))
                                 {
-                                    var nItem = Convert.ToInt32(xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7).Substring(0, xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7).Length - 1));
+                                    var nItem = Convert.ToInt32((xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Substring(0, (xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Length - 1));
                                     protNFeElement.GetElementsByTagName("xMotivo")[0].InnerText = xMotivo + "[cProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.CProd + "][xProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.XProd + "]";
                                     alterouXMotivo = true;
                                 }

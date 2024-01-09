@@ -5,10 +5,9 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
 using static Unimake.Business.DFe.Xml.EFDReinf.TipoAjuste;
-using Unimake.Business.DFe.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -384,7 +383,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             public string NrProc { get; set; }
 
             [XmlElement("codSusp")]
-            public string CodSusp { get; set; }
+            public string CodSusp { get; set; } 
 
             [XmlIgnore]
             public double VlrCPRBSusp { get; set; }

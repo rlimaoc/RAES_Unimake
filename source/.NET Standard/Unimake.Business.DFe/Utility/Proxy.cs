@@ -1,18 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
 using System.Net;
 
 namespace Unimake.Business.DFe.Utility
@@ -43,11 +31,11 @@ namespace Unimake.Business.DFe.Utility
         /// <returns></returns>
         public static IWebProxy DefinirServidor(bool detectarAutomaticamente = false, string usuario = "", string senha = "")
         {
-            var proxy = detectarAutomaticamente ? WebRequest.GetSystemWebProxy() : WebRequest.DefaultWebProxy;
+            var proxy = (detectarAutomaticamente ? WebRequest.GetSystemWebProxy() : WebRequest.DefaultWebProxy);
 
-            if (proxy != null)
+            if(proxy != null)
             {
-                if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
+                if(!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
                 {
                     proxy.Credentials = new NetworkCredential(usuario, senha);
                 }

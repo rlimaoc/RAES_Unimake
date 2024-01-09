@@ -8,9 +8,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.CTe

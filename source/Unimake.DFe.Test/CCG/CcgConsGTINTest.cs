@@ -1,5 +1,5 @@
-﻿using Unimake.Business.DFe.Servicos.CCG;
-using Unimake.Business.DFe.Servicos.Enums;
+﻿using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.CCG;
 using Unimake.Business.DFe.Xml.CCG;
 using Xunit;
 

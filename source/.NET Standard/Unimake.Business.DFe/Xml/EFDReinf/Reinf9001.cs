@@ -5,10 +5,9 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
 using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -520,7 +519,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         #region ShouldSerialize
-
+        
         public bool ShouldSerializeVlrCRTom() => VlrCRTom > 0;
 
         public bool ShouldSerializeVlrCRTomSusp() => VlrCRTomSusp > 0;
@@ -770,7 +769,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class RRecEspetDesp
     {
         [XmlElement("CRRecEspetDesp")]
-        public string CRRecEspetDesp { get; set; }
+        public string CRRecEspetDesp {  get; set; }
 
         [XmlIgnore]
         public double VlrReceitaTotal { get; set; }

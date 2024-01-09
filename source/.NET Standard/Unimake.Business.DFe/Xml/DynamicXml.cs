@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace Unimake.Business.DFe.Xml
 {
-    internal class DynamicXml : DynamicObject, IEnumerable<XElement>
+    internal class DynamicXml: DynamicObject, IEnumerable<XElement>
     {
         #region Private Fields
 
@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe.Xml
                         .Select(a => new XAttribute(a.Name.LocalName, a.Value))
                         .ToList();
 
-            if (!xElem.HasElements)
+            if(!xElem.HasElements)
             {
                 var xElement = new XElement(xElem.Name.LocalName, attrs)
                 {
@@ -54,7 +54,7 @@ namespace Unimake.Business.DFe.Xml
 
         public IEnumerator<XElement> GetEnumerator()
         {
-            foreach (var el in root.Elements())
+            foreach(var el in root.Elements())
             {
                 yield return el;
             }
@@ -67,21 +67,21 @@ namespace Unimake.Business.DFe.Xml
             result = null;
 
             var att = root.Attribute(binder.Name);
-            if (att != null)
+            if(att != null)
             {
                 result = att.Value;
                 return true;
             }
 
             var nodes = root.Elements(binder.Name);
-            if (nodes.Count() > 1)
+            if(nodes.Count() > 1)
             {
                 result = nodes.Select(n => n.HasElements ? (object)new DynamicXml(n) : n.Value).ToList();
                 return true;
             }
 
             var node = root.Element(binder.Name);
-            if (node != null)
+            if(node != null)
             {
                 result = node.HasElements || node.HasAttributes ? (object)new DynamicXml(node) : node.Value;
                 return true;

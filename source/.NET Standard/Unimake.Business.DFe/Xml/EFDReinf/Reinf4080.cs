@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml;
-using Unimake.Business.DFe.Servicos.Enums;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -235,7 +234,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("observ")]
-        public string Observ { get; set; }
+        public string Observ {  get; set; }
 
         #region ShouldSerialize
 

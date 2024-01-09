@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Unimake.Business.DFe.Exceptions
+namespace Unimake.Exceptions
 {
     /// <summary>
     /// Classe de exceção quando o certificado digital não é localizado ou está com falha

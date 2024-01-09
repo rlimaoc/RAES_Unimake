@@ -2,12 +2,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using Unimake.Business.DFe.Exceptions;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Servicos.Interop.Contract;
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.MDFe
 {
@@ -134,7 +132,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <param name="pasta">Pasta onde é para ser gravado do XML</param>
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         /// <param name="conteudoXML">Conteúdo do XML</param>
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => ThrowHelper.Instance.Throw(new Exception("Não existe XML de distribuição para consulta status do serviço."));
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => ThrowHelper.Instance.Throw(new System.Exception("Não existe XML de distribuição para consulta status do serviço."));
 
         #endregion Public Methods
     }

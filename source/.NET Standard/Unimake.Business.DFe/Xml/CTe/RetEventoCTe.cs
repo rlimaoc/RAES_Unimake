@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -88,7 +88,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
-        [XmlElement("nProt", Order = 13)]
+        [XmlElementAttribute("nProt", Order = 13)]
         public string NProt { get; set; }
     }
 }

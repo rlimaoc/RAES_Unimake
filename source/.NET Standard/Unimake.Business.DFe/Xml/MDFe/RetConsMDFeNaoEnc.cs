@@ -6,8 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos.Enums;
-using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -17,7 +16,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [ComVisible(true)]
 #endif
     [XmlRoot("retConsMDFeNaoEnc", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
-    public class RetConsMDFeNaoEnc : XMLBase
+    public class RetConsMDFeNaoEnc: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }

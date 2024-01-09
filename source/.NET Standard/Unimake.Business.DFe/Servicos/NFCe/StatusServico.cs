@@ -1,8 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.Enums;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
@@ -25,7 +23,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// </summary>
         /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public StatusServico(ConsStatServNFCom consStatServ, Configuracao configuracao) : base(consStatServ, configuracao) { }
+        public StatusServico(ConsStatServ consStatServ, Configuracao configuracao) : base(consStatServ, configuracao) { }
 
         /// <summary>
         /// Construtor

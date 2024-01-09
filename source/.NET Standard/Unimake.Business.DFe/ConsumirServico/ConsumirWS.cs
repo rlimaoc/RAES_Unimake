@@ -1,4 +1,4 @@
-﻿namespace Unimake.Business.DFe.ConsumirServico
+﻿namespace Unimake.Business.DFe
 {
     /// <summary>
     /// Classe para consumir webservices

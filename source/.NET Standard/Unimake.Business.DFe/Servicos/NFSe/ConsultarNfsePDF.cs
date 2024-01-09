@@ -3,10 +3,8 @@ using System.Runtime.InteropServices;
 #endif
 using System.IO;
 using System.Xml;
-using System;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Exceptions;
+using System;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -47,7 +45,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 //Esta comparação está sendo utilizada apenas para o padrão NACIONAL. É o único com comunicação por API. RetornoStream só está sendo preenchido na classe "TratarRetorno" no consumo por API.
                 if (RetornoStream != null)
                 {
-                    using (FileStream fs = new FileStream(Path.Combine(pasta, nomePDF), FileMode.Create))
+                    using (FileStream fs = new FileStream(Path.Combine (pasta, nomePDF), FileMode.Create))
                     {
                         RetornoStream.CopyTo(fs);
                         fs.Close();
@@ -66,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
     }
