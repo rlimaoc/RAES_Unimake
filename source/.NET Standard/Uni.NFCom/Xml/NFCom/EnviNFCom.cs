@@ -13,19 +13,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
-using System.Security.Principal;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Uni.NFCom.Servicos.Enums;
 using Uni.NFCom.Utility;
-using Uni.NFCom.Xml;
 
 namespace Uni.NFCom.Xml.NFCom
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.EnviNFCom")]
+    [ProgId("Uni.NFCom.Xml.NFCom.EnviNFCom")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -37,9 +35,6 @@ namespace Uni.NFCom.Xml.NFCom
 
         [XmlElement("idLote")]
         public string IdLote { get; set; }
-
-        [XmlElement("indSinc")]
-        public SimNao IndSinc { get; set; }
 
         [XmlElement("NFCom")]
         public List<NFCom> NFCom { get; set; }

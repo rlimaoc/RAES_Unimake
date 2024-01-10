@@ -11,11 +11,20 @@ namespace Unimake.DFe.Test.NFCom
     /// </summary>
     public class StatusServicoTest
     {
+        /// <summary>
+        /// Consultar uma chave de NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
+        /// </summary>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta situação</param>
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
         public void ConsultarStatusServico(TipoAmbiente tipoAmbiente)
         {
             var xml = new ConsStatServNFCom
             {
-                Versao = "4.00",
+                Versao = "1.00",
                 TpAmb = tipoAmbiente
             };
 
@@ -23,10 +32,13 @@ namespace Unimake.DFe.Test.NFCom
             {
                 TipoDFe = TipoDFe.NFCom,
                 TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = PropConfig.CertificadoDigital
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                WebEnderecoProducao = "https://nfcom.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx",
+                WebEnderecoHomologacao = "https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx",
+                WebSoapString = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><nfcomDadosMsg xmlns=\"http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico\">{xmlBody}</nfcomDadosMsg></soap:Body></soap:Envelope>",
             };
 
-            var statusServico = new StatusServicoNFCom(xml, configuracao);
+            var statusServico = new StatusServico(xml, configuracao);
             statusServico.Executar();
 
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());

@@ -505,18 +505,18 @@ namespace Uni.NFCom.Servicos
             {
                 case TipoEmissao.ContingenciaSVCRS:
                     svc = true;
-                    arqConfigSVC = NamespaceConfig + (TipoDFe == TipoDFe.NFe ? "SVCRS.xml" : "SVRS.xml");
+                    arqConfigSVC = NamespaceConfig + "SVCRS.xml";
                     goto default;
 
-                case TipoEmissao.ContingenciaSVCAN:
-                    svc = true;
-                    arqConfigSVC = NamespaceConfig + "SVCAN.xml";
-                    goto default;
+                //case TipoEmissao.ContingenciaSVCAN:
+                //    svc = true;
+                //    arqConfigSVC = NamespaceConfig + "SVCAN.xml";
+                //    goto default;
 
-                case TipoEmissao.ContingenciaSVCSP:
-                    svc = true;
-                    arqConfigSVC = NamespaceConfig + "SVSP.xml";
-                    goto default;
+                //case TipoEmissao.ContingenciaSVCSP:
+                //    svc = true;
+                //    arqConfigSVC = NamespaceConfig + "SVSP.xml";
+                //    goto default;
 
                 default:
                     if (svc)

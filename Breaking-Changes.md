@@ -4,11 +4,49 @@ Saiba mais sobre as alterações recentes e futuras desse projeto para NFCom (mo
 ## Sobre o breaking changes
 Sobre mudanças recentes que podem exigir ação dos desenvolvedores que utilizam o projeto.
 
+### Alterações realizadas em 2024-01-10
+
+1. ***INDICADORES***
+   
+   Foi identificado mais um indicador:
+
+   +TAG indSemCST - Sem Situação Tributária para o ICMS
+
+1. ***ENUMS***
+
+   Foram criados Enums referentes ao código de classificação dos produtos, conforme lista fonecedida pela SEFAZ \(https://dfe-portal.svrs.rs.gov.br/NFCOM/tabelacclass\).
+
+   Por enquanto será necesário converter para string e depois aplicar o padleft, pois o tamanho da TAG é fixa em 7 caracteres, conforme exemplo abaixo:
+
+   **Exemplo do código:**
+   ...
+   public enum ClassItemGeral
+   {
+      ...
+      /// <summary>
+      /// 0400401	- Serviço Não Medido - Provimento à internet
+      /// </summary>
+      ServicoNaoMedidoInternet = 0400401,
+      ...
+   }
+   ...
+
+   **Exemplo de uso:**
+   ...
+   Prod = new Prod
+   {
+      ...
+      CClass = ClassItemGeral.ServicoNaoMedidoInternet.ToString().PadLeft(7, '0'),
+      ...
+   }
+   ...
+
+
 ### Alterações realizadas em 2024-01-09
 
 1. ***INDICADORES***
 
-   Para os indicadores abaixo será utilizado o enum SinNao. Pois as TAGs só precisam ser enviadas se o valor for 1, elas não seráo enviadas se o valor for 0.
+   Para os indicadores abaixo será utilizado o enum SimNao. Pois as TAGs só precisam ser enviadas se o valor for 1, elas não seráo enviadas se o valor for 0.
    Essa validação será realizada na serialização do XML.
 
    + TAG indPrePago - Indicador de serviço pré-pago

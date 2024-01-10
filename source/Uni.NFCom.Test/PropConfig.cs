@@ -14,12 +14,12 @@ namespace Unimake.DFe.Test
         /// <summary>
         /// Caminho do certificado digital A1
         /// </summary>
-        private static string PathCertificadoDigital { get; set; } = @"C:\Projetos\Uni_PV.pfx";
+        private static string PathCertificadoDigital { get; set; } = @"G:\Certificados\Atacadusado_PV.pfx";
 
         /// <summary>
         /// Senha de uso do certificado digital A1
         /// </summary>
-        private static string SenhaCertificadoDigital { get; set; } = "12345678";
+        private static string SenhaCertificadoDigital { get; set; } = "19601964";
 
         private static X509Certificate2 CertificadoDigitalField;
 

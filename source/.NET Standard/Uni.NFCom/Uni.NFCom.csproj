@@ -91,7 +91,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Servicos\NFCom\" />
 	  <Folder Include="Xml\Schemas\NFCom\" />
 	</ItemGroup>
 

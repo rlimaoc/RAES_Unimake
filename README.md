@@ -4,9 +4,12 @@ O projeto foi baseado na DLL da Unimake.DFe e foi alterado epenas para comportar
 
 
 # Alterações
-+ 2024.01.09 - 1.00
-  + Alteração dos Enums para NFCom
-  + Implementação da consulta de serviço da SEFAZ
++ 2024.01.10 - 1.10
+  + Implementação da consulta da situação da NFCom
+  + Implementação do envio da NFCom (ainda em desenvolvimento)
+
+> [!WARING]
+> Para mais informações das versões, acesse o [Log de Versões](https://github.com/rlimaoc/Unimake/blob/main/Versions-Log.md)
 
 
 # Braking changes

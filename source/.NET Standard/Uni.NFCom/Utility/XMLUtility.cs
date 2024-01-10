@@ -509,29 +509,9 @@ namespace Uni.NFCom.Utility
         {
             var tipoDFe = TipoDFe.Desconhecido;
 
-            if (xml.Contains("<mod>55</mod>"))
+            if (xml.Contains("<mod>62</mod>"))
             {
-                tipoDFe = TipoDFe.NFe;
-            }
-            else if (xml.Contains("<mod>65</mod>"))
-            {
-                tipoDFe = TipoDFe.NFCe;
-            }
-            else if (xml.Contains("<mod>57</mod>"))
-            {
-                tipoDFe = TipoDFe.CTe;
-            }
-            else if (xml.Contains("<mod>67</mod>"))
-            {
-                tipoDFe = TipoDFe.CTeOS;
-            }
-            else if (xml.Contains("infMDFe"))
-            {
-                tipoDFe = TipoDFe.MDFe;
-            }
-            else if (xml.Contains("infCFe"))
-            {
-                tipoDFe = TipoDFe.CFe;
+                tipoDFe = TipoDFe.NFCom;
             }
 
             return tipoDFe;
@@ -558,24 +538,8 @@ namespace Uni.NFCom.Utility
 
             switch (modelo)
             {
-                case "55":
-                    tipoDFe = TipoDFe.NFe;
-                    break;
-
-                case "57":
-                    tipoDFe = TipoDFe.CTe;
-                    break;
-
-                case "58":
-                    tipoDFe = TipoDFe.MDFe;
-                    break;
-
-                case "65":
-                    tipoDFe = TipoDFe.NFCe;
-                    break;
-
-                case "67":
-                    tipoDFe = TipoDFe.CTeOS;
+                case "62":
+                    tipoDFe = TipoDFe.NFCom;
                     break;
             }
 
@@ -583,181 +547,32 @@ namespace Uni.NFCom.Utility
         }
 
         /// <summary>
-        /// Detectar qual o tipo de evento do CT-e.
+        /// Detectar qual o tipo de evento do documento fiscal eletrônico do XML
         /// </summary>
         /// <param name="xml">XML a ser analisado</param>
-        /// <returns>Retorna o tipo do evento do CT-e</returns>
-        public static TipoEventoCTe DetectEventoCTeType(XmlDocument xml) => DetectEventoCTeType(xml.OuterXml);
+        /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
+        public static TipoEventoNFCom DetectEventoNFComType(XmlDocument xml) => DetectEventoNFComType(xml.OuterXml);
 
         /// <summary>
-        /// Detectar qual o tipo de evento do CT-e.
+        /// Detectar qual o tipo de evento do documento fiscal eletrônico do XML
         /// </summary>
         /// <param name="xml">XML a ser analisado</param>
-        /// <returns>Retorna o tipo do evento do CT-e</returns>
-        public static TipoEventoCTe DetectEventoCTeType(string xml)
+        /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
+        public static TipoEventoNFCom DetectEventoNFComType(string xml)
         {
-            var tipoEventoCTe = TipoEventoCTe.Desconhecido;
+            var tipoEventoNFCom = TipoEventoNFCom.Desconhecido;
 
             if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
             {
-                return tipoEventoCTe;
-            }
-
-            if (xml.Contains("<tpEvento>110110</tpEvento>"))
-            {
-                tipoEventoCTe = TipoEventoCTe.CartaCorrecao;
-            }
-            else if (xml.Contains("<tpEvento>110111</tpEvento>"))
-            {
-                tipoEventoCTe = TipoEventoCTe.Cancelamento;
-            }
-            else if (xml.Contains("<tpEvento>110180</tpEvento>"))
-            {
-                tipoEventoCTe = TipoEventoCTe.ComprovanteEntrega;
-            }
-            else if (xml.Contains("<tpEvento>110181</tpEvento>"))
-            {
-                tipoEventoCTe = TipoEventoCTe.CancelamentoComprovanteEntrega;
-            }
-            else if (xml.Contains("<tpEvento>610110</tpEvento>"))
-            {
-                tipoEventoCTe = TipoEventoCTe.PrestDesacordo;
-            }
-            else if (xml.Contains("<tpEvento>310620</tpEvento>"))
-            {
-                tipoEventoCTe = TipoEventoCTe.RegistroPassagem;
-            }
-            return tipoEventoCTe;
-        }
-
-        /// <summary>
-        /// Detectar qual o tipo de evento do MDF-e.
-        /// </summary>
-        /// <param name="xml">XML a ser analisado</param>
-        /// <returns>Retorna o tipo do evento do MDF-e</returns>
-        public static TipoEventoMDFe DetectEventoMDFeType(XmlDocument xml) => DetectEventoMDFeType(xml.OuterXml);
-
-        /// <summary>
-        /// Detectar qual o tipo de evento do MDF-e.
-        /// </summary>
-        /// <param name="xml">XML a ser analisado</param>
-        /// <returns>Retorna o tipo do evento do MDF-e</returns>
-        public static TipoEventoMDFe DetectEventoMDFeType(string xml)
-        {
-            var tipoEventoMDFe = TipoEventoMDFe.Desconhecido;
-
-            if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
-            {
-                return tipoEventoMDFe;
+                return tipoEventoNFCom;
             }
 
             if (xml.Contains("<tpEvento>110111</tpEvento>"))
             {
-                tipoEventoMDFe = TipoEventoMDFe.Cancelamento;
-            }
-            else if (xml.Contains("<tpEvento>110112</tpEvento>"))
-            {
-                tipoEventoMDFe = TipoEventoMDFe.Encerramento;
-            }
-            else if (xml.Contains("<tpEvento>110114</tpEvento>"))
-            {
-                tipoEventoMDFe = TipoEventoMDFe.InclusaoCondutor;
-            }
-            else if (xml.Contains("<tpEvento>110115</tpEvento>"))
-            {
-                tipoEventoMDFe = TipoEventoMDFe.InclusaoDFe;
+                tipoEventoNFCom = TipoEventoNFCom.Cancelamento;
             }
 
-            return tipoEventoMDFe;
-        }
-
-        /// <summary>
-        /// Detectar qual o tipo de evento do documento fiscal eletrônico do XML
-        /// </summary>
-        /// <param name="xml">XML a ser analisado</param>
-        /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
-        public static TipoEventoNFe DetectEventoNFeType(XmlDocument xml) => DetectEventoNFeType(xml.OuterXml);
-
-        /// <summary>
-        /// Detectar qual o tipo de evento do documento fiscal eletrônico do XML
-        /// </summary>
-        /// <param name="xml">XML a ser analisado</param>
-        /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
-        public static TipoEventoNFe DetectEventoNFeType(string xml)
-        {
-            var tipoEventoNFe = TipoEventoNFe.Desconhecido;
-
-            if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
-            {
-                return tipoEventoNFe;
-            }
-
-            if (xml.Contains("<tpEvento>110110</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.CartaCorrecao;
-            }
-            else if (xml.Contains("<tpEvento>110111</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.Cancelamento;
-            }
-            else if (xml.Contains("<tpEvento>110112</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.CancelamentoPorSubstituicao;
-            }
-            else if (xml.Contains("<tpEvento>110140</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.EPEC;
-            }
-            else if (xml.Contains("<tpEvento>111500</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.PedidoProrrogacaoPrazo1;
-            }
-            else if (xml.Contains("<tpEvento>111501</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.PedidoProrrogacaoPrazo2;
-            }
-            else if (xml.Contains("<tpEvento>111502</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo1;
-            }
-            else if (xml.Contains("<tpEvento>111503</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo2;
-            }
-            else if (xml.Contains("<tpEvento>210200</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.ManifestacaoConfirmacaoOperacao;
-            }
-            else if (xml.Contains("<tpEvento>210210</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.ManifestacaoCienciaOperacao;
-            }
-            else if (xml.Contains("<tpEvento>210220</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.ManifestacaoDesconhecimentoOperacao;
-            }
-            else if (xml.Contains("<tpEvento>210240</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.ManifestacaoOperacaoNaoRealizada;
-            }
-            else if (xml.Contains("<tpEvento>411500</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.RespostaPedidoProrrogacaoPrazo1;
-            }
-            else if (xml.Contains("<tpEvento>411501</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.RespostaPedidoProrrogacaoPrazo2;
-            }
-            else if (xml.Contains("<tpEvento>411502</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.RespostaCancelamentoPedidoProrrogacaoPrazo1;
-            }
-            else if (xml.Contains("<tpEvento>411503</tpEvento>"))
-            {
-                tipoEventoNFe = TipoEventoNFe.RespostaCancelamentoPedidoProrrogacaoPrazo2;
-            }
-
-            return tipoEventoNFe;
+            return tipoEventoNFCom;
         }
 
         /// <summary>
@@ -976,22 +791,8 @@ namespace Uni.NFCom.Utility
 
             switch (typeDFe)
             {
-                case TipoDFe.NFe:
-                case TipoDFe.NFCe:
-                    typeString = "NFe";
-                    break;
-
-                case TipoDFe.CTe:
-                case TipoDFe.CTeOS:
-                    typeString = "CTe";
-                    break;
-
-                case TipoDFe.MDFe:
-                    typeString = "MDFe";
-                    break;
-
-                case TipoDFe.CFe:
-                    typeString = "CFe";
+                case TipoDFe.NFCom:
+                    typeString = "NFCom";
                     break;
             }
 
@@ -1001,101 +802,11 @@ namespace Uni.NFCom.Utility
         }
 
         /// <summary>
-        /// Busca o número da chave do evento do CT-e
-        /// </summary>
-        /// <param name="xml">Conteúdo do XML para busca da chave</param>
-        /// <returns>Chave do evento do CT-e</returns>
-        public static string GetChaveEventoCTe(string xml) => GetChaveEventoCTe(xml, DetectEventoCTeType(xml));
-
-        /// <summary>
-        /// Busca o número da chave do evento do CT-e
-        /// </summary>
-        /// <param name="xml">Conteúdo do XML para busca da chave</param>
-        /// <param name="typeEventoCTe">Tipo de evento do CTe</param>
-        /// <returns>Chave do evento do CT-e</returns>
-        public static string GetChaveEventoCTe(string xml, TipoEventoCTe typeEventoCTe)
-        {
-            var typeString = "";
-
-            switch (typeEventoCTe)
-            {
-                case TipoEventoCTe.CartaCorrecao:
-                    typeString = "110110";
-                    break;
-
-                case TipoEventoCTe.Cancelamento:
-                    typeString = "110111";
-                    break;
-
-                case TipoEventoCTe.ComprovanteEntrega:
-                    typeString = "110180";
-                    break;
-
-                case TipoEventoCTe.CancelamentoComprovanteEntrega:
-                    typeString = "110181";
-                    break;
-
-                case TipoEventoCTe.PrestDesacordo:
-                    typeString = "610110";
-                    break;
-
-                case TipoEventoCTe.RegistroPassagem:
-                    typeString = "310620";
-                    break;
-            }
-
-            var pedacinhos = xml.Split(new string[] { $"Id=\"ID{typeString}" }, StringSplitOptions.None);
-
-            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
-        }
-
-        /// <summary>
-        /// Busca o número da chave do evento do MDF-e
-        /// </summary>
-        /// <param name="xml">Conteúdo do XML para busca da chave</param>
-        /// <returns>Chave do evento do MDF-e</returns>
-        public static string GetChaveEventoMDFe(string xml) => GetChaveEventoMDFe(xml, DetectEventoMDFeType(xml));
-
-        /// <summary>
-        /// Busca o número da chave do evento do MDF-e
-        /// </summary>
-        /// <param name="xml">Conteúdo do XML para busca da chave</param>
-        /// <param name="typeEventoMDFe">Tipo do evento do MDFe</param>
-        /// <returns>Chave do evento do MDF-e</returns>
-        public static string GetChaveEventoMDFe(string xml, TipoEventoMDFe typeEventoMDFe)
-        {
-            var typeString = "";
-
-            switch (typeEventoMDFe)
-            {
-                case TipoEventoMDFe.Cancelamento:
-                    typeString = "110111";
-                    break;
-
-                case TipoEventoMDFe.Encerramento:
-                    typeString = "110112";
-                    break;
-
-                case TipoEventoMDFe.InclusaoCondutor:
-                    typeString = "110114";
-                    break;
-
-                case TipoEventoMDFe.InclusaoDFe:
-                    typeString = "110115";
-                    break;
-            }
-
-            var pedacinhos = xml.Split(new string[] { $"Id=\"ID{typeString}" }, StringSplitOptions.None);
-
-            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
-        }
-
-        /// <summary>
         /// Busca o número da chave do Documento Fiscal Eletrônico no XML do Documento Fiscal Eletrônico
         /// </summary>
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
         /// <returns>Chave do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, etc...)</returns>
-        public static string GetChaveEventoNFe(string xml) => GetChaveEventoNFe(xml, DetectEventoNFeType(xml));
+        public static string GetChaveEventoNFCom(string xml) => GetChaveEventoNFCom(xml, DetectEventoNFComType(xml));
 
         /// <summary>
         /// Busca o número da chave do Documento Fiscal Eletrônico no XML do Documento Fiscal Eletrônico
@@ -1103,74 +814,14 @@ namespace Uni.NFCom.Utility
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
         /// <param name="typeEventoDFe">Tipo do Evento DFe</param>
         /// <returns>Chave do evento do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, etc...)</returns>
-        public static string GetChaveEventoNFe(string xml, TipoEventoNFe typeEventoDFe)
+        public static string GetChaveEventoNFCom(string xml, TipoEventoNFCom typeEventoDFe)
         {
             var typeString = "";
 
             switch (typeEventoDFe)
             {
-                case TipoEventoNFe.CartaCorrecao:
-                    typeString = "110110";
-                    break;
-
-                case TipoEventoNFe.Cancelamento:
+                case TipoEventoNFCom.Cancelamento:
                     typeString = "110111";
-                    break;
-
-                case TipoEventoNFe.CancelamentoPorSubstituicao:
-                    typeString = "110112";
-                    break;
-
-                case TipoEventoNFe.EPEC:
-                    typeString = "110140";
-                    break;
-
-                case TipoEventoNFe.PedidoProrrogacaoPrazo1:
-                    typeString = "111500";
-                    break;
-
-                case TipoEventoNFe.PedidoProrrogacaoPrazo2:
-                    typeString = "111501";
-                    break;
-
-                case TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo1:
-                    typeString = "111502";
-                    break;
-
-                case TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo2:
-                    typeString = "111503";
-                    break;
-
-                case TipoEventoNFe.ManifestacaoConfirmacaoOperacao:
-                    typeString = "210200";
-                    break;
-
-                case TipoEventoNFe.ManifestacaoCienciaOperacao:
-                    typeString = "210210";
-                    break;
-
-                case TipoEventoNFe.ManifestacaoDesconhecimentoOperacao:
-                    typeString = "210220";
-                    break;
-
-                case TipoEventoNFe.ManifestacaoOperacaoNaoRealizada:
-                    typeString = "210240";
-                    break;
-
-                case TipoEventoNFe.RespostaPedidoProrrogacaoPrazo1:
-                    typeString = "411500";
-                    break;
-
-                case TipoEventoNFe.RespostaPedidoProrrogacaoPrazo2:
-                    typeString = "411501";
-                    break;
-
-                case TipoEventoNFe.RespostaCancelamentoPedidoProrrogacaoPrazo1:
-                    typeString = "411502";
-                    break;
-
-                case TipoEventoNFe.RespostaCancelamentoPedidoProrrogacaoPrazo2:
-                    typeString = "411503";
                     break;
             }
 

@@ -1,8 +1,8 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Exceptions;
 #endif
 using System;
-using Uni.NFCom.Exceptions;
 using Uni.NFCom.Servicos.Enums;
 using Uni.NFCom.Servicos.Interop.Contract;
 using Uni.NFCom.Utility;
@@ -11,14 +11,14 @@ using Uni.NFCom.Xml.NFCom;
 namespace Uni.NFCom.Servicos.NFCom
 {
     /// <summary>
-    /// Enviar o XML de consulta status do serviço da NFe para o web-service
+    /// Enviar o XML de consulta da situação da NFCom para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Uni.NFCom.Servicos.NFCom.StatusServico")]
+    [ProgId("Uni.NFCom.Servicos.NFCom.ConsultaProtocolo")]
     [ComVisible(true)]
 #endif
-    public class StatusServico : ServicoBase, IInteropService<ConsStatServNFCom>
+    public class ConsultaProtocolo : ServicoBase, IInteropService<ConsSitNFCom>
     {
         #region Protected Methods
 
@@ -27,12 +27,12 @@ namespace Uni.NFCom.Servicos.NFCom
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            var xml = new ConsStatServNFCom();
-            xml = xml.LerXML<ConsStatServNFCom>(ConteudoXML);
+            var xml = new ConsSitNFCom();
+            xml = xml.LerXML<ConsSitNFCom>(ConteudoXML);
 
             if (!Configuracoes.Definida)
             {
-                Configuracoes.Servico = Servico.NFComStatusServico;
+                Configuracoes.Servico = Servico.NFComConsultaProtocolo;
                 Configuracoes.TipoAmbiente = xml.TpAmb;
                 Configuracoes.SchemaVersao = xml.Versao;
 
@@ -47,16 +47,16 @@ namespace Uni.NFCom.Servicos.NFCom
         /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
-        public RetConsStatServNFCom Result
+        public RetConsSitNFCom Result
         {
             get
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetConsStatServNFCom>(RetornoWSXML);
+                    return XMLUtility.Deserializar<RetConsSitNFCom>(RetornoWSXML);
                 }
 
-                return new RetConsStatServNFCom
+                return new RetConsSitNFCom
                 {
                     CStat = 0,
                     XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
@@ -71,21 +71,21 @@ namespace Uni.NFCom.Servicos.NFCom
         /// <summary>
         /// Construtor
         /// </summary>
-        public StatusServico() : base() { }
+        public ConsultaProtocolo() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        /// <param name="consStatServNFCom">Objeto contendo o XML a ser enviado</param>
+        /// <param name="consSitNFCom">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public StatusServico(ConsStatServNFCom consStatServNFCom, Configuracao configuracao) : this()
+        public ConsultaProtocolo(ConsSitNFCom consSitNFCom, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            Inicializar(consStatServNFCom?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServNFCom)), configuracao);
+            Inicializar(consSitNFCom?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitNFCom)), configuracao);
         }
 
         #endregion Public Constructors
@@ -97,10 +97,10 @@ namespace Uni.NFCom.Servicos.NFCom
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
-        /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
+        /// <param name="consSitNFCom">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ConsStatServNFCom consStatServNFCom, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar(ConsSitNFCom consSitNFCom, Configuracao configuracao)
         {
             try
             {
@@ -109,12 +109,12 @@ namespace Uni.NFCom.Servicos.NFCom
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(consStatServNFCom?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServNFCom)), configuracao);
+                Inicializar(consSitNFCom?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitNFCom)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
             }
             catch (CertificadoDigitalException ex)
             {
@@ -128,16 +128,21 @@ namespace Uni.NFCom.Servicos.NFCom
 
 #endif
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Grava o XML de Distribuição em uma pasta definida - (Para este serviço não tem XML de distribuição).
+        /// </summary>
+        /// <param name="pasta">Pasta onde é para ser gravado do XML</param>
+        /// <param name="nomeArquivo">Nome para o arquivo XML</param>
+        /// <param name="conteudoXML">Conteúdo do XML</param>
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
             try
             {
-                throw new Exception("Não existe XML de distribuição para consulta status do serviço.");
+                throw new Exception("Não existe XML de distribuição para consulta de protocolo.");
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 

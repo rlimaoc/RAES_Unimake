@@ -13,391 +13,6 @@ namespace Uni.NFCom.Servicos.Enums
         #region Serviço
 
         /// <summary>
-        /// 0 - Consulta status serviço NFe/NFCe
-        /// </summary>
-        [Description("Consulta status do serviço da NFe/NFCe")]
-        NFeStatusServico = 0,
-
-        /// <summary>
-        /// 1 - Consulta protocolo da NFe/NFCe
-        /// </summary>
-        [Description("Consulta situação da NFe/NFCe")]
-        NFeConsultaProtocolo = 1,
-
-        /// <summary>
-        /// 2 - Consulta recibo NFe/NFCe
-        /// </summary>
-        [Description("Consulta recibo da NFe/NFCe")]
-        NFeConsultaRecibo = 2,
-
-        /// <summary>
-        /// 3 - Inutilização de números da NFe/NFCe
-        /// </summary>
-        [Description("Inutilização de números da NFe/NFCe")]
-        NFeInutilizacao = 3,
-
-        /// <summary>
-        /// 4 - Consulta cadastro do contribuinte
-        /// </summary>
-        [Description("Consulta cadastro de contribuinte")]
-        NFeConsultaCadastro = 4,
-
-        /// <summary>
-        /// 5 - Envio de Eventos (Cancelamento, CCe, EPEC, etc...)
-        /// </summary>
-        [Description("Envio de eventos da NFe/NFCe")]
-        NFeRecepcaoEvento = 5,
-
-        /// <summary>
-        /// 6 - Envio do XML de lote de NFe/NFCe
-        /// </summary>
-        [Description("Autorização da NFe/NFCe")]
-        NFeAutorizacao = 6,
-
-        /// <summary>
-        /// 7 - Envio do XML de consulta dos documentos fiscais eletrônicos destinados - NFe
-        /// </summary>
-        [Description("Distribuição de documentos fiscais eletrônicos da NFe")]
-        NFeDistribuicaoDFe = 7,
-
-        /// <summary>
-        /// 8 - Consulta status serviço CTe
-        /// </summary>
-        [Description("Consulta status do serviço do CTe")]
-        CTeStatusServico = 8,
-
-        /// <summary>
-        /// 9 - Consulta protocolo do CTe
-        /// </summary>
-        [Description("Consulta situação do CTe")]
-        CTeConsultaProtocolo = 9,
-
-        /// <summary>
-        /// 11 - Envio do XML de consulta dos documentos fiscais eletrônicos destinados - CTe
-        /// </summary>
-        [Description("Distribuição de documentos fiscais eletrônicos do CTe")]
-        CTeDistribuicaoDFe = 11,
-
-        /// <summary>
-        /// 12 - Consulta recibo CTe
-        /// </summary>
-        [Description("Consulta recibo do CTe")]
-        CTeConsultaRecibo = 12,
-
-        /// <summary>
-        /// 13 - Envio do lote de XML de CTe - Assíncrono
-        /// </summary>
-        [Description("Autorização do CTe")]
-        CTeAutorizacao = 13,
-
-        /// <summary>
-        /// 14 - Envio do XML de CTeOS
-        /// </summary>
-        [Description("Autorização do CTeOS")]
-        CTeAutorizacaoOS = 14,
-
-        /// <summary>
-        /// 15 - Consulta status serviço MDFe
-        /// </summary>
-        [Description("Consulta status do serviço do MDFe")]
-        MDFeStatusServico = 15,
-
-        /// <summary>
-        /// 16 - Consulta protocolo do MDFe
-        /// </summary>
-        [Description("Consulta situação do MDFe")]
-        MDFeConsultaProtocolo = 16,
-
-        /// <summary>
-        /// 17 - Consulta recibo MDFe
-        /// </summary>
-        [Description("Consulta recibo do MDFe")]
-        MDFeConsultaRecibo = 17,
-
-        /// <summary>
-        /// 18 - Consulta MDFe não encerrado
-        /// </summary>
-        [Description("Consulta de MDFe´s não encerrados")]
-        MDFeConsultaNaoEnc = 18,
-
-        /// <summary>
-        /// 19 - Envio do XML de MDFe em lote no modo assíncrono
-        /// </summary>
-        [Description("Autorização do MDFe")]
-        MDFeAutorizacao = 19,
-
-        /// <summary>
-        /// 20 - Envio do XML de MDFe no modo síncrono
-        /// </summary>
-        [Description("Autorização do MDFe")]
-        MDFeAutorizacaoSinc = 20,
-
-        /// <summary>
-        /// 21 - GNRE - Consultar Configurações da UF
-        /// </summary>
-        [Description("GNRE - Consultar Configurações da UF")]
-        GNREConsultaConfigUF = 21,
-
-        /// <summary>
-        /// 22 - GNRE - Consultar Resultado do Lote de GNRE enviado
-        /// </summary>
-        [Description("Consultar Resultado do Lote de GNRE enviado")]
-        GNREConsultaResultadoLote = 22,
-
-        /// <summary>
-        /// 23 - GNRE - Enviar Lote de GNRE
-        /// </summary>
-        [Description("Enviar Lote de GNRE")]
-        GNRELoteRecepcao = 23,
-
-        /// <summary>
-        /// 24 - Enviar o XML de cancelamento da NFS-e para prefeitura
-        /// </summary>
-        [Description("Cancelamento da NFS-e")]
-        NFSeCancelarNfse = 24,
-
-        /// <summary>
-        /// 25 - Enviar o XML de consulta NFS-e do prestador para a prefeitura
-        /// </summary>
-        [Description("Consulta NFS-e do prestador")]
-        NFSeConsultarNotaPrestador = 25,
-
-        /// <summary>
-        /// 26 - Enviar o XML de consulta NFS-e valida para a prefeitura
-        /// </summary>
-        [Description("Consulta NFS-e valida")]
-        NFSeConsultarNotaValida = 26,
-
-        /// <summary>
-        /// 27 - Enviar o XML da NFS-e para a prefeitura
-        /// </summary>
-        [Description("Envio da NFS-e")]
-        NFSeGerarNfse = 27,
-
-        /// <summary>
-        /// 28 - Enviar o XML do Lote de RPS para gerar NFSe para a prefeitura
-        /// </summary>
-        [Description("Envio do lote RPS para gerar NFSe")]
-        NFSeRecepcionarLoteRps = 28,
-
-        /// <summary>
-        /// 29 - Enviar o XML do Lote de RPS no modo síncrono para gerar NFSe para a prefeitura
-        /// </summary>
-        [Description("Envio do lote RPS no modo síncrono para gerar NFSe")]
-        NFSeRecepcionarLoteRpsSincrono = 29,
-
-        /// <summary>
-        /// 30 - Enviar o XML para Substituir NFSe
-        /// </summary>
-        [Description("Envio da substituição da NFS-e")]
-        NFSeSubstituirNfse = 30,
-
-        /// <summary>
-        /// 31 - Enviar o XML de consulta lote RPS para a prefeitura
-        /// </summary>
-        [Description("Consulta lote RPS")]
-        NFSeConsultarLoteRps = 31,
-
-        /// <summary>
-        /// 32 - Enviar o XML de consulta NFSe para a prefeitura
-        /// </summary>
-        [Description("Consulta NFSe")]
-        NFSeConsultarNfse = 32,
-
-        /// <summary>
-        /// 33 - Enviar o XML de consulta NFSe serviço prestado para a prefeitura
-        /// </summary>
-        [Description("Consulta NFSe serviço prestado")]
-        NFSeConsultarNfseServicoPrestado = 33,
-
-        /// <summary>
-        /// 34 - Enviar o XML de consulta NFSe serviço tomado para a prefeitura
-        /// </summary>
-        [Description("Consulta NFSe serviço tomado")]
-        NFSeConsultarNfseServicoTomado = 34,
-
-        /// <summary>
-        /// 35 - Enviar o XML de consulta NFSe por faixa para a prefeitura
-        /// </summary>
-        [Description("Consulta NFSe por Faixa")]
-        NFSeConsultarNfseFaixa = 35,
-
-        /// <summary>
-        /// 36 - Enviar o XML de consulta NFSe por RPS para a prefeitura
-        /// </summary>
-        [Description("Consulta NFSe por RPS")]
-        NFSeConsultarNfsePorRps = 36,
-
-        /// <summary>
-        /// 37 - Enviar o XML de consulta/download do PDF NFSe para a prefeitura
-        /// </summary>
-        [Description("Consulta/Download do PDF da NFSe")]
-        NFSeConsultarNfsePDF = 37,
-
-        /// <summary>
-        /// 38 - GNRE - Consultar Lote Recepção Consulta
-        /// </summary>
-        [Description("Consultar Lote Recepção Consulta")]
-        GNREConsultaLoteRecepcao = 38,
-
-        /// <summary>
-        /// 39 - GNRE - Consultar Resultado do Lote da Consulta de GNRE enviado
-        /// </summary>
-        [Description("Consultar Resultado do Lote da Consulta de GNRE")]
-        GNREConsultaResultadoLoteConsulta = 39,
-
-        /// <summary>
-        /// 40 - Enviar o XML de consulta situação lote RPS para a prefeitura
-        /// </summary>
-        [Description("Consultar Situação Lote Rps")]
-        NFSeConsultarSituacaoLoteRps = 40,
-
-        /// <summary>
-        /// 41 - Enviar o XML de consulta NFS-e recebidas para a prefeitura
-        /// </summary>
-        [Description("Consulta NFSe Recebidas")]
-        NFSeConsultaNFeRecebidas = 41,
-
-        /// <summary>
-        /// 42 - Enviar o XML de consulta NFS-e emitidas para a prefeitura
-        /// </summary>
-        [Description("Consulta NFSe Emitidas")]
-        NFSeConsultaNFeEmitidas = 42,
-
-        /// <summary>
-        /// 43 - Enviar o XML de teste envio lote rps para a prefeitura
-        /// </summary>
-        [Description("Teste Envio Lote RPS")]
-        NFSeTesteEnvioLoteRps = 43,
-
-        /// <summary>
-        /// 44 - Enviar o XML de envio lote rps para a prefeitura
-        /// </summary>
-        [Description("Envio Lote RPS")]
-        NFSeEnvioLoteRps = 44,
-
-        /// <summary>
-        /// 45 - Enviar o XML de envio rps para a prefeitura
-        /// </summary>
-        [Description("Envio RPS")]
-        NFSeEnvioRps = 45,
-
-        /// <summary>
-        /// 46 - Enviar o XML de cancelamento NFS-e para a prefeitura
-        /// </summary>
-        [Description("Cancelamento NFSe")]
-        NFSeCancelamentoNfe = 46,
-
-        /// <summary>
-        /// 47 - Enviar o XML de consulta informações lote para a prefeitura
-        /// </summary>
-        [Description("Consulta Informações Lote")]
-        NFSeConsultaInformacoesLote = 47,
-
-        /// <summary>
-        /// 48 - Enviar o XML de consulta lote para a prefeitura
-        /// </summary>
-        [Description("Consulta Lote")]
-        NFSeConsultaLote = 48,
-
-        /// <summary>
-        /// 49 - Consulta Centralizada de Código GTIN (CCG)
-        /// </summary>
-        [Description("Consulta Centralizada de Código GTIN (CCG)")]
-        CCGConsGTIN = 49,
-
-        /// <summary>
-        /// 50 - Enviar o XML de cancelamento da NFS-e para prefeitura
-        /// </summary>
-        [Description("Cancela NFS-e")]
-        NFSeCancelaNota = 50,
-
-        /// <summary>
-        /// 51 - Enviar o XML de emissão da NFS-e para prefeitura
-        /// </summary>
-        [Description("Emissão NFS-e")]
-        NFSeEmissaoNota = 51,
-
-        /// <summary>
-        /// 52 - Cancela o XML de emissão da NFS-e para prefeitura
-        /// </summary>
-        [Description("Cancela NFS-e")]
-        NFSeCancelarNotaFiscal = 52,
-
-        /// <summary>
-        /// 53 - Consulta o XML de emissão da NFS-e para prefeitura
-        /// </summary>
-        [Description("Consulta NFS-e")]
-        NFSeConsultaNotaFiscal = 53,
-
-        /// <summary>
-        /// 54 - Envia o lote de XML da NFS-e para prefeitura
-        /// </summary>
-        [Description("Envia o lote NFS-e")]
-        NFSeEnviarLoteNotas = 54,
-
-        /// <summary>
-        /// 55 - Consultar Rps Serviço Prestado da NFS-e para prefeitura
-        /// </summary>
-        [Description("Consultar Rps Serviço Prestado")]
-        NFSeConsultarRpsServicoPrestado = 55,
-
-        /// <summary>
-        /// 56 - Envio do XML de CTe - Síncrono
-        /// </summary>
-        [Description("Autorização do CTe")]
-        CTeAutorizacaoSinc = 56,
-
-        /// <summary>
-        /// 57 - Obter Critica Lote de XML da NFS-e para prefeitura
-        /// </summary>
-        [Description("Obter Critica Lote")]
-        NFSeObterCriticaLote = 57,
-
-        /// <summary>
-        /// 58 - Consultar URL da NFS-e para prefeitura
-        /// </summary>
-        [Description("Consultar Url Nfse")]
-        NFSeConsultarUrlNfse = 58,
-
-        /// <summary>
-        /// 59 - Consultar dados cadastrais da NFS-e
-        /// </summary>
-        [Description("Consultar Dados Cadastrais")]
-        NFSeConsultarDadosCadastrais = 59,
-
-        /// <summary>
-        /// 60 - Consultar RPS Disponivel
-        /// </summary>
-        [Description("Consulta RPS Disponivel")]
-        NFSeConsultarRpsDisponivel = 60,
-
-        /// <summary>
-        /// 61 - Consultar sequencia lote nota RPS
-        /// </summary>
-        [Description("Consultar sequencia lote nota RPS")]
-        NFSeConsultarSequenciaLoteNotaRPS = 61,
-
-        /// <summary>
-        /// 62 - Obter Nota Fiscal Xml da NFS-e
-        /// </summary>
-        [Description("Obter Nota Fiscal Xml")]
-        NFSeObterNotaFiscalXml = 62,
-
-        /// <summary>
-        /// 63 - Inutilizacao NFSe
-        /// </summary>
-        [Description("Solicitar Inutilizacao NFSe")]
-        NFSeSolicitacaoInutilizacao = 63,
-
-        /// <summary>
-        /// 64 - Consulta Requerimento de Cancelamento da NFSe
-        /// </summary>
-        [Description("Consulta Requerimento de Cancelamento NFSe")]
-        NFSeConsultarRequerimentoCancelamento = 64,
-
-
-        /// <summary>
         /// 65 - Consulta status serviço NFCom
         /// </summary>
         [Description("Consulta status do serviço da NFCom")]
@@ -463,54 +78,6 @@ namespace Uni.NFCom.Servicos.Enums
         /// -1 - Evento desconhecido
         /// </summary>
         Desconhecido = -1,
-        /// <summary>
-        /// 0 - NF-e - Nota Fiscal Eletrônica 
-        /// </summary>
-        NFe = 0,
-        /// <summary>
-        /// 1 - NFC-e - Nota Fiscal de Venda a Consumidor Eletrônica
-        /// </summary>
-        NFCe = 1,
-        /// <summary>
-        /// 2 - CT-e - Conhecimento de Transporte Eletrônico
-        /// </summary>
-        CTe = 2,
-        /// <summary>
-        /// 3 - CT-e - Conhecimento de Transporte Eletrônico para Outros Serviços
-        /// </summary>
-        CTeOS = 3,
-        /// <summary>
-        /// 4 - MDF-e - Manifesto Eletrônico de Documentos Fiscais
-        /// </summary>
-        MDFe = 4,
-        /// <summary>
-        /// 5 - Nota Fiscal de Serviço Eletrônica
-        /// </summary>
-        NFSe = 5,
-        /// <summary>
-        /// 6 - CFe-SAT - Sistema Autenticador e Transmissor de Cupons Fiscais Eletrônicos
-        /// </summary>
-        SAT = 6,
-        /// <summary>
-        /// 7 - Cupom Fiscal Eletrônico
-        /// </summary>
-        CFe = 7,
-        /// <summary>
-        /// 8 - GNRE - Guia Nacional de Recolhimento de Tributos Estaduais
-        /// </summary>
-        GNRE = 8,
-        /// <summary>
-        /// 9 - SNCM - Sistema Nacional de Controle de Medicamentos
-        /// </summary>
-        SNCM = 9,
-        /// <summary>
-        /// 10 - CCG - Consulta Centralizada de GTIN
-        /// </summary>
-        CCG = 10,
-        /// <summary>
-        /// 11 - EFDReinf - Escrituração Fiscal Digital de Retenções e Outras Informações Fiscais
-        /// </summary>
-        EFDReinf = 11,
         /// <summary>
         /// 12 - NFCom - Nota Fiscal Fatura de Serviço de Comunicação Eletrônica
         /// </summary>
@@ -8833,4 +8400,407 @@ namespace Uni.NFCom.Servicos.Enums
 
     #endregion
 
+    #region Código de Classificação de Itens (NFCom)
+
+    /// <summary>
+    /// Código de Classificação dos Itens de Faturamento Normal (NFCom)
+    /// </summary>
+    public enum ClassItemGeral
+    {
+        /// <summary>
+        /// 0100101	- Assinatura de serviços de telefonia
+        /// </summary>
+        AssinaturaTelefonia = 0100101,
+
+        /// <summary>
+        /// 0100201	- Assinatura de serviços de comunicação de dados
+        /// </summary>
+        AssinaturaComunicacaoDados = 0100201,
+
+        /// <summary>
+        /// 0100301	- Assinatura de serviços de TV por Assinatura
+        /// </summary>
+        AssinaturaTVAssinatura = 0100301,
+
+        /// <summary>
+        /// 0100401	- Assinatura de serviços de comunicação multimídia
+        /// </summary>
+        AssinaturaComunicacaoMultimidia = 0100401,
+
+        /// <summary>
+        /// 0200101	- Habilitação de serviços de telefonia
+        /// </summary>
+        HabilitacaoTelefonia = 0200101,
+
+        /// <summary>
+        /// 0200201	- Habilitação de serviços de comunicação de dados
+        /// </summary>
+        HabilitaçãoComunicacaoDados = 0200201,
+
+        /// <summary>
+        /// 0200301	- Habilitação de TV por Assinatura
+        /// </summary>
+        HabilitacaoTVAssinatura = 0200301,
+
+        /// <summary>
+        /// 0300101	- Serviço Medido - Chamadas locais
+        /// </summary>
+        ServicoMedidoChamadasLocais = 0300101,
+
+        /// <summary>
+        /// 0300102	- Serviço Medido - Chamadas longa distância nacional
+        /// </summary>
+        ServicoMedidoChamadasDDD = 0300102,
+
+        /// <summary>
+        /// 0300103	- Serviço Medido - Chamadas longa distância internacionais
+        /// </summary>
+        ServicoMedidoChamadasDDI = 0300103,
+
+        /// <summary>
+        /// 0300104	- Serviço Medido - Chamadas originadas em Roaming
+        /// </summary>
+        ServicoMedidoOriginadasRoaming = 0300104,
+
+        /// <summary>
+        /// 0300105	- Serviço Medido - Chamadas recebidas em Roaming
+        /// </summary>
+        ServicoMedidoRecebidasRoaming = 0300105,
+
+        /// <summary>
+        /// 0300106	- Serviço Medido - Adicional de chamada
+        /// </summary>
+        ServicoMedidoAdicionalChamada = 0300106,
+
+        /// <summary>
+        /// 0300107	- Serviço Medido - Números Especiais (0300/0500/0600/0800/etc.)
+        /// </summary>
+        ServicoMedidoNumerosEspeciais = 0300107,
+
+        /// <summary>
+        /// 0300108	- Serviço Medido - Mensagem SMS
+        /// </summary>
+        ServicoMedidoMensagemSMS = 0300108,
+
+        /// <summary>
+        /// 0300109	- Serviço Medido - Mensagem MMS
+        /// </summary>
+        ServicoMedidoMensagemMMS = 0300109,
+
+        /// <summary>
+        /// 0300201	- Serviço Medido - Comunicação de dados
+        /// </summary>
+        ServicoMedidoComunicacaoDados = 0300201,
+
+        /// <summary>
+        /// 0300301	- Serviço Medido - Pay-per-view (programação TV)
+        /// </summary>
+        ServicoMedidoPayPerView = 0300301,
+
+        /// <summary>
+        /// 0300401	- Serviço Medido - Comunicação multimidia
+        /// </summary>
+        ServicoMedidoComunicacaoMultimidia = 0300401,
+
+        /// <summary>
+        /// 0400101	- Serviço Não Medido - Telefonia
+        /// </summary>
+        ServicoNaoMedidoTelefonia = 0400101,
+
+        /// <summary>
+        /// 0400201	- Serviço Não Medido - Comunicação de dados
+        /// </summary>
+        ServicoNaoMedidoComunicacaoDados = 0400201,
+
+        /// <summary>
+        /// 0400301	- Serviço Não Medido - TV por Assinatura
+        /// </summary>
+        ServicoNaoMedidoTVAssinatura = 0400301,
+
+        /// <summary>
+        /// 0400401	- Serviço Não Medido - Provimento à internet
+        /// </summary>
+        ServicoNaoMedidoInternet = 0400401,
+
+        /// <summary>
+        /// 0400501	- Serviço Não Medido - Comunicação multimídia
+        /// </summary>
+        ServicoNaoMedidoComunicacaoMultimídia = 0400501,
+
+        /// <summary>
+        /// 0600101	- Facilidades Adicionais (identificador, caixa postal, não-perturbe, etc)
+        /// </summary>
+        FacilidadesAdicionais = 0600101,
+
+        /// <summary>
+        /// 0600201	- Streaming de vídeo e audio
+        /// </summary>
+        StreamingVideoAudio = 0600201,
+
+        /// <summary>
+        /// 0600301	- Serviço de Rastreamento
+        /// </summary>
+        ServicoRastreamento = 0600301,
+
+        /// <summary>
+        /// 0600401	- Veiculação de publicidade e propaganda em qualquer meio
+        /// </summary>
+        VeiculacaoPublicidadePropagandaEmQualquerMeio = 0600401,
+
+        /// <summary>
+        /// 0600501	- Outros Serviços (substituição de número, troca de aparelho, instalação, software, visita técnica, etc.)
+        /// </summary>
+        OutrosServicos = 0600501,
+
+        /// <summary>
+        /// 0600601	- Outros serviços de valor adicionado
+        /// </summary>
+        OutrosServicosValorAdicionado = 0600601,
+
+        /// <summary>
+        /// 0700101	- Interconexão
+        /// </summary>
+        Interconexao = 0700101,
+
+        /// <summary>
+        /// 0700201	- Roaming
+        /// </summary>
+        Roaming = 0700201,
+
+        /// <summary>
+        /// 0700301	- Exploração Industrial de Linha Dedicada - EILD
+        /// </summary>
+        ExploracaoIndustrialLinhaDedicada = 0700301,
+
+        /// <summary>
+        /// 0700401	- Lançamento de ICMS proporcional às saídas isentas, não tributadas ou com redução de base de cálculo (§ 1º, Cláusula terceira, Convênio ICMS 17/2013)
+        /// </summary>
+        ICMSIsentoNaoTributadoOuReduzido = 0700401,
+
+        /// <summary>
+        /// 0700501	- Lançamento de ICMS proporcional às cessões de meio destinadas a consumo próprio (§ 1º Cláusula terceira, Convênio ICMS 17/2013)
+        /// </summary>
+        ICMSProporcionalConsumoProprio = 0700501,
+
+        /// <summary>
+        /// 0700601	- Lançamento de ICMS complementar, na condição de responsável tributário
+        /// </summary>
+        ICMSComplementar = 0700601,
+
+        /// <summary>
+        /// 0800101	- Aparelho telefônico
+        /// </summary>
+        AparelhoTelefonico = 0800101,
+
+        /// <summary>
+        /// 0800201	- Aparelho Identificador de chamadas
+        /// </summary>
+        AparelhoIdentificadorChamadas = 0800201,
+
+        /// <summary>
+        /// 0800301	- Modem
+        /// </summary>
+        Modem = 0800301,
+
+        /// <summary>
+        /// 0800401	- Rack
+        /// </summary>
+        Rack = 0800401,
+
+        /// <summary>
+        /// 0800501	- Sala/Recinto
+        /// </summary>
+        SalaRecinto = 0800501,
+
+        /// <summary>
+        /// 0800601	- Roteador
+        /// </summary>
+        Roteador = 0800601,
+
+        /// <summary>
+        /// 0800701	- Servidor
+        /// </summary>
+        Servidor = 0800701,
+
+        /// <summary>
+        /// 0800801	- Multiplexador
+        /// </summary>
+        Multiplexador = 0800801,
+
+        /// <summary>
+        /// 0800901	- Decodificador/Conversor
+        /// </summary>
+        DecodificadorConversor = 0800901,
+
+        /// <summary>
+        /// 0801001	- Outros equipamentos
+        /// </summary>
+        OutrosEquipamentos = 0801001,
+
+        /// <summary>
+        /// 1000101	- Cobrança Própria - Seguros
+        /// </summary>
+        CobrancaPropriaSeguros = 1000101,
+
+        /// <summary>
+        /// 1000201	- Cobrança Própria - Parcelamento
+        /// </summary>
+        CobrancaPropriaParcelamento = 1000201,
+
+        /// <summary>
+        /// 1000301	- Cobrança Própria - Juros de mora
+        /// </summary>
+        CobrancaPropriaJurosDeMora = 1000301,
+
+        /// <summary>
+        /// 1000401	- Cobrança Própria - Multa de mora
+        /// </summary>
+        CobrancaPropriaMultaDeMora = 1000401,
+
+        /// <summary>
+        /// 1000402	- Cobrança Própria - Multa por descumprimento de contrato (fidelização)
+        /// </summary>
+        CobrancaPropriaMultaDescumprimentoContratoFidelizacao = 1000402,
+
+        /// <summary>
+        /// 1000501	- Cobrança Própria - Conta de meses anteriores
+        /// </summary>
+        CobrancaPropriaContaMesesAnteriores = 1000501,
+
+        /// <summary>
+        /// 1000601	- Cobrança Própria - Correção monetária
+        /// </summary>
+        CobrancaPropriaCorrecaoMonetaria = 1000601,
+
+        /// <summary>
+        /// 1000701	- Cobrança Própria - Taxas
+        /// </summary>
+        CobrancaPropriaTaxas = 1000701,
+
+        /// <summary>
+        /// 1100101	- Cobrança de Terceiros - Serviços de Terceiros
+        /// </summary>
+        CobrancaDeTerceirosServicosTerceiros = 1100101,
+
+        /// <summary>
+        /// 1100201	- Cobrança de Terceiros - Seguros
+        /// </summary>
+        CobrancaDeTerceirosSeguros = 1100201,
+
+        /// <summary>
+        /// 1100301	- Cobrança de Terceiros - Juros de Mora
+        /// </summary>
+        CobrancaDeTerceirosJurosDeMora = 1100301,
+
+        /// <summary>
+        /// 1100401	- Cobrança de Terceiros - Multa de Mora
+        /// </summary>
+        CobrancaDeTerceirosMultaDeMora = 1100401,
+
+        /// <summary>
+        /// 1100501	- Cobrança de Terceiros - Conta de meses anteriores
+        /// </summary>
+        CobrancaDeTerceirosContaMesesAnteriores = 1100501,
+
+        /// <summary>
+        /// 1100601	- Cobrança de Terceiros - Correção Monetária
+        /// </summary>
+        CobrancaDeTerceirosCorrecaoMonetaria = 1100601,
+
+        /// <summary>
+        /// 1100701	- Cobrança de Terceiros - Doações
+        /// </summary>
+        CobrancaDeTerceirosDoacoes = 1100701,
+    }
+
+    /// <summary>
+    /// Código de Classificação dos Itens de Pré-Pago (NFCom)
+    /// </summary>
+    public enum ClassItemPrePago
+    {
+        /// <summary>
+        /// 0500101	- Pré-Pago - Cartão Telefônico - Telefonia Fixa
+        /// </summary>
+        CartaoTelefonicoTelefoniaFixa = 0500101,
+
+        /// <summary>
+        /// 0500102	- Pré-Pago - Carga / Recarga de Créditos - Telefonia Fixa
+        /// </summary>
+        CargaRecargaCreditosTelefoniaFixa = 0500102,
+
+        /// <summary>
+        /// 0500201	- Pré-Pago - Carga / Recarga de Créditos - Telefonia Móvel
+        /// </summary>
+        CargaRecargaCreditosTelefoniaMovel = 0500201,
+
+        /// <summary>
+        /// 0500301	- Pré-Pago - Carga / Recarga de Créditos - Serviço de Comunicação Multimídia
+        /// </summary>
+        CargaRecargaCreditosComunicacaoMultimidia = 0500301,
+
+        /// <summary>
+        /// 0500401	- Pré-Pago - Carga / Recarga de Créditos - TV por assinatura
+        /// </summary>
+        CargaRecargaCreditosTVAssinatura = 0500401,
+
+        /// <summary>
+        /// 0500501	- Pré-Pago - Recarga de Créditos - Antecipação
+        /// </summary>
+        CargaRecargaCreditosAntecipacao = 0500501,
+    }
+
+    /// <summary>
+    /// Código de Classificação dos Itens de Faturamento Centralizado (NFCom)
+    /// </summary>
+    public enum ClassItemFatCentralizado
+    {
+        /// <summary>
+        /// 1200101	- Item lançado em outra NFCom - Cobrança centralizada
+        /// </summary>
+        CobrancaCentralizada = 1200101,
+    }
+
+    /// <summary>
+    /// Código de Classificação dos Itens de Cofaturamento (NFCom)
+    /// </summary>
+    public enum ClassItemCofaturamento
+    {
+        /// <summary>
+        /// 1300101	- Item lançado em outra NFCom - Cobrança por cofaturamento
+        /// </summary>
+        CobrancaPorCofaturamento = 1300101,
+    }
+
+    /// <summary>
+    /// Código de Classificação dos Itens de Deduções (NFCom)
+    /// </summary>
+    public enum ClassItemDeducoes
+    {
+        /// <summary>
+        /// 5900101	- Dedução relativa a impugnação de serviços
+        /// </summary>
+        ImpugnacaoDeServicos = 5900101,
+
+        /// <summary>
+        /// 5900201	- Dedução referente ajuste de conta
+        /// </summary>
+        AjusteDeConta = 5900201,
+
+        /// <summary>
+        /// 5900301	- Dedução relativa à multa pela interrupção de fornecimento
+        /// </summary>
+        MultaInterrupcaoFornecimento = 5900301,
+
+        /// <summary>
+        /// 5900401	- Dedução por pagamento em duplicidade
+        /// </summary>
+        PagamentoDuplicado = 5900401,
+
+        /// <summary>
+        /// 5900501	- Outras deduções
+        /// </summary>
+        OutrasDeducoes = 5900501,
+    }
+
+    #endregion
 }

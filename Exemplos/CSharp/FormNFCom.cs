@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
+using System.Security.Cryptography.X509Certificates;
 using Uni.NFCom.Servicos;
 using Uni.NFCom.Servicos.Enums;
+using Uni.NFCom.Security;
 using XmlNFCom = Uni.NFCom.Xml.NFCom;
 using ServicoNFCom = Uni.NFCom.Servicos.NFCom;
-using System.Security.Cryptography.X509Certificates;
-using Uni.NFCom.Security;
 
 namespace TreinamentoDLL
 {
@@ -33,7 +25,7 @@ namespace TreinamentoDLL
         /// <summary>
         /// Caminho do certificado digital A1
         /// </summary>
-        private static string PathCertificadoDigital { get; set; } = @"C:\NFeModelo55\Cert\UniNFCom_PV.pfx";
+        private static string PathCertificadoDigital { get; set; } = @"G:\Certificados\Atacadusado_PV.pfx";
 
         /// <summary>
         /// Senha de uso do certificado digital A1
@@ -54,14 +46,14 @@ namespace TreinamentoDLL
 
             var configuracao = new Configuracao
             {
-                TipoDFe = TipoDFe.NFe,
+                TipoDFe = TipoDFe.NFCom,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = CertificadoSelecionado,
                 WebEnderecoHomologacao = "https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx",
                 WebSoapString = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><nfcomDadosMsg xmlns=\"http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico\">{xmlBody}</nfcomDadosMsg></soap:Body></soap:Envelope>",
             };
 
-            var statusServico = new ServicoNFCom.StatusServicoNFCom(xml, configuracao);
+            var statusServico = new ServicoNFCom.StatusServico(xml, configuracao);
             statusServico.Executar();
 
             MessageBox.Show(statusServico.Result.CStat + " " + statusServico.Result.XMotivo);
@@ -69,25 +61,26 @@ namespace TreinamentoDLL
 
         private void BtnConsultaSituacaoNFCom_Click(object sender, EventArgs e)
         {
-            var xml = new XmlNFCom.ConsStatServNFCom
+            var xml = new XmlNFCom.ConsSitNFCom
             {
                 Versao = "1.00",
-                TpAmb = TipoAmbiente.Homologacao
+                TpAmb = TipoAmbiente.Homologacao,
+                ChNFCom = "35231200868634000160620010001229111115351472",
             };
 
             var configuracao = new Configuracao
             {
-                TipoDFe = TipoDFe.NFe,
+                TipoDFe = TipoDFe.NFCom,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = CertificadoSelecionado,
-                WebEnderecoHomologacao = "https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx",
-                WebSoapString = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><nfcomDadosMsg xmlns=\"http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico\">{xmlBody}</nfcomDadosMsg></soap:Body></soap:Envelope>",
+                WebEnderecoHomologacao = "https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx",
+                WebSoapString = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><nfcomDadosMsg xmlns=\"http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta\">{xmlBody}</nfcomDadosMsg></soap:Body></soap:Envelope>",
             };
 
-            var statusServico = new ServicoNFCom.StatusServicoNFCom(xml, configuracao);
-            statusServico.Executar();
+            var consultaProtocolo = new ServicoNFCom.ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
 
-            MessageBox.Show(statusServico.Result.CStat + " " + statusServico.Result.XMotivo);
+            MessageBox.Show(consultaProtocolo.Result.CStat + " " + consultaProtocolo.Result.XMotivo);
         }
 
         private void FormNFCom_Load(object sender, EventArgs e)

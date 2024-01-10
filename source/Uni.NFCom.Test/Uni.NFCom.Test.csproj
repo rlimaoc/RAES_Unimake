@@ -30,8 +30,4 @@
     <ProjectReference Include="..\.NET Standard\Uni.NFCom\Uni.NFCom.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NFCom\" />
-  </ItemGroup>
-
 </Project>
