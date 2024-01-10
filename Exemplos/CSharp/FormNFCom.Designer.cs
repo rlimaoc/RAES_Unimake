@@ -28,10 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnConsultaStatusNFCom = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnConsultaStatusNFCom = new System.Windows.Forms.Button();
+            this.BtnConsultaSituacaoNFCom = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.BtnConsultaSituacaoNFCom);
+            this.groupBox1.Controls.Add(this.BtnConsultaStatusNFCom);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(338, 264);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "NFCom";
             // 
             // BtnConsultaStatusNFCom
             // 
@@ -43,15 +55,15 @@
             this.BtnConsultaStatusNFCom.UseVisualStyleBackColor = true;
             this.BtnConsultaStatusNFCom.Click += new System.EventHandler(this.BtnConsultaStatusNFCom_Click);
             // 
-            // groupBox1
+            // BtnConsultaSituacaoNFCom
             // 
-            this.groupBox1.Controls.Add(this.BtnConsultaStatusNFCom);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(338, 264);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "NFCom";
+            this.BtnConsultaSituacaoNFCom.Location = new System.Drawing.Point(57, 72);
+            this.BtnConsultaSituacaoNFCom.Name = "BtnConsultaSituacaoNFCom";
+            this.BtnConsultaSituacaoNFCom.Size = new System.Drawing.Size(225, 47);
+            this.BtnConsultaSituacaoNFCom.TabIndex = 1;
+            this.BtnConsultaSituacaoNFCom.Text = "Consulta Situação NFCom";
+            this.BtnConsultaSituacaoNFCom.UseVisualStyleBackColor = true;
+            this.BtnConsultaSituacaoNFCom.Click += new System.EventHandler(this.BtnConsultaSituacaoNFCom_Click);
             // 
             // FormNFCom
             // 
@@ -68,8 +80,8 @@
         }
         
         #endregion
-
-        private System.Windows.Forms.Button BtnConsultaStatusNFCom;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button BtnConsultaSituacaoNFCom;
+        private System.Windows.Forms.Button BtnConsultaStatusNFCom;
     }
 }

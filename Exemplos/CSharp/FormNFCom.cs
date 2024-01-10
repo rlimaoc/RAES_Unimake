@@ -67,6 +67,29 @@ namespace TreinamentoDLL
             MessageBox.Show(statusServico.Result.CStat + " " + statusServico.Result.XMotivo);
         }
 
+        private void BtnConsultaSituacaoNFCom_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNFCom.ConsStatServNFCom
+            {
+                Versao = "1.00",
+                TpAmb = TipoAmbiente.Homologacao
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+                WebEnderecoHomologacao = "https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx",
+                WebSoapString = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><nfcomDadosMsg xmlns=\"http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico\">{xmlBody}</nfcomDadosMsg></soap:Body></soap:Envelope>",
+            };
+
+            var statusServico = new ServicoNFCom.StatusServicoNFCom(xml, configuracao);
+            statusServico.Executar();
+
+            MessageBox.Show(statusServico.Result.CStat + " " + statusServico.Result.XMotivo);
+        }
+
         private void FormNFCom_Load(object sender, EventArgs e)
         {
 
