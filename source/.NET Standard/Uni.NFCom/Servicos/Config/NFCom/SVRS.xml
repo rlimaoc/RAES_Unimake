@@ -31,7 +31,7 @@
       <WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionHomologacao>
       <WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionProducao>
-      <SchemaArquivo>consSitNFCom_v{0}.xsd</SchemaArquivo>
+      <SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -43,7 +43,7 @@
       <WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionHomologacao>
       <WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionProducao>
-      <SchemaArquivo>consSitNFCom_v{0}.xsd</SchemaArquivo>
+      <SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>

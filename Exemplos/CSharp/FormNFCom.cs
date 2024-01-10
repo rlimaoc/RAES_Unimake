@@ -7,56 +7,99 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using Uni.NFCom.Servicos;
+using Uni.NFCom.Servicos.Enums;
+using XmlNFCom = Uni.NFCom.Xml.NFCom;
+using ServicoNFCom = Uni.NFCom.Servicos.NFCom;
+using System.Security.Cryptography.X509Certificates;
+using Uni.NFCom.Security;
 
 namespace TreinamentoDLL
 {
     public partial class FormNFCom : Form
     {
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button BtnConsultaStatusNFCom;
+        #region Private Fields
 
-        public FormNFCom()
+        /// <summary>
+        /// Field para o Certificado Selecionado
+        /// </summary>
+        private static X509Certificate2 CertificadoSelecionadoField;
+
+        #endregion Private Fields
+
+        #region Private Properties
+
+        /// <summary>
+        /// Caminho do certificado digital A1
+        /// </summary>
+        private static string PathCertificadoDigital { get; set; } = @"C:\NFeModelo55\Cert\UniNFCom_PV.pfx";
+
+        /// <summary>
+        /// Senha de uso do certificado digital A1
+        /// </summary>
+        private static string SenhaCertificadoDigital { get; set; } = "19601964";
+
+        #endregion
+
+        #region Private Methods
+
+        private void BtnConsultaStatusNFCom_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 120);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "NFCom";
+            var xml = new XmlNFCom.ConsStatServNFCom
+            {
+                Versao = "1.00",
+                TpAmb = TipoAmbiente.Homologacao
+            };
 
-            //
-            // BtnConsultaStatusNFCom
-            //
-            this.BtnConsultaStatusNFCom = new System.Windows.Forms.Button();
-            this.groupBox1.Controls.Add(this.BtnConsultaStatusNFCom);
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+                WebEnderecoHomologacao = "https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx",
+                WebSoapString = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><nfcomDadosMsg xmlns=\"http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico\">{xmlBody}</nfcomDadosMsg></soap:Body></soap:Envelope>",
+            };
 
-            this.BtnConsultaStatusNFCom.Location = new System.Drawing.Point(6, 19);
-            this.BtnConsultaStatusNFCom.Name = "BtnConsultaStatusNFCom";
-            this.BtnConsultaStatusNFCom.Size = new System.Drawing.Size(197, 23);
-            this.BtnConsultaStatusNFCom.TabIndex = 0;
-            this.BtnConsultaStatusNFCom.Text = "Consulta Status";
-            this.BtnConsultaStatusNFCom.UseVisualStyleBackColor = true;
-            this.BtnConsultaStatusNFCom.Click += new System.EventHandler(this.BtnConsultaStatusNFCom);
-            // 
-            // FormTestes
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1323, 565);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "FormTestes";
-            this.Text = "Treinamento Uni.NFCom";
-            this.Load += new System.EventHandler(this.FormNFCom_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.ResumeLayout(false);
+            var statusServico = new ServicoNFCom.StatusServicoNFCom(xml, configuracao);
+            statusServico.Executar();
+
+            MessageBox.Show(statusServico.Result.CStat + " " + statusServico.Result.XMotivo);
         }
 
         private void FormNFCom_Load(object sender, EventArgs e)
         {
 
         }
+
+        #endregion Private Methods
+
+        #region Public Properties
+
+        /// <summary>
+        /// Certificado digital
+        /// </summary>
+        public static X509Certificate2 CertificadoSelecionado
+        {
+            get
+            {
+                if (CertificadoSelecionadoField == null)
+                {
+                    CertificadoSelecionadoField = new CertificadoDigital().CarregarCertificadoDigitalA1(PathCertificadoDigital, SenhaCertificadoDigital);
+                }
+
+                return CertificadoSelecionadoField;
+            }
+
+            private set => throw new Exception("Não é possível atribuir um certificado digital! Somente resgate o valor da propriedade que o certificado é definido automaticamente.");
+        }
+
+        #endregion Public Properties
+
+        #region Public Constructs
+
+        public FormNFCom() => InitializeComponent();
+
+        #endregion Public Constructs
     }
 }

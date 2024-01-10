@@ -91,14 +91,6 @@ namespace Uni.NFCom.ConsumirServico
                 default: return CreateXmlDocument(Response.Content.Headers.ToString());
             }
 
-            if (Config.PadraoNFSe == PadraoNFSe.IPM)
-            {
-                if (resultadoRetorno.GetElementsByTagName("codigo_html").Count >= 1)
-                {
-                    resultadoRetorno.DocumentElement.RemoveChild(resultadoRetorno.GetElementsByTagName("codigo_html")[0]);
-                }
-            }
-
             return resultadoRetorno;
         }
 

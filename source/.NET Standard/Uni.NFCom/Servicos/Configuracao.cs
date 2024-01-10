@@ -7,7 +7,6 @@ using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using Uni.NFCom;
 using Uni.NFCom.ExtensionsMethods;
 using Uni.NFCom.Servicos.Enums;
 using Uni.NFCom.Utility;
@@ -387,19 +386,7 @@ namespace Uni.NFCom.Servicos
             }
             else
             {
-                if (Servico == Servico.NFeConsultaCadastro)
-                {
-                    //Estados que não disponibilizam a coinsulta cadastro e que usam SVRS, como SVRS tem a consulta mas não para estes estados, tenho que tratar a exceção manualmente, conforma baixo.
-                    if (CodigoUF.Equals(14) || CodigoUF.Equals(16) ||
-                        CodigoUF.Equals(33) || CodigoUF.Equals(11) ||
-                        CodigoUF.Equals(15) || CodigoUF.Equals(22) ||
-                        CodigoUF.Equals(27) || CodigoUF.Equals(18) ||
-                        CodigoUF.Equals(17))
-                    {
-                        throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de " + (TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
-                    }
-                }
-                else if (TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(WebEnderecoHomologacao) && string.IsNullOrWhiteSpace(RequestURIHomologacao))
+                if (TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(WebEnderecoHomologacao) && string.IsNullOrWhiteSpace(RequestURIHomologacao))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de homologação.");
                 }
@@ -587,50 +574,9 @@ namespace Uni.NFCom.Servicos
         /// </summary>
         private void SubstituirValorPropriedadeVariavel()
         {
-            if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoHomologacao))
-            {
-                WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);
-            }
-            else if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(RequestURIHomologacao))
-            {
-                RequestURIHomologacao = RequestURIHomologacao.Replace("{MunicipioToken}", MunicipioToken);
-            }
-
-            if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoProducao))
-            {
-                WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
-            }
-            else if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(RequestURIProducao))
-            {
-                RequestURIProducao = RequestURIProducao.Replace("{MunicipioToken}", MunicipioToken);
-            }
-
             if (!string.IsNullOrWhiteSpace(TokenSoap))
             {
                 WebSoapString = WebSoapString.Replace("{TokenSoap}", TokenSoap);
-            }
-
-            if (!string.IsNullOrWhiteSpace(CodigoMunicipio.ToString()))
-            {
-                WebSoapString = WebSoapString.Replace("{CodigoMunicipio}", CodigoMunicipio.ToString());
-            }
-
-            if (!string.IsNullOrWhiteSpace(MunicipioUsuario))
-            {
-                WebSoapString = WebSoapString.Replace("{MunicipioUsuario}", MunicipioUsuario);
-            }
-
-            if (!string.IsNullOrWhiteSpace(MunicipioSenha))
-            {
-                WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha);
-                //if (ConverteSenhaBase64)
-                //{
-                //    WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha.Base64Encode());
-                //}
-                //else
-                //{
-                //    WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha);
-                //}
             }
 
             if (TipoAmbiente == TipoAmbiente.Homologacao)
@@ -641,14 +587,6 @@ namespace Uni.NFCom.Servicos
             {
                 WebSoapString = WebSoapStringProducao;
             }
-
-            //Antiga implementação para uso do padrão AGILI (Rondonópolis) que acabou não sendo necessária no momento da implementação do município. Ticket ID #159383. Mauricio 05/12/2023
-            //if (!string.IsNullOrEmpty(ClientSecret) && !string.IsNullOrEmpty(ClientID))
-            //{
-            //    var proxy = Proxy.DefinirServidor(ProxyAutoDetect, ProxyUser, ProxyPassword);
-            //    var token =  Token.GerarToken(proxy, MunicipioUsuario, MunicipioSenha, ClientID, ClientSecret);
-            //    MunicipioToken = token.AccessToken;
-            //}
 
             WebSoapString = WebSoapString.Replace("{ActionWeb}", TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao);
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
@@ -818,7 +756,7 @@ namespace Uni.NFCom.Servicos
         {
             get
             {
-                var codigo = CodigoUF != 0 ? CodigoUF : CodigoMunicipio;
+                var codigo = CodigoUF;
                 return codigo;
             }
         }
@@ -827,16 +765,6 @@ namespace Uni.NFCom.Servicos
         /// Código da Unidade Federativa (UF)
         /// </summary>
         public int CodigoUF { get; set; }
-
-        /// <summary>
-        /// Código do IBGE do Município (Utilizando no envio de NFSe)
-        /// </summary>
-        public int CodigoMunicipio { get; set; }
-
-        /// <summary>
-        /// Padrão da NFSe
-        /// </summary>
-        public PadraoNFSe PadraoNFSe { get; set; }
 
         /// <summary>
         /// CSC = Código de segurança do contribuinte. Utilizado para criar o QRCode da NFCe
@@ -1190,24 +1118,9 @@ namespace Uni.NFCom.Servicos
         public string WebEncodingRetorno { get; set; }
 
         /// <summary>
-        /// Token de acesso ao webservice/api do município
-        /// </summary>
-        public string MunicipioToken { get; set; }
-
-        /// <summary>
         /// Token de acesso ao soap do município
         /// </summary>
         public string TokenSoap { get; set; }
-
-        /// <summary>
-        /// Usuário de acesso ao webservice/api do município
-        /// </summary>
-        public string MunicipioUsuario { get; set; }
-
-        /// <summary>
-        /// Senha de acesso ao webservice/api do município
-        /// </summary>
-        public string MunicipioSenha { get; set; }
 
         /// <summary>
         /// ClientID para gerar token (no momento, apenas Padrão AGILI)
@@ -1309,19 +1222,6 @@ namespace Uni.NFCom.Servicos
 
                         Nome = elementArquivos.GetElementsByTagName("Nome")[0].InnerText;
                         NomeUF = elementArquivos.GetElementsByTagName("UF")[0].InnerText;
-                        PadraoNFSe = PadraoNFSe.None;
-
-                        if (XMLUtility.TagExist(elementArquivos, "PadraoNFSe"))
-                        {
-                            try
-                            {
-                                PadraoNFSe = (PadraoNFSe)Enum.Parse(typeof(PadraoNFSe), XMLUtility.TagRead(elementArquivos, "PadraoNFSe"));
-                            }
-                            catch (Exception)
-                            {
-                                throw new Exception("Caro desenvolvedor, você esqueceu de definir no enumerador \"PadraoNFSe\" o tipo " + XMLUtility.TagRead(elementArquivos, "PadraoNFSe") + " e eu não tenho como resolver esta encrenca. Por favor, va lá e defina.");
-                            }
-                        }
 
                         LerXmlConfigEspecifico(GetConfigFile(elementArquivos.GetElementsByTagName("ArqConfig")[0].InnerText));
 

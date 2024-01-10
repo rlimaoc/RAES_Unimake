@@ -72,56 +72,6 @@ namespace Uni.NFCom.ConsumirServico
             }
             else
             {
-                if (soap.PadraoNFSe == PadraoNFSe.TINUS)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    xmlBody = "";
-
-                    foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
-                    {
-                        xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
-                    }
-                }
-
-                if (soap.PadraoNFSe == PadraoNFSe.PROPRIOBARUERISP)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    XmlNodeList xmlNode = doc.GetElementsByTagName("ArquivoRPSBase64");
-                    if (xmlNode.Count > 0)
-                    {
-                        XmlNode tagNode = xmlNode[0];
-                        tagNode.InnerText = tagNode.InnerText.Base64Encode();
-                        doc.GetElementsByTagName("ArquivoRPSBase64")[0].InnerText = tagNode.InnerText;
-                    }
-                    xmlBody = doc.OuterXml;
-                }
-                if (soap.PadraoNFSe == PadraoNFSe.DSF && soap.EncriptaTagAssinatura)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    var sh1 = Criptografia.GetSHA1HashData(doc.GetElementsByTagName("Assinatura")[0].InnerText);
-                    doc.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
-                    xmlBody = doc.OuterXml;
-                    xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
-                }
-
-                if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    retorna += IIBRASIL.cabecalho;
-                    var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
-
-                    var teste = doc.FirstChild.AppendChild(doc.CreateNode(XmlNodeType.DocumentFragment, "Integridade", integridade));
-                    var teste2 = doc.CreateNode(XmlNodeType.Text, "Integridade", integridade);
-                    var teste3 = doc.CreateNode(XmlNodeType.Element, "Integridade", integridade);
-
-                    xmlBody = doc.OuterXml;
-
-                }
-
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
             return retorna;
@@ -300,18 +250,6 @@ namespace Uni.NFCom.ConsumirServico
 
                 //Remover quebras de linhas
                 RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
-            }
-
-            if (soap.PadraoNFSe == PadraoNFSe.FIORILLI || soap.PadraoNFSe == PadraoNFSe.SONNER || soap.PadraoNFSe == PadraoNFSe.SMARAPD || soap.PadraoNFSe == PadraoNFSe.DSF)
-            {
-                RetornoServicoString = RetornoServicoString.Replace("ns1:", string.Empty);
-                RetornoServicoString = RetornoServicoString.Replace("ns2:", string.Empty);
-                RetornoServicoString = RetornoServicoString.Replace("ns3:", string.Empty);
-                RetornoServicoString = RetornoServicoString.Replace("ns4:", string.Empty);
-            }
-            else if (soap.PadraoNFSe == PadraoNFSe.SIMPLE)
-            {
-                RetornoServicoString = RetornoServicoString.Replace("m:", string.Empty);
             }
 
             RetornoServicoXML = new XmlDocument

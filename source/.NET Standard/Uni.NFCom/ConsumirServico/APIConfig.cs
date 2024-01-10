@@ -12,13 +12,10 @@ namespace Uni.NFCom.ConsumirServico
         private string _RequestURI;
         private string _ContentType;
         private string _TagRetorno;
-        private string _MunicipioUsuario;
-        private string _MunicipioSenha;
         private string _WebSoapString;
         private string _MetodoAPI;
         private bool _GZipCompress;
         private string _chAcesso;
-        private PadraoNFSe _PadraoNFSe;
         private Servico _Servico;
         private string _WebActionProducao;
         private IWebProxy _Proxy;
@@ -128,15 +125,6 @@ namespace Uni.NFCom.ConsumirServico
         }
 
         /// <summary>
-        /// Padrão selecionado da API, necessário para tratar configurações exclusivas de cada API
-        /// </summary>
-        public PadraoNFSe PadraoNFSe
-        {
-            get => _PadraoNFSe;
-            set => _PadraoNFSe = value;
-        }
-
-        /// <summary>
         /// Chave de acesso, resgatada pelo xml, necessário para facilitar a transição da informação pelas camadas da DLL
         /// </summary>
         public string chaveAcesso
@@ -154,23 +142,6 @@ namespace Uni.NFCom.ConsumirServico
             set => _GZipCompress = value;
         }
 
-        /// <summary>
-        /// Usuario para loguin no sistema do município
-        /// </summary>
-        public string MunicipioUsuario
-        {
-            get => _MunicipioUsuario;
-            set => _MunicipioUsuario = value;
-        }
-
-        /// <summary>
-        /// Senha para loguin no sistema do município
-        /// </summary>
-        public string MunicipioSenha
-        {
-            get => _MunicipioSenha;
-            set => _MunicipioSenha = value;
-        }
         /// <summary>
         /// HttpAddress - Endereço da API
         /// </summary>

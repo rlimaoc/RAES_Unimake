@@ -20,13 +20,10 @@ namespace Uni.NFCom.ConsumirServico
         private bool _GZIPCompress;
         private IWebProxy _Proxy;
         private int _TimeOutWebServiceConnect;
-        private PadraoNFSe _PadraoNFSe;
         private bool _UsaCertificadoDigital;
         private string _TagRetornoHomologacao;
         private TipoAmbiente _TipoAmbiente;
         private bool _ConverteSenhaBase64;
-        private string _MunicipioSenha;
-        private string _MunicipioUsuario;
         private bool _EncriptaTagAssinatura;
         private string _Token;
 
@@ -56,24 +53,6 @@ namespace Uni.NFCom.ConsumirServico
         /// <summary>
         /// Utiliza ou não a conversão Base64
         /// </summary>
-        public string MunicipioSenha
-        {
-            get => _MunicipioSenha;
-            set => _MunicipioSenha = value;
-        }
-
-        /// <summary>
-        /// Municipio Usuario
-        /// </summary>
-        public string MunicipioUsuario
-        {
-            get => _MunicipioUsuario;
-            set => _MunicipioUsuario = value;
-        }
-
-        /// <summary>
-        /// Utiliza ou não a conversão Base64
-        /// </summary>
         public bool ConverteSenhaBase64
         {
             get => _ConverteSenhaBase64;
@@ -96,15 +75,6 @@ namespace Uni.NFCom.ConsumirServico
         {
             get => _ActionWeb;
             set => _ActionWeb = value;
-        }
-
-        /// <summary>
-        /// Define o padrão utilizado
-        /// </summary>
-        public PadraoNFSe PadraoNFSe
-        {
-            get => _PadraoNFSe;
-            set => _PadraoNFSe = value;
         }
 
         /// <summary>
@@ -139,7 +109,7 @@ namespace Uni.NFCom.ConsumirServico
         /// </summary>
         public string TagRetorno
         {
-            get => string.IsNullOrWhiteSpace(_TagRetorno) ? (_TagRetorno = "nfeResultMsg") : _TagRetorno;
+            get => string.IsNullOrWhiteSpace(_TagRetorno) ? (_TagRetorno = "nfcomResultMsg") : _TagRetorno;
             set => _TagRetorno = value;
         }
 
