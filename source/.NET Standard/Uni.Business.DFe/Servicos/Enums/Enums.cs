@@ -399,6 +399,36 @@ namespace Uni.Business.DFe.Servicos
         /// </summary>
         [Description("Consulta Requerimento de Cancelamento NFSe")]
         NFSeConsultarRequerimentoCancelamento= 64,
+
+        /// <summary>
+        /// 65 - Consulta status serviço NFCom
+        /// </summary>
+        [Description("Consulta status do serviço da NFCom")]
+        NFComStatusServico = 65,
+
+        /// <summary>
+        /// 66 - Consulta protocolo da NFCom
+        /// </summary>
+        [Description("Consulta situação da NFCom")]
+        NFComConsultaProtocolo = 66,
+
+        /// <summary>
+        /// 67 - Envio de Eventos (Cancelamento, CCe, EPEC, etc...)
+        /// </summary>
+        [Description("Envio de eventos da NFCom")]
+        NFComEvento = 67,
+
+        /// <summary>
+        /// 68 - Envio do XML de lote de NFCom
+        /// </summary>
+        [Description("Autorização da NFCom")]
+        NFComRecepcao = 68,
+
+        /// <summary>
+        /// 69 - Envio do XML de consulta dos documentos fiscais eletrônicos destinados - NFCom
+        /// </summary>
+        [Description("Distribuição de documentos fiscais eletrônicos da NFCom")]
+        NFComDistribuicaoDFe = 69,
         #endregion
 
         #region Gerais
@@ -471,8 +501,11 @@ namespace Uni.Business.DFe.Servicos
         /// <summary>
         /// 11 - EFDReinf - Escrituração Fiscal Digital de Retenções e Outras Informações Fiscais
         /// </summary>
-        EFDReinf = 11
-
+        EFDReinf = 11,
+        /// <summary>
+        /// 12 - NFCom - Nota Fiscal Fatura de Serviço de Comunicação Eletrônica
+        /// </summary>
+        NFCom = 12
     }
 
     #endregion       
@@ -683,7 +716,7 @@ namespace Uni.Business.DFe.Servicos
     #region ModeloDFe
 
     /// <summary>
-    /// Modelos dos DFes (NFe, CTe, MDFe, NFCe, etc...)
+    /// Modelos dos DFes (NFe, CTe, MDFe, NFCe, NFCom, etc...)
     /// </summary>
     public enum ModeloDFe
     {
@@ -710,6 +743,12 @@ namespace Uni.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("58")]
         MDFe = 58,
+
+        /// <summary>
+        /// NFCom (Modelo: 62)
+        /// </summary>
+        [XmlEnum("62")]
+        NFCom = 62,
 
         /// <summary>
         /// CTeOS (Modelo: 67)
@@ -1334,7 +1373,7 @@ namespace Uni.Business.DFe.Servicos
     #region TipoEmissao
 
     /// <summary>
-    /// Tipo de emissão do DF-e (NFe, NFCe, CTe, MDFe, etc...)
+    /// Tipo de emissão do DF-e (NFe, NFCe, CTe, MDFe, NFCom, etc...)
     /// </summary>
     public enum TipoEmissao
     {
@@ -1343,6 +1382,12 @@ namespace Uni.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         Normal = 1,
+
+        /// <summary>
+        /// 2 - Contingência NFCom
+        /// </summary>
+        [XmlEnum("2")]
+        ContingenciaNFCom = 2,
 
         /// <summary>
         /// 2 - Contingência FS-IA, com impressão do DANFE em formulário de segurança ou Para MDFe é impressão em formulário branco (sulfite)
@@ -1418,7 +1463,7 @@ namespace Uni.Business.DFe.Servicos
         /// 3 - NF-e de ajuste
         /// </summary>
         [XmlEnum("3")]
-        Auste = 3,
+        Ajuste = 3,
 
         /// <summary>
         /// 4 - Devolução de mercadoria
@@ -4852,7 +4897,7 @@ namespace Uni.Business.DFe.Servicos
 
     #endregion
 
-    #region 
+    #region Informação de Manuseio da CTe
 
     /// <summary>
     /// Informações de manuseio CTe - Modal Aereo
@@ -7382,6 +7427,7 @@ namespace Uni.Business.DFe.Servicos
         [XmlEnum("4")]
         CNO = 4
     }
+    #endregion
 
     #region Indicativo Obra
 
@@ -8431,5 +8477,711 @@ namespace Uni.Business.DFe.Servicos
         SemMovimento = 3,
     }
     #endregion
+
+    #region Finalidades da NFCom
+
+    /// <summary>
+    /// Finalidades da NFCom
+    /// </summary>
+    public enum FinalidadeNFCom
+    {
+        /// <summary>
+        /// 0 - NF-e normal
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 3 - NFCom de substituição
+        /// </summary>
+        [XmlEnum("3")]
+        Substituicao = 3,
+
+        /// <summary>
+        /// 4 - NFCom de ajuste
+        /// </summary>
+        [XmlEnum("4")]
+        Ajuste = 4
+    }
+
+    #endregion
+
+    #region Tipo de Faturamento da NFCom
+
+    /// <summary>
+    /// Tipo de Faturamento
+    /// </summary>
+    public enum TipoFaturamento
+    {
+        /// <summary>
+        /// 0 - Faturamento Normal
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 1 - Faturamento Centralizado
+        /// </summary>
+        [XmlEnum("1")]
+        Centralizado = 1,
+
+        /// <summary>
+        /// 2 - Cofaturamento
+        /// </summary>
+        [XmlEnum("2")]
+        Cofaturamento = 2
+    }
+
+    #endregion
+
+    #region Tipo de Assinante da NFCom
+
+    /// <summary>
+    /// Tipo de Assinante
+    /// </summary>
+    public enum TipoAssinante
+    {
+        /// <summary>
+        /// 1 - Comercial,
+        /// </summary>
+        [XmlEnum("1")]
+        Comercial = 1,
+
+        /// <summary>
+        /// 2 - Industrial,
+        /// </summary>
+        [XmlEnum("2")]
+        Industrial = 2,
+
+        /// <summary>
+        /// 3 - Residencial/Pessoa Física,
+        /// </summary>
+        [XmlEnum("3")]
+        Residencial = 3,
+
+        /// <summary>
+        /// 3 - Residencial/Pessoa Física,
+        /// </summary>
+        [XmlEnum("3")]
+        PessoaFisica = 3,
+
+        /// <summary>
+        /// 4 - Produtor Rural,
+        /// </summary>
+        [XmlEnum("4")]
+        ProdutorRural = 4,
+
+        /// <summary>
+        /// 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; ,
+        /// </summary>
+        [XmlEnum("5")]
+        OrgaosPublicosEstaduais = 5,
+
+        /// <summary>
+        /// 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; ,
+        /// </summary>
+        [XmlEnum("5")]
+        FundacoesEstaduais = 5,
+
+        /// <summary>
+        /// 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; ,
+        /// </summary>
+        [XmlEnum("5")]
+        AutarquiasEstaduais = 5,
+
+        /// <summary>
+        /// 6 - Prestador de serviço de telecomunicação responsável pelo recolhimento do imposto incidente sobre a cessão dos meios de rede do prestador do serviço ao usuário final, nos termos do Convênio ICMS 17/13 ;,
+        /// </summary>
+        [XmlEnum("6")]
+        PrestadorDeServico = 6,
+
+        /// <summary>
+        /// 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;,
+        /// </summary>
+        [XmlEnum("7")]
+        MissoesDiplomaticas = 7,
+
+        /// <summary>
+        /// 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;,
+        /// </summary>
+        [XmlEnum("7")]
+        Consulados = 7,
+
+        /// <summary>
+        /// 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;,
+        /// </summary>
+        [XmlEnum("7")]
+        OrganismosInternacionais = 7,
+
+        /// <summary>
+        /// 8 - Igrejas e Templos de qualquer natureza,
+        /// </summary>
+        [XmlEnum("8")]
+        IgrejasETemplos = 8,
+
+        /// <summary>
+        /// 99 - Outros não especificados anteriormente,
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99,
+    }
+
+    #endregion
+
+    #region Tipo de Seriviço Utilizado da NFCom
+
+    /// <summary>
+    /// Tipo de Seriviço Utilizado
+    /// </summary>
+    public enum TipoServicoUtilizado
+    {
+        /// <summary>
+        /// 1 - Telefonia
+        /// </summary>
+        [XmlEnum("1")]
+        Telefonia = 1,
+
+        /// <summary>
+        /// 2 - Comunicação de dados
+        /// </summary>
+        [XmlEnum("2")]
+        ComunicacaoDeDados = 2,
+
+        /// <summary>
+        /// 3 - TV por Assinatura
+        /// </summary>
+        [XmlEnum("3")]
+        TVPorAssinatura = 3,
+
+        /// <summary>
+        /// 4 - Provimento de acesso à Internet
+        /// </summary>
+        [XmlEnum("4")]
+        Internet = 4,
+
+        /// <summary>
+        /// 5 - Multimídia
+        /// </summary>
+        [XmlEnum("5")]
+        Multimidia = 5,
+
+        /// <summary>
+        /// 6 - Outros
+        /// </summary>
+        [XmlEnum("6")]
+        Outros = 6,
+
+        /// <summary>
+        /// 7 - Varios
+        /// </summary>
+        [XmlEnum("7")]
+        Varios = 7,
+    }
+
+    #endregion
+
+    #region Modelo da NF Papel (21 e 22)
+
+    /// <summary>
+    /// Modelo da NF Papel (21 e 22)
+    /// </summary>
+    public enum ModeloNFPapel
+    {
+        /// <summary>
+        /// Nota Fiscal de Comunicação
+        /// </summary>
+        [XmlEnum("21")]
+        Comunicacao = 21,
+
+        /// <summary>
+        /// Nota Fiscal de Telecomunicação
+        /// </summary>
+        [XmlEnum("22")]
+        Telecomunicacao = 22,
+    }
+
+    #endregion
+
+    #region Motivo de Substituição da NFCom
+
+    /// <summary>
+    /// Motivo de Substituição
+    /// </summary>
+    public enum MotivoSubstituicao
+    {
+        /// <summary>
+        /// 01 - Erro de Preço
+        /// </summary>
+        [XmlEnum("01")]
+        ErroPreco = 1,
+
+        /// <summary>
+        /// 02 - Erro Cadastral
+        /// </summary>
+        [XmlEnum("02")]
+        ErroCadastral = 2,
+
+        /// <summary>
+        /// 03 - Decisão Judicial
+        /// </summary>
+        [XmlEnum("03")]
+        DecisaoJudicial = 3,
+
+        /// <summary>
+        /// 04 - Erro de Tributação
+        /// </summary>
+        [XmlEnum("04")]
+        ErroTributacao = 4,
+
+        /// <summary>
+        /// 05 - Descontinuidade do Serviço,
+        /// </summary>
+        [XmlEnum("05")]
+        DescontinuidadeDoServico = 5,
+    }
+
+    #endregion
+
+    #region Tipo de Ressarcimento da NFCom
+
+    /// <summary>
+    /// Tipo de Ressarcimento
+    /// </summary>
+    public enum TipoRessarcimento
+    {
+        /// <summary>
+        /// 1 - Cobrança Indevida
+        /// </summary>
+        [XmlEnum("1")]
+        CobrancaIndevida = 1,
+
+        /// <summary>
+        /// 2 - Interrupção
+        /// </summary>
+        [XmlEnum("2")]
+        Interrupcao = 2,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99,
+    }
+
+    #endregion
+
+    #region Unidade Básica de Medida da NFCom
+
+    /// <summary>
+    /// Unidade Básica de Medida
+    /// </summary>
+    public enum UnidadeBasicaMedida
+    {
+        /// <summary>
+        /// 1 - Minuto
+        /// </summary>
+        [XmlEnum("1")]
+        Minuto = 1,
+
+        /// <summary>
+        /// 2 - MB
+        /// </summary>
+        [XmlEnum("2")]
+        MB = 2,
+
+        /// <summary>
+        /// 3 - GB
+        /// </summary>
+        [XmlEnum("3")]
+        GB = 3,
+
+        /// <summary>
+        /// 4 - UN
+        /// </summary>
+        [XmlEnum("4")]
+        UN = 4,
+    }
+
+    #endregion
+
+    #region Código de Classificação de Itens da NFCom
+
+    /// <summary>
+    /// Código de Classificação dos Itens de Faturamento Normal
+    /// </summary>
+    public enum ClassificacaoItem
+    {
+        /// <summary>
+        /// 0100101	- Assinatura de serviços de telefonia
+        /// </summary>
+        AssinaturaTelefonia = 100101,
+
+        /// <summary>
+        /// 0100201	- Assinatura de serviços de comunicação de dados
+        /// </summary>
+        AssinaturaComunicacaoDados = 100201,
+
+        /// <summary>
+        /// 0100301	- Assinatura de serviços de TV por Assinatura
+        /// </summary>
+        AssinaturaTVAssinatura = 100301,
+
+        /// <summary>
+        /// 0100401	- Assinatura de serviços de comunicação multimídia
+        /// </summary>
+        AssinaturaComunicacaoMultimidia = 100401,
+
+        /// <summary>
+        /// 0200101	- Habilitação de serviços de telefonia
+        /// </summary>
+        HabilitacaoTelefonia = 200101,
+
+        /// <summary>
+        /// 0200201	- Habilitação de serviços de comunicação de dados
+        /// </summary>
+        HabilitaçãoComunicacaoDados = 200201,
+
+        /// <summary>
+        /// 0200301	- Habilitação de TV por Assinatura
+        /// </summary>
+        HabilitacaoTVAssinatura = 200301,
+
+        /// <summary>
+        /// 0300101	- Serviço Medido - Chamadas locais
+        /// </summary>
+        ServicoMedidoChamadasLocais = 300101,
+
+        /// <summary>
+        /// 0300102	- Serviço Medido - Chamadas longa distância nacional
+        /// </summary>
+        ServicoMedidoChamadasDDD = 300102,
+
+        /// <summary>
+        /// 0300103	- Serviço Medido - Chamadas longa distância internacionais
+        /// </summary>
+        ServicoMedidoChamadasDDI = 300103,
+
+        /// <summary>
+        /// 0300104	- Serviço Medido - Chamadas originadas em Roaming
+        /// </summary>
+        ServicoMedidoOriginadasRoaming = 300104,
+
+        /// <summary>
+        /// 0300105	- Serviço Medido - Chamadas recebidas em Roaming
+        /// </summary>
+        ServicoMedidoRecebidasRoaming = 300105,
+
+        /// <summary>
+        /// 0300106	- Serviço Medido - Adicional de chamada
+        /// </summary>
+        ServicoMedidoAdicionalChamada = 300106,
+
+        /// <summary>
+        /// 0300107	- Serviço Medido - Números Especiais (0300/0500/0600/0800/etc.)
+        /// </summary>
+        ServicoMedidoNumerosEspeciais = 300107,
+
+        /// <summary>
+        /// 0300108	- Serviço Medido - Mensagem SMS
+        /// </summary>
+        ServicoMedidoMensagemSMS = 300108,
+
+        /// <summary>
+        /// 0300109	- Serviço Medido - Mensagem MMS
+        /// </summary>
+        ServicoMedidoMensagemMMS = 300109,
+
+        /// <summary>
+        /// 0300201	- Serviço Medido - Comunicação de dados
+        /// </summary>
+        ServicoMedidoComunicacaoDados = 300201,
+
+        /// <summary>
+        /// 0300301	- Serviço Medido - Pay-per-view (programação TV)
+        /// </summary>
+        ServicoMedidoPayPerView = 300301,
+
+        /// <summary>
+        /// 0300401	- Serviço Medido - Comunicação multimidia
+        /// </summary>
+        ServicoMedidoComunicacaoMultimidia = 300401,
+
+        /// <summary>
+        /// 0400101	- Serviço Não Medido - Telefonia
+        /// </summary>
+        ServicoNaoMedidoTelefonia = 400101,
+
+        /// <summary>
+        /// 0400201	- Serviço Não Medido - Comunicação de dados
+        /// </summary>
+        ServicoNaoMedidoComunicacaoDados = 400201,
+
+        /// <summary>
+        /// 0400301	- Serviço Não Medido - TV por Assinatura
+        /// </summary>
+        ServicoNaoMedidoTVAssinatura = 400301,
+
+        /// <summary>
+        /// 0400401	- Serviço Não Medido - Provimento à internet
+        /// </summary>
+        ServicoNaoMedidoInternet = 400401,
+
+        /// <summary>
+        /// 0400501	- Serviço Não Medido - Comunicação multimídia
+        /// </summary>
+        ServicoNaoMedidoComunicacaoMultimídia = 400501,
+
+        /// <summary>
+        /// 0600101	- Facilidades Adicionais (identificador, caixa postal, não-perturbe, etc)
+        /// </summary>
+        FacilidadesAdicionais = 600101,
+
+        /// <summary>
+        /// 0600201	- Streaming de vídeo e audio
+        /// </summary>
+        StreamingVideoAudio = 600201,
+
+        /// <summary>
+        /// 0600301	- Serviço de Rastreamento
+        /// </summary>
+        ServicoRastreamento = 600301,
+
+        /// <summary>
+        /// 0600401	- Veiculação de publicidade e propaganda em qualquer meio
+        /// </summary>
+        VeiculacaoPublicidadePropagandaEmQualquerMeio = 600401,
+
+        /// <summary>
+        /// 0600501	- Outros Serviços (substituição de número, troca de aparelho, instalação, software, visita técnica, etc.)
+        /// </summary>
+        OutrosServicos = 600501,
+
+        /// <summary>
+        /// 0600601	- Outros serviços de valor adicionado
+        /// </summary>
+        OutrosServicosValorAdicionado = 600601,
+
+        /// <summary>
+        /// 0700101	- Interconexão
+        /// </summary>
+        Interconexao = 700101,
+
+        /// <summary>
+        /// 0700201	- Roaming
+        /// </summary>
+        Roaming = 700201,
+
+        /// <summary>
+        /// 0700301	- Exploração Industrial de Linha Dedicada - EILD
+        /// </summary>
+        ExploracaoIndustrialLinhaDedicada = 700301,
+
+        /// <summary>
+        /// 0700401	- Lançamento de ICMS proporcional às saídas isentas, não tributadas ou com redução de base de cálculo (§ 1º, Cláusula terceira, Convênio ICMS 17/2013)
+        /// </summary>
+        ICMSIsentoNaoTributadoOuReduzido = 700401,
+
+        /// <summary>
+        /// 0700501	- Lançamento de ICMS proporcional às cessões de meio destinadas a consumo próprio (§ 1º Cláusula terceira, Convênio ICMS 17/2013)
+        /// </summary>
+        ICMSProporcionalConsumoProprio = 700501,
+
+        /// <summary>
+        /// 0700601	- Lançamento de ICMS complementar, na condição de responsável tributário
+        /// </summary>
+        ICMSComplementar = 700601,
+
+        /// <summary>
+        /// 0800101	- Aparelho telefônico
+        /// </summary>
+        AparelhoTelefonico = 800101,
+
+        /// <summary>
+        /// 0800201	- Aparelho Identificador de chamadas
+        /// </summary>
+        AparelhoIdentificadorChamadas = 800201,
+
+        /// <summary>
+        /// 0800301	- Modem
+        /// </summary>
+        Modem = 800301,
+
+        /// <summary>
+        /// 0800401	- Rack
+        /// </summary>
+        Rack = 800401,
+
+        /// <summary>
+        /// 0800501	- Sala/Recinto
+        /// </summary>
+        SalaRecinto = 800501,
+
+        /// <summary>
+        /// 0800601	- Roteador
+        /// </summary>
+        Roteador = 800601,
+
+        /// <summary>
+        /// 0800701	- Servidor
+        /// </summary>
+        Servidor = 800701,
+
+        /// <summary>
+        /// 0800801	- Multiplexador
+        /// </summary>
+        Multiplexador = 800801,
+
+        /// <summary>
+        /// 0800901	- Decodificador/Conversor
+        /// </summary>
+        DecodificadorConversor = 800901,
+
+        /// <summary>
+        /// 0801001	- Outros equipamentos
+        /// </summary>
+        OutrosEquipamentos = 801001,
+
+        /// <summary>
+        /// 1000101	- Cobrança Própria - Seguros
+        /// </summary>
+        CobrancaPropriaSeguros = 1000101,
+
+        /// <summary>
+        /// 1000201	- Cobrança Própria - Parcelamento
+        /// </summary>
+        CobrancaPropriaParcelamento = 1000201,
+
+        /// <summary>
+        /// 1000301	- Cobrança Própria - Juros de mora
+        /// </summary>
+        CobrancaPropriaJurosDeMora = 1000301,
+
+        /// <summary>
+        /// 1000401	- Cobrança Própria - Multa de mora
+        /// </summary>
+        CobrancaPropriaMultaDeMora = 1000401,
+
+        /// <summary>
+        /// 1000402	- Cobrança Própria - Multa por descumprimento de contrato (fidelização)
+        /// </summary>
+        CobrancaPropriaMultaDescumprimentoContratoFidelizacao = 1000402,
+
+        /// <summary>
+        /// 1000501	- Cobrança Própria - Conta de meses anteriores
+        /// </summary>
+        CobrancaPropriaContaMesesAnteriores = 1000501,
+
+        /// <summary>
+        /// 1000601	- Cobrança Própria - Correção monetária
+        /// </summary>
+        CobrancaPropriaCorrecaoMonetaria = 1000601,
+
+        /// <summary>
+        /// 1000701	- Cobrança Própria - Taxas
+        /// </summary>
+        CobrancaPropriaTaxas = 1000701,
+
+        /// <summary>
+        /// 1100101	- Cobrança de Terceiros - Serviços de Terceiros
+        /// </summary>
+        CobrancaDeTerceirosServicosTerceiros = 1100101,
+
+        /// <summary>
+        /// 1100201	- Cobrança de Terceiros - Seguros
+        /// </summary>
+        CobrancaDeTerceirosSeguros = 1100201,
+
+        /// <summary>
+        /// 1100301	- Cobrança de Terceiros - Juros de Mora
+        /// </summary>
+        CobrancaDeTerceirosJurosDeMora = 1100301,
+
+        /// <summary>
+        /// 1100401	- Cobrança de Terceiros - Multa de Mora
+        /// </summary>
+        CobrancaDeTerceirosMultaDeMora = 1100401,
+
+        /// <summary>
+        /// 1100501	- Cobrança de Terceiros - Conta de meses anteriores
+        /// </summary>
+        CobrancaDeTerceirosContaMesesAnteriores = 1100501,
+
+        /// <summary>
+        /// 1100601	- Cobrança de Terceiros - Correção Monetária
+        /// </summary>
+        CobrancaDeTerceirosCorrecaoMonetaria = 1100601,
+
+        /// <summary>
+        /// 1100701	- Cobrança de Terceiros - Doações
+        /// </summary>
+        CobrancaDeTerceirosDoacoes = 1100701,
+
+        /// <summary>
+        /// 0500101	- Pré-Pago - Cartão Telefônico - Telefonia Fixa
+        /// </summary>
+        CartaoTelefonico = 500101,
+
+        /// <summary>
+        /// 0500102	- Pré-Pago - Carga / Recarga de Créditos - Telefonia Fixa
+        /// </summary>
+        CreditosTelefoniaFixa = 500102,
+
+        /// <summary>
+        /// 0500201	- Pré-Pago - Carga / Recarga de Créditos - Telefonia Móvel
+        /// </summary>
+        CreditosTelefoniaMovel = 500201,
+
+        /// <summary>
+        /// 0500301	- Pré-Pago - Carga / Recarga de Créditos - Serviço de Comunicação Multimídia
+        /// </summary>
+        CreditosComunicacaoMultimidia = 500301,
+
+        /// <summary>
+        /// 0500401	- Pré-Pago - Carga / Recarga de Créditos - TV por assinatura
+        /// </summary>
+        CreditosTVAssinatura = 500401,
+
+        /// <summary>
+        /// 0500501	- Pré-Pago - Recarga de Créditos - Antecipação
+        /// </summary>
+        CreditosAntecipacao = 500501,
+
+        /// <summary>
+        /// 1200101	- Item lançado em outra NFCom - Cobrança centralizada
+        /// </summary>
+        CobrancaCentralizada = 1200101,
+
+        /// <summary>
+        /// 1300101	- Item lançado em outra NFCom - Cobrança por cofaturamento
+        /// </summary>
+        CobrancaPorCofaturamento = 1300101,
+
+        /// <summary>
+        /// 5900101	- Dedução relativa a impugnação de serviços
+        /// </summary>
+        ImpugnacaoDeServicos = 5900101,
+
+        /// <summary>
+        /// 5900201	- Dedução referente ajuste de conta
+        /// </summary>
+        AjusteDeConta = 5900201,
+
+        /// <summary>
+        /// 5900301	- Dedução relativa à multa pela interrupção de fornecimento
+        /// </summary>
+        MultaInterrupcaoFornecimento = 5900301,
+
+        /// <summary>
+        /// 5900401	- Dedução por pagamento em duplicidade
+        /// </summary>
+        PagamentoDuplicado = 5900401,
+
+        /// <summary>
+        /// 5900501	- Outras deduções
+        /// </summary>
+        OutrasDeducoes = 5900501,
+    }
+
+    #endregion
+
 }
-#endregion
