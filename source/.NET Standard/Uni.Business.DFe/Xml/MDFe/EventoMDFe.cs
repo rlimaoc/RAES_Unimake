@@ -14,6 +14,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using Uni.Business.DFe.Servicos;
 using Uni.Business.DFe.Utility;
+using Unimake;
 
 namespace Uni.Business.DFe.Xml.MDFe
 {

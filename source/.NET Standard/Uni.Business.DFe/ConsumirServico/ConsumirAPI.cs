@@ -10,7 +10,7 @@ using System.Text;
 using System.Xml;
 using Uni.Business.DFe.Servicos;
 using Uni.Business.DFe.Utility;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe
 {

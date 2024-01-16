@@ -25,7 +25,7 @@ Function ConsultaStatusCTe()
    oConsStatServCTe:TpAmb = 2 //2=Homologa��o
    
    //Criar objeto para pegar exce��o do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")
    
    Try
     * Consumir o servi�o

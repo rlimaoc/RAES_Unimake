@@ -63,7 +63,7 @@ Function EnviarEventoCancelamentoNFCe()
    Next I    
   
  * Criar objeto para pegar exce��o do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
    Try 
     * Enviar evento

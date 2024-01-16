@@ -12,7 +12,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Uni.Business.DFe.Servicos;
 using Uni.Business.DFe.Validator;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Utility
 {
@@ -459,6 +459,7 @@ namespace Uni.Business.DFe.Utility
         /// </summary>
         /// <param name="xml">Conteúdo do XML</param>
         /// <param name="linePosition">Posição da linha do XML que gerou a exceção</param>
+        /// <param name="voltarUmaTag">Volta para tag anterior</param>
         private static string ExtrairParteXMLComFalha(string xml, int linePosition, bool voltarUmaTag = false)
         {
             var message = string.Empty;

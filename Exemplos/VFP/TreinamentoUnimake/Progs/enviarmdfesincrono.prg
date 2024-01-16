@@ -331,7 +331,7 @@ FUNCTION EnviarMDFeSincrono()
    MESSAGEBOX("Chave do MDFe: " + oMDFe.InfMDFe.Chave)
    
  * Criar objeto para pegar exce��o do lado do CSHARP
-   oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CREATEOBJECT("Uni.Exceptions.ThrowHelper")   
 
    TRY   
     * Criar o objeto para consumir o servi�o de autoriza��o do MDFe

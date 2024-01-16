@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Uni.Business.DFe.Validator.Contract;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Validator
 {

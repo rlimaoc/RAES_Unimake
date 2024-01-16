@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 using Uni.Business.DFe.Servicos;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 using Unimake.Security.Platform;
 
 namespace Uni.DFe.Test

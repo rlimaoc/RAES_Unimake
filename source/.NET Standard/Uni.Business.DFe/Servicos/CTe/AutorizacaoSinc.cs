@@ -1,5 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Uni.Exceptions;
 #endif
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Xml;
 using Uni.Business.DFe.Servicos.Interop;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Xml.CTe;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.CTe
 {

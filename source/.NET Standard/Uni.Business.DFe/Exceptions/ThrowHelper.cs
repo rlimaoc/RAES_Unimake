@@ -2,13 +2,13 @@
 using System.Runtime.InteropServices;
 using System.Xml;
 
-namespace Unimake.Exceptions
+namespace Uni.Exceptions
 {
     /// <summary>
     /// Classe para capturar dados da exception para disponibilizar a outras linguagens de programação, que não .NET, com tipos simples.
     /// </summary>
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Exceptions.ThrowHelper")]
+    [ProgId("Uni.Exceptions.ThrowHelper")]
     [ComVisible(true)]
     public class ThrowHelper
     {

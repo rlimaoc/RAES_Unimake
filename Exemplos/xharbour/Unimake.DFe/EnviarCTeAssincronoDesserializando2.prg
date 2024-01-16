@@ -206,7 +206,7 @@ Function EnviarCTeAssincronoDesserializando2()
    Wait
 
  * Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
  * Criar grupo de tag <enviCTe> 
    oEnviCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EnviCTe")

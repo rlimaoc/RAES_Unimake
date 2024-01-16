@@ -57,7 +57,7 @@ FUNCTION EnviarEventoInclusaoDFeMDFe()
    MESSAGEBOX("<nProt>: " + oEventoMDFe.InfEvento.DetEvento.NProt)
    
  * Criar objeto para pegar exce��o do lado do CSHARP
-   oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CREATEOBJECT("Uni.Exceptions.ThrowHelper")   
    
    TRY 
     * Enviar evento

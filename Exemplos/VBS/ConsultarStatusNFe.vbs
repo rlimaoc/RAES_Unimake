@@ -20,7 +20,7 @@ consStatServ.Versao = "4.00"
 consStatServ.TpAmb  = 2 'Homologa��o
 consStatServ.CUF    = 41 ' PR
 
-Set exceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
+Set exceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")
 MsgBox "Exce��o do CSHARP: " + exceptionInterop.GetMessage()
 
 'Consumir o servi�o

@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Uni.Business.DFe.Xml.NFe;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.NFCe
 {

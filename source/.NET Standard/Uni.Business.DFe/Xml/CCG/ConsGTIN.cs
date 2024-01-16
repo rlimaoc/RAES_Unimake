@@ -6,7 +6,7 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Uni.Business.DFe.Utility;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Xml.CCG
 {

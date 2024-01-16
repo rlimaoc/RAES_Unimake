@@ -2,7 +2,8 @@
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Validator.Abstractions;
 using Uni.Business.DFe.Xml.CTeOS;
-using Unimake.Exceptions;
+using Unimake;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Validator.CTeOS
 {

@@ -12,7 +12,7 @@ Function DesserializarXMLNFeCompra()
    Local oNfeProc, oNFe, oInfNFe, I, oAutXML, oDet, B, oICMS, oVol, oDup, oDetPag
 
    // Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")
    
    Cls
    

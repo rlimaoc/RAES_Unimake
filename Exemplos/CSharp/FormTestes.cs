@@ -10,7 +10,7 @@ using Uni.Business.DFe.Servicos;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Xml.MDFe;
 using Uni.Business.DFe.Xml.NFe;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 using Unimake.Security.Platform;
 using DANFe = Unimake.Unidanfe;
 using DFe = Uni.Business.DFe;

@@ -21,7 +21,7 @@ Function EnviarConsultaLoteRPS()
    oConfiguracao:TipoAmbiente = 1 //TipoAmbiente.Producao
    
  * Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
 
    Try         
       cArqXML := "D:\testenfe\xharbour\Uni.DFe\ConsultaLote-ped-loterps.xml"

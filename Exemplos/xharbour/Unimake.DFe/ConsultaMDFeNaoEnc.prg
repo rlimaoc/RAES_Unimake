@@ -24,7 +24,7 @@ Function ConsultaMDFeNaoEnc()
    oConsMDFeNaoEnc:CNPJ = "00000000000000"
 
    // Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
    Try 
     * Enviar a consulta

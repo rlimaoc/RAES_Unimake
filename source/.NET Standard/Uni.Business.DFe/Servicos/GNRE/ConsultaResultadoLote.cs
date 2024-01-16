@@ -6,7 +6,7 @@ using System.IO;
 using Uni.Business.DFe.Servicos.Interop;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Xml.GNRE;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.GNRE
 {

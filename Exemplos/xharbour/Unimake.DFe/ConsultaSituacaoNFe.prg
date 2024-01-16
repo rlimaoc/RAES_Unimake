@@ -25,7 +25,7 @@ Function ConsultaSituacaoNfe()
    oConsSitNfe:ChNfe  = "412001061174730001505500100006066414037532101" // Chave da NFE 
    
    //Criar objeto para pegar exce��o do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")
    
    Try   
     * Consumir o servi�o

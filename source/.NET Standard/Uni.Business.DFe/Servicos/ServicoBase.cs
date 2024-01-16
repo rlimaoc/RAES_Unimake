@@ -6,7 +6,7 @@ using System.Xml;
 using Uni.Business.DFe.Security;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Xml;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 using Uni.Business.DFe.Validator;
 using Unimake.Business.Security;
 using System.IO;

@@ -21,7 +21,7 @@ Function ConsultarURLNfse()
    oConfiguracao:TipoAmbiente = 1 //TipoAmbiente.Producao
    
  * Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
 
    Try         
       cStringXML = ""

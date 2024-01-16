@@ -105,7 +105,7 @@ Function GerarXmlNFSe()
    oConfiguracao:TipoAmbiente = 1 //TipoAmbiente.Producao
 	
  * Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
 
    Try         
 	  ? "String do XML:"

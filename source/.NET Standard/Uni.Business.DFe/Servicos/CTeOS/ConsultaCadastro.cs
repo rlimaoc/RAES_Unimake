@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using Uni.Business.DFe.Xml.NFe;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.CTeOS
 {

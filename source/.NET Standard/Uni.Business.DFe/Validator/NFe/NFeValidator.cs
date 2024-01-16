@@ -4,7 +4,8 @@ using Uni.Business.DFe.Servicos;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Validator.Abstractions;
 using Uni.Business.DFe.Xml.NFe;
-using Unimake.Exceptions;
+using Unimake;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Validator.NFe
 {

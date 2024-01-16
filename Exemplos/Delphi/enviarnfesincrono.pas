@@ -47,7 +47,7 @@ begin
   ShowMessage(oConsStatServ.Versao);
 
   //Criar objeto para pegar exceção do lado do CSHARP
-  oExceptionInterop := CreateOleObject('Unimake.Exceptions.ThrowHelper');
+  oExceptionInterop := CreateOleObject('Uni.Exceptions.ThrowHelper');
 
   try
     //Consumir o serviço

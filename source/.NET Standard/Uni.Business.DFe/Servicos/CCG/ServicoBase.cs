@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using System.Text;
 using Uni.Business.DFe.Security;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.CCG
 {

@@ -7,7 +7,7 @@ Function TestesDiversosCertificado()
    Local oErro, oExceptionInterop, oErro2
    
  * Criar objeto para pegar excecao do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")
    
    Try
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -11,7 +11,7 @@ Function EncriptarAssinaturaSP()
    Local oCertificado, assinatura, assinaturaEncriptada, certificadoSelecionado
 
    // Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
    Try   
     * Carregar o certificado digital a ser utilizado na encriptação

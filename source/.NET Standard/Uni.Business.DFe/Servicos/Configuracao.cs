@@ -1264,7 +1264,6 @@ namespace Uni.Business.DFe.Servicos
         /// 
         /// AC.XML
         /// 
-        /// <?xml version="1.0" encoding="utf-8"?>
         /// <Configuracoes>
         /// 	<VersaoConfiguracao>202312061103</VersaoConfiguracao>
         /// 	<Heranca>SVRS.xml</Heranca>

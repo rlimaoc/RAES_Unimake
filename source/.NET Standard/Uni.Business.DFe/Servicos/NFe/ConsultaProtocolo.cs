@@ -1,6 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 #endif
 using System;
 using Uni.Business.DFe.Servicos.Interop;

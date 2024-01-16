@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using Uni.Business.DFe.Security;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.NFSe
 {

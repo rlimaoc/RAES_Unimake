@@ -315,7 +315,7 @@ FUNCTION EnviarNfceSincronoOffLine()
 	   oAutorizacao = CREATEOBJECT("Uni.Business.DFe.Servicos.NFCe.Autorizacao")
 	   
 	 * Criar objeto para pegar excecao do lado do CSHARP
-	   oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")   
+	   oExceptionInterop = CREATEOBJECT("Uni.Exceptions.ThrowHelper")   
    
       TRY
          oAutorizacao.SetXMLConfiguracao(oEnviNFe, oConfig)        

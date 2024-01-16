@@ -197,7 +197,37 @@
 		<None Remove="Servicos\Config\NFCe\SP.xml" />
 		<None Remove="Servicos\Config\NFCe\SVRS.xml" />
 		<None Remove="Servicos\Config\NFCe\TO.xml" />
-		<None Remove="Servicos\Config\NFe\AC.xml" />
+    <None Remove="Servicos\Config\NFCom\AC.xml" />
+    <None Remove="Servicos\Config\NFCom\AL.xml" />
+    <None Remove="Servicos\Config\NFCom\AM.xml" />
+    <None Remove="Servicos\Config\NFCom\AN.xml" />
+    <None Remove="Servicos\Config\NFCom\Ap.xml" />
+    <None Remove="Servicos\Config\NFCom\BA.xml" />
+    <None Remove="Servicos\Config\NFCom\CE.xml" />
+    <None Remove="Servicos\Config\NFCom\Config.xml" />
+    <None Remove="Servicos\Config\NFCom\DF.xml" />
+    <None Remove="Servicos\Config\NFCom\ES.xml" />
+    <None Remove="Servicos\Config\NFCom\GO.xml" />
+    <None Remove="Servicos\Config\NFCom\MA.xml" />
+    <None Remove="Servicos\Config\NFCom\MG.xml" />
+    <None Remove="Servicos\Config\NFCom\MS.xml" />
+    <None Remove="Servicos\Config\NFCom\MT.xml" />
+    <None Remove="Servicos\Config\NFCom\PA.xml" />
+    <None Remove="Servicos\Config\NFCom\PB.xml" />
+    <None Remove="Servicos\Config\NFCom\PE.xml" />
+    <None Remove="Servicos\Config\NFCom\PI.xml" />
+    <None Remove="Servicos\Config\NFCom\PR.xml" />
+    <None Remove="Servicos\Config\NFCom\RJ.xml" />
+    <None Remove="Servicos\Config\NFCom\RN.xml" />
+    <None Remove="Servicos\Config\NFCom\RO.xml" />
+    <None Remove="Servicos\Config\NFCom\RR.xml" />
+    <None Remove="Servicos\Config\NFCom\RS.xml" />
+    <None Remove="Servicos\Config\NFCom\SC.xml" />
+    <None Remove="Servicos\Config\NFCom\SE.xml" />
+    <None Remove="Servicos\Config\NFCom\SP.xml" />
+    <None Remove="Servicos\Config\NFCom\SVRS.xml" />
+    <None Remove="Servicos\Config\NFCom\TO.xml" />
+    <None Remove="Servicos\Config\NFe\AC.xml" />
 		<None Remove="Servicos\Config\NFe\AL.xml" />
 		<None Remove="Servicos\Config\NFe\AM.xml" />
 		<None Remove="Servicos\Config\NFe\AN.xml" />
@@ -1515,7 +1545,97 @@
 		<EmbeddedResource Include="Servicos\Config\NFCe\SVRS.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFe\MA.xml" />
+    <EmbeddedRecource Include="Servicos\Config\NFCom\AC.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\AL.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\AM.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\AN.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\Ap.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\BA.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\CE.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\Config.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\DF.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\ES.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\GO.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\MA.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\MG.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\MS.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\MT.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\PA.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\PB.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\PE.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\PI.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\PR.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\RJ.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\RN.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\RO.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\RR.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\RS.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\SC.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\SE.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\SP.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\SVRS.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedRecource Include="Servicos\Config\NFCom\TO.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedRecource>
+    <EmbeddedResource Include="Servicos\Config\NFe\MA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFe\AC.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFe\AL.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFe\AM.xml">
@@ -2137,6 +2257,23 @@
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retmdatamah_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retparam_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\sncmtypes.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFComTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFComTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\evCancNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFComTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\eventoNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\nfcomTiposBasico_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\nfcom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\procEventoNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\procNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retConsSitNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retConsStatServNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retEventoNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\retNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\tiposGeralNFCom_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>

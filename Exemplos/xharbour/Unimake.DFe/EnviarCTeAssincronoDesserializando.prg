@@ -45,7 +45,7 @@ Function EnviarCTeAssincronoDesserializando()
    ?
    
  * Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
    Try 
     * Criar o objeto para consumir o serviço de autorização do CTe

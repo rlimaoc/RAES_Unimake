@@ -267,7 +267,7 @@ FUNCTION EnviarCTeSincrono()
    oCTe.InfCTe = oInfCTe   
 
  * Criar objeto para pegar exce��o do lado do CSHARP
-   oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CREATEOBJECT("Uni.Exceptions.ThrowHelper")   
   
    MESSAGEBOX("CNPJ Emitente: " + oCTe.InfCTe.Emit.CNPJ)
    MESSAGEBOX("Razao Emitente: " + oCTe.InfCTe.Emit.XNome)

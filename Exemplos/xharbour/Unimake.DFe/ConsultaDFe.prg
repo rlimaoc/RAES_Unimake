@@ -18,7 +18,7 @@ FUNCTION ConsultaDFe()
    ? "vai processar nsu ", nsu      
     
  * Criar objeto para pegar exceção do lado do CSHARP 
-   oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper") 
+   oExceptionInterop = CREATEOBJECT("Uni.Exceptions.ThrowHelper") 
     
    TRY 
       DO WHILE .T. 

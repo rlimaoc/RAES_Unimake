@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Xml.NFe;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.NFCe
 {

@@ -1,7 +1,7 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 using Unimake.Business.Security;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 #endif
 using System;
 using System.IO;
@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
+using Unimake;
 using Unimake.Cryptography;
 
 namespace Uni.Business.DFe.Utility

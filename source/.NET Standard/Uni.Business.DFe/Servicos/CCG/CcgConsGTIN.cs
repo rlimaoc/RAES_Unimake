@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System;
 using Uni.Business.DFe.Servicos.Interop;
 using Uni.Business.DFe.Utility;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 using Uni.Business.DFe.Xml.CCG;
 
 namespace Uni.Business.DFe.Servicos.CCG

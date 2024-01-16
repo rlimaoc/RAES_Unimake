@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Unimake.Exceptions
+namespace Uni.Exceptions
 {
     /// <summary>
     /// Classe de exceção quando o certificado digital não é localizado ou está com falha
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Exceptions.CertificadoDigitalException")]
+    [ProgId("Uni.Exceptions.CertificadoDigitalException")]
     [ComVisible(true)]
 #endif
     public class CertificadoDigitalException : Exception
@@ -91,7 +91,7 @@ namespace Unimake.Exceptions
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Exceptions.CarregarCertificadoException")]
+    [ProgId("Uni.Exceptions.CarregarCertificadoException")]
     [ComVisible(true)]
 #endif
     public class CarregarCertificadoException : Exception

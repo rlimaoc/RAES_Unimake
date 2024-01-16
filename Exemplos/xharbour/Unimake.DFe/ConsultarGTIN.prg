@@ -22,7 +22,7 @@ Function ConsultarGTIN()
    oConsGTIN:GTIN = "7896015516031"
 
    // Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
    Try 
     * Enviar o XML de consulta

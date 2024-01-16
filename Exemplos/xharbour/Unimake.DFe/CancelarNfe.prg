@@ -73,7 +73,7 @@ Function CancelarNFe()
    Wait   
    
    // Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
    Try 
     * Enviar evento

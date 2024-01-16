@@ -81,7 +81,7 @@ FUNCTION EnviarGNRE()
 
  
  * Criar objeto para pegar exce��o do lado do CSHARP
-   oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")
+   oExceptionInterop = CREATEOBJECT("Uni.Exceptions.ThrowHelper")
 
    TRY
       oLoteRecepcao = CREATEOBJECT("Uni.Business.DFe.Servicos.GNRE.LoteRecepcao")

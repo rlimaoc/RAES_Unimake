@@ -457,7 +457,7 @@ Function EnviarNfeSincrono()
    oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
    
  * Criar objeto para pegar excecao do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
 
    Try
       oAutorizacao.SetXMLConfiguracao(oEnviNFe, oConfig)      

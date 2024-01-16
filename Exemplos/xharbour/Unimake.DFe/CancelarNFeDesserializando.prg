@@ -19,7 +19,7 @@ Function CancelarNFeDesserializando()
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
    // Criar objeto para pegar exceção do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")   
    
    Try 
     * Criar tag EnvEvento

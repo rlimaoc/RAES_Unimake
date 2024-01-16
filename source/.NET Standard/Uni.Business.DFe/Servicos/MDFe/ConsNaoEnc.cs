@@ -5,7 +5,7 @@ using System;
 using Uni.Business.DFe.Servicos.Interop;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Xml.MDFe;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.MDFe
 {

@@ -7,7 +7,7 @@ using Uni.Business.DFe.Servicos.Interop;
 using Uni.Business.DFe.Utility;
 using Uni.Business.DFe.Xml.CTe;
 using Uni.Business.DFe.Xml.CTeOS;
-using Unimake.Exceptions;
+using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.CTeOS
 {

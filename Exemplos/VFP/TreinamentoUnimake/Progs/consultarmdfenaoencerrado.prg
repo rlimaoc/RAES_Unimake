@@ -19,7 +19,7 @@ FUNCTION ConsultarMDFeNaoEncerrado()
    oConsMDFeNaoEnc.CNPJ = "10859283000185"
    
  * Criar objeto para pegar exce��o do lado do CSHARP
-   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
+   oExceptionInterop = CreateObject("Uni.Exceptions.ThrowHelper")
 
    TRY 
     * Enviar a consulta
