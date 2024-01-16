@@ -1208,6 +1208,70 @@ namespace Uni.Business.DFe.Servicos
 
     #endregion
 
+    #region TipoEventoNFCom
+
+    /// <summary>
+    /// Tipos de eventos da NFCom
+    /// </summary>
+    public enum TipoEventoNFCom
+    {
+        /// <summary>
+        /// 0 - Evento desconhecido
+        /// </summary>
+        [XmlEnum("0")]
+        Desconhecido = 0,
+
+        /// <summary>
+        /// 110111 - Cancelamento NFe
+        /// </summary>
+        [XmlEnum("110111")]
+        Cancelamento = 110111,
+
+        /// <summary>
+        /// 240140 - Autorizada NFCom de Substituição
+        /// </summary>
+        [XmlEnum("240140")]
+        AutorizadaSubstituicao = 240140,
+
+        /// <summary>
+        /// 240150 - Autorizada NFCom de Ajuste
+        /// </summary>
+        [XmlEnum("240150")]
+        AutorizadaAjuste = 240150,
+
+        /// <summary>
+        /// 240151 - Cancelada NFCom de Ajuste
+        /// </summary>
+        [XmlEnum("240151")]
+        CanceladaAjuste = 240151,
+
+        /// <summary>
+        /// 240160 - Autorizada NFCom de Cofaturamento
+        /// </summary>
+        [XmlEnum("240160")]
+        AutorizadaCofaturamento = 240160,
+
+        /// <summary>
+        /// 240161 - Cancelada NFCom de Cofaturamento
+        /// </summary>
+        [XmlEnum("240161")]
+        CanceladaCofaturamento = 240161,
+
+        /// <summary>
+        /// 240162 - Substituída NFCom de Cofaturamento
+        /// </summary>
+        [XmlEnum("240162")]
+        SubstituidaCofaturamento = 240162,
+
+        /// <summary>
+        /// 240170 - Liberação Prazo Cancelamento
+        /// </summary>
+        [XmlEnum("240170")]
+        LiberacaoPrazoCancelamento = 240170,
+    }
+
+    #endregion
+
     #region SimNao
 
     /// <summary>
