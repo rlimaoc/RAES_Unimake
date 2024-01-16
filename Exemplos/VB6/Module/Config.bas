@@ -7,7 +7,7 @@ If flagCertificado = False Then
     flagCertificado = True
 End If
 
-Set InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+Set InicializarConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 InicializarConfiguracao.TipoDFe = CInt(pTipoDFe)
 
 If pCUF > 0 Then InicializarConfiguracao.CodigoUF = pCUF

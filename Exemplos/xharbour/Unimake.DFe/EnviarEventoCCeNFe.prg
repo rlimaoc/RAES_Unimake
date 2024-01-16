@@ -12,14 +12,14 @@ Function EnviarEventoCCENFe()
    Local oEnvEvento, oEvento, oDetEventoCCE, oInfEvento
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 0 // 0=nfe
    oConfiguracao:Servico = 5 // 5=Envio de evento
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento:Versao = "1.00"
    oEnvEvento:IdLote = "000000000000001"
 
@@ -27,16 +27,16 @@ Function EnviarEventoCCENFe()
  * Criar tags do evento sequencia 1
  * -------------------------------------------------
  * Criar tag Evento
-   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
    oEvento:Versao = "1.00"
  
  * Criar tag DetEventoCCE
-   oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
+   oDetEventoCCE = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoCCE")
    oDetEventoCCE:Versao = "1.00"
    oDetEventoCCE:XCorrecao = "CFOP errada, CFOP correta do produto 10 e 5602"
 
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
  
  * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
    oInfEvento:DetEvento = oDetEventoCCE
@@ -76,7 +76,7 @@ Function EnviarEventoCCENFe()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
       oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
 	  
 	  ? oRecepcaoEvento:GetConteudoXMLAssinado()

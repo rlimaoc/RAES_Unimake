@@ -16,10 +16,10 @@ Set oCertificado = CreateObject("Unimake.Security.Platform.CertificadoDigital")
 ' Certificado A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que esta instalado no repositorio do windows
 ' -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-' A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que está instalado no repositorio do windows
+' A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que estï¿½ instalado no repositorio do windows
 oCertSel1 = oCertificado.AbrirTelaSelecao()
    
-' Voce pode salvar o Thumbprint ou SerialNumber do certificado para salvar em sua base de dados para resgatar ele no futuro no repositório do windows sem precisar abrir tela para selecionar novamente.
+' Voce pode salvar o Thumbprint ou SerialNumber do certificado para salvar em sua base de dados para resgatar ele no futuro no repositï¿½rio do windows sem precisar abrir tela para selecionar novamente.
 
 thumbprint = oCertificado.GetThumbPrint ((oCertSel1))
 serialNumber = oCertificado.GetSerialNumber ((oCertSel1))
@@ -54,7 +54,7 @@ Function MostrarDados(oCert, oCertSel)
 	if oCert.Vencido ((oCertSel)) then
 	   vencido = "SIM"
 	else
-	   vencido = "NÃO"
+	   vencido = "Nï¿½O"
 	end if  
 
 	MsgBox "ID do Certificado: " + oCert.GetThumbPrint ((oCertSel))
@@ -64,7 +64,7 @@ Function MostrarDados(oCert, oCertSel)
 	MsgBox "Validade Final: " + oCert.GetNotAfter ((oCertSel))
 	MsgBox "Certificado vencido: " + Vencido
 
-	Set oVerificarA3 = CreateObject("Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
+	Set oVerificarA3 = CreateObject("Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
 
 	If oVerificarA3.IsA3 ((oCertSel)) then
 	   MsgBox "Tipo do certificado digital e A3."

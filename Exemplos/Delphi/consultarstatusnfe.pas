@@ -29,13 +29,13 @@ var
 
 begin
   // Criar objeto de configuração mínima
-  oConfiguracao := CreateOleObject('Unimake.Business.DFe.Servicos.Configuracao');
+  oConfiguracao := CreateOleObject('Uni.Business.DFe.Servicos.Configuracao');
   oConfiguracao.TipoDFe := 0; //0=NFe
   oConfiguracao.CertificadoArquivo := 'C:\Projetos\certificados\UnimakePV.pfx';
   oConfiguracao.CertificadoSenha := '12345678';
 
   //Criar objeto do XML
-  oConsStatServ := CreateOleObject('Unimake.Business.DFe.Xml.NFe.ConsStatServ');
+  oConsStatServ := CreateOleObject('Uni.Business.DFe.Xml.NFe.ConsStatServ');
   oConsStatServ.Versao := '4.00';
   oConsStatServ.TpAmb := 2; //2=Homologação
   oConsStatServ.CUF := 41; //41=Paraná
@@ -50,7 +50,7 @@ begin
 
   try
     //Consumir o serviço
-    oStatusServico := CreateOleObject('Unimake.Business.DFe.Servicos.NFe.StatusServico');
+    oStatusServico := CreateOleObject('Uni.Business.DFe.Servicos.NFe.StatusServico');
     oStatusServico.Executar(oConsStatServ, oConfiguracao);
 
     //String do XML retornado pela SEFAZ

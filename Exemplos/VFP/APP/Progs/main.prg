@@ -18,7 +18,7 @@ If NOT DIRECTORY(pastaRetorno)
 	MKDIR(pastaRetorno)
 ENDIF
         
-* Configuraçõoes UI
+* Configuraï¿½ï¿½oes UI
 ACTIVATE WINDOW SCREEN
 _SCREEN.WINDOWSTATE = 2
 PUSH MENU _MSYSMENU 
@@ -28,9 +28,9 @@ ON SHUTDOWN QUIT
 READ EVENTS
 RELEASE ALL	
 
-* Funções
+* Funï¿½ï¿½es
 FUNCTION ConfiguracaoAtual(iTipoDFe, iTipoEmissao)
-	InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+	InicializarConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 	InicializarConfiguracao.TipoDFe = iTipoDFe
 	InicializarConfiguracao.TipoEmissao = iTipoEmissao
 	InicializarConfiguracao.CertificadoDigital = Aplicativo.CertificadoSelecionado.Selecionado
@@ -42,7 +42,7 @@ ENDFUNC
 
 FUNCTION VerificarVencimentoCertificado()
 	IF Aplicativo.CertificadoSelecionado.Vencido = .t. 
-		=MESSAGEBOX("O Certificado está Vencido")
+		=MESSAGEBOX("O Certificado estï¿½ Vencido")
 		RETURN 0
 	ENDIF 
 ENDFUNC 
@@ -56,9 +56,9 @@ ENDFUNC
 
 * NFe 
 FUNCTION CriarEvento(XCorrecao, NSeqEvento)
-	InfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
-	DetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
-	Evento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+	InfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
+	DetEventoCCE = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoCCE")
+	Evento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
 
 	DetEventoCCE.XCorrecao = XCorrecao
 	DetEventoCCE.Versao = "1.00"
@@ -85,7 +85,7 @@ FUNCTION CriarEvento(XCorrecao, NSeqEvento)
 ENDFUNC 
 
 Function GetNFe()
-	NFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+	NFe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
 	NFe.AddInfNFe(GetInfNFe())
 	GetNFe = NFe
 	
@@ -95,7 +95,7 @@ Function GetNFe()
 ENDFUNC 
 
 Function GetInfNFe()
-	infNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
+	infNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InfNFe")
 	infNFe.Versao = "4.00"
 	infNFe.Ide = GetIde()
 	infNFe.Emit = GetEmit()
@@ -116,7 +116,7 @@ ENDFUNC
 
 FUNCTION GetIde() 
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Ide")
 	result.CUF = 41
 	result.NatOp = "VENDA PRODUC.DO ESTABELEC"
 	result.Mod = 55
@@ -144,7 +144,7 @@ ENDFUNC
 
 FUNCTION GetEmit()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Emit")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Emit")
 	result.CNPJ = "06117473000150"
 	result.XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
 	result.XFant = "UNIMAKE - PARANAVAI"
@@ -153,7 +153,7 @@ FUNCTION GetEmit()
 	result.CNAE = "6202300"
 	result.CRT = 1
 	 
-	ender = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+	ender = CreateObject("Uni.Business.DFe.Xml.NFe.EnderEmit")
 	ender.XLgr = "RUA ANTONIO FELIPE"
 	ender.Nro = "1500"
 	ender.XBairro = "CENTRO"
@@ -174,14 +174,14 @@ ENDFUNC
 
 FUNCTION GetDest()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Dest")
 	result.CNPJ = "04218457000128"
 	result.XNome = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
 	result.IndIEDest = 1
 	result.IE = "582614838110"
 	result.Email = "janelaorp@janelaorp.com.br"
 
-	ender = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+	ender = CreateObject("Uni.Business.DFe.Xml.NFe.EnderDest")
 	ender.XLgr = "AVENIDA DA SAUDADE"
 	ender.Nro = "1555"
 	ender.XBairro = "CAMPOS ELISEOS"
@@ -202,8 +202,8 @@ ENDFUNC
 
 FUNCTION GetTotal()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
-	ICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
+	ICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
 	ICMSTot.VBC = 0
 	ICMSTot.VICMS = 0
 	ICMSTot.VICMSDeson = 0
@@ -236,9 +236,9 @@ ENDFUNC
 
 FUNCTION GetTransp()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
-	Transporta = CreateObject("Unimake.Business.DFe.Xml.NFe.Transporta")
-	Vol = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Transp")
+	Transporta = CreateObject("Uni.Business.DFe.Xml.NFe.Transporta")
+	Vol = CreateObject("Uni.Business.DFe.Xml.NFe.Vol")
 
 	Transporta.XNome = "RETIRADO PELO CLIENTE"
 	Transporta.XEnder = "RUA RIO DE JANEIRO"
@@ -264,9 +264,9 @@ ENDFUNC
 
 FUNCTION GetCobr()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
-	Dup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
-	Fat = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Cobr")
+	Dup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
+	Fat = CreateObject("Uni.Business.DFe.Xml.NFe.Fat")
 	Fat.NFat = "151342"
 	Fat.VOrig = 140.3
 	Fat.VDesc = 0
@@ -286,8 +286,8 @@ ENDFUNC
 
 FUNCTION GetPag()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
-	DetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
+	DetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
 	DetPag.TPag = 15
 	DetPag.VPag = 140.3
 	DetPag.SetIndPag(1)
@@ -304,7 +304,7 @@ ENDFUNC
 
 FUNCTION GetInfAdic()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.InfAdic")
 	result.InfCpl = ";Trib aprox: Federal Estadual Municipal ; Trib aprox: Federal Estadual Municipal Fonte: ;"
     GetInfAdic = result
     
@@ -315,7 +315,7 @@ ENDFUNC
 
 FUNCTION GetInfRespTec()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.InfRespTec")
 	result.CNPJ = "05413671000106"
 	result.XContato = "Oduvaldo de Oliveira"
 	result.Email = "oduvaldo@visualsistemas.net"
@@ -329,10 +329,10 @@ ENDFUNC
 
 FUNCTION GetDet()
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 	result.NItem = 1
 	
-	Prod = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+	Prod = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
 	Prod.CProd = "01042"
 	Prod.CEAN = "SEM GTIN"
 	Prod.XProd = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -351,19 +351,19 @@ FUNCTION GetDet()
 	Prod.NItemPed = 1
     result.Prod = Prod
 
-    Imposto = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+    Imposto = CreateObject("Uni.Business.DFe.Xml.NFe.Imposto")
     Imposto.VTotTrib = 12.63
 
-    ICMS = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
-    ICMSSN101 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
+    ICMS = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
+    ICMSSN101 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN101")
     ICMSSN101.Orig = 0
     ICMSSN101.PCredSN = 2.8255
     ICMSSN101.VCredICMSSN = 2.4
     ICMS.ICMSSN101 = ICMSSN101
     Imposto.ICMS = ICMS
                                                                           
-	PIS = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
-	PISOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+	PIS = CreateObject("Uni.Business.DFe.Xml.NFe.PIS")
+	PISOutr = CreateObject("Uni.Business.DFe.Xml.NFe.PISOutr")
     PISOutr.CST = "99"
     PISOutr.VBC = 0
     PISOutr.PPIS = 0
@@ -371,8 +371,8 @@ FUNCTION GetDet()
 	PIS.PISOutr = PISOutr
 	Imposto.PIS = PIS
 
-	COFINS = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
-	COFINSOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+	COFINS = CreateObject("Uni.Business.DFe.Xml.NFe.COFINS")
+	COFINSOutr = CreateObject("Uni.Business.DFe.Xml.NFe.COFINSOutr")
     COFINSOutr.CST = "99"
     COFINSOutr.VBC = 0
     COFINSOutr.PCOFINS = 0
@@ -397,7 +397,7 @@ FUNCTION GetDet()
 ENDFUNC 
 
 FUNCTION GetFromFileNFe(arquivo)
-	NFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+	NFe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
 	GetFromFileNFe = NFe.LoadFromFile(arquivo)	
 	RELEASE NFe  
 	

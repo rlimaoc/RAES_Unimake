@@ -4,7 +4,7 @@
 Dim chaveDFe
 Dim oXMLUtilityInterop
 
-Set oXMLUtilityInterop = CreateObject("Unimake.Business.DFe.Utility.XMLUtilityInterop")
+Set oXMLUtilityInterop = CreateObject("Uni.Business.DFe.Utility.XMLUtilityInterop")
 
 'Gerar a chave passando o código numérico randômico
 '

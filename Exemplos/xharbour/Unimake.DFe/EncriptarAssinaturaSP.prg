@@ -21,7 +21,7 @@ Function EncriptarAssinaturaSP()
 	  cSerialNumber = oCertificado:GetSerialNumber()
    
     * Criar objetoda classe de encriptação
-      oConverterInterop = CreateObject("Unimake.Business.DFe.Utility.ConverterInterop")
+      oConverterInterop = CreateObject("Uni.Business.DFe.Utility.ConverterInterop")
    
     * Assinatura
       assinatura = "31000000OL03 00000000000120070103TNN00000000205000000000000050000002658100013167474254"

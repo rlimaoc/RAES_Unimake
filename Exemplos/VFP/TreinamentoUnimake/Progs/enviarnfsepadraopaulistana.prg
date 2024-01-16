@@ -1,19 +1,19 @@
 * ---------------------------------------------------------------------------------
-* Enviar NFSe padrão Paulistana (Município de São Paulo)
+* Enviar NFSe padrï¿½o Paulistana (Municï¿½pio de Sï¿½o Paulo)
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarNFSePadraoPAULISTANA()
    LOCAL oConfiguracao, oErro, oExceptionInterop, oConfigConsulta
    LOCAL oGerarNfse, oEnvioRPS, xmlNfse, xmlConsultaRPS, oConsultarNfse
    
- * Criar o objeto de configuração mínima
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar o objeto de configuraï¿½ï¿½o mï¿½nima
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
    oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
    oConfiguracao.CertificadoSenha = "12345678"   
   
-   oConfiguracao.TipoAmbiente = 1 && Produção
+   oConfiguracao.TipoAmbiente = 1 && Produï¿½ï¿½o
    
-   oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
+   oConfiguracao.CodigoMunicipio = 3550308 && Cï¿½digo do IBGE de Sï¿½o Paulo-SP
    oConfiguracao.Servico = 45 && Servico.NFSeEnvioRps
    oConfiguracao.SchemaVersao = "2.00"
    
@@ -73,11 +73,11 @@ FUNCTION EnviarNFSePadraoPAULISTANA()
    xmlNfse = xmlNfse + AllTrim([	</RPS>])
    xmlNfse = xmlNfse + AllTrim([</PedidoEnvioRPS>])
    
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")     
 
    TRY 
-      oEnvioRPS = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.EnvioRps")
+      oEnvioRPS = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.EnvioRps")
       oEnvioRPS.Executar(xmlnfse, oConfiguracao)
       
       MESSAGEBOX(oEnvioRPS.RetornoWSString)  
@@ -100,17 +100,17 @@ FUNCTION EnviarNFSePadraoPAULISTANA()
       xmlConsultaRPS = xmlConsultaRPS + AllTrim([	</Detalhe>])
       xmlConsultaRPS = xmlConsultaRPS + AllTrim([</p1:PedidoConsultaNFe>])
       
-    * Consumir o serviço de consulta nfse por RPS        
-      oConfigConsulta = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+    * Consumir o serviï¿½o de consulta nfse por RPS        
+      oConfigConsulta = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfigConsulta.TipoDFe = 5 && TipoDFe.NFSe
       oConfigConsulta.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfigConsulta.CertificadoSenha = "12345678"   
-      oConfigConsulta.TipoAmbiente =  1 && Produção
-      oConfigConsulta.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
+      oConfigConsulta.TipoAmbiente =  1 && Produï¿½ï¿½o
+      oConfigConsulta.CodigoMunicipio = 3550308 && Cï¿½digo do IBGE de Sï¿½o Paulo-SP
       oConfigConsulta.Servico = 32 && Servico.NFSeConsultarNfse
       oConfigConsulta.SchemaVersao = "2.00"
       
-      oConsultarNfse = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfse")
+      oConsultarNfse = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultarNfse")
       oConsultarNfse.Executar(xmlConsultaRPS, oConfigConsulta)
       
       MESSAGEBOX(oConsultarNfse.RetornoWSString)

@@ -1,4 +1,4 @@
-validarSchema = CreateObject("Unimake.Business.DFe.ValidarSchema")
+validarSchema = CreateObject("Uni.Business.DFe.ValidarSchema")
 schema = "NFe.nfe_v4.00.xsd"
 arquivo = FULLPATH(CURDIR()) + 'Envio\NFe.xml' 
 

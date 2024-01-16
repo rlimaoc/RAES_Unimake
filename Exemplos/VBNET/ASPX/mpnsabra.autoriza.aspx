@@ -309,9 +309,9 @@ Dim Errado as string = trim(Pathe) & "Erro\"
        ArquivoOrigem = TRIM(PATHE) & "envio\" & Trim(ChaveNota) & "-NFE.xml" 
 
 
-        Dim Xml = New Unimake.Business.DFe.Xml.NFe.EnviNFe
-        Dim NFe = New Unimake.Business.DFe.Xml.NFe.NFe
-        Dim InfNFe = New Unimake.Business.DFe.Xml.NFe.InfNFe
+        Dim Xml = New Uni.Business.DFe.Xml.NFe.EnviNFe
+        Dim NFe = New Uni.Business.DFe.Xml.NFe.NFe
+        Dim InfNFe = New Uni.Business.DFe.Xml.NFe.InfNFe
         '
         Dim Doc = New System.Xml.XmlDocument
 
@@ -324,13 +324,13 @@ Dim Errado as string = trim(Pathe) & "Erro\"
 
         End With
 
-        Dim Jura6 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.NFe)
+        Dim Jura6 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.NFe)
         Xml.NFe = Jura6
 
 
         Try
 
-            Xml.NFe.Add(Unimake.Business.DFe.Utility.XMLUtility.Deserializar(Of Unimake.Business.DFe.Xml.NFe.NFe)(Doc))
+            Xml.NFe.Add(Uni.Business.DFe.Utility.XMLUtility.Deserializar(Of Uni.Business.DFe.Xml.NFe.NFe)(Doc))
 
         Catch ex As Exception
             GravarArquivoSequencial(trim(certo) & "NFe" & trim(ChaveNota) & ".err" , ex.ToString)    
@@ -342,9 +342,9 @@ Dim Errado as string = trim(Pathe) & "Erro\"
         Try
             
             If val(TipoNF) = 55 Then
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFe.Autorizacao(Xml, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFe.Autorizacao(Xml, Configuracao)
             Else
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.Autorizacao(Xml, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFCe.Autorizacao(Xml, Configuracao)
             End If
      
             Autorizacao.Executar

@@ -4,18 +4,18 @@ ENDIF
 VerificarVencimentoCertificado()
 ConfiguracaoAtual(0,1)
 
-RecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
-EnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+RecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
+EnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
 
 EnvEvento.AddEvento(CriarEvento("CFOP errada, segue CFOP correta.", 1))
-EnvEvento.AddEvento(CriarEvento("Nome do transportador está errado, segue nome correto.", 2))
+EnvEvento.AddEvento(CriarEvento("Nome do transportador estï¿½ errado, segue nome correto.", 2))
 
 EnvEvento.Versao = "1.00"
 EnvEvento.IdLote = "000000000000001"
 
 RecepcaoEvento.Executar(EnvEvento,Aplicativo.Configuracao.Inicializar)
 
-* Gravar o XML de distribuição se a inutilização foi homologada
+* Gravar o XML de distribuiï¿½ï¿½o se a inutilizaï¿½ï¿½o foi homologada
 IF (RecepcaoEvento.result.CStat = 128)  && 128 = Lote de evento processado com sucesso
 
 	IF RecepcaoEvento.result.GetRetEventoCount > 0 
@@ -43,7 +43,7 @@ IF (RecepcaoEvento.result.CStat = 128)  && 128 = Lote de evento processado com s
 		ENDFOR 
 				    
 	ELSE  
-	    MESSAGEBOX("Algo ocorreu na consulta do evento que não retornou.")
+	    MESSAGEBOX("Algo ocorreu na consulta do evento que nï¿½o retornou.")
 	ENDIF 
 ENDIF 
 

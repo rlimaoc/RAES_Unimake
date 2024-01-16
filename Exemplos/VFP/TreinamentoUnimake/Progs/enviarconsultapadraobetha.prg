@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Enviar consultas diversas de NFSe padrão BETHA (Município de Itapema-SC)
+* Enviar consultas diversas de NFSe padrï¿½o BETHA (Municï¿½pio de Itapema-SC)
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarConsultaPadraoBETHA()
    LOCAL xmlConsulta, oConfiguracao 
@@ -26,23 +26,23 @@ FUNCTION EnviarConsultaPadraoBETHA()
       xmlConsulta = xmlConsulta + AllTrim([  </Prestador>])
       xmlConsulta = xmlConsulta + AllTrim([</ConsultarNfseRpsEnvio>])
          
-    * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+    * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  2 && Produção
-      oConfiguracao.CodigoMunicipio = 4208302 && Código do IBGE de Itapema-SC 
+      oConfiguracao.TipoAmbiente =  2 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 4208302 && Cï¿½digo do IBGE de Itapema-SC 
       oConfiguracao.Servico = 36 && Servico.NFSeConsultarNfsePorRps
       oConfiguracao.SchemaVersao = "2.02"
 
-      oConsultarNfsePorRps = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")
+      oConsultarNfsePorRps = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")
       oConsultarNfsePorRps.Executar(xmlConsulta, oConfiguracao)  
       
       MESSAGEBOX(oConsultarNfsePorRps.RetornoWSString)
       
     * -------------------------------------------------------------   
-    * Consulta de NFSe´s Emitidas por período (Servicos prestados)
+    * Consulta de NFSeï¿½s Emitidas por perï¿½odo (Servicos prestados)
     * -------------------------------------------------------------
     * Criar o XML
       xmlConsulta = ""
@@ -61,23 +61,23 @@ FUNCTION EnviarConsultaPadraoBETHA()
       xmlConsulta = xmlConsulta + AllTrim([	<Pagina>1</Pagina>])
       xmlConsulta = xmlConsulta + AllTrim([</ConsultarNfseServicoPrestadoEnvio>])
             
-   * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+   * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  2 && Produção
-      oConfiguracao.CodigoMunicipio = 4208302 && Código do IBGE de Itapema-SC 
+      oConfiguracao.TipoAmbiente =  2 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 4208302 && Cï¿½digo do IBGE de Itapema-SC 
       oConfiguracao.Servico = 33 && Servico.NFSeConsultarNfseServicoPrestado
       oConfiguracao.SchemaVersao = "2.02"
       
-      oConsultarNfseServicoPrestado = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfseServicoPrestado")
+      oConsultarNfseServicoPrestado = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultarNfseServicoPrestado")
       oConsultarNfseServicoPrestado.Executar(xmlConsulta, oConfiguracao)
        
       MESSAGEBOX(oConsultarNfseServicoPrestado.RetornoWSString)
             
     * -------------------------------------------------------------
-    * Consulta de NFSe´s Recebidas por período (Serviços tomados)
+    * Consulta de NFSeï¿½s Recebidas por perï¿½odo (Serviï¿½os tomados)
     * -------------------------------------------------------------
     * Criar o XML
       xmlConsulta = ""
@@ -113,17 +113,17 @@ FUNCTION EnviarConsultaPadraoBETHA()
       xmlConsulta = xmlConsulta + AllTrim([  <Pagina>1</Pagina>])
       xmlConsulta = xmlConsulta + AllTrim([</ConsultarNfseServicoTomadoEnvio>])
             
-    * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+    * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  2 && Produção
-      oConfiguracao.CodigoMunicipio = 4208302 && Código do IBGE de Itapema-SC
+      oConfiguracao.TipoAmbiente =  2 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 4208302 && Cï¿½digo do IBGE de Itapema-SC
       oConfiguracao.Servico = 34 && Servico.NFSeConsultarNfseServicoTomado
       oConfiguracao.SchemaVersao = "2.02"
       
-      oConsultarNfseServicoTomado = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfseServicoTomado")
+      oConsultarNfseServicoTomado = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultarNfseServicoTomado")
       oConsultarNfseServicoTomado.Executar(xmlConsulta, oConfiguracao)
        
       MESSAGEBOX(oConsultarNfseServicoTomado.RetornoWSString)      

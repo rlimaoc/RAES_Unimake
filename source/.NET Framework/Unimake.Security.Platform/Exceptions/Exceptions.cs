@@ -70,7 +70,7 @@ namespace Unimake.Security.Platform.Exceptions
         ValidacaoSchemaXML = 2,
 
         /// <summary>
-        /// Erro de validação de diversas das regras dos documentos fiscais eletrônicos (NFe, CTe, MDFe, NFCe, etc...). Validação realizada pelo Validator da DLL Unimake.DFe.
+        /// Erro de validação de diversas das regras dos documentos fiscais eletrônicos (NFe, CTe, MDFe, NFCe, etc...). Validação realizada pelo Validator da DLL Uni.DFe.
         /// </summary>
         ValidatorDFe = 3,
 

@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmMain 
-   Caption         =   "Unimake.DFe Interop Tests"
+   Caption         =   "Uni.DFe Interop Tests"
    ClientHeight    =   11850
    ClientLeft      =   60
    ClientTop       =   705
@@ -66,7 +66,7 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuNFe_Consultas 
          Caption         =   "Consultas"
          Begin VB.Menu mnuNFe_ConsultarSituacao 
-            Caption         =   "Consultar Situação"
+            Caption         =   "Consultar Situaï¿½ï¿½o"
          End
          Begin VB.Menu mnuNFe_ConsultarStatus 
             Caption         =   "Consultar Status"
@@ -78,16 +78,16 @@ Begin VB.Form frmMain
             Caption         =   "Consultar Cadastro"
          End
          Begin VB.Menu mnuNFe_Distribuicao 
-            Caption         =   "Consultar Distribuição"
+            Caption         =   "Consultar Distribuiï¿½ï¿½o"
          End
       End
       Begin VB.Menu mnuNFe_Eventos 
          Caption         =   "Eventos"
          Begin VB.Menu mnuNFe_Manifestar 
-            Caption         =   "Manifestação"
+            Caption         =   "Manifestaï¿½ï¿½o"
          End
          Begin VB.Menu mnuNFe_EvtCCe 
-            Caption         =   "Evento de Carta de Correção"
+            Caption         =   "Evento de Carta de Correï¿½ï¿½o"
          End
       End
       Begin VB.Menu mnuNFe_Autorizar 
@@ -97,7 +97,7 @@ Begin VB.Form frmMain
          Caption         =   "Cancelar NFe"
       End
       Begin VB.Menu mnuNFe_Inutilizar 
-         Caption         =   "Inutilizar Números"
+         Caption         =   "Inutilizar Nï¿½meros"
       End
       Begin VB.Menu mnuNFe_AutorizarPorArquivo 
          Caption         =   "Autorizar por arquivo"
@@ -117,7 +117,7 @@ Begin VB.Form frmMain
             Caption         =   "Consultar Status"
          End
          Begin VB.Menu mnuNFCe_ConsultarSituacao 
-            Caption         =   "Consultar Situação"
+            Caption         =   "Consultar Situaï¿½ï¿½o"
          End
          Begin VB.Menu mnuNFCe_ConsultarContribuinte 
             Caption         =   "Consultar Contribuinte"
@@ -126,7 +126,7 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuNFCe_ 
          Caption         =   "Eventos"
          Begin VB.Menu mnuNFCe_CCe 
-            Caption         =   "Carta de Correção"
+            Caption         =   "Carta de Correï¿½ï¿½o"
          End
       End
       Begin VB.Menu mnuNFCe_Autorizar 
@@ -136,7 +136,7 @@ Begin VB.Form frmMain
          Caption         =   "Cancelamento"
       End
       Begin VB.Menu mnuNFCe_Inutilizar 
-         Caption         =   "Inutilizar Números"
+         Caption         =   "Inutilizar Nï¿½meros"
       End
    End
    Begin VB.Menu mnuCTe 
@@ -144,7 +144,7 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuCTe_Consultas 
          Caption         =   "Consultas"
          Begin VB.Menu mnuCTe_ConsultarSituacao 
-            Caption         =   "Consultar Situação"
+            Caption         =   "Consultar Situaï¿½ï¿½o"
          End
          Begin VB.Menu mnuCTe_ConsultarStatus 
             Caption         =   "Consultar Status"
@@ -153,7 +153,7 @@ Begin VB.Form frmMain
             Caption         =   "Cadastro de Contribuinte"
          End
          Begin VB.Menu mnuCTe_Distribuicao 
-            Caption         =   "Distribuição"
+            Caption         =   "Distribuiï¿½ï¿½o"
          End
       End
       Begin VB.Menu mnuCTe_Inutilizar 
@@ -165,7 +165,7 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuMDFe_Consultas 
          Caption         =   "Consultas"
          Begin VB.Menu mnuMDFe_ConsultarSituacao 
-            Caption         =   "Consultar Situação"
+            Caption         =   "Consultar Situaï¿½ï¿½o"
          End
          Begin VB.Menu mnuMDFe_ConsultarStatus 
             Caption         =   "Consultar Status"
@@ -174,10 +174,10 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuMDFeEvento 
          Caption         =   "Eventos"
          Begin VB.Menu mnuMDFeEventoInclusaoCondutor 
-            Caption         =   "Evento de Inclusão de Condutor no MDFe"
+            Caption         =   "Evento de Inclusï¿½o de Condutor no MDFe"
          End
          Begin VB.Menu mnuMDFeEventoInclusaoDFe 
-            Caption         =   "Evento de Inclusão de DFe no MDFe"
+            Caption         =   "Evento de Inclusï¿½o de DFe no MDFe"
          End
          Begin VB.Menu mnuMDFeEventoEncerramento 
             Caption         =   "Evento de Encerramento do MDF-e"

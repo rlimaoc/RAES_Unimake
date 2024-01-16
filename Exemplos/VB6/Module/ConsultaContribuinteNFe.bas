@@ -7,9 +7,9 @@ Dim ConsCad, InfCons, ConsultaCadastro
 
 Log.ClearLog
 
-Set ConsCad = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsCad")
-Set InfCons = CreateObject("Unimake.Business.DFe.Xml.NFe.InfCons")
-Set ConsultaCadastro = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaCadastro")
+Set ConsCad = CreateObject("Uni.Business.DFe.Xml.NFe.ConsCad")
+Set InfCons = CreateObject("Uni.Business.DFe.Xml.NFe.InfCons")
+Set ConsultaCadastro = CreateObject("Uni.Business.DFe.Servicos.NFe.ConsultaCadastro")
 
 With InfCons
     .CNPJ = "06117473000150"

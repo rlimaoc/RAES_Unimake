@@ -236,31 +236,31 @@ Public Sub EnviarCamposNFe()
 
         Configurar()
 
-        Dim Xml = New Unimake.Business.DFe.Xml.NFe.EnviNFe
-        Dim NFe = New Unimake.Business.DFe.Xml.NFe.NFe
-        Dim InfNFe = New Unimake.Business.DFe.Xml.NFe.InfNFe
+        Dim Xml = New Uni.Business.DFe.Xml.NFe.EnviNFe
+        Dim NFe = New Uni.Business.DFe.Xml.NFe.NFe
+        Dim InfNFe = New Uni.Business.DFe.Xml.NFe.InfNFe
 
 
-        Dim Det = New Unimake.Business.DFe.Xml.NFe.Det
-        Dim Prod = New Unimake.Business.DFe.Xml.NFe.Prod
-        Dim ICMS = New Unimake.Business.DFe.Xml.NFe.ICMS
-        Dim Pis = New Unimake.Business.DFe.Xml.NFe.PIS
-        Dim PISOutr = New Unimake.Business.DFe.Xml.NFe.PISOutr
-        Dim COFINS = New Unimake.Business.DFe.Xml.NFe.COFINS
-        Dim COFINSOutr = New Unimake.Business.DFe.Xml.NFe.COFINSOutr
-        Dim Imposto = New Unimake.Business.DFe.Xml.NFe.Imposto
-        Dim Total = New Unimake.Business.DFe.Xml.NFe.Total
-        Dim ICMSTot = New Unimake.Business.DFe.Xml.NFe.ICMSTot
-        Dim Transp = New Unimake.Business.DFe.Xml.NFe.Transp
-        Dim Vol = New Unimake.Business.DFe.Xml.NFe.Vol
-        Dim Cobr = New Unimake.Business.DFe.Xml.NFe.Cobr
-        Dim Fat = New Unimake.Business.DFe.Xml.NFe.Fat
-        Dim Dup = New Unimake.Business.DFe.Xml.NFe.Dup
-        Dim Pag = New Unimake.Business.DFe.Xml.NFe.Pag
-        Dim DetPag = New Unimake.Business.DFe.Xml.NFe.DetPag
-        Dim InfAdic = New Unimake.Business.DFe.Xml.NFe.InfAdic
-        Dim InfRespTec = New Unimake.Business.DFe.Xml.NFe.InfRespTec
-        Dim ICMSSN101 = New Unimake.Business.DFe.Xml.NFe.ICMSSN101
+        Dim Det = New Uni.Business.DFe.Xml.NFe.Det
+        Dim Prod = New Uni.Business.DFe.Xml.NFe.Prod
+        Dim ICMS = New Uni.Business.DFe.Xml.NFe.ICMS
+        Dim Pis = New Uni.Business.DFe.Xml.NFe.PIS
+        Dim PISOutr = New Uni.Business.DFe.Xml.NFe.PISOutr
+        Dim COFINS = New Uni.Business.DFe.Xml.NFe.COFINS
+        Dim COFINSOutr = New Uni.Business.DFe.Xml.NFe.COFINSOutr
+        Dim Imposto = New Uni.Business.DFe.Xml.NFe.Imposto
+        Dim Total = New Uni.Business.DFe.Xml.NFe.Total
+        Dim ICMSTot = New Uni.Business.DFe.Xml.NFe.ICMSTot
+        Dim Transp = New Uni.Business.DFe.Xml.NFe.Transp
+        Dim Vol = New Uni.Business.DFe.Xml.NFe.Vol
+        Dim Cobr = New Uni.Business.DFe.Xml.NFe.Cobr
+        Dim Fat = New Uni.Business.DFe.Xml.NFe.Fat
+        Dim Dup = New Uni.Business.DFe.Xml.NFe.Dup
+        Dim Pag = New Uni.Business.DFe.Xml.NFe.Pag
+        Dim DetPag = New Uni.Business.DFe.Xml.NFe.DetPag
+        Dim InfAdic = New Uni.Business.DFe.Xml.NFe.InfAdic
+        Dim InfRespTec = New Uni.Business.DFe.Xml.NFe.InfRespTec
+        Dim ICMSSN101 = New Uni.Business.DFe.Xml.NFe.ICMSSN101
 
         With InfAdic
             .InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;"
@@ -286,7 +286,7 @@ Public Sub EnviarCamposNFe()
 
         End With
 
-        Dim Jura As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.Vol)
+        Dim Jura As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.Vol)
         Jura.Add(Vol)
 
         With Transp
@@ -314,7 +314,7 @@ Public Sub EnviarCamposNFe()
             .TPag = 10 'MeioPagamento.Dinheiro
             .VPag = 169.8
         End With
-        Dim Jura1 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.DetPag)
+        Dim Jura1 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.DetPag)
         Jura1.Add(DetPag)
 
         With Pag
@@ -322,11 +322,11 @@ Public Sub EnviarCamposNFe()
         End With
 
 
-        '      Dim Jura2 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.Fat)
+        '      Dim Jura2 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.Fat)
         '      Jura2.Add(Fat)
-        Dim Jura3 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.Dup)
+        Dim Jura3 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.Dup)
         Jura3.Add(Dup)
-        Dim Jura4 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.Pag)
+        Dim Jura4 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.Pag)
         Jura4.Add(Pag)
         With Cobr
 
@@ -428,7 +428,7 @@ Public Sub EnviarCamposNFe()
 
 
 
-        Dim Jura5 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.ICMS)
+        Dim Jura5 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.ICMS)
         Jura5.Add(ICMS)
 
 
@@ -445,11 +445,11 @@ Public Sub EnviarCamposNFe()
 
 
 
-        Dim Emit As New Unimake.Business.DFe.Xml.NFe.Emit
-        Dim EnderEmit As New Unimake.Business.DFe.Xml.NFe.EnderEmit
-        Dim Dest As New Unimake.Business.DFe.Xml.NFe.Dest
-        Dim EnderDest As New Unimake.Business.DFe.Xml.NFe.EnderDest
-        Dim Ide As New Unimake.Business.DFe.Xml.NFe.Ide
+        Dim Emit As New Uni.Business.DFe.Xml.NFe.Emit
+        Dim EnderEmit As New Uni.Business.DFe.Xml.NFe.EnderEmit
+        Dim Dest As New Uni.Business.DFe.Xml.NFe.Dest
+        Dim EnderDest As New Uni.Business.DFe.Xml.NFe.EnderDest
+        Dim Ide As New Uni.Business.DFe.Xml.NFe.Ide
         With EnderDest
             .XLgr = "AVENIDA DA SAUDADE"
             .Nro = "1555"
@@ -503,7 +503,7 @@ Public Sub EnviarCamposNFe()
         End With
 
 
-        Dim Jura2 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.Det)
+        Dim Jura2 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.Det)
         Jura2.Add(Det)
 
         'Dim NFe = New List < NFe >
@@ -632,17 +632,17 @@ Public Sub EnviarCamposNFe()
 
         End With
 
-        '        Dim Jura As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.InfNFe)
+        '        Dim Jura As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.InfNFe)
         '        Jura.Add(Vol)
 
-        Dim Jura6 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.InfNFe)
+        Dim Jura6 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.InfNFe)
         Jura6.Add(InfNFe)
 
         With NFe
             .InfNFe = Jura6
         End With
 
-        Dim Jura7 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.NFe)
+        Dim Jura7 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.NFe)
         Jura7.Add(NFe)
 
 
@@ -656,9 +656,9 @@ Public Sub EnviarCamposNFe()
 
 
         If VAL(TipoNF.TEXT) = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.Autorizacao(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.Autorizacao(Xml, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.Autorizacao(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.Autorizacao(Xml, Configuracao)
         End If
 
         Autorizacao.Executar
@@ -727,9 +727,9 @@ Public Sub EnviarCamposNFe()
        Dim ArquivoOrigem as string = TRIM(PATHE.text) & "envio\" & Trim(ChaveNota.text) & "-NFE.xml" 
 
 
-        Dim Xml = New Unimake.Business.DFe.Xml.NFe.EnviNFe
-        Dim NFe = New Unimake.Business.DFe.Xml.NFe.NFe
-        Dim InfNFe = New Unimake.Business.DFe.Xml.NFe.InfNFe
+        Dim Xml = New Uni.Business.DFe.Xml.NFe.EnviNFe
+        Dim NFe = New Uni.Business.DFe.Xml.NFe.NFe
+        Dim InfNFe = New Uni.Business.DFe.Xml.NFe.InfNFe
         '
         Dim Doc = New System.Xml.XmlDocument
 
@@ -742,13 +742,13 @@ Public Sub EnviarCamposNFe()
 
         End With
 
-        Dim Jura6 As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.NFe)
+        Dim Jura6 As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.NFe)
         Xml.NFe = Jura6
 
 
         Try
 
-            Xml.NFe.Add(Unimake.Business.DFe.Utility.XMLUtility.Deserializar(Of Unimake.Business.DFe.Xml.NFe.NFe)(Doc))
+            Xml.NFe.Add(Uni.Business.DFe.Utility.XMLUtility.Deserializar(Of Uni.Business.DFe.Xml.NFe.NFe)(Doc))
 
         Catch ex As Exception
             GravarArquivoSequencial(trim(certo.text) & "NFe" & trim(ChaveNota.text) & ".err" , ex.ToString)    
@@ -760,9 +760,9 @@ Public Sub EnviarCamposNFe()
         Try
             
             If val(TipoNF.text) = 55 Then
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFe.Autorizacao(Xml, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFe.Autorizacao(Xml, Configuracao)
             Else
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.Autorizacao(Xml, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFCe.Autorizacao(Xml, Configuracao)
             End If
      
             Autorizacao.Executar
@@ -821,21 +821,21 @@ Public Sub EnviarCamposNFe()
         SelecionarCertificado()
         Configurar()
 
-        Dim EnvEvento = New Unimake.Business.DFe.Xml.NFe.EnvEvento
+        Dim EnvEvento = New Uni.Business.DFe.Xml.NFe.EnvEvento
         EnvEvento.Versao = "1.00"
         EnvEvento.IdLote = "000000000000001"
 
-        Dim Evento = New Unimake.Business.DFe.Xml.NFe.Evento
+        Dim Evento = New Uni.Business.DFe.Xml.NFe.Evento
         Evento.Versao = "1.00"
 
-        Dim DetEventoCanc = New Unimake.Business.DFe.Xml.NFe.DetEventoCCE
+        Dim DetEventoCanc = New Uni.Business.DFe.Xml.NFe.DetEventoCCE
 
         With DetEventoCanc
             .Versao = "1.00"
             .XCorrecao = "CFOP errada, segue CFOP correta."
         End With
 
-        Dim InfEvento = New Unimake.Business.DFe.Xml.NFe.InfEvento
+        Dim InfEvento = New Uni.Business.DFe.Xml.NFe.InfEvento
         InfEvento.DetEvento = DetEventoCanc
 
         With InfEvento
@@ -856,9 +856,9 @@ Public Sub EnviarCamposNFe()
         EnvEvento.Evento.Add(Evento)
         
         If val(TipoNF.text) = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
         End If
 
 
@@ -904,7 +904,7 @@ Public Sub EnviarCamposNFe()
         SelecionarCertificado()
 
 If CertificadoValido.text = true then
-        Dim Xml = New Unimake.Business.DFe.Xml.NFe.ConsSitNFe
+        Dim Xml = New Uni.Business.DFe.Xml.NFe.ConsSitNFe
 
         Xml.versao = Versao.text
         Xml.TpAmb = TPAmb.text
@@ -912,10 +912,10 @@ If CertificadoValido.text = true then
         
                
         If val(TipoNF.text) = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
-    '         Autorizacao = New Unimake.Business.DFe.XML.NFe.ProtNFe(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
+    '         Autorizacao = New Uni.Business.DFe.XML.NFe.ProtNFe(Xml, Configuracao)
         End If
 
    Try
@@ -1215,8 +1215,8 @@ Public Sub InutilizarNumero()
 
         SelecionarCertificado()
 
-        Dim InutNFe = New Unimake.Business.DFe.Xml.NFe.InutNFe
-        Dim InutNFeInfInut = New Unimake.Business.DFe.Xml.NFe.InutNFeInfInut
+        Dim InutNFe = New Uni.Business.DFe.Xml.NFe.InutNFe
+        Dim InutNFeInfInut = New Uni.Business.DFe.Xml.NFe.InutNFeInfInut
 
         InutNFeInfInut.Ano = "22"
         InutNFeInfInut.CNPJ = Preencher(cnpj.text, "14")
@@ -1236,9 +1236,9 @@ Public Sub InutilizarNumero()
         Try        
 
         If val(TipoNF.text) = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.Inutilizacao(InutNFe, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.Inutilizacao(InutNFe, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.Inutilizacao(InutNFe, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.Inutilizacao(InutNFe, Configuracao)
         End If
 
         Autorizacao.Executar()
@@ -1276,16 +1276,16 @@ if CertificadoValido.text = true then
 
 ' Consulta Situacao da NF para pegar o Protocolo
     
- Dim Xml = New Unimake.Business.DFe.Xml.NFe.ConsSitNFe
+ Dim Xml = New Uni.Business.DFe.Xml.NFe.ConsSitNFe
 
         Xml.versao = Versao.text
         Xml.TpAmb = TPAmb.text
         Xml.ChNfe = Trim(ChaveNota.text)
         
         If val(TipoNF.text) = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
         End If
    Try
         Autorizacao.Executar
@@ -1303,14 +1303,14 @@ if CertificadoValido.text = true then
 End Try
 
 
-    Dim EnvEvento = New Unimake.Business.DFe.Xml.NFe.EnvEvento
+    Dim EnvEvento = New Uni.Business.DFe.Xml.NFe.EnvEvento
         EnvEvento.Versao = "1.00"
         EnvEvento.IdLote = "000000000000001"
 
-        Dim Evento = New Unimake.Business.DFe.Xml.NFe.Evento
+        Dim Evento = New Uni.Business.DFe.Xml.NFe.Evento
         Evento.Versao = "1.00"
 
-        Dim DetEventoCanc = New Unimake.Business.DFe.Xml.NFe.DetEventoCanc
+        Dim DetEventoCanc = New Uni.Business.DFe.Xml.NFe.DetEventoCanc
 
         With DetEventoCanc
             .Versao = "1.00"
@@ -1319,7 +1319,7 @@ End Try
             .DescEvento = "Cancelamento"
         End With
 
-        Dim InfEvento = New Unimake.Business.DFe.Xml.NFe.InfEvento
+        Dim InfEvento = New Uni.Business.DFe.Xml.NFe.InfEvento
         InfEvento.DetEvento = DetEventoCanc
 
         With InfEvento
@@ -1339,7 +1339,7 @@ End Try
 
 
         ' 060422
-        ' Dim Jura As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.Evento)
+        ' Dim Jura As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.Evento)
         ' Jura.Add(Evento)
         ' EnvEvento.Evento = Jura
 
@@ -1349,9 +1349,9 @@ End Try
         Try
            
             If val(TipoNF.text) = 55 Then
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
             Else
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
             End If
 
             Autorizacao.Executar

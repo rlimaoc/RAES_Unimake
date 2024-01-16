@@ -175,7 +175,7 @@
     Public JaFeito As Integer
 
     Public CertificadoValido As Boolean
-    Public Configuracao = New Unimake.Business.DFe.Servicos.Configuracao
+    Public Configuracao = New Uni.Business.DFe.Servicos.Configuracao
 
     Public VRetorna As Boolean
     Public oX509Cert As X509Certificate2 = New X509Certificate2()
@@ -232,9 +232,9 @@
         ' Não Utilizei
 
         Dim DetEventoCCE, Evento, InfEvento
-        InfEvento = New Unimake.Business.DFe.Xml.NFe.InfEvento
-        DetEventoCCE = New Unimake.Business.DFe.Xml.NFe.DetEventoCCE
-        Evento = New Unimake.Business.DFe.Xml.NFe.Evento
+        InfEvento = New Uni.Business.DFe.Xml.NFe.InfEvento
+        DetEventoCCE = New Uni.Business.DFe.Xml.NFe.DetEventoCCE
+        Evento = New Uni.Business.DFe.Xml.NFe.Evento
 
         With DetEventoCCE
             .XCorrecao = XCorrecao

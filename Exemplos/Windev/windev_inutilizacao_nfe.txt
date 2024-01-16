@@ -28,7 +28,7 @@ IF sRecebe_certificado_arquivo="" THEN
 		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
 		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
 		IF busca_token<>"ok" THEN
-			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3 is Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
 			o_CertA3.SetPinPrivateKey(O_CONFIGURACAO,sRecebe_certificado_senha)		
 			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
 		END
@@ -41,10 +41,10 @@ END
 O_CONFIGURACAO.TipoDFe=0 // 0=nfe 1-nfce
 O_CONFIGURACAO.Servico=3 // 3-Inutilizacao Nfe 5=envio evento 6 // autorizacao nfe
 
-O_InutNFe is Unimake.Business.DFe.Xml.NFe.InutNFe() 
+O_InutNFe is Uni.Business.DFe.Xml.NFe.InutNFe() 
 O_InutNFe.Versao = "4.00"
 
-O_InutNFeInfInut is Unimake.Business.DFe.Xml.NFe.InutNFeInfInut() 
+O_InutNFeInfInut is Uni.Business.DFe.Xml.NFe.InutNFeInfInut() 
 O_InutNFeInfInut:TpAmb=nRECEBE_TIPO_AMBIENTE // 1-produto 2-Homologação
 O_InutNFeInfInut:Ano=sAno[[3 TO 4]] // somente 2 ultimos digitos "19"
 O_InutNFeInfInut:CNPJ=sRecebe_cnpj
@@ -58,7 +58,7 @@ O_InutNFeInfInut:XJust = sRecebe_justificativa // "Justificativa da inutilizacao
 O_InutNFe.InfInut=O_InutNFeInfInut
 
 WHEN EXCEPTION IN 
-	O_inutilizacao is Unimake.Business.DFe.Servicos.NFe.Inutilizacao(O_InutNFe,O_CONFIGURACAO) // 
+	O_inutilizacao is Uni.Business.DFe.Servicos.NFe.Inutilizacao(O_InutNFe,O_CONFIGURACAO) // 
 	O_inutilizacao.Executar(O_InutNFe,O_CONFIGURACAO)
 	
 	sretorno_xml=O_inutilizacao.RetornoWSString

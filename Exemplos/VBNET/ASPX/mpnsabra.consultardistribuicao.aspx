@@ -294,8 +294,8 @@ youtext.text = ""
 
 
 
- DistDFeInt = New Unimake.Business.DFe.xml.NFe.DistDFeInt
- DistNSU = New Unimake.Business.DFe.xml.NFe.DistNSU
+ DistDFeInt = New Uni.Business.DFe.xml.NFe.DistDFeInt
+ DistNSU = New Uni.Business.DFe.xml.NFe.DistNSU
 
 
 Do While True
@@ -312,7 +312,7 @@ Try
     End With
 
  
-   DistribuicaoDFe = New Unimake.Business.DFe.Servicos.NFe.DistribuicaoDFe(DistDFeInt , Configuracao)
+   DistribuicaoDFe = New Uni.Business.DFe.Servicos.NFe.DistribuicaoDFe(DistDFeInt , Configuracao)
    DistribuicaoDFe.Executar 
    
    metext.text = DistribuicaoDFE.result.CStat & " - " & DistribuicaoDFe.result.XMotivo

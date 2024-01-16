@@ -9,9 +9,9 @@ Imports System.Text
 Imports System.Xml
 Imports System.Windows.Forms
 Imports Microsoft.Win32
-Imports Unimake.Business.DFe
-Imports Unimake.Business.DFe.Servicos.Configuracao
-Imports Unimake.Business.DFe.Xml.NFe
+Imports Uni.Business.DFe
+Imports Uni.Business.DFe.Servicos.Configuracao
+Imports Uni.Business.DFe.Xml.NFe
 Imports Unimake.Security.Platform
 Imports Unimake.Security.Exceptions
 

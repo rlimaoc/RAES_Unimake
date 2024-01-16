@@ -28,7 +28,7 @@ IF sRecebe_certificado_arquivo="" THEN
 		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
 		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
 		IF busca_token<>"ok" THEN
-			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3 is Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
 			o_CertA3.SetPinPrivateKey(O_CONFIGURACAO,sRecebe_certificado_senha)		
 			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
 		END
@@ -41,19 +41,19 @@ END
 O_CONFIGURACAO.TipoDFe=0 // 0=nfe 1-nfce
 O_CONFIGURACAO.Servico=5 // 3-Inutilizacao Nfe 5=envio evento 6 // autorizacao nfe
 
-O_EnvEvento is Unimake.Business.DFe.Xml.nFe.EnvEvento() //O_EnvEvento is EnvEvento
+O_EnvEvento is Uni.Business.DFe.Xml.nFe.EnvEvento() //O_EnvEvento is EnvEvento
 O_EnvEvento.Versao = "1.00"
 O_EnvEvento.IdLote = NumToString(nRecebe_numero_lote,"015d") // "000000000000001"
 
-O_Evento is Unimake.Business.DFe.Xml.nFe.Evento()
+O_Evento is Uni.Business.DFe.Xml.nFe.Evento()
 O_Evento.Versao = "1.00"
 
-O_DetEventoCanc is Unimake.Business.DFe.Xml.nFe.DetEventoCanc()
+O_DetEventoCanc is Uni.Business.DFe.Xml.nFe.DetEventoCanc()
 O_DetEventoCanc.Versao = "1.00"
 O_DetEventoCanc.NProt=sRecebe_NProt
 O_DetEventoCanc.XJust=sRecebe_justificativa
 
-o_InfEvento  is Unimake.Business.DFe.Xml.nFe.InfEvento()
+o_InfEvento  is Uni.Business.DFe.Xml.nFe.InfEvento()
 //o_InfEvento=O_DetEventoCanc
 o_InfEvento.DetEvento=O_DetEventoCanc
 
@@ -81,7 +81,7 @@ O_Evento.InfEvento=o_InfEvento
 O_EnvEvento.AddEvento(O_Evento)
 
 WHEN EXCEPTION IN 
-	O_RecepcaoEvento is Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(O_EnvEvento,O_CONFIGURACAO) // 
+	O_RecepcaoEvento is Uni.Business.DFe.Servicos.NFe.RecepcaoEvento(O_EnvEvento,O_CONFIGURACAO) // 
 	O_RecepcaoEvento.Executar(O_EnvEvento,O_CONFIGURACAO)
 	retorno_xml=O_RecepcaoEvento.RetornoWSString
 	sXml_assinado=O_RecepcaoEvento.GetConteudoXMLAssinado()

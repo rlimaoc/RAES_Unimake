@@ -6,14 +6,14 @@ Function EPECEnviarEventoEPEC()
    Local oConfiguracao, I, eventoAssinado
    Local oEnvEvento, oEvento, oDetEventoEPEC, oDetEventoEPECDest, oInfEvento, oRecepcaoEvento, oRetEvento 
      
- * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDfe = 0 && 0=nfe
    oConfiguracao.CertificadoSenha = "12345678"
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento.Versao = "1.00"
    oEnvEvento.IdLote = "000000000000001"
 
@@ -21,11 +21,11 @@ Function EPECEnviarEventoEPEC()
  * Criar tags do evento sequencia 1
  * -------------------------------------------------
  * Criar tag Evento
-   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
    oEvento.Versao = "1.00"
  
  * Criar tag DetEventoCanc
-   oDetEventoEPEC = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoEPEC")
+   oDetEventoEPEC = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoEPEC")
    oDetEventoEPEC.Versao = "1.00"
    oDetEventoEPEC.COrgaoAutor = 41 && UFBrasil.PR
    oDetEventoEPEC.TpAutor = 1 && TipoAutor.EmpresaEmitente
@@ -35,7 +35,7 @@ Function EPECEnviarEventoEPEC()
    oDetEventoEPEC.IE = "9032000301"
    
  * Criar a tag DetEventoEPECDest
-   oDetEventoEPECDest = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoEPECDest")
+   oDetEventoEPECDest = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoEPECDest")
    oDetEventoEPECDest.CNPJ = "04218457000128"
    oDetEventoEPECDest.IE = "582614838110"
    oDetEventoEPECDest.UF = 35 && UFBrasil.SP
@@ -46,13 +46,13 @@ Function EPECEnviarEventoEPEC()
    oDetEventoEPEC.Dest = oDetEventoEPECDest   
 
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
  
  * Adicionar a tag DetEventoEPEC dentro da Tag DetEvento
    oInfEvento.DetEvento = oDetEventoEPEC
  
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoEPEC para que funcione sem erro
+ * IMPORTANTE: Atualizaï¿½ï¿½o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoEPEC para que funcione sem erro
    oInfEvento.COrgao = 91 && UFBrasil.AN = Ambiente Nacional
    oInfEvento.ChNFe = "41230606117473000150550030000000064860795147"
    oInfEvento.CNPJ = "06117473000150"
@@ -68,12 +68,12 @@ Function EPECEnviarEventoEPEC()
  * Adicionar a tag Evento dentro da tag EnvEvento
    oEnvEvento.AddEvento(oEvento)   
   
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
   
    TRY
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
       oRecepcaoEvento.Executar(oEnvEvento, oConfiguracao)
 
       eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
@@ -87,15 +87,15 @@ Function EPECEnviarEventoEPEC()
       MESSAGEBOX(oRecepcaoEvento.RetornoWSString)
       
       if oRecepcaoEvento.Result.CStat == 128 && 128 = Lote de evento processado com sucesso.
-       * Como pode existir vários eventos no XML (Caso da carta de correção que posso enviar várias sequencias de evento)
-       * é necessário fazer um loop para ver a autorização de cada um deles
+       * Como pode existir vï¿½rios eventos no XML (Caso da carta de correï¿½ï¿½o que posso enviar vï¿½rias sequencias de evento)
+       * ï¿½ necessï¿½rio fazer um loop para ver a autorizaï¿½ï¿½o de cada um deles
          For I = 1 To oRecepcaoEvento.Result.GetRetEventoCount()
              oRetEvento = oRecepcaoEvento.Result.GetRetEvento(I - 1)
    		  
-             IF oRetEvento.InfEvento.CStat = 136 && Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)
-                oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe\epec") && Grava o XML de distribuição
+             IF oRetEvento.InfEvento.CStat = 136 && Evento homologado sem vinculaï¿½ï¿½o com a respectiva NFe (SEFAZ nï¿½o encontrou a NFe na base dela)
+                oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe\epec") && Grava o XML de distribuiï¿½ï¿½o
 
-              * Criar as configurações para imprimir o DANFE
+              * Criar as configuraï¿½ï¿½es para imprimir o DANFE
                 oUnidanfeConfiguration = CreateObject("Unimake.Unidanfe.Configurations.UnidanfeConfiguration")   
                 oUnidanfeConfiguration.Arquivo = "D:\testenfe\epec\" + oInfEvento.ChNFe + "-nfe.xml" 
                 oUnidanfeConfiguration.ArquivoEPEC = "D:\testenfe\epec\" + oInfEvento.ChNFe + "_" + STR(oInfEvento.TpEvento,6) + "_0" + STR(oInfEvento.nSeqEvento,1) + "-proceventonfe.xml"
@@ -108,7 +108,7 @@ Function EPECEnviarEventoEPEC()
                 oUnidanfeServices.Execute(oUnidanfeConfiguration)
    			 ELSE
                 * Evento rejeitado
-                * Realizar as ações necessárias
+                * Realizar as aï¿½ï¿½es necessï¿½rias
                 MESSAGEBOX("CStat do evento " + AllTrim(Str(I,10)) + ": " + ALLTRIM(STR(oRetEvento.InfEvento.CStat,10)) + " - xMotivo: " + oRetEvento.InfEvento.XMotivo)
              ENDIF   		
          Next

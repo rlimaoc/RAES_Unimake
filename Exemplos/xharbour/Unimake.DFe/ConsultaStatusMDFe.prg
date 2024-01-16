@@ -12,14 +12,14 @@ Function ConsultaStatusMDFe()
    Local oStatusServico
    
  * Criar configuração básica para consumir o serviço
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig:TipoDFe = 4 //4=MDFe
    oConfig:CodigoUF = 41 //41=Paraná
    oConfig:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig:CertificadoSenha = "12345678"   
 
  * Criar XML
-   oConsStatServMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsStatServMDFe")
+   oConsStatServMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsStatServMDFe")
    oConsStatServMDFe:Versao = "3.00"
    oConsStatServMDFe:TpAmb = 2 //2=Homologação
    
@@ -28,7 +28,7 @@ Function ConsultaStatusMDFe()
    
    Try
     * Consumir o serviço
-	  oStatusServico = CreateObject("Unimake.Business.DFe.Servicos.MDFe.StatusServico")
+	  oStatusServico = CreateObject("Uni.Business.DFe.Servicos.MDFe.StatusServico")
 	  oStatusServico:Executar(oConsStatServMDFe, oConfig)
 	  
 	  ? "XML Retornado pela SEFAZ"

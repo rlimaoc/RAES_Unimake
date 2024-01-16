@@ -12,13 +12,13 @@ Function EnviarInutCTeDesserializacao()
    Local oInutCTe, oInfInut, oInutilizacao
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 2 // 0=CTe
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    
  * Criar o grupo de tag <inutCTe>
-   oInutCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.InutCTe")
+   oInutCTe = CreateObject("Uni.Business.DFe.Xml.CTe.InutCTe")
 *   oInutCTe = oInutCTe:LoadFromFile("D:\testenfe\teste-ped-inu.xml")
    
    stringXml = [<?xml version="1.0" encoding="utf-8"?><inutCTe versao="3.00" xmlns="http://www.portalfiscal.inf.br/cte"><infInut Id="ID310611747300015057001000057919000057919"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>19</ano><CNPJ>06117473000150</CNPJ><mod>57</mod><serie>1</serie><nCTIni>57919</nCTIni><nCTFin>57919</nCTFin><xJust>Justificativa da inutilizacao de testexx</xJust></infInut></inutCTe>]
@@ -39,7 +39,7 @@ Function EnviarInutCTeDesserializacao()
    
    Try 
     * Enviar evento
-      oInutilizacao = CreateObject("Unimake.Business.DFe.Servicos.CTe.Inutilizacao")
+      oInutilizacao = CreateObject("Uni.Business.DFe.Servicos.CTe.Inutilizacao")
       oInutilizacao:SetXMLConfiguracao(oInutCTe, oConfiguracao)
 	  
 	  cls

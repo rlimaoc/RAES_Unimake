@@ -19,11 +19,11 @@ Function TestesDiversosCertificado()
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	 * Certificado A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que esta instalado no repositorio do windows
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  	   MESSAGEBOX("A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que está instalado no repositorio do windows")
+  	   MESSAGEBOX("A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que estï¿½ instalado no repositorio do windows")
 	   
 	   oCertSel1 = oCertificado.AbrirTelaSelecao()
 	   
-     * Voce pode salvar o Thumbprint ou SerialNumber do certificado para salvar em sua base de dados para resgatar ele no futuro no repositório do windows sem precisar abrir tela para selecionar novamente.
+     * Voce pode salvar o Thumbprint ou SerialNumber do certificado para salvar em sua base de dados para resgatar ele no futuro no repositï¿½rio do windows sem precisar abrir tela para selecionar novamente.
 	   
 	   thumbPrint = oCertificado.GetThumbPrint(oCertSel1)
 	   serialNumber = oCertificado.GetSerialNumber(oCertSel1)
@@ -36,12 +36,12 @@ Function TestesDiversosCertificado()
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	 * Somente certificado A1 - Testar a senha do certificado A1
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	 * Tentar carregar o certificado A1 do Path e pegar a exceção
+	 * Tentar carregar o certificado A1 do Path e pegar a exceï¿½ï¿½o
 	 
 	   TRY
           oCertificado.CarregarCertificadoDigitalA1("c:\projetos\certificados\UnimakePV.pfx", "12345678")
 	   CATCH TO oErro2
-   	    * Deu algum erro na hora de carregar o certificado A1, dentre eles, se for a senha incorreta, a mensagem será bem clara para o usuário.
+   	    * Deu algum erro na hora de carregar o certificado A1, dentre eles, se for a senha incorreta, a mensagem serï¿½ bem clara para o usuï¿½rio.
 	   	  MessageBox(oErro2.Message) 
 	   ENDTRY
 	   
@@ -82,7 +82,7 @@ Function TestesDiversosCertificado()
 	   
 	   MESSAGEBOX(certBase64)
 	   
-	 * Agora você pode gravar o conteúdo da "certBase64" no banco de dados
+	 * Agora vocï¿½ pode gravar o conteï¿½do da "certBase64" no banco de dados
 	   
 	 * Recuperar o certificado para uso a partir de um Base64
 	   oCertSel5 = oCertificado.FromBase64(certBase64, "12345678")
@@ -90,19 +90,19 @@ Function TestesDiversosCertificado()
 	   MostrarDados(oCertificado, oCertSel5)
 	   
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     * Certificado A3 - Setar o PIN do A3 para não precisar informar manualmente
+     * Certificado A3 - Setar o PIN do A3 para nï¿½o precisar informar manualmente
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   	   MESSAGEBOX("Setar o PIN do A3 para nao precisar informar manualmente")
 	   
-	   oCertA3 = CreateObject("Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
+	   oCertA3 = CreateObject("Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
 	   
-	 * Ver se é um certificado A3
+	 * Ver se ï¿½ um certificado A3
 	   If oCertA3.IsA3(oCertSel1)
-	      MESSAGEBOX("É certificado A3")
+	      MESSAGEBOX("ï¿½ certificado A3")
 		  
 		  oCertA3.SetPinPrivateKey(oCertSel1, "123456")
 	   else
-	      MESSAGEBOX("É certificado A1")
+	      MESSAGEBOX("ï¿½ certificado A1")
 	   endif
    CATCH TO oErro
     * Excecao do FOXPRO
@@ -125,5 +125,5 @@ Function MostrarDados(oCert, oCertSel)
               "Numero de Serie"       + chr(13)+chr(10)+ oCert.GetSerialNumber(oCertSel) + chr(13)+chr(10)+chr(13)+chr(10) + ;
               "Validade Inicial"      + chr(13)+chr(10)+ oCert.GetNotBefore(oCertSel) + chr(13)+chr(10)+chr(13)+chr(10) +;
               "Validade Final"        + chr(13)+chr(10)+ oCert.GetNotAfter(oCertSel) + chr(13)+chr(10)+chr(13)+chr(10) +;
-              "Certificado vencido?"  + chr(13)+chr(10)+ IIF(oCert.Vencido(oCertSel), "SIM", "NÃO")) 
+              "Certificado vencido?"  + chr(13)+chr(10)+ IIF(oCert.Vencido(oCertSel), "SIM", "Nï¿½O")) 
 Return

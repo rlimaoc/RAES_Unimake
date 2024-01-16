@@ -21,7 +21,7 @@ Function EnviarNfceSincrono()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuraçao básica para consumir o serviço
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig:TipoDfe = 1 // 1=nfce
    oConfig:TipoEmissao = 1 // 1=Normal
    oConfig:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
@@ -30,19 +30,19 @@ Function EnviarNfceSincrono()
    oConfig:CSCIDToken = 2   
    
  * Criar XML   
-   oXml = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oXml = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oXml:Versao = "4.00"
    oXml:IdLote = "000000000000001"
    oXml:IndSinc = 1 // 1=Sim 0=Nao
    
-   onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   onfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
    // criar tag InfNfe
-   oInfNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
+   oInfNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InfNFe")
    oInfNFe:Versao = "4.00"
 
    // cria tag Ide
-   oIde = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
+   oIde = CreateObject("Uni.Business.DFe.Xml.NFe.Ide")
    oIde:CUF      = 41 //Brasil.PR
    oIde:NatOp    = "VENDA DE MERCADORIAS"
    oIde:Mod      = 65 //NFCe
@@ -66,7 +66,7 @@ Function EnviarNfceSincrono()
    oInfNFe:Ide = oIde
 
    // criar tag Emit
-   oEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.Emit")
+   oEmit = CreateObject("Uni.Business.DFe.Xml.NFe.Emit")
    oEmit:CNPJ  = "06117473000150"
    oEmit:XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
    oEmit:XFant = "UNIMAKE - PARANAVAI"
@@ -75,7 +75,7 @@ Function EnviarNfceSincrono()
    oEmit:CNAE  = "6202300"
    oEmit:CRT   = 1 // CRT.SimplesNacional
 
-   oEnderEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+   oEnderEmit = CreateObject("Uni.Business.DFe.Xml.NFe.EnderEmit")
    oEnderEmit:XLgr    = "RUA PAULO ANTONIO COSTA"
    oEnderEmit:Nro     = "575"
    oEnderEmit:XBairro = "CENTRO"
@@ -92,13 +92,13 @@ Function EnviarNfceSincrono()
    oInfNfe:Emit = oEmit
    
    // criar tag Dest
-   oDest = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest") //###
+   oDest = CreateObject("Uni.Business.DFe.Xml.NFe.Dest") //###
    oDest:CNPJ      = "04218457000128"
    oDest:XNome     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
    oDest:IndIEDest = 9 // IndicadorIEDestinatario.NaoContribuinte,
 *  oDest:Email     = "janelaorp@janelaorp.com.br"
    
-*  oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+*  oEnderDest = CreateObject("Uni.Business.DFe.Xml.NFe.EnderDest")
 *  oEnderDest:XLgr    = "AVENIDA DA SAUDADE"
 *  oEnderDest:Nro     = "1555"
 *  oEnderDest:XBairro = "CAMPOS ELISEOS"
@@ -116,10 +116,10 @@ Function EnviarNfceSincrono()
    
    For I = 1 To 3 // 3 produtos para teste    
        // criar tag Det
-       oDet = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+       oDet = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 	   oDet:NItem = I
 	   
-       oProd          = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+       oProd          = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
        oProd:CProd    = StrZero(I,5)
        oProd:CEAN     = "SEM GTIN"
        oProd:XProd    = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -141,14 +141,14 @@ Function EnviarNfceSincrono()
        oDet:Prod = oProd
 	   
     // criar tag Imposto
-       oImposto          = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+       oImposto          = CreateObject("Uni.Business.DFe.Xml.NFe.Imposto")
        oImposto:VTotTrib = 12.63
 	   
     // criar tag Icms
-       oICMS             = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
+       oICMS             = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
 	   
     // criar tag ICMSSN102
-       oICMSSN102            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN102")
+       oICMSSN102            = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN102")
        oICMSSN102:Orig       = 0 // OrigemMercadoria.Nacional
        oICMSSN102:CSOSN      = "102" // OrigemMercadoria.Nacional
 	   
@@ -159,10 +159,10 @@ Function EnviarNfceSincrono()
        oImposto:Icms = oICMS
 	   
     // criar tag PIS
-       oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
+       oPIS           = CreateObject("Uni.Business.DFe.Xml.NFe.PIS")
 
     // criar tag PISOutr
-       oPISOutr      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+       oPISOutr      = CreateObject("Uni.Business.DFe.Xml.NFe.PISOutr")
        oPISOutr:CST  = "99"
        oPISOutr:VBC  = 0.00
        oPISOutr:PPIS = 0.00
@@ -175,10 +175,10 @@ Function EnviarNfceSincrono()
        oImposto:PIS = oPIS
 
     // criar tag COFINS
-       oCOFINS      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
+       oCOFINS      = CreateObject("Uni.Business.DFe.Xml.NFe.COFINS")
 
     // criar tag COFINSOutr
-       oCOFINSOutr         = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+       oCOFINSOutr         = CreateObject("Uni.Business.DFe.Xml.NFe.COFINSOutr")
        oCOFINSOutr:CST     = "99"
        oCOFINSOutr:VBC     = 0.00
        oCOFINSOutr:PCOFINS = 0.00
@@ -198,10 +198,10 @@ Function EnviarNfceSincrono()
    Next I
    
    // Criar tag Total
-   oTotal = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
+   oTotal = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
 
    // Criar tag ICMSTot
-   oICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+   oICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
    oICMSTot:VBC = 0
    oICMSTot:VICMS = 0
    oICMSTot:VICMSDeson = 0
@@ -230,17 +230,17 @@ Function EnviarNfceSincrono()
    oInfNfe:Total = oTotal
    
 // Criar a tag Transp  
-   oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
+   oTransp = CreateObject("Uni.Business.DFe.Xml.NFe.Transp")
    oTransp:ModFrete = 9 // ModalidadeFrete.SemOcorrenciaTransporte 
 
    // adicionar a tag Transp dentro da tag InfNfe
    oInfNfe:Transp = oTransp
 
    // criar tag Pag
-   oPag = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
+   oPag = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
 
    // criar tag DetPag (pode ter mais que uma, só foi criada uma como exemplo)
-   oDetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+   oDetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
    oDetPag:IndPag = 0 // IndicadorPagamento.PagamentoVista
    oDetPag:TPag   = 1 // MeioPagamento.Dinheiro
    oDetPag:VPag   = 254.70
@@ -252,14 +252,14 @@ Function EnviarNfceSincrono()
    oInfNFe:Pag = oPag
 
    // criar tag InfAdic
-   oInfAdic = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+   oInfAdic = CreateObject("Uni.Business.DFe.Xml.NFe.InfAdic")
    oInfAdic:InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;"
 
    // adicionar a tag InfAdic dentro da tag InfNfe
    oInfNFe:InfAdic = oInfAdic
 
    // criar tag InfRespTec
-   oInfRespTec = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+   oInfRespTec = CreateObject("Uni.Business.DFe.Xml.NFe.InfRespTec")
    oInfRespTec:CNPJ     = "06117473000150"
    oInfRespTec:XContato = "Ze das Couves"
    oInfRespTec:Email    = "zedascouves@gmail.com"
@@ -284,7 +284,7 @@ Function EnviarNfceSincrono()
    Cls
 
  * Consumir o serviço (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Autorizacao") //###
+   oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFCe.Autorizacao") //###
    
    // Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   

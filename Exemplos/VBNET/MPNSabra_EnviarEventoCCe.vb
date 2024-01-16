@@ -6,21 +6,21 @@
 
         Configurar()
 
-        Dim EnvEvento = New Unimake.Business.DFe.Xml.NFe.EnvEvento
+        Dim EnvEvento = New Uni.Business.DFe.Xml.NFe.EnvEvento
         EnvEvento.Versao = "1.00"
         EnvEvento.IdLote = "000000000000001"
 
-        Dim Evento = New Unimake.Business.DFe.Xml.NFe.Evento
+        Dim Evento = New Uni.Business.DFe.Xml.NFe.Evento
         Evento.Versao = "1.00"
 
-        Dim DetEventoCanc = New Unimake.Business.DFe.Xml.NFe.DetEventoCCE
+        Dim DetEventoCanc = New Uni.Business.DFe.Xml.NFe.DetEventoCCE
 
         With DetEventoCanc
             .Versao = "1.00"
             .XCorrecao = "CFOP errada, segue CFOP correta."
         End With
 
-        Dim InfEvento = New Unimake.Business.DFe.Xml.NFe.InfEvento
+        Dim InfEvento = New Uni.Business.DFe.Xml.NFe.InfEvento
         InfEvento.DetEvento = DetEventoCanc
 
         With InfEvento
@@ -44,9 +44,9 @@
 
         '      Dim RecepcaoEvento
         If TipoNF = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
         End If
 
 

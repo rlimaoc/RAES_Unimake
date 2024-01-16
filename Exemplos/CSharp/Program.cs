@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TreinamentoDLL
@@ -13,8 +16,7 @@ namespace TreinamentoDLL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormTestes());
-            Application.Run(new FormNFCom());
+            Application.Run(new FormTestes());
         }
     }
 }

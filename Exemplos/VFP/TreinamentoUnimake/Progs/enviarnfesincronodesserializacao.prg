@@ -1,13 +1,13 @@
 * ---------------------------------------------------------------------------------
-* Gerar XML da NFe e enviar no modo síncrono com desserialização do XML
+* Gerar XML da NFe e enviar no modo sï¿½ncrono com desserializaï¿½ï¿½o do XML
 *
-* - Desserialização do XML da NFe/NFCe (Já tenho o arquivo do XML pronto e quero 
-*   enviá-lo para SEFAZ sem precisar alimentar as propriedades da classe do XML)
-* - Finalizando o envio da NFe/NFCe pela consulta situação (Enviei o XML da nota 
-*   e não consegui pegar o retorno, como faço para finalizar a nota e 
-*   gerar o XML de distribuição?)
-* - Enviei a nota e deu duplicidade, como faço para, somente, gerar o XML de 
-*   distribuição da NFe/NFCe?
+* - Desserializaï¿½ï¿½o do XML da NFe/NFCe (Jï¿½ tenho o arquivo do XML pronto e quero 
+*   enviï¿½-lo para SEFAZ sem precisar alimentar as propriedades da classe do XML)
+* - Finalizando o envio da NFe/NFCe pela consulta situaï¿½ï¿½o (Enviei o XML da nota 
+*   e nï¿½o consegui pegar o retorno, como faï¿½o para finalizar a nota e 
+*   gerar o XML de distribuiï¿½ï¿½o?)
+* - Enviei a nota e deu duplicidade, como faï¿½o para, somente, gerar o XML de 
+*   distribuiï¿½ï¿½o da NFe/NFCe?
 * ---------------------------------------------------------------------------------
 Function EnviarNfeSincronoDesserializacao()
    Local oConfig
@@ -24,20 +24,20 @@ Function EnviarNfeSincronoDesserializacao()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuracao basica para consumir o servico
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig.TipoDfe = 0 && 0=nfe
    oConfig.TipoEmissao = 1 && 1=Normal
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"
    
  * Criar a tag <enviNFe>
-   oEnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oEnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oEnviNFe.Versao = "4.00"
    oEnviNFe.IdLote = "000000000000001"
    oEnviNFe.IndSinc = 1 && 1=Sim 0=Nao
   
- * Criar a tag NFe e deserializar o XML já gravado no HD para já preencher o objeto para envio
-   onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+ * Criar a tag NFe e deserializar o XML jï¿½ gravado no HD para jï¿½ preencher o objeto para envio
+   onfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
    xmlstring = [<?xml version="1.0" encoding="UTF-8" ?><NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe43230492797901000174650200000000021000000577" versao="4.00"><ide><cUF>43</cUF><cNF>00000057</cNF>]
    xmlstring = xmlstring + [<natOp>VENDA DE MERCADORIA</natOp><mod>65</mod><serie>20</serie><nNF>2</nNF><dhEmi>2023-04-26T10:08:03-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>4314902</cMunFG><tpImp>4</tpImp><tpEmis>1</tpEmis>]
@@ -68,7 +68,7 @@ Function EnviarNfeSincronoDesserializacao()
    MessageBox("Chave da NFe:" + chaveNFe)
 
  * Consumir o serviÃ§o (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
    
  * Criar objeto para pegar excecao do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
@@ -98,7 +98,7 @@ Function EnviarNfeSincronoDesserializacao()
           * Gravar XML de distribuicao em uma pasta (NFe com o protocolo de autorizacao anexado)
             oAutorizacao.GravarXmlDistribuicao("d:\testenfe")
 			
-		  * Pegar a string do XML de distribuição
+		  * Pegar a string do XML de distribuiï¿½ï¿½o
             docProcNFe = oAutorizacao.GetNFeProcResults(chaveNFe)
 			MessageBox(docProcNFe)
 
@@ -109,21 +109,21 @@ Function EnviarNfeSincronoDesserializacao()
          ENDIF
       ELSE
          IF oAutorizacao.Result.CStat == 204 && Duplicidade da NFe
-          * Finalizar a nota pela consulta situação
-          * Configuração Mínima
-            oConfigConsSit = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+          * Finalizar a nota pela consulta situaï¿½ï¿½o
+          * Configuraï¿½ï¿½o Mï¿½nima
+            oConfigConsSit = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
             oConfigConsSit.TipoDfe = 0 && 0=nfe
             oConfigConsSit.CertificadoSenha = "12345678"
             oConfigConsSit.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"          
          
-          * Criar XML de consulta situação da NFe
-            oConsSitNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNfe")
+          * Criar XML de consulta situaï¿½ï¿½o da NFe
+            oConsSitNfe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsSitNfe")
             oConsSitNfe.Versao = "4.00"
-            oConsSitNfe.TpAmb  = 2  && Homologação
+            oConsSitNfe.TpAmb  = 2  && Homologaï¿½ï¿½o
             oConsSitNfe.ChNfe  = chaveNFe  && Chave da NFE 
             
-          * Consumir o Serviço de Consulta Situação da Nota
-            oConsultaProtocolo = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")
+          * Consumir o Serviï¿½o de Consulta Situaï¿½ï¿½o da Nota
+            oConsultaProtocolo = CREATEOBJECT("Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo")
             oConsultaProtocolo.Executar(oConsSitNFe, oConfigConsSit)
             
             MESSAGEBOX(oConsultaProtocolo.RetornoWSString)
@@ -135,7 +135,7 @@ Function EnviarNfeSincronoDesserializacao()
                
                oAutorizacao.GravarXmlDistribuicao("d:\testenfe")
                
-             * Pegar a string do XML de distribuição para gravar em uma base de dados, por exemplo.
+             * Pegar a string do XML de distribuiï¿½ï¿½o para gravar em uma base de dados, por exemplo.
                docProcNFe = oAutorizacao.GetNFeProcResults(chaveNFe)
     		   MessageBox(docProcNFe)
             ELSE

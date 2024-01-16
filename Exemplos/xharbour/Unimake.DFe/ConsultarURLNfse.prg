@@ -11,7 +11,7 @@ Function ConsultarURLNfse()
    Local oConsultarUrlNfse, cStringXML
 
  * Criar o objeto de configuração mínima
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 5 //5=NFSe
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao:CertificadoSenha = "12345678"
@@ -51,7 +51,7 @@ Function ConsultarURLNfse()
 	  wait
 	  cls 
 	  
-	  oConsultarUrlNfse := CreateObject("Unimake.Business.DFe.Servicos.NFSe.ConsultarUrlNfse")
+	  oConsultarUrlNfse := CreateObject("Uni.Business.DFe.Servicos.NFSe.ConsultarUrlNfse")
       oConsultarUrlNfse:Executar(cStringXML, oConfiguracao)
 	  
 	  ? oConsultarUrlNfse:RetornoWSString

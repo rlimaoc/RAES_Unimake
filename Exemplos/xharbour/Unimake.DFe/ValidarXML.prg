@@ -14,7 +14,7 @@ Function ValidarXML()
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
    
    Try
-      oValidarSchema = CreateObject("Unimake.Business.DFe.ValidarSchema")
+      oValidarSchema = CreateObject("Uni.Business.DFe.ValidarSchema")
 	  
 	  ? "Vamos validar o XML NFe..."
 	  ?
@@ -70,7 +70,7 @@ Function ValidarXML()
 	  Wait
 
 	  schema = "MDFe.mdfe_v3.00.xsd"
-      oValidarSchema:Validar("D:\testenfe\xharbour\Unimake.DFe\mdfe.xml", schema, "http://www.portalfiscal.inf.br/mdfe")
+      oValidarSchema:Validar("D:\testenfe\xharbour\Uni.DFe\mdfe.xml", schema, "http://www.portalfiscal.inf.br/mdfe")
 	  
       if (oValidarSchema:Success)
 	     ?

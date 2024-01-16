@@ -11,20 +11,20 @@ Function FinalizarNFePelaConsultaSituacao()
    Local oErro, oConsultaProtocolo
    
  * Criar configuraçao básica para consumir o serviço
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig:TipoDfe = 0 // 1=nfe
    oConfig:TipoEmissao = 1 // 1=Normal
    oConfig:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig:CertificadoSenha = "12345678"
    
  * Criar XML   
-   oXml = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oXml = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oXml:Versao = "4.00"
    oXml:IdLote = "000000000000001"
    oXml:IndSinc = 1 // 1=Sim 0=Nao
    
  * Criar a tag NFe e deserializar o XML já gravado no HD para já preencher o objeto para envio
-   oNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   oNFe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
    oXml:AddNFe(oNFe:LoadFromFile("d:\testenfe\nota_41220806117473000150550010000734461101759379-nfe.xml"))
    
@@ -39,7 +39,7 @@ Function FinalizarNFePelaConsultaSituacao()
    cls
 
  * Consumir o serviço (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao") 
+   oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao") 
    
    // Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
@@ -59,12 +59,12 @@ Function FinalizarNFePelaConsultaSituacao()
 	  //Como não vou finalizar pela consulta recibo, vou zerar o objeto
 	  oAutorizacao:SetNullRetConsReciNFe()
 	  
-      oConsSitNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNFe")
+      oConsSitNFe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsSitNFe")
 	  oConsSitNFe:ChNFe = chaveNFe
 	  oConsSitNFe:TpAmb = 1 //Producao
 	  oConsSitNFe:Versao = "4.00"
 	  
-      oConsultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")
+      oConsultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo")
       oConsultaProtocolo:Executar(oConsSitNFe, oConfig)
 	  
 	  ? oConsultaProtocolo:RetornoWSString

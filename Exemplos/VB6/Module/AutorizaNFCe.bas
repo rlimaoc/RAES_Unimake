@@ -7,13 +7,13 @@ Dim Autorizacao
 Dim localConfig
 Log.ClearLog
 
-Set EnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+Set EnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
 EnviNFe.Versao = "4.00"
 EnviNFe.IdLote = "000000000000001"
 EnviNFe.IndSinc = 1
 EnviNFe.AddNFe GetNFCe()
 
-Set Autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Autorizacao")
+Set Autorizacao = CreateObject("Uni.Business.DFe.Servicos.NFCe.Autorizacao")
 Set localConfig = Config.InicializarConfiguracao(TipoDFe.NFCe)
 localConfig.CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG"
 localConfig.CSCIDToken = 2
@@ -31,7 +31,7 @@ End Sub
 
 Function GetNFCe()
 Dim NFe
-Set NFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+Set NFe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
 NFe.AddInfNFe GetInfNFe()
 Set GetNFCe = NFe
 End Function
@@ -39,7 +39,7 @@ End Function
                         
 Function GetInfNFe()
 Dim infNFe
-Set infNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
+Set infNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InfNFe")
 infNFe.Versao = "4.00"
 Set infNFe.Ide = GetIde()
 Set infNFe.Emit = GetEmit()
@@ -56,7 +56,7 @@ End Function
 
 Function GetIde()
 Dim result
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Ide")
 With result
     .CUF = UFBrasil.PR
     .NatOp = "VENDA PRODUC.DO ESTABELEC"
@@ -83,7 +83,7 @@ End Function
 Function GetEmit()
 Dim result
 Dim ender
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Emit")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Emit")
 With result
     .CNPJ = "06117473000150"
     .XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
@@ -94,7 +94,7 @@ With result
     .CRT = 1
 End With
 
-Set ender = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+Set ender = CreateObject("Uni.Business.DFe.Xml.NFe.EnderEmit")
 With ender
     .XLgr = "RUA ANTONIO FELIPE"
     .Nro = "1500"
@@ -114,7 +114,7 @@ End Function
 Function GetDest()
 Dim result
 Dim ender
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Dest")
 
 With result
     .CNPJ = "04218457000128"
@@ -123,7 +123,7 @@ With result
     .Email = "janelaorp@janelaorp.com.br"
 End With
 
-Set ender = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+Set ender = CreateObject("Uni.Business.DFe.Xml.NFe.EnderDest")
 With ender
     .XLgr = "AVENIDA DA SAUDADE"
     .Nro = "1555"
@@ -142,8 +142,8 @@ End Function
 
 Function GetTotal()
 Dim result, ICMSTot
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
-Set ICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
+Set ICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
 With ICMSTot
     .VBC = 0
     .VICMS = 0
@@ -173,9 +173,9 @@ End Function
 
 Function GetTransp()
 Dim result, Transporta, Vol
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
-Set Transporta = CreateObject("Unimake.Business.DFe.Xml.NFe.Transporta")
-Set Vol = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Transp")
+Set Transporta = CreateObject("Uni.Business.DFe.Xml.NFe.Transporta")
+Set Vol = CreateObject("Uni.Business.DFe.Xml.NFe.Vol")
 
 With Transporta
     .XNome = "RETIRADO PELO CLIENTE"
@@ -201,9 +201,9 @@ End Function
 
 Function GetCobr()
 Dim result, Dup, Fat
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
-Set Dup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
-Set Fat = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Cobr")
+Set Dup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
+Set Fat = CreateObject("Uni.Business.DFe.Xml.NFe.Fat")
 
 With Fat
     .NFat = "151342"
@@ -225,8 +225,8 @@ End Function
 
 Function GetPag()
 Dim result, DetPag
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
-Set DetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
+Set DetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
 
 With DetPag
     .TPag = 15
@@ -240,14 +240,14 @@ End Function
 
 Function GetInfAdic()
 Dim result
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.InfAdic")
 result.InfCpl = ";Trib aprox: Federal Estadual Municipal ; Trib aprox: Federal Estadual Municipal Fonte: ;"
 Set GetInfAdic = result
 End Function
 
 Function GetInfRespTec()
 Dim result
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.InfRespTec")
 With result
     .CNPJ = "05413671000106"
     .XContato = "Oduvaldo de Oliveira"
@@ -260,10 +260,10 @@ End Function
 Function GetDet()
 Dim result, Prod, Imposto, ICMS, ICMSSN102, PIS, PISOutr, COFINS, COFINSOutr
 
-Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+Set result = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 result.NItem = 1
 
-Set Prod = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+Set Prod = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
 With Prod
     .CProd = "01042"
     .CEAN = "SEM GTIN"
@@ -284,11 +284,11 @@ With Prod
 End With
 Set result.Prod = Prod
 
-Set Imposto = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+Set Imposto = CreateObject("Uni.Business.DFe.Xml.NFe.Imposto")
 Imposto.VTotTrib = 12.63
 
-Set ICMS = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
-Set ICMSSN102 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN102")
+Set ICMS = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
+Set ICMSSN102 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN102")
 
 With ICMSSN102
     .Orig = 0
@@ -298,8 +298,8 @@ End With
 Set ICMS.ICMSSN102 = ICMSSN102
 Set Imposto.ICMS = ICMS
                                                     
-Set PIS = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
-Set PISOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+Set PIS = CreateObject("Uni.Business.DFe.Xml.NFe.PIS")
+Set PISOutr = CreateObject("Uni.Business.DFe.Xml.NFe.PISOutr")
 
 With PISOutr
     .CST = "99"
@@ -311,8 +311,8 @@ End With
 Set PIS.PISOutr = PISOutr
 Set Imposto.PIS = PIS
 
-Set COFINS = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
-Set COFINSOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+Set COFINS = CreateObject("Uni.Business.DFe.Xml.NFe.COFINS")
+Set COFINSOutr = CreateObject("Uni.Business.DFe.Xml.NFe.COFINSOutr")
 
 With COFINSOutr
     .CST = "99"

@@ -1,13 +1,13 @@
 * ---------------------------------------------------------------------------------
-* Gerar o XML do evento de carta de correção do CTe e Enviar para SEFAZ
+* Gerar o XML do evento de carta de correï¿½ï¿½o do CTe e Enviar para SEFAZ
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarEventoCCeCTe()         
    LOCAL oConfiguracao, oExceptionInterop
    LOCAL oEventoCTe, oDetEventoCCE, oEventoCCeCTe, oInfCorrecao, oInfEvento
    LOCAL oRecepcaoEvento
 
- * Criar o objeto de configuração mínima
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar o objeto de configuraï¿½ï¿½o mï¿½nima
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDFe = 2 && 2=CTe
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao.CertificadoSenha = "12345678"   
@@ -15,18 +15,18 @@ FUNCTION EnviarEventoCCeCTe()
  * Criar XML 
   
  * Criar tag do lote de eventos <eventoCTe>
-   oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
+   oEventoCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCTe")
    oEventoCTe.Versao = "3.00"
 
  * Criar tag <detEvento>
-   oDetEventoCCE = CREATEOBJECT("Unimake.Business.DFe.Xml.CTe.DetEventoCCE")
+   oDetEventoCCE = CREATEOBJECT("Uni.Business.DFe.Xml.CTe.DetEventoCCE")
    oDetEventoCCE.VersaoEvento = "3.00"
    
  * Criar a tag <evCCeCTe>
-   oEventoCCeCTe = CREATEOBJECT("Unimake.Business.DFe.Xml.CTe.EventoCCeCTe")
+   oEventoCCeCTe = CREATEOBJECT("Uni.Business.DFe.Xml.CTe.EventoCCeCTe")
    
- * Criar a tag <infCorrecao> - Primeira correção
-   oInfCorrecao = CREATEOBJECT("Unimake.Business.DFe.Xml.CTe.InfCorrecao")
+ * Criar a tag <infCorrecao> - Primeira correï¿½ï¿½o
+   oInfCorrecao = CREATEOBJECT("Uni.Business.DFe.Xml.CTe.InfCorrecao")
    oInfCorrecao.GrupoAlterado = "ide"
    oInfCorrecao.CampoAlterado = "cfop"
    oInfCorrecao.ValorAlterado = "6353"
@@ -34,8 +34,8 @@ FUNCTION EnviarEventoCCeCTe()
    
    oEventoCCeCTe.AddInfCorrecao(oInfCorrecao)
 
- * Criar a tag <infCorrecao> - Segunda correção
-   oInfCorrecao = CREATEOBJECT("Unimake.Business.DFe.Xml.CTe.InfCorrecao")
+ * Criar a tag <infCorrecao> - Segunda correï¿½ï¿½o
+   oInfCorrecao = CREATEOBJECT("Uni.Business.DFe.Xml.CTe.InfCorrecao")
    oInfCorrecao.GrupoAlterado = "ide"
    oInfCorrecao.CampoAlterado = "cfop"
    oInfCorrecao.ValorAlterado = "6223"
@@ -46,13 +46,13 @@ FUNCTION EnviarEventoCCeCTe()
    oDetEventoCCe.EventoCCeCTe = oEventoCCeCTe
    
  * Criar tag <infEvento>
-   oInfEvento = CREATEOBJECT("Unimake.Business.DFe.Xml.CTe.InfEvento")   
+   oInfEvento = CREATEOBJECT("Uni.Business.DFe.Xml.CTe.InfEvento")   
    
  * Adicionar o Objeto oDetEventoCCE dentro do objeto DetEvento
    oInfEvento.DetEvento = oDetEventoCCE
    
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCCE para que funcione sem erro
+ * IMPORTANTE: Atualizaï¿½ï¿½o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCCE para que funcione sem erro
    oInfEvento.COrgao = 41 && UFBrasil.PR
    oInfEvento.ChCTe = "41191006117473000150550010000579281779843610"
    oInfEvento.CNPJ = "06117473000150"
@@ -70,12 +70,12 @@ FUNCTION EnviarEventoCCeCTe()
    MESSAGEBOX(oEventoCTe.InfEvento.CNPJ) 
    MESSAGEBOX(oEventoCTe.InfEvento.DhEvento)
  
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")
 
    TRY
     * Enviar evento
-      oRecepcaoEvento = CREATEOBJECT("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")
+      oRecepcaoEvento = CREATEOBJECT("Uni.Business.DFe.Servicos.CTe.RecepcaoEvento")
       oRecepcaoEvento.SetXMLConfiguracao(oEventoCTe, oConfiguracao)
 	  
 	  MESSAGEBOX(oRecepcaoEvento.GetConteudoXMLAssinado())
@@ -87,13 +87,13 @@ FUNCTION EnviarEventoCCeCTe()
 	  MESSAGEBOX(oRecepcaoEvento.RetornoWSString)
 
       DO CASE
-         CASE oRecepcaoEvento.Result.InfEvento.CStat == 134 && Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
-         CASE oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
-         CASE oRecepcaoEvento.Result.InfEvento.CStat == 156 && Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
-              oRecepcaoEvento.GravarXmlDistribuicao("tmp\testenfe") && Grava o XML de distribuição
+         CASE oRecepcaoEvento.Result.InfEvento.CStat == 134 && Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respectivo CT-e com situaï¿½ï¿½o diferente de Autorizada.
+         CASE oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respetivo CTe.
+         CASE oRecepcaoEvento.Result.InfEvento.CStat == 156 && Recebido pelo Sistema de Registro de Eventos ï¿½ vinculaï¿½ï¿½o do evento ao respectivo CT-e prejudicado.
+              oRecepcaoEvento.GravarXmlDistribuicao("tmp\testenfe") && Grava o XML de distribuiï¿½ï¿½o
               
          OTHERWISE
-              * Evento rejeitado. Realizar as ações necessárias.
+              * Evento rejeitado. Realizar as aï¿½ï¿½es necessï¿½rias.
       ENDCASE
        
    CATCH TO oErro

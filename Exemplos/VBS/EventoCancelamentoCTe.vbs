@@ -8,23 +8,23 @@
  Dim oRecepcaoEvento
 
  'Criar configuraçao básica para consumir o serviço
- Set oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ Set oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
  oConfiguracao.TipoDFe = 2 '2=CTe
  oConfiguracao.CertificadoSenha = "12345678"
  oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  'Criar tag <eventoCTe>
- Set oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
+ Set oEventoCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCTe")
  oEventoCTe.Versao = "3.00"
 
  'Criar tag <detEvento>
- Set oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.CTe.DetEventoCanc")
+ Set oDetEventoCanc = CreateObject("Uni.Business.DFe.Xml.CTe.DetEventoCanc")
  oDetEventoCanc.VersaoEvento = "3.00"
  oDetEventoCanc.NProt = "141190000660363"
  oDetEventoCanc.XJust = "Justificativa para cancelamento da NFe de teste"
 
  'Criar tag <infEvento>
- Set oInfEvento = CreateObject("Unimake.Business.DFe.Xml.CTe.InfEvento")
+ Set oInfEvento = CreateObject("Uni.Business.DFe.Xml.CTe.InfEvento")
  
  'Adicionar o Objeto DetEventoCanc dentro do objeto DetEvento
  oInfEvento.DetEvento = oDetEventoCanc
@@ -49,7 +49,7 @@
  MsgBox oEventoCTe.InfEvento.DhEvento 'Demonstrar o CNPJ infomrado no XML
  
  'Enviar carta de correcao
- Set oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")
+ Set oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.CTe.RecepcaoEvento")
  oRecepcaoEvento.Executar (oEventoCTe),  (oConfiguracao)
  
  MsgBox oRecepcaoEvento.RetornoWSString

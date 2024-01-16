@@ -12,23 +12,23 @@ Function EnviarCancCTe()
    Local oDetEventoCanc, oEventoCancCTe, oInfCorrecao, oInfEvento, oRecepcaoEvento
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 2 // 0=CTe
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    
  * Criar tag do lote de eventos <eventoCTe>
-   oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
+   oEventoCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCTe")
    oEventoCTe:Versao = "3.00"
 
  * Criar tag <detEvento>
-   oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.CTe.DetEventoCanc")
+   oDetEventoCanc = CreateObject("Uni.Business.DFe.Xml.CTe.DetEventoCanc")
    oDetEventoCanc:VersaoEvento = "3.00"
    oDetEventoCanc:NProt = "141190000660363"
    oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
    
  * Criar tag <infEvento>
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.CTe.InfEvento")   
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.CTe.InfEvento")   
    
  * Adicionar o Objeto oDetEventoCCE dentro do objeto DetEvento   
    oInfEvento:DetEvento = oDetEventoCanc
@@ -60,7 +60,7 @@ Function EnviarCancCTe()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.CTe.RecepcaoEvento")
       oRecepcaoEvento:SetXMLConfiguracao(oEventoCTe, oConfiguracao)
 	  
 	  ? oRecepcaoEvento:GetConteudoXMLAssinado()

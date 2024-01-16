@@ -66,7 +66,7 @@ Function Main()
    AAdd(aOpcoes, "Gerando XML de distribuicao Evento Canc NFe via consulta situacao")
    AAdd(aOpcoes, "Consulta MDFes nao encerrados")
    
-   AAdd(aOpcoes, "Obter a versao da DLL Unimake.DFe")
+   AAdd(aOpcoes, "Obter a versao da DLL Uni.DFe")
    
    Do While .T.
       Cls
@@ -232,7 +232,7 @@ Function Main()
 		      ConsultaMDFeNaoEnc()
 			  
          case nOpcao = 51
-		      oInfoInterop = CreateObject("Unimake.Business.DFe.Utility.InfoInterop")
+		      oInfoInterop = CreateObject("Uni.Business.DFe.Utility.InfoInterop")
 			  Cls
 			  
 			  ? oInfoInterop:VersaoDLL

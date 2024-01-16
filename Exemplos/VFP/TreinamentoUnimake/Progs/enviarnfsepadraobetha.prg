@@ -1,18 +1,18 @@
 * ---------------------------------------------------------------------------------
-* Enviar NFSe padrão Betha (Município de São Paulo)
+* Enviar NFSe padrï¿½o Betha (Municï¿½pio de Sï¿½o Paulo)
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarNFSePadraoBetha()
    LOCAL oConfiguracao, oErro, oExceptionInterop, oConfigConsulta
    LOCAL oRecepcionarLoteRpsSincrono, xmlNfse, xmlConsultaRPS, oConsultarNfsePorRps   
       
- * Criar o objeto de configuração mínima
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar o objeto de configuraï¿½ï¿½o mï¿½nima
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
    oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
    oConfiguracao.CertificadoSenha = "12345678"   
-   oConfiguracao.TipoAmbiente = 2 && Homologação
+   oConfiguracao.TipoAmbiente = 2 && Homologaï¿½ï¿½o
 
-   oConfiguracao.CodigoMunicipio = 4208302 && Código do IBGE de Itapema-SC ###
+   oConfiguracao.CodigoMunicipio = 4208302 && Cï¿½digo do IBGE de Itapema-SC ###
    oConfiguracao.Servico = 29 && Servico.NFSeRecepcionarLoteRpsSincrono ###
    oConfiguracao.SchemaVersao = "2.02" && ###
     
@@ -95,11 +95,11 @@ FUNCTION EnviarNFSePadraoBetha()
    xmlNfse = xmlNfse + AllTrim([  </LoteRps>])
    xmlNfse = xmlNfse + AllTrim([</EnviarLoteRpsSincronoEnvio>])      
       
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")     
 
    TRY 
-      oRecepcionarLoteRpsSincrono = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.RecepcionarLoteRpsSincrono") && ###
+      oRecepcionarLoteRpsSincrono = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.RecepcionarLoteRpsSincrono") && ###
       oRecepcionarLoteRpsSincrono.Executar(xmlnfse, oConfiguracao) && ###
       
       MESSAGEBOX(oRecepcionarLoteRpsSincrono.RetornoWSString)
@@ -121,17 +121,17 @@ FUNCTION EnviarNFSePadraoBetha()
       xmlConsultaRPS = xmlConsultaRPS + AllTrim([  </Prestador>])
       xmlConsultaRPS = xmlConsultaRPS + AllTrim([</ConsultarNfseRpsEnvio>])
       
-    * Consumir o serviço de consulta nfse por RPS        
-      oConfigConsulta = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+    * Consumir o serviï¿½o de consulta nfse por RPS        
+      oConfigConsulta = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfigConsulta.TipoDFe = 5 && TipoDFe.NFSe
       oConfigConsulta.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfigConsulta.CertificadoSenha = "12345678"   
-      oConfigConsulta.TipoAmbiente =  2 && Homologação
-      oConfigConsulta.CodigoMunicipio = 4208302 && Código do IBGE de Itapema-SC ###
+      oConfigConsulta.TipoAmbiente =  2 && Homologaï¿½ï¿½o
+      oConfigConsulta.CodigoMunicipio = 4208302 && Cï¿½digo do IBGE de Itapema-SC ###
       oConfigConsulta.Servico = 36  && Servico.NFSeConsultarNfsePorRps ###
       oConfigConsulta.SchemaVersao = "2.02" && ###
       
-      oConsultarNfsePorRps = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")
+      oConsultarNfsePorRps = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")
       oConsultarNfsePorRps.Executar(xmlConsultaRPS, oConfigConsulta)
       
       MESSAGEBOX(oConsultarNfsePorRps.RetornoWSString)

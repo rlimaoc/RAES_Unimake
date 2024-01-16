@@ -1,11 +1,11 @@
 FUNCTION TestarConexaoInternet()
    LOCAL oNet
    
-   oNet = CREATEOBJECT("Unimake.Business.DFe.Utility.NetInterop")
+   oNet = CREATEOBJECT("Uni.Business.DFe.Utility.NetInterop")
    
    IF oNet.HasInternetConnection()
       MESSAGEBOX("Internet ok")
    ELSE
-      MESSAGEBOX("Sem conexão com a internet")
+      MESSAGEBOX("Sem conexï¿½o com a internet")
    ENDIF   
 RETURN

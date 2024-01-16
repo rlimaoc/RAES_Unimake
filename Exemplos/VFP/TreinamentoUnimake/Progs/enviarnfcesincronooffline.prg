@@ -1,17 +1,17 @@
 * ---------------------------------------------------------------------------------
-* Enviar NFCe no modo síncro em contingência off-line
-* situação (consulta via chave da nfe)
+* Enviar NFCe no modo sï¿½ncro em contingï¿½ncia off-line
+* situaï¿½ï¿½o (consulta via chave da nfe)
 * ---------------------------------------------------------------------------------
 
 * - Status de envio do proprio software
 * -- 0 - Processo de envio iniciado
 * -- 1 - XML gerado, assinado e arquivado
-* -- 2 - XML gerado e emitido danfe em contingência offline
+* -- 2 - XML gerado e emitido danfe em contingï¿½ncia offline
 * -- 3 - XML enviado
 * -- 4 - Retorno recebido e dados importantes arquivados (Protocolo, etc.)
-* -- 5 - XML de distribuição arquivado
-* -- 6 - Processo de envio concluído com sucesso
-* - E se a nota foi duplicada? Com isso não vai acontecer, mas se for faça o seguinte
+* -- 5 - XML de distribuiï¿½ï¿½o arquivado
+* -- 6 - Processo de envio concluï¿½do com sucesso
+* - E se a nota foi duplicada? Com isso nï¿½o vai acontecer, mas se for faï¿½a o seguinte
 
 FUNCTION EnviarNfceSincronoOffLine()
    LOCAL Config
@@ -30,7 +30,7 @@ FUNCTION EnviarNfceSincronoOffLine()
 
    nStatusEnvio = 0 && Processo de envio iniciado   
    lEnvioOffline = .F.
-   lConexaoNet = .T. && Temos conexão com a internet (Executar alguma rotina que teste a internet)
+   lConexaoNet = .T. && Temos conexï¿½o com a internet (Executar alguma rotina que teste a internet)
    xJust = "Emitida em contingencia em decorrencia de falhas da infraestrutura de rede/internet"
    lSair = .T.
    
@@ -41,33 +41,33 @@ FUNCTION EnviarNfceSincronoOffLine()
 
    DO WHILE .T.
 	 * Criar configuracao basica para consumir o servico
-	   oConfig = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+	   oConfig = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
 	   oConfig.TipoDfe = 1 && 1=nfce
-	   oConfig.TipoEmissao = IIF(lEnvioOffLine,9,1) && 1=Normal 9=Contingência offline
+	   oConfig.TipoEmissao = IIF(lEnvioOffLine,9,1) && 1=Normal 9=Contingï¿½ncia offline
 	   oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 	   oConfig.CertificadoSenha = "12345678"
 	   oConfig.CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG"
 	   oConfig.CSCIDToken = 2   
 	   
 	 * Criar a tag <enviNFe>
-	   oEnviNFe = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+	   oEnviNFe = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.EnviNFe")
 	   oEnviNFe.Versao = "4.00"
 	   oEnviNFe.IdLote = "000000000000001"
 	   oEnviNFe.IndSinc = 1 && 1=Sim 0=Nao
 	   
 	 * Criar a tag <NFe>  
-	   oNfe = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.NFe")
+	   oNfe = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.NFe")
 	   
        IF nStatusEnvio >= 1 .And. .Not. lEnvioOffline && XML gerado, assinado e arquivado
-	    * Vamos desserializar XML assinado que já temos no HD ou no banco de dados
+	    * Vamos desserializar XML assinado que jï¿½ temos no HD ou no banco de dados
 	      oEnviNFe.AddNFe(oNFe.LoadFromFile("D:\testenfe\cont\41230406117473000150650010000590059431907003-nfe.xml"))
 	   ELSE
 		 * Criar tag InfNfe
-		   oInfNFe = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.InfNFe")
+		   oInfNFe = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.InfNFe")
 		   oInfNFe.Versao = "4.00"
 
 		 * cria tag Ide
-		   oIde = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Ide")
+		   oIde = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Ide")
 		   oIde.CUF = 41 && Brasil.PR
 		   oIde.NatOp = "VENDA PRODUC.DO ESTABELEC"
 		   oIde.Mod = 65 && NFCe
@@ -96,7 +96,7 @@ FUNCTION EnviarNfceSincronoOffLine()
 		   oInfNFe.Ide = oIde
 
 		 * criar tag Emit
-		   oEmit = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Emit")
+		   oEmit = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Emit")
 		   oEmit.CNPJ  = "06117473000150"
 		   oEmit.XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
 		   oEmit.XFant = "UNIMAKE - PARANAVAI"
@@ -105,7 +105,7 @@ FUNCTION EnviarNfceSincronoOffLine()
 		   oEmit.CNAE  = "6202300"
 		   oEmit.CRT   = 1 && CRT.SimplesNacional
 
-		   oEnderEmit = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+		   oEnderEmit = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.EnderEmit")
 		   oEnderEmit.XLgr    = "RUA PAULO ANTONIO COSTA"
 		   oEnderEmit.Nro     = "575"
 		   oEnderEmit.XBairro = "CENTRO"
@@ -122,13 +122,13 @@ FUNCTION EnviarNfceSincronoOffLine()
 		   oInfNfe.Emit = oEmit
 		   
 	     * criar tag Dest	   
-	       oDest = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Dest") 
+	       oDest = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Dest") 
 	       oDest.CNPJ      = "04218457000128"
 	       oDest.XNome     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
 	       oDest.IndIEDest = 9 && IndicadorIEDestinatario.NaoContribuinte,
 	     * oDest.Email     = "janelaorp@janelaorp.com.br"
 	   
-	     * oEnderDest = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.EnderDest")
+	     * oEnderDest = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.EnderDest")
 	     * oEnderDest.XLgr    = "AVENIDA DA SAUDADE"
 	     * oEnderDest.Nro     = "1555"
 	     * oEnderDest.XBairro = "CAMPOS ELISEOS"
@@ -146,10 +146,10 @@ FUNCTION EnviarNfceSincronoOffLine()
 		   
 		   For I = 1 To 3 && 3 produtos para teste    
 		     * criar tag Det
-		       oDet = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Det")
+		       oDet = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Det")
 			   oDet.NItem = I
 			   
-		       oProd          = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Prod")
+		       oProd          = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Prod")
 		       oProd.CProd    = AllTrim(Str(I,5))
 		       oProd.CEAN     = "SEM GTIN"
 		       oProd.XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -169,14 +169,14 @@ FUNCTION EnviarNfceSincronoOffLine()
 		       oDet.Prod = oProd
 			   
 		     * criar tag Imposto
-		       oImposto          = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Imposto")
+		       oImposto          = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Imposto")
 		       oImposto.VTotTrib = 12.63
 			   
 		     * criar tag Icms
-		       oICMS             = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.ICMS")
+		       oICMS             = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.ICMS")
 			   
 		     * criar tag ICMSSN101
-		       oICMSSN101            = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
+		       oICMSSN101            = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.ICMSSN101")
 		       oICMSSN101.Orig       = 0 && OrigemMercadoria.Nacional
 		       oICMSSN101.PCredSN     = 2.8255
 		       oICMSSN101.VCredICMSSN = 2.40
@@ -188,10 +188,10 @@ FUNCTION EnviarNfceSincronoOffLine()
 		       oImposto.Icms = oICMS
 			   
 		     * criar tag PIS
-		       oPIS           = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.PIS")
+		       oPIS           = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.PIS")
 
 		     * criar tag PISOutr
-		       oPISOutr      = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.PISOutr")
+		       oPISOutr      = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.PISOutr")
 		       oPISOutr.CST  = "99"
 		       oPISOutr.VBC  = 0.00
 		       oPISOutr.PPIS = 0.00
@@ -204,10 +204,10 @@ FUNCTION EnviarNfceSincronoOffLine()
 		       oImposto.PIS = oPIS
 
 		     * criar tag COFINS
-		       oCOFINS      = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.COFINS")
+		       oCOFINS      = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.COFINS")
 
 		     * criar tag COFINSOutr
-		       oCOFINSOutr         = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+		       oCOFINSOutr         = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.COFINSOutr")
 		       oCOFINSOutr.CST     = "99"
 		       oCOFINSOutr.VBC     = 0.00
 		       oCOFINSOutr.PCOFINS = 0.00
@@ -227,10 +227,10 @@ FUNCTION EnviarNfceSincronoOffLine()
 		   Next I
 		   
 		 * Criar tag Total
-		   oTotal = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Total")
+		   oTotal = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Total")
 
 		 * Criar tag ICMSTot
-		   oICMSTot = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+		   oICMSTot = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.ICMSTot")
 		   oICMSTot.VBC = 0
 		   oICMSTot.VICMS = 0
 		   oICMSTot.VICMSDeson = 0
@@ -259,17 +259,17 @@ FUNCTION EnviarNfceSincronoOffLine()
 		   oInfNfe.Total = oTotal
 		   
 		 * Criar a tag Transp  
-		   oTransp = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Transp")
+		   oTransp = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Transp")
 		   oTransp.ModFrete = 9 && ModalidadeFrete.SemOcorrenciaTransporte 
 
 		 * adicionar a tag Transp dentro da tag InfNfe
 		   oInfNfe.Transp = oTransp
 
 		 * criar tag Pag
-		   oPag = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.Pag")
+		   oPag = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.Pag")
 
 		 * criar tag DetPag 
-		   oDetPag = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.DetPag")
+		   oDetPag = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.DetPag")
 		   oDetPag.IndPag = 0 && IndicadorPagamento.PagamentoVista
 		   oDetPag.TPag   = 1 && MeioPagamento.Dinheiro
 		   oDetPag.VPag   = 254.70
@@ -281,14 +281,14 @@ FUNCTION EnviarNfceSincronoOffLine()
 		   oInfNFe.Pag = oPag
 
 		 * criar tag InfAdic
-		   oInfAdic = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.InfAdic")
+		   oInfAdic = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.InfAdic")
 		   oInfAdic.InfCpl = "Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008"
 		 
 		 * adicionar a tag InfAdic dentro da tag InfNfe
 		   oInfNFe.InfAdic = oInfAdic
 
 		 * criar tag InfRespTec
-		   oInfRespTec = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+		   oInfRespTec = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.InfRespTec")
 		   oInfRespTec.CNPJ     = "06117473000150"
 		   oInfRespTec.XContato = "Ze das Couves"
 		   oInfRespTec.Email    = "zedascouves@gmail.com"
@@ -312,7 +312,7 @@ FUNCTION EnviarNfceSincronoOffLine()
 	   MESSAGEBOX("Chave da NFe:" + chaveNFe)
 
 	 * Consumir o serviÃ§o (Enviar NFE para SEFAZ)
-	   oAutorizacao = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFCe.Autorizacao")
+	   oAutorizacao = CREATEOBJECT("Uni.Business.DFe.Servicos.NFCe.Autorizacao")
 	   
 	 * Criar objeto para pegar excecao do lado do CSHARP
 	   oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")   
@@ -351,11 +351,11 @@ FUNCTION EnviarNfceSincronoOffLine()
                    * Gravar XML de distribuicao em uma pasta (NFe com o protocolo de autorizacao anexado)
                      oAutorizacao.GravarXmlDistribuicao("d:\testenfe")
 	
-      		       * Pegar a string do XML de distribuição
+      		       * Pegar a string do XML de distribuiï¿½ï¿½o
                      docProcNFe = oAutorizacao.GetNFeProcResults(chaveNFe)
    			         MESSAGEBOX(docProcNFe)
 
-                     nStatusEnvio = 5 && XML de distribuição arquivado
+                     nStatusEnvio = 5 && XML de distribuiï¿½ï¿½o arquivado
 			   
                    * Como pegar o numero do protocolo de autorizacao para gravar na base
 		             MESSAGEBOX(oAutorizacao.Result.ProtNFe.InfProt.NProt)
@@ -366,14 +366,14 @@ FUNCTION EnviarNfceSincronoOffLine()
                      nStatusEnvio = 0 && Voltar a ZERO para permitir o envio da nova novamente
                   ENDIF
                ELSE
-                  IF oAutorizacao.Result.CStat == 108 && Servidor de Processamento está Paralisado temorariamente ###
+                  IF oAutorizacao.Result.CStat == 108 && Servidor de Processamento estï¿½ Paralisado temorariamente ###
                      lEnvioOffline = .T.
-                     xJust = "Servidor de processamento da SEFAZ está paralisado temporariamente - cStat = 108"
+                     xJust = "Servidor de processamento da SEFAZ estï¿½ paralisado temporariamente - cStat = 108"
                      lSair = .F.
                   ELSE
-                     IF oAutorizacao.Result.CStat == 109 && Servidor de Processamento está Paralisado sem Previsão de retorno ###
+                     IF oAutorizacao.Result.CStat == 109 && Servidor de Processamento estï¿½ Paralisado sem Previsï¿½o de retorno ###
                         lEnvioOffline = .T.
-                        xJust = "Servidor de Processamento está Paralisado sem Previsão de retorno - cStat = 109"
+                        xJust = "Servidor de Processamento estï¿½ Paralisado sem Previsï¿½o de retorno - cStat = 109"
                         lSair = .F.
                      ENDIF   
                   ENDIF
@@ -382,20 +382,20 @@ FUNCTION EnviarNfceSincronoOffLine()
                   nStatusEnvio = 0 && Voltar a ZERO para permitir o envio da nova novamente   
                ENDIF
             ELSE
-             * Criar configuração mínima para consumir o serviço de consulta protocolo
-               oConfigConsSitNFe = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+             * Criar configuraï¿½ï¿½o mï¿½nima para consumir o serviï¿½o de consulta protocolo
+               oConfigConsSitNFe = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
                oConfigConsSitNFe.TipoDfe = 0 && 0=nfe
                oConfigConsSitNFe.TipoEmissao = 1 && 1=Normal
                oConfigConsSitNFe.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
                oConfigConsSitNFe.CertificadoSenha = "12345678"
          
-             * Consultar a nota pela chave e se autorizada finalizar gerando o XML de distribuição   
-               oConsSitNFe = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.ConsSitNFe")
+             * Consultar a nota pela chave e se autorizada finalizar gerando o XML de distribuiï¿½ï¿½o   
+               oConsSitNFe = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.ConsSitNFe")
                oConsSitNFe.Versao = "4.00"
-               oConsSitNFe.TpAmb = 2 && Homologação
+               oConsSitNFe.TpAmb = 2 && Homologaï¿½ï¿½o
                oConsSitNFe.ChNFe = chaveNFe
          
-               oConsultaProtocolo = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo")
+               oConsultaProtocolo = CREATEOBJECT("Uni.Business.DFe.Servicos.NFCe.ConsultaProtocolo")
                oConsultaProtocolo.Executar(oConsSitNFe, oConfigConsSitNFe)
          
                MESSAGEBOX(oConsultaProtocolo.RetornoWSString)
@@ -406,7 +406,7 @@ FUNCTION EnviarNfceSincronoOffLine()
                 * Gravar XML de distribuicao em uma pasta (NFe com o protocolo de autorizacao anexado)
                   oAutorizacao.GravarXmlDistribuicao("d:\testenfe")
 	
-		        * Pegar a string do XML de distribuição
+		        * Pegar a string do XML de distribuiï¿½ï¿½o
                   docProcNFe = oAutorizacao.GetNFeProcResults(chaveNFe)
 			      MESSAGEBOX(docProcNFe)
 			
@@ -423,7 +423,7 @@ FUNCTION EnviarNfceSincronoOffLine()
             StrToFile(notaAssinada, 'd:\testenfe\cont\' + chaveNFe + '-nfe.xml', 0)
 
           *
-          * Criar as configurações para impressao do DANFe.
+          * Criar as configuraï¿½ï¿½es para impressao do DANFe.
           *
           * Lista de parametros/propriedades que podem ser utilizadas:
           * https://wiki.unimake.com.br/index.php/UniDANFE/Integrando_o_UniDANFE_ao_ERP/Gerar_documento_auxiliar
@@ -439,7 +439,7 @@ FUNCTION EnviarNfceSincronoOffLine()
             oDANFe.Execute(oConfigDANFe)
             
             lSair = .T.
-            lStatusEnvio = 2 && XML gerado e emitido danfe em contingência offline
+            lStatusEnvio = 2 && XML gerado e emitido danfe em contingï¿½ncia offline
          ENDIF   
 	  
       CATCH TO oErro

@@ -95,7 +95,7 @@ Function GerarXmlNFSe()
 	Wait
 	
  * Criar o objeto de configuração mínima
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 5 //5=NFSe
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao:CertificadoSenha = "12345678"
@@ -117,7 +117,7 @@ Function GerarXmlNFSe()
 	  wait
 	  cls 
     
-	  oEnvioRPS := CreateObject("Unimake.Business.DFe.Servicos.NFSe.EnvioRps")
+	  oEnvioRPS := CreateObject("Uni.Business.DFe.Servicos.NFSe.EnvioRps")
       oEnvioRPS:Executar(cConteudoXML, oConfiguracao)
 	  
 	  ? oEnvioRPS:RetornoWSString

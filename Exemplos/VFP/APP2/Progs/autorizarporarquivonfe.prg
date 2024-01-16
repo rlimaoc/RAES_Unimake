@@ -4,8 +4,8 @@ ENDIF
 VerificarVencimentoCertificado()
 ConfiguracaoAtual(0,1)
 
-EnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
-Autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+EnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
+Autorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
 EnviNFe.Versao = "4.00"
 EnviNFe.IdLote = "000000000000001"
 EnviNFe.IndSinc = 0
@@ -15,7 +15,7 @@ EnviNFe.AddNFe(GetFromFileNFe(FULLPATH(CURDIR())+"Envio\NFe2.xml"))
 TRY   
 	Autorizacao.Executar(EnviNFe,Aplicativo.Configuracao.Inicializar)
 CATCH TO cErro
-	=MESSAGEBOX("Não foi possível acessar o Servidor " + cErro.Message,0,'')
+	=MESSAGEBOX("Nï¿½o foi possï¿½vel acessar o Servidor " + cErro.Message,0,'')
 ENDTRY 	
 
 MESSAGEBOX(Autorizacao.RetornoWSString)
@@ -30,9 +30,9 @@ MESSAGEBOX("Recibo Numero: " + Autorizacao.Result.InfRec.NRec)
 IF NOT ISNULL(Autorizacao.Result)
     IF Autorizacao.Result.CStat = 103 && 103 = Lote Recebido com Sucesso
         
-        * Finalizar através da consulta do recibo.
-		ConsReciNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
-		retAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")		
+        * Finalizar atravï¿½s da consulta do recibo.
+		ConsReciNFe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsReciNFe")
+		retAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.RetAutorizacao")		
 		ConsReciNFe.Versao = "4.00"
 		ConsReciNFe.TpAmb = 2
 		ConsReciNFe.NRec = Autorizacao.Result.InfRec.NRec
@@ -40,7 +40,7 @@ IF NOT ISNULL(Autorizacao.Result)
 		TRY 
 			retAutorizacao.Executar(ConsReciNFe,Aplicativo.Configuracao.Inicializar) 
 		CATCH TO cErro
-			=MESSAGEBOX("Não foi possível acessar o Servidor " + cErro.Message,0,'')
+			=MESSAGEBOX("Nï¿½o foi possï¿½vel acessar o Servidor " + cErro.Message,0,'')
 		ENDTRY 	
 
 		IF retAutorizacao.Result.GetProtNFeCount > 0 
@@ -61,7 +61,7 @@ IF NOT ISNULL(Autorizacao.Result)
 							MESSAGEBOX("Nota autorizada")
 							Autorizacao.GravarXmlDistribuicao(FULLPATH(CURDIR())+ "Retorno\")
 						ELSE 
-							MESSAGEBOX("Nota não autorizada")
+							MESSAGEBOX("Nota nï¿½o autorizada")
 				 	    ENDIF
 				 	 ENDIF 
 				ENDIF 
@@ -69,7 +69,7 @@ IF NOT ISNULL(Autorizacao.Result)
 			ENDFOR 
 					    
 		ELSE  
-		    MESSAGEBOX("Algo ocorreu na consulta recibo que não retornou o protocolo da nota, talvez tenha consultado um recibo que não existe.")
+		    MESSAGEBOX("Algo ocorreu na consulta recibo que nï¿½o retornou o protocolo da nota, talvez tenha consultado um recibo que nï¿½o existe.")
 		ENDIF 
 	ELSE 
 			MESSAGEBOX(ALLTRIM(STR(retAutorizacao.Result.CStat)) + " " + retAutorizacao.Result.XMotivo)

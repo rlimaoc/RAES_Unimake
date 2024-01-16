@@ -11,7 +11,7 @@ Function EnviarLoteRPSAssincrono()
    Local oEnvioRps, cArqXML, cStr
    
  * Criar o objeto de configuração mínima
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 5 //5=NFSe
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao:CertificadoSenha = "12345678"
@@ -24,7 +24,7 @@ Function EnviarLoteRPSAssincrono()
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try         
-      cArqXML := "D:\testenfe\xharbour\Unimake.DFe\EnviarLoteRpsEnvio-env-loterps.xml"
+      cArqXML := "D:\testenfe\xharbour\Uni.DFe\EnviarLoteRpsEnvio-env-loterps.xml"
 	  cStr := Memoread(cArqXML)
 	  cStr := SubStr(cStr, 4)
 	  
@@ -37,7 +37,7 @@ Function EnviarLoteRPSAssincrono()
 	  wait
 	  cls 
     
-	  oEnvioRPS := CreateObject("Unimake.Business.DFe.Servicos.NFSe.EnvioRps")
+	  oEnvioRPS := CreateObject("Uni.Business.DFe.Servicos.NFSe.EnvioRps")
       oEnvioRPS:Executar(cStr, oConfiguracao)
 	  
 	  ? oEnvioRPS:RetornoWSString

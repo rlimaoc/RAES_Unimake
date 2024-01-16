@@ -8,26 +8,26 @@ Dim QtdeEventos
 
 'Montar o objeto de configuração com informações mínimas 
 'para ser utilizado na hora de consumir o serviço
-Set configuracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+Set configuracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 configuracao.TipoDFe = 4
 configuracao.CertificadoSenha = "12345678"
 configuracao.CertificadoArquivo = "D:\projetos\UnimakePV.pfx"
 
 'Montar o XML de consulta status do serviço
-Set consSitMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsSitMDFe")
+Set consSitMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsSitMDFe")
 consSitMDFe.Versao = "3.00"
 consSitMDFe.TpAmb = 2 '1-Produção 2-Homologação
 consSitMDFe.ChMDFe = "31220637920833000180580010000000111000000123"
 
 'Consumir o serviço
-Set consultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
+Set consultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
 consultaProtocolo.Executar (consSitMDFe),(configuracao)
 
 'Demonstrar mensagens na tela com o retorno da SEFAZ
 MsgBox consultaProtocolo.Result.CStat 'Recuperar o conteúdo da tag <cStat> retornada pela SEFAZ
 MsgBox consultaProtocolo.Result.XMotivo 'Recuperar o conteúdo da tag <xMotivo> retornada pela SEFAZ
 
-'Set retConsSitMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.RetConsSitMDFe")
+'Set retConsSitMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.RetConsSitMDFe")
 'Set retConsSitMDFe = consultaProtocolo.Result
 
 'Resgatar a quantidade de eventos retornados na consulta

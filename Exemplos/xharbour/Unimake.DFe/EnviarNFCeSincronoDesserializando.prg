@@ -21,7 +21,7 @@ Function EnviarNFCeSincronoDesserializando()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuraçao básica para consumir o serviço
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig:TipoDfe = 1 // 1=nfce
    oConfig:TipoEmissao = 1 // 1=Normal
    oConfig:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
@@ -30,13 +30,13 @@ Function EnviarNFCeSincronoDesserializando()
    oConfig:CSCIDToken = 2   
    
  * Criar XML   
-   oXml = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oXml = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oXml:Versao = "4.00"
    oXml:IdLote = "000000000000001"
    oXml:IndSinc = 1 // 1=Sim 0=Nao
    
  * Criar a tag NFe e deserializar o XML já gravado no HD para já preencher o objeto para envio
-   onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   onfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
    oXml:AddNFe(oNFe:LoadFromFile("D:\testenfe\notateste-nfce.xml")) 
 
@@ -53,7 +53,7 @@ Function EnviarNFCeSincronoDesserializando()
    Cls
 
  * Consumir o serviço (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Autorizacao") //###
+   oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFCe.Autorizacao") //###
    
    // Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   

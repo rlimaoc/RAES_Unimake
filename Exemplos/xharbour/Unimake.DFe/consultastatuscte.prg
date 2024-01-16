@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Consumindo o serviço de consulta status da CTe
+* Consumindo o serviï¿½o de consulta status da CTe
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
@@ -11,25 +11,25 @@ Function ConsultaStatusCTe()
    Local oConsStatServCTe, oErro, oExceptionInterop
    Local oStatusServico
    
- * Criar configuração básica para consumir o serviço
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ï¿½o bï¿½sica para consumir o serviï¿½o
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig:TipoDFe = 2 //0=CTe
    oConfig:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig:CertificadoSenha = "12345678"
    oConfig:TipoEmissao = 1 //1=Normal
-   oConfig:CodigoUF = 41 //Paraná (No caso do CTe temos que definir a UF nas configurações pois o XML de consulta status não tem e não temos como saber de qual estado consultar.
+   oConfig:CodigoUF = 41 //Paranï¿½ (No caso do CTe temos que definir a UF nas configuraï¿½ï¿½es pois o XML de consulta status nï¿½o tem e nï¿½o temos como saber de qual estado consultar.
    
  * Criar XML   
-   oConsStatServCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.ConsStatServCTe")
+   oConsStatServCTe = CreateObject("Uni.Business.DFe.Xml.CTe.ConsStatServCTe")
    oConsStatServCTe:Versao = "3.00"
-   oConsStatServCTe:TpAmb = 2 //2=Homologação
+   oConsStatServCTe:TpAmb = 2 //2=Homologaï¿½ï¿½o
    
-   //Criar objeto para pegar exceção do lado do CSHARP
+   //Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
    
    Try
-    * Consumir o serviço
-	  oStatusServico = CreateObject("Unimake.Business.DFe.Servicos.CTe.StatusServico")
+    * Consumir o serviï¿½o
+	  oStatusServico = CreateObject("Uni.Business.DFe.Servicos.CTe.StatusServico")
 	  oStatusServico:Executar(oConsStatServCTe, oConfig)
 
 	  ? "XML Retornado pela SEFAZ"
@@ -41,14 +41,14 @@ Function ConsultaStatusCTe()
 	  ? Alltrim(Str(oStatusServico:Result:CStat,5)), oStatusServico:Result:XMotivo
 	  ?	  
    Catch oErro
-      //Demonstrar exceções geradas no proprio Harbour, se existir.
+      //Demonstrar exceï¿½ï¿½es geradas no proprio Harbour, se existir.
 	  ? "ERRO"
 	  ? "===="
 	  ? "Falha ao tentar consultar o status do servico."
       ? oErro:Description
       ? oErro:Operation
 	  
-      //Demonstrar a exceção do CSHARP
+      //Demonstrar a exceï¿½ï¿½o do CSHARP
 	  ?
       ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
       ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()

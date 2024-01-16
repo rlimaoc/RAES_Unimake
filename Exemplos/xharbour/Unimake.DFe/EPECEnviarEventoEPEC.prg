@@ -12,14 +12,14 @@ Function EPECEnviarEventoEPEC()
    Local oEnvEvento, oEvento, oDetEventoEPEC, oInfEvento
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 0 // 0=nfe
    oConfiguracao:Servico = 5 // 5=Envio de evento
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento:Versao = "1.00"
    oEnvEvento:IdLote = "000000000000001"
 
@@ -27,11 +27,11 @@ Function EPECEnviarEventoEPEC()
  * Criar tags do evento sequencia 1
  * -------------------------------------------------
  * Criar tag Evento
-   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
    oEvento:Versao = "1.00"
  
  * Criar tag DetEventoEPEC
-   oDetEventoEPEC = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoEPEC")
+   oDetEventoEPEC = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoEPEC")
    oDetEventoEPEC:Versao = "1.00"
    oDetEventoEPEC:COrgaoAutor = 41 //UFBrasil.PR
    oDetEventoEPEC:TpAutor = 1 //TipoAutor.EmpresaEmitente
@@ -41,7 +41,7 @@ Function EPECEnviarEventoEPEC()
    oDetEventoEPEC:IE = "9032000301"
 
  * Criar a tag DetEventoEPECDest
-   oDetEventoEPECDest = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoEPECDest")
+   oDetEventoEPECDest = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoEPECDest")
    oDetEventoEPECDest:CNPJ = "06117473000150"
    oDetEventoEPECDest:UF = 41 //UFBrasil.PR
    oDetEventoEPECDest:VNF = 86.00
@@ -51,7 +51,7 @@ Function EPECEnviarEventoEPEC()
    oDetEventoEPEC:Dest = oDetEventoEPECDest
    
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
  
  * Adicionar a tag DetEventoEPEC dentro da Tag DetEvento
    oInfEvento:DetEvento = oDetEventoEPEC
@@ -91,7 +91,7 @@ Function EPECEnviarEventoEPEC()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
       oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
 	  
 	  ? oRecepcaoEvento:GetConteudoXMLAssinado()

@@ -41,7 +41,7 @@ IF sRecebe_certificado_arquivo="" THEN
 		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
 		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
 		IF busca_token<>"ok" THEN
-			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3 is Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
 			o_CertA3.SetPinPrivateKey(O_CONFIGURACAO,sRecebe_certificado_senha)		
 			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
 		END
@@ -56,7 +56,7 @@ O_CONFIGURACAO.TipoDFe=0 // 0=nfe 1-nfce
 O_CONFIGURACAO.Servico=6 // 3-Inutilizacao Nfe 5=envio evento 6 // autorizacao nfe
 O_CONFIGURACAO.TipoEmissao=recebe_tipo_emissao // 1//1=normal
 
-O_Xml is Unimake.Business.DFe.Xml.NFe.EnviNFe()
+O_Xml is Uni.Business.DFe.Xml.NFe.EnviNFe()
 O_Xml.Versao="4.00"
 O_Xml.IdLote=NumToString(nRecebe_numero_lote,"015d") //"000000000000001" //mesmo numero da nota--numero qualquer
 O_Xml.IndSinc = 1 // 1=Sincronomo 0=Nao sincronomo Sao paulo
@@ -64,10 +64,10 @@ O_Xml.IndSinc = 1 // 1=Sincronomo 0=Nao sincronomo Sao paulo
 
 //vamos desirializar esse xml dentro do objeto
 WHEN EXCEPTION IN 
-	o_nfe is Unimake.Business.DFe.Xml.NFe.NFe()
+	o_nfe is Uni.Business.DFe.Xml.NFe.NFe()
 	O_Xml.AddNFe(o_nfe.loadFromXml(recebe_xml)) // O_Xml.AddNFe(o_nfe.loadFromFile("c:\temp\xmla.xml"))//quando pegar pelo arquivo
     //o que mudou aqui foi o .NFe de .NFce.
-	O_Autorizacao is Unimake.Business.DFe.Servicos.NFe.Autorizacao(O_Xml, O_CONFIGURACAO)
+	O_Autorizacao is Uni.Business.DFe.Servicos.NFe.Autorizacao(O_Xml, O_CONFIGURACAO)
 	retorno_xml_assinado=O_Autorizacao.GetConteudoNFeAssinada(0)
 
 	IF retorno_xml_assinado<>"" THEN
@@ -81,7 +81,7 @@ WHEN EXCEPTION IN
         sRetorno_erro_validacao+=retorno_xml_assinado
     END	  
     IF bValidado_correto=True THEN
-		O_validarSchema is Unimake.Business.DFe.ValidarSchema() 
+		O_validarSchema is Uni.Business.DFe.ValidarSchema() 
 		sSChema         is string = "NFe.nfe_v4.00.xsd" 
 		O_validarSchema.ValidarString(retorno_xml_assinado,sSChema,"http://www.portalfiscal.inf.br/nfe")
 		IF O_validarSchema.Success THEN  

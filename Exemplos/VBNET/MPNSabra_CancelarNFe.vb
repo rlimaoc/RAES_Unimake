@@ -1,14 +1,14 @@
 ﻿Module MPNSabra_CancelarNFe
     Public Sub CancelarNFe()
 
-        Dim EnvEvento = New Unimake.Business.DFe.Xml.NFe.EnvEvento
+        Dim EnvEvento = New Uni.Business.DFe.Xml.NFe.EnvEvento
         EnvEvento.Versao = "1.00"
         EnvEvento.IdLote = "000000000000001"
 
-        Dim Evento = New Unimake.Business.DFe.Xml.NFe.Evento
+        Dim Evento = New Uni.Business.DFe.Xml.NFe.Evento
         Evento.Versao = "1.00"
 
-        Dim DetEventoCanc = New Unimake.Business.DFe.Xml.NFe.DetEventoCanc
+        Dim DetEventoCanc = New Uni.Business.DFe.Xml.NFe.DetEventoCanc
 
         With DetEventoCanc
             .Versao = "1.00"
@@ -17,7 +17,7 @@
             .DescEvento = "Cancelamento"
         End With
 
-        Dim InfEvento = New Unimake.Business.DFe.Xml.NFe.InfEvento
+        Dim InfEvento = New Uni.Business.DFe.Xml.NFe.InfEvento
         InfEvento.DetEvento = DetEventoCanc
 
         With InfEvento
@@ -37,7 +37,7 @@
 
 
         ' 060422
-        ' Dim Jura As New System.Collections.Generic.List(Of Unimake.Business.DFe.Xml.NFe.Evento)
+        ' Dim Jura As New System.Collections.Generic.List(Of Uni.Business.DFe.Xml.NFe.Evento)
         ' Jura.Add(Evento)
         ' EnvEvento.Evento = Jura
 
@@ -47,10 +47,10 @@
 
             '       Dim RecepcaoEvento
             If TipoNF = 55 Then
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
 
             Else
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
 
             End If
 

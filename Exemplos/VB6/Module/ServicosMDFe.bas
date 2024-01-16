@@ -3,11 +3,11 @@ Option Explicit
 
 Public Sub EncerramentoMDFe()
 On Error GoTo erro
-Dim EventoMDFe: Set EventoMDFe = CreateObject("Unimake.Business.DFe.xml.MDFe.EventoMDFe")
-Dim InfEvento: Set InfEvento = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfEvento")
-Dim DetEventoEncMDFe: Set DetEventoEncMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.DetEventoEncMDFe")
-Dim InfDoc: Set InfDoc = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfDoc")
-Dim RecepcaoEvento: Set RecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento")
+Dim EventoMDFe: Set EventoMDFe = CreateObject("Uni.Business.DFe.xml.MDFe.EventoMDFe")
+Dim InfEvento: Set InfEvento = CreateObject("Uni.Business.DFe.Xml.MDFe.InfEvento")
+Dim DetEventoEncMDFe: Set DetEventoEncMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.DetEventoEncMDFe")
+Dim InfDoc: Set InfDoc = CreateObject("Uni.Business.DFe.Xml.MDFe.InfDoc")
+Dim RecepcaoEvento: Set RecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.MDFe.RecepcaoEvento")
 Dim Configuracao: Set Configuracao = Config.InicializarConfiguracao(TipoDFe.MDFe)
 
 With DetEventoEncMDFe
@@ -39,7 +39,7 @@ RecepcaoEvento.Executar (EventoMDFe), (Configuracao)
 Log.EscreveLog RecepcaoEvento.RetornoWSString, True
 Log.EscreveLog RecepcaoEvento.result.InfEvento.XMotivo, False
               
-'Gravar o XML de distribuição se a inutilização foi homologada
+'Gravar o XML de distribuiï¿½ï¿½o se a inutilizaï¿½ï¿½o foi homologada
 Select Case RecepcaoEvento.result.InfEvento.CStat
     Case 134 'Recebido pelo Sistema de Registro de Eventos
     Case 135 'Recebido pelo Sistema de Registro de Eventos
@@ -58,12 +58,12 @@ End Sub
 
 Public Sub InclusaoDFeMDFe()
 On Error GoTo erro
-Dim EventoMDFe: Set EventoMDFe = CreateObject("Unimake.Business.DFe.xml.MDFe.EventoMDFe")
-Dim InfEvento: Set InfEvento = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfEvento")
-Dim DetEventoIncDFeMDFe: Set DetEventoIncDFeMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.DetEventoIncDFeMDFe")
-Dim InfDoc: Set InfDoc = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfDoc")
-Dim EventoIncDFeMDFe: Set EventoIncDFeMDFe = CreateObject("Unimake.Business.DFe.xml.MDFe.EventoIncDFeMDFe")
-Dim RecepcaoEvento: Set RecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento")
+Dim EventoMDFe: Set EventoMDFe = CreateObject("Uni.Business.DFe.xml.MDFe.EventoMDFe")
+Dim InfEvento: Set InfEvento = CreateObject("Uni.Business.DFe.Xml.MDFe.InfEvento")
+Dim DetEventoIncDFeMDFe: Set DetEventoIncDFeMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.DetEventoIncDFeMDFe")
+Dim InfDoc: Set InfDoc = CreateObject("Uni.Business.DFe.Xml.MDFe.InfDoc")
+Dim EventoIncDFeMDFe: Set EventoIncDFeMDFe = CreateObject("Uni.Business.DFe.xml.MDFe.EventoIncDFeMDFe")
+Dim RecepcaoEvento: Set RecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.MDFe.RecepcaoEvento")
 Dim Configuracao: Set Configuracao = Config.InicializarConfiguracao(TipoDFe.MDFe)
 
 With EventoIncDFeMDFe
@@ -102,11 +102,11 @@ Log.EscreveLog RecepcaoEvento.RetornoWSString, True
 Log.EscreveLog RecepcaoEvento.result.InfEvento.XMotivo, False
                 
               
-'Gravar o XML de distribuição se a inutilização foi homologada
+'Gravar o XML de distribuiï¿½ï¿½o se a inutilizaï¿½ï¿½o foi homologada
 Select Case RecepcaoEvento.result.InfEvento.CStat
-    Case 134 'Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
-    Case 135 'Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
-    Case 136 'Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
+    Case 134 'Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respectivo CT-e com situaï¿½ï¿½o diferente de Autorizada.
+    Case 135 'Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respetivo CTe.
+    Case 136 'Recebido pelo Sistema de Registro de Eventos ï¿½ vinculaï¿½ï¿½o do evento ao respectivo CT-e prejudicado.
         RecepcaoEvento.GravarXmlDistribuicao "D:\Temp"
         MsgBox "Evento gravado na Sefaz", vbOKOnly + vbInformation
     Case Else
@@ -121,12 +121,12 @@ End Sub
 
 Public Sub InclusaoCondutorMDFe()
 On Error GoTo erro
-Dim EventoMDFe: Set EventoMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.EventoMDFe")
-Dim InfEvento: Set InfEvento = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfEvento")
-Dim DetEventoIncCondutor: Set DetEventoIncCondutor = CreateObject("Unimake.Business.DFe.Xml.MDFe.DetEventoIncCondutor")
-Dim EventoIncCondutor: Set EventoIncCondutor = CreateObject("Unimake.Business.DFe.xml.MDFe.EventoIncCondutor")
-Dim CondutorMDFe: Set CondutorMDFe = CreateObject("Unimake.Business.DFe.xml.MDFe.CondutorMDFe")
-Dim RecepcaoEvento: Set RecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento")
+Dim EventoMDFe: Set EventoMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.EventoMDFe")
+Dim InfEvento: Set InfEvento = CreateObject("Uni.Business.DFe.Xml.MDFe.InfEvento")
+Dim DetEventoIncCondutor: Set DetEventoIncCondutor = CreateObject("Uni.Business.DFe.Xml.MDFe.DetEventoIncCondutor")
+Dim EventoIncCondutor: Set EventoIncCondutor = CreateObject("Uni.Business.DFe.xml.MDFe.EventoIncCondutor")
+Dim CondutorMDFe: Set CondutorMDFe = CreateObject("Uni.Business.DFe.xml.MDFe.CondutorMDFe")
+Dim RecepcaoEvento: Set RecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.MDFe.RecepcaoEvento")
 Dim configExec: Set configExec = Config.InicializarConfiguracao(TipoDFe.MDFe)
 
 CondutorMDFe.XNome = "JOSE ALMEIDA"
@@ -159,12 +159,12 @@ RecepcaoEvento.Executar (EventoMDFe), (configExec)
 Log.EscreveLog RecepcaoEvento.RetornoWSString, True
 Log.EscreveLog RecepcaoEvento.result.InfEvento.XMotivo, False
                 
-'Gravar o XML de distribuição se a inutilização foi homologada
+'Gravar o XML de distribuiï¿½ï¿½o se a inutilizaï¿½ï¿½o foi homologada
 Select Case RecepcaoEvento.result.InfEvento.CStat
 
-    Case 134 'Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
-    Case 135 'Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
-    Case 136 'Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
+    Case 134 'Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respectivo CT-e com situaï¿½ï¿½o diferente de Autorizada.
+    Case 135 'Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respetivo CTe.
+    Case 136 'Recebido pelo Sistema de Registro de Eventos ï¿½ vinculaï¿½ï¿½o do evento ao respectivo CT-e prejudicado.
         RecepcaoEvento.GravarXmlDistribuicao "D:\Temp"
         MsgBox "Evento gravado na Sefaz", vbOKOnly + vbInformation
     Case Else
@@ -185,12 +185,12 @@ Dim consultaProtocolo
 
 Log.ClearLog
 
-Set ConsSitMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsSitMDFe")
+Set ConsSitMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsSitMDFe")
 ConsSitMDFe.Versao = "3.00"
 ConsSitMDFe.TpAmb = TpAmb
 ConsSitMDFe.ChMDFe = UFBrasil.PR & "170701761135000132570010000186931903758906"
 
-Set consultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
+Set consultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
 consultaProtocolo.Executar (ConsSitMDFe), (Config.InicializarConfiguracao(TipoDFe.MDFe))
 
 Log.EscreveLog consultaProtocolo.RetornoWSString, True
@@ -209,8 +209,8 @@ Dim statusServico
 
 Log.ClearLog
 
-Set ConsStatServMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsStatServMDFe")
-Set statusServico = CreateObject("Unimake.Business.DFe.Servicos.MDFe.StatusServico")
+Set ConsStatServMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsStatServMDFe")
+Set statusServico = CreateObject("Uni.Business.DFe.Servicos.MDFe.StatusServico")
 
 ConsStatServMDFe.Versao = "3.00"
 ConsStatServMDFe.TpAmb = TpAmb
@@ -226,39 +226,39 @@ End Sub
 
 Public Sub EmitirUmMDFe()
 On Error GoTo erro
-Dim xml: Set xml = CreateObject("Unimake.Business.DFe.Xml.MDFe.EnviMDFe")
-Dim MDFe: Set MDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.MDFe")
-Dim InfMDFe: Set InfMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfMDFe")
-Dim Ide: Set Ide = CreateObject("Unimake.Business.DFe.Xml.MDFe.Ide")
-Dim InfMunCarrega: Set InfMunCarrega = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfMunCarrega")
-Dim Emit: Set Emit = CreateObject("Unimake.Business.DFe.Xml.MDFe.Emit")
-Dim EnderEmit: Set EnderEmit = CreateObject("Unimake.Business.DFe.Xml.MDFe.EnderEmit")
-Dim InfModal: Set InfModal = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfModal")
-Dim Rodo: Set Rodo = CreateObject("Unimake.Business.DFe.Xml.MDFe.Rodo")
-Dim InfANTT: Set InfANTT = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfANTT")
-Dim InfContratante: Set InfContratante = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfContratante")
-Dim VeicTracao: Set VeicTracao = CreateObject("Unimake.Business.DFe.Xml.MDFe.VeicTracao")
-Dim Prop: Set Prop = CreateObject("Unimake.Business.DFe.Xml.MDFe.Prop")
-Dim Condutor: Set Condutor = CreateObject("Unimake.Business.DFe.Xml.MDFe.Condutor")
-Dim InfMunDescarga: Set InfMunDescarga = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfMunDescarga")
-Dim InfMunDescargaInfCTe: Set InfMunDescargaInfCTe = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfCTe")
-Dim InfDoc: Set InfDoc = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfDocInfMDFe")
-Dim ProdPred: Set ProdPred = CreateObject("Unimake.Business.DFe.Xml.MDFe.ProdPred")
-Dim InfLotacao: Set InfLotacao = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfLotacao")
-Dim InfLocalCarrega: Set InfLocalCarrega = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfLocalCarrega")
-Dim InfLocalDescarrega: Set InfLocalDescarrega = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfLocalDescarrega")
-Dim Seg: Set Seg = CreateObject("Unimake.Business.DFe.Xml.MDFe.Seg")
-Dim InfResp: Set InfResp = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfResp")
-Dim InfSeg: Set InfSeg = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfSeg")
-Dim Tot: Set Tot = CreateObject("Unimake.Business.DFe.Xml.MDFe.Tot")
-Dim InfAdic: Set InfAdic = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfAdic")
-Dim InfRespTec: Set InfRespTec = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfRespTec")
-Dim AutorizacaoMDFe: Set AutorizacaoMDFe = CreateObject("Unimake.Business.DFe.Servicos.MDFe.Autorizacao")
-Dim xmlRec: Set xmlRec = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsReciMDFe")
-Dim retAutorizacao: Set retAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.MDFe.RetAutorizacao")
-Dim xmlSit: Set xmlSit = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsSitMDFe")
-Dim configSit: Set configSit = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
-Dim consultaProtocolo: Set consultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
+Dim xml: Set xml = CreateObject("Uni.Business.DFe.Xml.MDFe.EnviMDFe")
+Dim MDFe: Set MDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.MDFe")
+Dim InfMDFe: Set InfMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.InfMDFe")
+Dim Ide: Set Ide = CreateObject("Uni.Business.DFe.Xml.MDFe.Ide")
+Dim InfMunCarrega: Set InfMunCarrega = CreateObject("Uni.Business.DFe.Xml.MDFe.InfMunCarrega")
+Dim Emit: Set Emit = CreateObject("Uni.Business.DFe.Xml.MDFe.Emit")
+Dim EnderEmit: Set EnderEmit = CreateObject("Uni.Business.DFe.Xml.MDFe.EnderEmit")
+Dim InfModal: Set InfModal = CreateObject("Uni.Business.DFe.Xml.MDFe.InfModal")
+Dim Rodo: Set Rodo = CreateObject("Uni.Business.DFe.Xml.MDFe.Rodo")
+Dim InfANTT: Set InfANTT = CreateObject("Uni.Business.DFe.Xml.MDFe.InfANTT")
+Dim InfContratante: Set InfContratante = CreateObject("Uni.Business.DFe.Xml.MDFe.InfContratante")
+Dim VeicTracao: Set VeicTracao = CreateObject("Uni.Business.DFe.Xml.MDFe.VeicTracao")
+Dim Prop: Set Prop = CreateObject("Uni.Business.DFe.Xml.MDFe.Prop")
+Dim Condutor: Set Condutor = CreateObject("Uni.Business.DFe.Xml.MDFe.Condutor")
+Dim InfMunDescarga: Set InfMunDescarga = CreateObject("Uni.Business.DFe.Xml.MDFe.InfMunDescarga")
+Dim InfMunDescargaInfCTe: Set InfMunDescargaInfCTe = CreateObject("Uni.Business.DFe.Xml.MDFe.InfMunDescargaInfCTe")
+Dim InfDoc: Set InfDoc = CreateObject("Uni.Business.DFe.Xml.MDFe.InfDocInfMDFe")
+Dim ProdPred: Set ProdPred = CreateObject("Uni.Business.DFe.Xml.MDFe.ProdPred")
+Dim InfLotacao: Set InfLotacao = CreateObject("Uni.Business.DFe.Xml.MDFe.InfLotacao")
+Dim InfLocalCarrega: Set InfLocalCarrega = CreateObject("Uni.Business.DFe.Xml.MDFe.InfLocalCarrega")
+Dim InfLocalDescarrega: Set InfLocalDescarrega = CreateObject("Uni.Business.DFe.Xml.MDFe.InfLocalDescarrega")
+Dim Seg: Set Seg = CreateObject("Uni.Business.DFe.Xml.MDFe.Seg")
+Dim InfResp: Set InfResp = CreateObject("Uni.Business.DFe.Xml.MDFe.InfResp")
+Dim InfSeg: Set InfSeg = CreateObject("Uni.Business.DFe.Xml.MDFe.InfSeg")
+Dim Tot: Set Tot = CreateObject("Uni.Business.DFe.Xml.MDFe.Tot")
+Dim InfAdic: Set InfAdic = CreateObject("Uni.Business.DFe.Xml.MDFe.InfAdic")
+Dim InfRespTec: Set InfRespTec = CreateObject("Uni.Business.DFe.Xml.MDFe.InfRespTec")
+Dim AutorizacaoMDFe: Set AutorizacaoMDFe = CreateObject("Uni.Business.DFe.Servicos.MDFe.Autorizacao")
+Dim xmlRec: Set xmlRec = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsReciMDFe")
+Dim retAutorizacao: Set retAutorizacao = CreateObject("Uni.Business.DFe.Servicos.MDFe.RetAutorizacao")
+Dim xmlSit: Set xmlSit = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsSitMDFe")
+Dim configSit: Set configSit = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
+Dim consultaProtocolo: Set consultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
 Dim configRec: Set configRec = Config.InicializarConfiguracao(TipoDFe.MDFe)
 
 Log.ClearLog
@@ -432,7 +432,7 @@ If Not AutorizacaoMDFe.result Is Nothing Then
     MsgBox AutorizacaoMDFe.result.XMotivo
     
     If AutorizacaoMDFe.result.CStat = 103 Then '103 = Lote Recebido com Sucesso
-        ' Finalizar através da consulta do recibo.
+        ' Finalizar atravï¿½s da consulta do recibo.
         With xmlRec
             .Versao = "3.00"
             .TpAmb = TpAmb
@@ -448,7 +448,7 @@ If Not AutorizacaoMDFe.result Is Nothing Then
         Set AutorizacaoMDFe.RetConsReciMDFe = retAutorizacao.result
         AutorizacaoMDFe.GravarXmlDistribuicao "D:\Temp\"
         
-        ' Simulação da finalização do CTe através da consulta situação
+        ' Simulaï¿½ï¿½o da finalizaï¿½ï¿½o do CTe atravï¿½s da consulta situaï¿½ï¿½o
         Set AutorizacaoMDFe.RetConsReciMDFe = Nothing ' Zerar para conseguir testar
         With xmlSit
             .Versao = "3.00"

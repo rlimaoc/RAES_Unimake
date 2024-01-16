@@ -1,5 +1,5 @@
 ' ---------------------------------------------------------------------------------
-' Enviar NFSe padrão Betha (Município de Itapema-SC)
+' Enviar NFSe padrï¿½o Betha (Municï¿½pio de Itapema-SC)
 ' ---------------------------------------------------------------------------------
 Dim oConfiguracao
 Dim xmlNfse
@@ -7,13 +7,13 @@ Dim oRecepcionarLoteRpsSincrono
 Dim xmlConsultaRPS
 Dim oConsultarNfsePorRps
       
-' Criar o objeto de configuração mínima para envio da NFSe
-  Set oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+' Criar o objeto de configuraï¿½ï¿½o mï¿½nima para envio da NFSe
+  Set oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
   oConfiguracao.TipoDFe = 5 ' TipoDFe.NFSe
   oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
   oConfiguracao.CertificadoSenha = "12345678"   
-  oConfiguracao.TipoAmbiente = 2 ' Homologação
-  oConfiguracao.CodigoMunicipio = 4208302 ' Código do IBGE de Itapema-SC
+  oConfiguracao.TipoAmbiente = 2 ' Homologaï¿½ï¿½o
+  oConfiguracao.CodigoMunicipio = 4208302 ' Cï¿½digo do IBGE de Itapema-SC
   oConfiguracao.Servico = 29 ' Servico.NFSeRecepcionarLoteRpsSincrono
   oConfiguracao.SchemaVersao = "2.02" 
     
@@ -97,7 +97,7 @@ Dim oConsultarNfsePorRps
   xmlNfse = xmlNfse & Trim("</EnviarLoteRpsSincronoEnvio>")
       
 ' Criar objeto para enviar a NFSe para a prefeiturar
-  SET oRecepcionarLoteRpsSincrono = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.RecepcionarLoteRpsSincrono")
+  SET oRecepcionarLoteRpsSincrono = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.RecepcionarLoteRpsSincrono")
   
 ' Enviar NFSe para a prefeitura
   oRecepcionarLoteRpsSincrono.Executar (xmlnfse), (oConfiguracao) 
@@ -121,19 +121,19 @@ Dim oConsultarNfsePorRps
   xmlConsultaRPS = xmlConsultaRPS + Trim("  </Prestador>")
   xmlConsultaRPS = xmlConsultaRPS + Trim("</ConsultarNfseRpsEnvio>")
       
-' Consumir o serviço de consulta nfse por RPS        
+' Consumir o serviï¿½o de consulta nfse por RPS        
 
-' Criar objeto de configurações mínimas
-  SET oConfigConsulta = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+' Criar objeto de configuraï¿½ï¿½es mï¿½nimas
+  SET oConfigConsulta = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
   oConfigConsulta.TipoDFe = 5 ' TipoDFe.NFSe
   oConfigConsulta.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
   oConfigConsulta.CertificadoSenha = "12345678"   
-  oConfigConsulta.TipoAmbiente =  2 ' Homologação
-  oConfigConsulta.CodigoMunicipio = 4208302 ' Código do IBGE de Itapema-SC
+  oConfigConsulta.TipoAmbiente =  2 ' Homologaï¿½ï¿½o
+  oConfigConsulta.CodigoMunicipio = 4208302 ' Cï¿½digo do IBGE de Itapema-SC
   oConfigConsulta.Servico = 36  ' Servico.NFSeConsultarNfsePorRps 
   oConfigConsulta.SchemaVersao = "2.02"
       
-  SET oConsultarNfsePorRps = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")
+  SET oConsultarNfsePorRps = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps")
   oConsultarNfsePorRps.Executar (xmlConsultaRPS), (oConfigConsulta)
       
   MsgBox oConsultarNfsePorRps.RetornoWSString

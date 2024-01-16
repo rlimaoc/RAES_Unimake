@@ -6,14 +6,14 @@ Function EnviarEventoManifestacaoNFe()
    Local oConfiguracao, I, eventoAssinado
    Local oEnvEvento, oEvento, oDetEventoManif, oInfEvento, oRecepcaoEvento, oRetEvento 
      
- * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDfe = 0 && 0=nfe
    oConfiguracao.CertificadoSenha = "12345678"
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento.Versao = "1.00"
    oEnvEvento.IdLote = "000000000000001"
 
@@ -21,23 +21,23 @@ Function EnviarEventoManifestacaoNFe()
  * Criar tags do evento sequencia 1
  * -------------------------------------------------
  * Criar tag Evento
-   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
    oEvento.Versao = "1.00"
  
  * Criar tag DetEventoCanc
-   oDetEventoManif = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoManif") && ###
+   oDetEventoManif = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoManif") && ###
    oDetEventoManif.Versao = "1.00"
    oDetEventoManif.DescEvento = "Ciencia da Operacao"
- * oDetEventoManif.XJust = "Justificativa para cancelamento da NFe de teste" && Só é necessário se for "Operação não realizada" ou "Desconhecimento da Operação"
+ * oDetEventoManif.XJust = "Justificativa para cancelamento da NFe de teste" && Sï¿½ ï¿½ necessï¿½rio se for "Operaï¿½ï¿½o nï¿½o realizada" ou "Desconhecimento da Operaï¿½ï¿½o"
 
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
  
  * Adicionar a tag DetEventoCanc dentro da Tag DetEvento
    oInfEvento.DetEvento = oDetEventoManif
  
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+ * IMPORTANTE: Atualizaï¿½ï¿½o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
    oInfEvento.COrgao = 91 && UFBrasil.AN (Ambiente Nacional) ###
    oInfEvento.ChNFe = "41191006117473000150550010000579281779843610"
    oInfEvento.CNPJ = "06117473000150"
@@ -65,12 +65,12 @@ Function EnviarEventoManifestacaoNFe()
        MESSAGEBOX("SEQUENCIA EVENTO: " + ALLTRIM(STR(oTagEvento.InfEvento.NSeqEvento,10)) + " - ORGAO: " + ALLTRIM(STR(oTagEvento.InfEvento.COrgao,10)))
    Next I
   
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
    
    Try
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
       oRecepcaoEvento.Executar(oEnvEvento, oConfiguracao)
 
       eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
@@ -84,20 +84,20 @@ Function EnviarEventoManifestacaoNFe()
       MESSAGEBOX(oRecepcaoEvento.RetornoWSString)
       
       if oRecepcaoEvento.Result.CStat == 128 && 128 = Lote de evento processado com sucesso.
-       * Como pode existir vários eventos no XML (Caso da carta de correção que posso enviar várias sequencias de evento)
-       * é necessário fazer um loop para ver a autorização de cada um deles
+       * Como pode existir vï¿½rios eventos no XML (Caso da carta de correï¿½ï¿½o que posso enviar vï¿½rias sequencias de evento)
+       * ï¿½ necessï¿½rio fazer um loop para ver a autorizaï¿½ï¿½o de cada um deles
          For I = 1 To oRecepcaoEvento.Result.GetRetEventoCount()
              oRetEvento = oRecepcaoEvento.Result.GetRetEvento(I - 1)
    		  
              DO CASE
-                CASE oRetEvento.InfEvento.CStat = 135 && Evento homologado com vinculação da respectiva NFe
-                CASE oRetEvento.InfEvento.CStat = 136 && Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)
+                CASE oRetEvento.InfEvento.CStat = 135 && Evento homologado com vinculaï¿½ï¿½o da respectiva NFe
+                CASE oRetEvento.InfEvento.CStat = 136 && Evento homologado sem vinculaï¿½ï¿½o com a respectiva NFe (SEFAZ nï¿½o encontrou a NFe na base dela)
                 CASE oRetEvento.InfEvento.CStat = 155 && Evento de Cancelamento homologado fora do prazo permitido para cancelamento 
-                     oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe") && Grava o XML de distribuição
+                     oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe") && Grava o XML de distribuiï¿½ï¿½o
    				 
                OTHERWISE    
                     * Evento rejeitado
-                    * Realizar as ações necessárias
+                    * Realizar as aï¿½ï¿½es necessï¿½rias
              ENDCASE
    		
              MESSAGEBOX("CStat do evento " + AllTrim(Str(I,10)) + ": " + ALLTRIM(STR(oRetEvento.InfEvento.CStat,10)) + " - xMotivo: " + oRetEvento.InfEvento.XMotivo)

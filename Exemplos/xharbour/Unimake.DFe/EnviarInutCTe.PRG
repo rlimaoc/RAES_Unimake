@@ -12,17 +12,17 @@ Function EnviarInutCTe()
    Local oInutCTe, oInfInut, oInutilizacao
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 2 // 0=CTe
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"   
    
  * Criar o grupo de tag <inutCTe>
-   oInutCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.InutCTe")
+   oInutCTe = CreateObject("Uni.Business.DFe.Xml.CTe.InutCTe")
    oInutCTe:Versao = "3.00"
    
  * Criar tag do lote de eventos <infInut>   
-   oInfInut = CreateObject("Unimake.Business.DFe.Xml.CTe.InutCTeInfInut")
+   oInfInut = CreateObject("Uni.Business.DFe.Xml.CTe.InutCTeInfInut")
    oInfInut:Ano = "19"
    oInfInut:CNPJ = "06117473000150"
    oInfInut:CUF = 31 //UFBrasil.MG
@@ -52,7 +52,7 @@ Function EnviarInutCTe()
    
    Try 
     * Enviar a Inutilização
-      oInutilizacao = CreateObject("Unimake.Business.DFe.Servicos.CTe.Inutilizacao")
+      oInutilizacao = CreateObject("Uni.Business.DFe.Servicos.CTe.Inutilizacao")
       oInutilizacao:SetXMLConfiguracao(oInutCTe, oConfiguracao)
 
 	  cls

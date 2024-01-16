@@ -9,7 +9,7 @@ FUNCTION ConsultaDFe()
    LOCAL nsu, folder 
     
  * Criar configuração básica para consumir o serviço 
-   oConfig := CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig := CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfig:CertificadoArquivo := "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig:CertificadoSenha   := "12345678"
     
@@ -23,19 +23,19 @@ FUNCTION ConsultaDFe()
    TRY 
       DO WHILE .T. 
        * Criar XML da consulta DFe 
-         oDistDFeInt = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.DistDFeInt") 
+         oDistDFeInt = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.DistDFeInt") 
          oDistDFeInt:Versao = "1.35" && ou 1.01 
          oDistDFeInt:TpAmb = 2 && 2=Homologação 
          oDistDFeInt:CNPJ = "06117473000150"     
          oDistDFeInt:CUFAutor = 41 && UFBrasil.PR 
           
-         oDistNSU        := CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.DistNSU") 
+         oDistNSU        := CREATEOBJECT("Uni.Business.DFe.Xml.NFe.DistNSU") 
          oDistNSU:UltNSU := nsu 
           
          oDistDFeInt:DistNSU = oDistNSU
  
        * Consumir o serviço (enviar o XML de consulta e tratar o retorno do webservice) 
-         oDistribuicaoDFe = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFe.DistribuicaoDFe") 
+         oDistribuicaoDFe = CREATEOBJECT("Uni.Business.DFe.Servicos.NFe.DistribuicaoDFe") 
          oDistribuicaoDFe:Executar(oDistDFeInt, oConfig) 
           
          ? oDistribuicaoDFe:RetornoWSString

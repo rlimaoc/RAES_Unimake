@@ -291,12 +291,12 @@ Configuracao.TipoDFe = 10
             Configuracao.CodigoUF = 33
 
             Dim ConsultaGTIN
-            Dim consGTIN = New Unimake.Business.DFe.Xml.CCG.ConsGTIN
+            Dim consGTIN = New Uni.Business.DFe.Xml.CCG.ConsGTIN
                 Try
                     consGTIN.Versao = "1.00"
                     consGTIN.GTIN = "7891033750399"
 
-                ConsultaGTIN = New Unimake.Business.DFe.Servicos.CCG.CcgConsGTIN(consGTIN, Configuracao)
+                ConsultaGTIN = New Uni.Business.DFe.Servicos.CCG.CcgConsGTIN(consGTIN, Configuracao)
                 ConsultaGTIN.Executar
 	          
                 Catch ex As Exception

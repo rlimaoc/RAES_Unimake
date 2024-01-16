@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Enviar consultas diversas de NFSe padrão Paulistana (Município de São Paulo)
+* Enviar consultas diversas de NFSe padrï¿½o Paulistana (Municï¿½pio de Sï¿½o Paulo)
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarConsultaPadraoPAULISTANA()
    LOCAL xmlConsulta, oConfiguracao 
@@ -27,23 +27,23 @@ FUNCTION EnviarConsultaPadraoPAULISTANA()
       xmlConsulta = xmlConsulta + AllTrim([	</Detalhe>])
       xmlConsulta = xmlConsulta + AllTrim([</p1:PedidoConsultaNFe>])
    
-    * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+    * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  1 && Produção
-      oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
+      oConfiguracao.TipoAmbiente =  1 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 3550308 && Cï¿½digo do IBGE de Sï¿½o Paulo-SP
       oConfiguracao.Servico = 32 && Servico.NFSeConsultarNfse
       oConfiguracao.SchemaVersao = "2.00"
 
-      oConsultarNfse = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfse")
+      oConsultarNfse = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultarNfse")
       oConsultarNfse.Executar(xmlConsulta, oConfiguracao)  
       
       MESSAGEBOX(oConsultarNfse.RetornoWSString)
       
     * ------------------------------------------------------   
-    * Consulta de NFSe´s Emitidas por período
+    * Consulta de NFSeï¿½s Emitidas por perï¿½odo
     * ------------------------------------------------------
     * Criar o XML
       xmlConsulta = ""
@@ -63,23 +63,23 @@ FUNCTION EnviarConsultaPadraoPAULISTANA()
       xmlConsulta = xmlConsulta + AllTrim([	</Cabecalho>])
       xmlConsulta = xmlConsulta + AllTrim([</p1:PedidoConsultaNFePeriodo>])  
       
-   * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+   * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  1 && Produção
-      oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
+      oConfiguracao.TipoAmbiente =  1 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 3550308 && Cï¿½digo do IBGE de Sï¿½o Paulo-SP
       oConfiguracao.Servico = 42 && Servico.NFSeConsultaNFeEmitidas
       oConfiguracao.SchemaVersao = "2.00"
       
-      oConsultaNFeEmitidas = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultaNFeEmitidas")
+      oConsultaNFeEmitidas = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultaNFeEmitidas")
       oConsultaNFeEmitidas.Executar(xmlConsulta, oConfiguracao)
        
       MESSAGEBOX(oConsultaNFeEmitidas.RetornoWSString)
             
     * ------------------------------------------------------   
-    * Consulta de NFSe´s Recebidas por período
+    * Consulta de NFSeï¿½s Recebidas por perï¿½odo
     * ------------------------------------------------------
     * Criar o XML
       xmlConsulta = ""
@@ -99,17 +99,17 @@ FUNCTION EnviarConsultaPadraoPAULISTANA()
       xmlConsulta = xmlConsulta + AllTrim([	</Cabecalho>])
       xmlConsulta = xmlConsulta + AllTrim([</p1:PedidoConsultaNFePeriodo>])
       
-    * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+    * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  1 && Produção
-      oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
+      oConfiguracao.TipoAmbiente =  1 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 3550308 && Cï¿½digo do IBGE de Sï¿½o Paulo-SP
       oConfiguracao.Servico = 41 && Servico.NFSeConsultaNFeRecebidas
       oConfiguracao.SchemaVersao = "2.00"        
       
-      oConsultaNFeRecebidas = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultaNFeRecebidas")
+      oConsultaNFeRecebidas = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.ConsultaNFeRecebidas")
       oConsultaNFeRecebidas.Executar(xmlConsulta, oConfiguracao)
        
       MESSAGEBOX(oConsultaNFeRecebidas.RetornoWSString)      

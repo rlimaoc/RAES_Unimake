@@ -8,7 +8,7 @@ Dim ProtNFe
 '----------------------------------------------------
 'Definir configurações básicas
 '----------------------------------------------------
-Set config = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+Set config = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 config.CertificadoSenha = "12345678"
 config.CertificadoArquivo = "d:\projetos\UnimakePV.pfx"
 config.TipoDfe = 0
@@ -17,7 +17,7 @@ config.TipoAmbiente = 2
 '----------------------------------------------------
 'Montar o XML da NFe
 '----------------------------------------------------
-Set EnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+Set EnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
 
 enviNFe.Versao = "4.00"
 enviNFe.IdLote = "000000000000001"
@@ -28,7 +28,7 @@ enviNFe.AddNFe (GetFromFileNFe("C:\Users\Wandrey\Downloads\qqq\41220206117473000
 '----------------------------------------------------
 'Enviar a NFe
 '----------------------------------------------------
-'Set autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+'Set autorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
 'autorizacao.Executar (enviNFe), (config)
 
 'MsgBox "1) " + autorizacao.RetornoWSString
@@ -39,13 +39,13 @@ enviNFe.AddNFe (GetFromFileNFe("C:\Users\Wandrey\Downloads\qqq\41220206117473000
 '----------------------------------------------------
 'Consultar recibo
 '----------------------------------------------------
-Set consReciNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
+Set consReciNFe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsReciNFe")
 consReciNFe.Versao = "4.00"
 consReciNFe.TpAmb = 2
 consReciNFe.NRec = "411110221029758" 'autorizacao.Result.InfRec.NRec '411110221029758
 'MsgBox "2) " + autorizacao.Result.InfRec.NRec
 
-Set retAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")
+Set retAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.RetAutorizacao")
 retAutorizacao.Executar (consReciNFe), (config)
 
 MsgBox "3) " + retAutorizacao.RetornoWSString
@@ -72,6 +72,6 @@ End if
 'Serializar o XML da NFe
 '----------------------------------------------------
 Function GetFromFileNFe(arqXML)
-   Dim NFe: Set NFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   Dim NFe: Set NFe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    Set GetFromFileNFe = NFe.LoadFromFile(arqXML)
 End Function

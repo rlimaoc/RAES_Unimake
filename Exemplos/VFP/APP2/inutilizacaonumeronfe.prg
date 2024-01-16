@@ -4,9 +4,9 @@ ENDIF
 VerificarVencimentoCertificado()
 ConfiguracaoAtual(0,1)
 
-InutNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFe")
-InutNFeInfInut = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFeInfInut")
-Inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")
+InutNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFe")
+InutNFeInfInut = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFeInfInut")
+Inutilizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Inutilizacao")
 
 InutNFeInfInut.Ano = "19"
 InutNFeInfInut.CNPJ = "06117473000150"
@@ -33,7 +33,7 @@ DO CASE
 		MESSAGEBOX(Inutilizacao.result.InfInut.NProt)
 	
 		Inutilizacao.GravarXmlDistribuicao(FULLPATH(CURDIR())+'Retorno\') 
-	OTHERWISE  && Inutilização rejeitada
+	OTHERWISE  && Inutilizaï¿½ï¿½o rejeitada
 		Inutilizacao.GravarXmlDistribuicao(FULLPATH(CURDIR())+'Retorno\') 
 ENDCASE
 

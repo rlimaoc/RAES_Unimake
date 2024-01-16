@@ -12,13 +12,13 @@ Function CancelarNFCe()
    Local oEnvEvento, oEvento, oDetEventoCanc, oInfEvento
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 1 // 1=nfce
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento:Versao = "1.00"
    oEnvEvento:IdLote = "000000000000001"
 
@@ -26,17 +26,17 @@ Function CancelarNFCe()
  * Criar tags do evento sequencia 1
  * -------------------------------------------------
  * Criar tag Evento
-   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
    oEvento:Versao = "1.00"
  
  * Criar tag DetEventoCanc
-   oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCanc")
+   oDetEventoCanc = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoCanc")
    oDetEventoCanc:Versao = "1.00"
    oDetEventoCanc:NProt = "141190000660363"
    oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
 
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
  
  * Adicionar a tag DetEventoCanc dentro da Tag DetEvento
    oInfEvento:DetEvento = oDetEventoCanc
@@ -76,7 +76,7 @@ Function CancelarNFCe()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFCe.RecepcaoEvento")
       oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
 
       ? "CStat do Lote Retornado:", oRecepcaoEvento:Result:CStat, "- XMotivo:", oRecepcaoEvento:Result:XMotivo

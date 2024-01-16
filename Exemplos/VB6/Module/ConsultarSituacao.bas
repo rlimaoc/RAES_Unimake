@@ -8,12 +8,12 @@ Dim consultaProtocolo
 
 Log.ClearLog
 
-Set consSitNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNFe")
+Set consSitNFe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsSitNFe")
 consSitNFe.Versao = "4.00"
 consSitNFe.TpAmb = TpAmb
 consSitNFe.ChNFe = "41200106117473000150550010000606641403753210"
 
-Set consultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")
+Set consultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo")
 consultaProtocolo.Executar (consSitNFe), (Config.InicializarConfiguracao(TipoDFe.NFe))
 
 Log.EscreveLog consultaProtocolo.RetornoWSString, True

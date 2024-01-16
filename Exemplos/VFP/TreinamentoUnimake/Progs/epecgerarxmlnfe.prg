@@ -16,27 +16,27 @@ FUNCTION EPECGerarXMLNFe()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuracao basica para consumir o servico
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig.TipoDfe = 0 && 0=nfe
    oConfig.TipoEmissao = 4 && 4=TipoEmissao.ContingenciaEPEC ###
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"
    
  * Criar a tag <enviNFe>
-   oEnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oEnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oEnviNFe.Versao = "4.00"
    oEnviNFe.IdLote = "000000000000001"
    oEnviNFe.IndSinc = 1 && 1=Sim 0=Nao
    
  * Criar a tag <NFe>  
-   oNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   oNfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
  * Criar tag InfNfe
-   oInfNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
+   oInfNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InfNFe")
    oInfNFe.Versao = "4.00"
 
  * cria tag Ide
-   oIde = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
+   oIde = CreateObject("Uni.Business.DFe.Xml.NFe.Ide")
    oIde.CUF = 41 && Brasil.PR
    oIde.NatOp = "VENDA PRODUC.DO ESTABELEC"
    oIde.Mod = 55 && NFe
@@ -62,7 +62,7 @@ FUNCTION EPECGerarXMLNFe()
    oInfNFe.Ide = oIde
 
  * criar tag Emit
-   oEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.Emit")
+   oEmit = CreateObject("Uni.Business.DFe.Xml.NFe.Emit")
    oEmit.CNPJ  = "06117473000150"
    oEmit.XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
    oEmit.XFant = "UNIMAKE - PARANAVAI"
@@ -71,7 +71,7 @@ FUNCTION EPECGerarXMLNFe()
    oEmit.CNAE  = "6202300"
    oEmit.CRT   = 1 && CRT.SimplesNacional
 
-   oEnderEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+   oEnderEmit = CreateObject("Uni.Business.DFe.Xml.NFe.EnderEmit")
    oEnderEmit.XLgr    = "RUA PAULO ANTONIO COSTA"
    oEnderEmit.Nro     = "575"
    oEnderEmit.XBairro = "CENTRO"
@@ -88,14 +88,14 @@ FUNCTION EPECGerarXMLNFe()
    oInfNfe.Emit = oEmit
    
  * criar tag Dest
-   oDest = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
+   oDest = CreateObject("Uni.Business.DFe.Xml.NFe.Dest")
    oDest.CNPJ      = "04218457000128"
    oDest.XNome     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
    oDest.IndIEDest = 1 && IndicadorIEDestinatario.ContribuinteICMS,
    oDest.IE        = "582614838110"
    oDest.Email     = "janelaorp@janelaorp.com.br"
    
-   oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+   oEnderDest = CreateObject("Uni.Business.DFe.Xml.NFe.EnderDest")
    oEnderDest.XLgr    = "AVENIDA DA SAUDADE"
    oEnderDest.Nro     = "1555"
    oEnderDest.XBairro = "CAMPOS ELISEOS"
@@ -113,10 +113,10 @@ FUNCTION EPECGerarXMLNFe()
    
    For I = 1 To 3 && 3 produtos para teste    
      * criar tag Det
-       oDet = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+       oDet = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 	   oDet.NItem = I
 	   
-       oProd          = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+       oProd          = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
        oProd.CProd    = AllTrim(Str(I,5))
        oProd.CEAN     = "SEM GTIN"
        oProd.XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -138,14 +138,14 @@ FUNCTION EPECGerarXMLNFe()
        oDet.Prod = oProd
 	   
      * criar tag Imposto
-       oImposto          = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+       oImposto          = CreateObject("Uni.Business.DFe.Xml.NFe.Imposto")
        oImposto.VTotTrib = 12.63
 	   
      * criar tag Icms
-       oICMS             = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
+       oICMS             = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
 	   
      * criar tag ICMSSN101
-       oICMSSN101            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
+       oICMSSN101            = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN101")
        oICMSSN101.Orig       = 0 && OrigemMercadoria.Nacional
        oICMSSN101.PCredSN     = 2.8255
        oICMSSN101.VCredICMSSN = 2.40
@@ -157,10 +157,10 @@ FUNCTION EPECGerarXMLNFe()
        oImposto.Icms = oICMS
 	   
      * criar tag PIS
-       oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
+       oPIS           = CreateObject("Uni.Business.DFe.Xml.NFe.PIS")
 
      * criar tag PISOutr
-       oPISOutr      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+       oPISOutr      = CreateObject("Uni.Business.DFe.Xml.NFe.PISOutr")
        oPISOutr.CST  = "99"
        oPISOutr.VBC  = 0.00
        oPISOutr.PPIS = 0.00
@@ -173,10 +173,10 @@ FUNCTION EPECGerarXMLNFe()
        oImposto.PIS = oPIS
 
      * criar tag COFINS
-       oCOFINS      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
+       oCOFINS      = CreateObject("Uni.Business.DFe.Xml.NFe.COFINS")
 
      * criar tag COFINSOutr
-       oCOFINSOutr         = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+       oCOFINSOutr         = CreateObject("Uni.Business.DFe.Xml.NFe.COFINSOutr")
        oCOFINSOutr.CST     = "99"
        oCOFINSOutr.VBC     = 0.00
        oCOFINSOutr.PCOFINS = 0.00
@@ -196,10 +196,10 @@ FUNCTION EPECGerarXMLNFe()
    Next I
    
  * Criar tag Total
-   oTotal = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
+   oTotal = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
 
  * Criar tag ICMSTot
-   oICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+   oICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
    oICMSTot.VBC = 0
    oICMSTot.VICMS = 0
    oICMSTot.VICMSDeson = 0
@@ -228,11 +228,11 @@ FUNCTION EPECGerarXMLNFe()
    oInfNfe.Total = oTotal
    
  * Criar a tag Transp  
-   oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
+   oTransp = CreateObject("Uni.Business.DFe.Xml.NFe.Transp")
    oTransp.ModFrete = 0 && ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
 
  * Criar a tag Vol
-   oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+   oVol       = CreateObject("Uni.Business.DFe.Xml.NFe.Vol")
    oVol.QVol  = 1
    oVol.Esp   = "LU"
    oVol.Marca = "UNIMAKE"
@@ -246,17 +246,17 @@ FUNCTION EPECGerarXMLNFe()
    oInfNfe.Transp = oTransp
 
  * Criar tag Cobr 
-   oCobr = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
+   oCobr = CreateObject("Uni.Business.DFe.Xml.NFe.Cobr")
 
  * Criar tag Fat 
-   oFat  = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
+   oFat  = CreateObject("Uni.Business.DFe.Xml.NFe.Fat")
    oFat.NFat = "057910"
    oFat.VOrig = 254.70
    oFat.VDesc = 0
    oFat.VLiq = 254.70
 
  * Criar tag Dup (parcela 1)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
    oDup.NDup  = "001"
    oDup.DVenc = Date()
    oDup.VDup  = 127.35
@@ -265,7 +265,7 @@ FUNCTION EPECGerarXMLNFe()
    OCobr.AddDup(oDup)
 
  * Criar tag Dup (parcela 2)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
    oDup.NDup  = "002"
    oDup.DVenc = Date()
    oDup.VDup  = 127.35
@@ -280,10 +280,10 @@ FUNCTION EPECGerarXMLNFe()
    oInfNfe.Cobr = oCobr
 
  * criar tag Pag
-   oPag = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
+   oPag = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
 
  * criar tag DetPag (pode ter mais que uma, sÃ³ foi criada uma como exemplo)
-   oDetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+   oDetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
    oDetPag.IndPag = 0 && IndicadorPagamento.PagamentoVista
    oDetPag.TPag   = 1 && MeioPagamento.Dinheiro
    oDetPag.VPag   = 254.70
@@ -295,14 +295,14 @@ FUNCTION EPECGerarXMLNFe()
    oInfNFe.Pag = oPag
 
  * criar tag InfAdic
-   oInfAdic = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+   oInfAdic = CreateObject("Uni.Business.DFe.Xml.NFe.InfAdic")
    oInfAdic.InfCpl = "Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008"
  
  * adicionar a tag InfAdic dentro da tag InfNfe
    oInfNFe.InfAdic = oInfAdic
 
  * criar tag InfRespTec
-   oInfRespTec = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+   oInfRespTec = CreateObject("Uni.Business.DFe.Xml.NFe.InfRespTec")
    oInfRespTec.CNPJ     = "06117473000150"
    oInfRespTec.XContato = "Ze das Couves"
    oInfRespTec.Email    = "zedascouves@gmail.com"
@@ -318,12 +318,12 @@ FUNCTION EPECGerarXMLNFe()
    oEnviNFe.AddNfe(oNfe)   
      
    TRY 
-   * Criar o objeto para consumir o serviço, mas vamos somente pegar o XML e não vamos enviar
-     oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   * Criar o objeto para consumir o serviï¿½o, mas vamos somente pegar o XML e nï¿½o vamos enviar
+     oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
      oAutorizacao.SetXMLConfiguracao(oEnviNFe, oConfig)
      
-   * Guardar o XML da NFe já assinada para transmitirmos sem mudar nada depois que o serviço voltar ao normal.
-   * XML tem que ser guardado e este que deve ser transmitido para evitar diferenças entre a NFe ou CTe e o evento de EPEC
+   * Guardar o XML da NFe jï¿½ assinada para transmitirmos sem mudar nada depois que o serviï¿½o voltar ao normal.
+   * XML tem que ser guardado e este que deve ser transmitido para evitar diferenï¿½as entre a NFe ou CTe e o evento de EPEC
      notaAssinada = oAutorizacao.GetConteudoNFeAssinada(0)
      
      MessageBox(notaAssinada) && Demonstrar o XML da nota assinada na tela

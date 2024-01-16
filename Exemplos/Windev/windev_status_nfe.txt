@@ -21,7 +21,7 @@ IF sRecebe_certificado_arquivo="" THEN
 		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
 		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
 		IF busca_token<>"ok" THEN
-			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3 is Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
 			o_CertA3.SetPinPrivateKey(vEr_certificado,sRecebe_certificado_senha)		
 			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
 		END
@@ -38,7 +38,7 @@ o_ConsStatServ.TpAmb=RECEBE_TIPO_AMBIENTE // 2 // 1-PRODUCAO 2-HOMOLOGACAO
 
 WHEN EXCEPTION IN
 	///olhe um detalhe..                              .NFCE.. nesse deu certo..
-	clO_StatusServico is Unimake.Business.DFe.Servicos.NFce.StatusServico()
+	clO_StatusServico is Uni.Business.DFe.Servicos.NFce.StatusServico()
 	clO_StatusServico.Executar(o_ConsStatServ,O_CONFIGURACAO)
 //uma observacao
 //o que mudei no status.. tirei de cima e coloquei em executar.. Sem problema... pode ser tbm.

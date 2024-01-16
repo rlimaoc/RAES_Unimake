@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Uni.Business.DFe": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Windows\\System32\\cscript.exe",
+      "commandLineArgs": "/X \"..\\..\\..\\source\\Uni.DFe\\Interop\\VBS\\ConsultarStatusNFe.vbs\"",
+      "workingDirectory": ".",
+      "nativeDebugging": false
+    }
+  }
+}

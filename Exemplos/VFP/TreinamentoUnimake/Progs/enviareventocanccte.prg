@@ -6,8 +6,8 @@ FUNCTION EnviarEventoCancCTe()
    LOCAL oEventoCTe, oDetEventoCanc, oInfEvento
    LOCAL oRecepcaoEvento
 
- * Criar o objeto de configuração mínima
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar o objeto de configuraï¿½ï¿½o mï¿½nima
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDFe = 2 && 2=CTe
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao.CertificadoSenha = "12345678"   
@@ -15,23 +15,23 @@ FUNCTION EnviarEventoCancCTe()
  * Criar XML 
   
  * Criar tag do lote de eventos <eventoCTe>
-   oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
+   oEventoCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCTe")
    oEventoCTe.Versao = "3.00"
 
  * Criar tag <detEvento>
-   oDetEventoCanc = CREATEOBJECT("Unimake.Business.DFe.Xml.CTe.DetEventoCanc")
+   oDetEventoCanc = CREATEOBJECT("Uni.Business.DFe.Xml.CTe.DetEventoCanc")
    oDetEventoCanc.VersaoEvento = "3.00"
    oDetEventoCanc.NProt = "141190000660363"
    oDetEventoCanc.XJust = "Justificativa para cancelamento da NFe de teste"
    
  * Criar tag <infEvento>
-   oInfEvento = CREATEOBJECT("Unimake.Business.DFe.Xml.CTe.InfEvento")   
+   oInfEvento = CREATEOBJECT("Uni.Business.DFe.Xml.CTe.InfEvento")   
    
  * Adicionar o Objeto oDetEventoCanc dentro do objeto DetEvento
    oInfEvento.DetEvento = oDetEventoCanc
    
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+ * IMPORTANTE: Atualizaï¿½ï¿½o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
    oInfEvento.COrgao = 41 && UFBrasil.PR
    oInfEvento.ChCTe = "41191006117473000150550010000579281779843610"
    oInfEvento.CNPJ = "06117473000150"
@@ -49,12 +49,12 @@ FUNCTION EnviarEventoCancCTe()
    MESSAGEBOX(oEventoCTe.InfEvento.CNPJ) 
    MESSAGEBOX(oEventoCTe.InfEvento.DhEvento)
  
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")
 
    TRY
     * Enviar evento
-      oRecepcaoEvento = CREATEOBJECT("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")
+      oRecepcaoEvento = CREATEOBJECT("Uni.Business.DFe.Servicos.CTe.RecepcaoEvento")
       oRecepcaoEvento.SetXMLConfiguracao(oEventoCTe, oConfiguracao)
 	  
 	  MESSAGEBOX(oRecepcaoEvento.GetConteudoXMLAssinado())
@@ -66,13 +66,13 @@ FUNCTION EnviarEventoCancCTe()
 	  MESSAGEBOX(oRecepcaoEvento.RetornoWSString)
 
       DO CASE
-         CASE oRecepcaoEvento.Result.InfEvento.CStat == 134 && Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
-         CASE oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
-         CASE oRecepcaoEvento.Result.InfEvento.CStat == 156 && Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
-              oRecepcaoEvento.GravarXmlDistribuicao("tmp\testenfe") && Grava o XML de distribuição
+         CASE oRecepcaoEvento.Result.InfEvento.CStat == 134 && Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respectivo CT-e com situaï¿½ï¿½o diferente de Autorizada.
+         CASE oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respetivo CTe.
+         CASE oRecepcaoEvento.Result.InfEvento.CStat == 156 && Recebido pelo Sistema de Registro de Eventos ï¿½ vinculaï¿½ï¿½o do evento ao respectivo CT-e prejudicado.
+              oRecepcaoEvento.GravarXmlDistribuicao("tmp\testenfe") && Grava o XML de distribuiï¿½ï¿½o
               
          OTHERWISE
-              * Evento rejeitado. Realizar as ações necessárias.
+              * Evento rejeitado. Realizar as aï¿½ï¿½es necessï¿½rias.
       ENDCASE
        
    CATCH TO oErro

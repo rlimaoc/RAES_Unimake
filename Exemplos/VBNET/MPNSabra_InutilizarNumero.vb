@@ -6,8 +6,8 @@
         '* ---------------------------------------------------------------------------------
 
 
-        Dim InutNFe = New Unimake.Business.DFe.Xml.NFe.InutNFe
-        Dim InutNFeInfInut = New Unimake.Business.DFe.Xml.NFe.InutNFeInfInut
+        Dim InutNFe = New Uni.Business.DFe.Xml.NFe.InutNFe
+        Dim InutNFeInfInut = New Uni.Business.DFe.Xml.NFe.InutNFeInfInut
 
         InutNFeInfInut.Ano = "22"
         InutNFeInfInut.CNPJ = Preencher(CNPJ, "14")
@@ -26,10 +26,10 @@
 
         '    Dim Inutilizacao
         If TipoNF = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.Inutilizacao(InutNFe, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.Inutilizacao(InutNFe, Configuracao)
 
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.Inutilizacao(InutNFe, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.Inutilizacao(InutNFe, Configuracao)
         End If
 
         Resposta = TestarAutorizacao()

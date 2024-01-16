@@ -16,20 +16,20 @@
 		<FileVersion>2023.07.06.1027</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\Unimake.DFe\Compilacao\</OutputPath>
+		<OutputPath>..\..\Uni.DFe\Compilacao\</OutputPath>
 		<DefineConstants>TRACE;DEBUG</DefineConstants>
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Unimake.Security.Platform.xml</DocumentationFile>
+		<DocumentationFile>..\..\Uni.DFe\Compilacao\Unimake.Security.Platform.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\Unimake.DFe\Compilacao\Release</OutputPath>
+		<OutputPath>..\..\Uni.DFe\Compilacao\Release</OutputPath>
 		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Release\Unimake.Security.Platform.xml</DocumentationFile>
+		<DocumentationFile>..\..\Uni.DFe\Compilacao\Release\Unimake.Security.Platform.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='INTEROP_Release|AnyCPU'">
-		<OutputPath>..\..\Unimake.DFe\Compilacao\INTEROP_Release</OutputPath>
+		<OutputPath>..\..\Uni.DFe\Compilacao\INTEROP_Release</OutputPath>
 		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
 	</PropertyGroup>
 
@@ -43,7 +43,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|net462|AnyCPU'">
-		<DocumentationFile>..\..\Unimake.DFe\Compilacao\INTEROP_Release\Unimake.Security.Platform.xml</DocumentationFile>
+		<DocumentationFile>..\..\Uni.DFe\Compilacao\INTEROP_Release\Unimake.Security.Platform.xml</DocumentationFile>
 		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
 		<DefineConstants>TRACE;INTEROP</DefineConstants>
 	</PropertyGroup>

@@ -8,8 +8,8 @@ Dim statusServico
 
 Log.ClearLog
 
-Set ConsStatServCte = CreateObject("Unimake.Business.DFe.Xml.CTe.ConsStatServCte")
-Set statusServico = CreateObject("Unimake.Business.DFe.Servicos.CTe.StatusServico")
+Set ConsStatServCte = CreateObject("Uni.Business.DFe.Xml.CTe.ConsStatServCte")
+Set statusServico = CreateObject("Uni.Business.DFe.Servicos.CTe.StatusServico")
 
 ConsStatServCte.Versao = "3.00"
 ConsStatServCte.TpAmb = TpAmb

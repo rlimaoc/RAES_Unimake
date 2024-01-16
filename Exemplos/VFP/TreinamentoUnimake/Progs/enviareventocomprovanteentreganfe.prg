@@ -5,8 +5,8 @@ FUNCTION EnviarEventoComprovanteEntregaNFe()
    LOCAL oConfiguracao, oExceptionInterop
    LOCAL oEnvEvento, oEvento, oDetEventoCompEntregaNFe, oInfEvento, oRecepcaoEvento    
 
- * Criar o objeto de configuração mínima
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar o objeto de configuraï¿½ï¿½o mï¿½nima
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDFe = 0 && 0=NFe
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao.CertificadoSenha = "12345678"   
@@ -14,7 +14,7 @@ FUNCTION EnviarEventoComprovanteEntregaNFe()
  * Criar XML 
   
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento.Versao = "1.00"
    oEnvEvento.IdLote = "000000000000001"
 
@@ -22,11 +22,11 @@ FUNCTION EnviarEventoComprovanteEntregaNFe()
  * Criar tags do evento sequencia 1
  * -------------------------------------------------
  * Criar tag Evento
-   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
    oEvento.Versao = "1.00" 
  
  * Criar tag DetEventoCCE ###
-   oDetEventoCompEntregaNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCompEntregaNFe")
+   oDetEventoCompEntregaNFe = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoCompEntregaNFe")
    oDetEventoCompEntregaNFe.Versao = "1.00"
    oDetEventoCompEntregaNFe.COrgaoAutor = 41 && UFBrasil.PR
    oDetEventoCompEntregaNFe.TpAutor = 1 && TipoAutor.EmpresaEmitente
@@ -40,13 +40,13 @@ FUNCTION EnviarEventoComprovanteEntregaNFe()
    oDetEventoCompEntregaNFe.DhHashComprovante = DATETIME()
 
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
  
  * Referenciar o objeto oDetEventoCompEntregaNFe na Tag DetEvento
    oInfEvento.DetEvento = oDetEventoCompEntregaNFe
  
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCancCompEntregaNFe para que funcione sem erro
+ * IMPORTANTE: Atualizaï¿½ï¿½o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCancCompEntregaNFe para que funcione sem erro
    oInfEvento.COrgao = 91 && UFBrasil.AN
    oInfEvento.ChNFe = "41191006117473000150550010000579281779843610"
    oInfEvento.CNPJ = "06117473000150"
@@ -63,19 +63,19 @@ FUNCTION EnviarEventoComprovanteEntregaNFe()
    oEnvEvento.AddEvento(oEvento)
    
  * Resgatando alguns dados do objeto do XML do evento
-   oConteudoEvento = oEnvEvento.GetEvento(0) && Evento é uma lista, então tem que pegar, neste caso, sempre o primeiro conteúdo. Não teremos mais de um, pois não tem como enviar mais de um evento de comprovante de entrega.
+   oConteudoEvento = oEnvEvento.GetEvento(0) && Evento ï¿½ uma lista, entï¿½o tem que pegar, neste caso, sempre o primeiro conteï¿½do. Nï¿½o teremos mais de um, pois nï¿½o tem como enviar mais de um evento de comprovante de entrega.
  
    MESSAGEBOX(oEnvEvento.Versao)
    MESSAGEBOX(oConteudoEvento.InfEvento.COrgao)
    MESSAGEBOX(oConteudoEvento.InfEvento.CNPJ) 
    MESSAGEBOX(oConteudoEvento.InfEvento.DhEvento)
  
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")
 
    TRY
     * Enviar evento
-      oRecepcaoEvento = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento = CREATEOBJECT("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
       oRecepcaoEvento.Executar(oEnvEvento,  oConfiguracao)
       
       eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
@@ -88,24 +88,24 @@ FUNCTION EnviarEventoComprovanteEntregaNFe()
       MESSAGEBOX("CStat do Lote Retornado: " + ALLTRIM(STR(oRecepcaoEvento.Result.CStat,10)) + " - XMotivo: " + oRecepcaoEvento.Result.XMotivo)
  
       IF oRecepcaoEvento.Result.CStat == 128 && 128 = Lote de evento processado com sucesso.
-       * Como pode existir vários eventos no XML (Caso da carta de correção que posso enviar várias sequencias de evento)
-       * é necessário fazer um loop para ver a autorização de cada um deles
+       * Como pode existir vï¿½rios eventos no XML (Caso da carta de correï¿½ï¿½o que posso enviar vï¿½rias sequencias de evento)
+       * ï¿½ necessï¿½rio fazer um loop para ver a autorizaï¿½ï¿½o de cada um deles
          FOR I = 1 TO oRecepcaoEvento.Result.GetRetEventoCount()
              oRetEvento = oRecepcaoEvento.Result.GetRetEvento(I - 1)
              
              DO CASE
-                CASE oRetEvento.InfEvento.CStat = 135 && Evento homologado com vinculação da respectiva NFe
-                CASE oRetEvento.InfEvento.CStat = 136 && Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)
+                CASE oRetEvento.InfEvento.CStat = 135 && Evento homologado com vinculaï¿½ï¿½o da respectiva NFe
+                CASE oRetEvento.InfEvento.CStat = 136 && Evento homologado sem vinculaï¿½ï¿½o com a respectiva NFe (SEFAZ nï¿½o encontrou a NFe na base dela)
                 CASE oRetEvento.InfEvento.CStat = 155 && Evento de Cancelamento homologado fora do prazo permitido para cancelamento 
-                     oRecepcaoEvento.GravarXmlDistribuicao("tmp\testenfe") && Grava o XML de distribuição
+                     oRecepcaoEvento.GravarXmlDistribuicao("tmp\testenfe") && Grava o XML de distribuiï¿½ï¿½o
    				 
-                   * Como pegar o nome do arquivo de distribuição
+                   * Como pegar o nome do arquivo de distribuiï¿½ï¿½o
                      oProcEventoNFe = oRecepcaoEvento.GetProcEventoNFeResult(0)
                      MESSAGEBOX(oProcEventoNFe.NomeArquivoDistribuicao)
    		  
                OTHERWISE    
                     * Evento rejeitado
-                    * Realizar as ações necessárias
+                    * Realizar as aï¿½ï¿½es necessï¿½rias
              ENDCASE
    		
              MESSAGEBOX("CStat do evento " + AllTrim(Str(I,10)) + ": " + ALLTRIM(STR(oRetEvento.InfEvento.CStat,10)) + " - xMotivo: " + oRetEvento.InfEvento.XMotivo)

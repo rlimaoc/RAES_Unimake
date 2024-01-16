@@ -50,7 +50,7 @@ selecionarcertificado()
 
 
 
-* Configuraçõoes UI
+* Configuraï¿½ï¿½oes UI
 *ACTIVATE WINDOW SCREEN
 _SCREEN.WINDOWSTATE = 2
 *PUSH MENU _MSYSMENU 
@@ -61,7 +61,7 @@ DO FORM FRM_MENUNFEw
 *READ EVENTS
 *RELEASE ALL	
 
-* Funções
+* Funï¿½ï¿½es
 ELSE
 MESSAGEBOX("Senha nao Autorizada")
 QUIT
@@ -69,7 +69,7 @@ QUIT
 ENDIF
 
 FUNCTION ConfiguracaoAtual(iTipoDFe, iTipoEmissao)
-	InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+	InicializarConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 	InicializarConfiguracao.TipoDFe = iTipoDFe
 	InicializarConfiguracao.TipoEmissao = iTipoEmissao
 	InicializarConfiguracao.CertificadoDigital = Aplicativo.CertificadoSelecionado.Selecionado
@@ -81,7 +81,7 @@ ENDFUNC
 
 FUNCTION VerificarVencimentoCertificado()
 	IF Aplicativo.CertificadoSelecionado.Vencido = .t. 
-		=MESSAGEBOX("O Certificado está Vencido")
+		=MESSAGEBOX("O Certificado estï¿½ Vencido")
 		RETURN 0
 	ENDIF 
 ENDFUNC 
@@ -96,9 +96,9 @@ ENDFUNC
 * NFe 
 FUNCTION CriarEvento(XCorrecao, NSeqEvento)
 waitCenter("CriarEvento)
-	InfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
-	DetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
-	Evento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+	InfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
+	DetEventoCCE = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoCCE")
+	Evento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
 
 	DetEventoCCE.XCorrecao = XCorrecao
 	DetEventoCCE.Versao = "1.00"
@@ -127,7 +127,7 @@ ENDFUNC
 Function GetNFe()
 waitCenter("GetNFE")
 
-	NFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+	NFe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
 	NFe.AddInfNFe(GetInfNFe())
 	GetNFe = NFe
 	
@@ -139,7 +139,7 @@ ENDFUNC
 Function GetInfNFe()
 waitCenter("GetInfNFe")
 
-	infNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
+	infNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InfNFe")
 	infNFe.Versao = "4.00"
 	infNFe.Ide = GetIde()
  	infNFe.Emit = GetEmit()
@@ -180,7 +180,7 @@ waitCenter("GetIde")
     USE NFE INDEX nfe
     GOTO top
     ZZNFE=NNF
-    result = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
+    result = CreateObject("Uni.Business.DFe.Xml.NFe.Ide")
 	result.CUF = NFE.CUF
 	result.NatOp = NFE.Natop
 	result.Mod = mod
@@ -207,12 +207,12 @@ waitCenter("GetIde")
 	    GOTO TOP
 	    IF TIPO=1
 	      	**//Inserindo a primeira chave
-            oNFref = CreateObject("Unimake.Business.DFe.Xml.NFe.NFref")
+            oNFref = CreateObject("Uni.Business.DFe.Xml.NFe.NFref")
             oNFref.RefNFe = ALLTRIM(XCHAVE) &&"33220227863703000108550010000013641800903409"
             result.AddNFref(oNFref)
         ELSE   
-            oNFref = CreateObject("Unimake.Business.DFe.Xml.NFe.NFref")
-         *   oNFref = CreateObject("Unimake.Business.DFe.Xml.NFe.refNFP")
+            oNFref = CreateObject("Uni.Business.DFe.Xml.NFe.NFref")
+         *   oNFref = CreateObject("Uni.Business.DFe.Xml.NFe.refNFP")
             oNFref.AAMM="2110"
             oNFref.CNPJ="08744753000385"
             oNFref.IE="79219711"
@@ -235,7 +235,7 @@ waitCenter("GetIde")
 	   REPLACE numero WITH NFE.nnf
 	   replace serie WITH NFE.Serie
 	   REPLACE DATA WITH NFE.DHEMI
-	   REPLACE STATUS WITH "Em Digitação"
+	   REPLACE STATUS WITH "Em Digitaï¿½ï¿½o"
 	   
 *	ENDIF
 	SELECT 1
@@ -250,7 +250,7 @@ waitCenter("GetEmit")
     SELECT 2
     USE EMPRESA
     GOTO top
-    result = CreateObject("Unimake.Business.DFe.Xml.NFe.Emit")
+    result = CreateObject("Uni.Business.DFe.Xml.NFe.Emit")
 	result.CNPJ = ALLTRIM(empresa.cnpj)
 	result.XNome = ALLTRIM(empresa.xnome)
 	result.XFant = ALLTRIM(empresa.xfant) &&"CBE"
@@ -258,7 +258,7 @@ waitCenter("GetEmit")
 	result.IM = ALLTRIM(empresa.im) &&"14018"
 	result.CNAE = ALLTRIM(empresa.cnae) &&"4530703"
 	result.CRT =empresa.crt &&1
-	ender = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+	ender = CreateObject("Uni.Business.DFe.Xml.NFe.EnderEmit")
 	ender.XLgr = ALLTRIM(empresa.xlgr) &&"R DR OTAVIO KELLY"
 	ender.Nro = ALLTRIM(empresa.nro)
 	ender.XBairro = ALLTRIM(XBAIRRO)
@@ -283,7 +283,7 @@ waitCenter("GetDest")
     SELECT 3
     USE cliente
     GOTO top
-    result = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
+    result = CreateObject("Uni.Business.DFe.Xml.NFe.Dest")
     IF FJ=2
 	   result.CNPJ = ALLTRIM(cliente.cnpj) 	&&"15698425000193"
     ELSE
@@ -298,7 +298,7 @@ waitCenter("GetDest")
 	result.IndIEDest = cliente.IndIEDest &&1
 	result.IE = ALLTRIM(cliente.ie) &&"79685771"
 	result.Email = ALLTRIM(cliente.email) &&"awbinfo23@gmail.com"
-	ender = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+	ender = CreateObject("Uni.Business.DFe.Xml.NFe.EnderDest")
 	ender.XLgr = ALLTRIM(cliente.xlgr) &&"AV PARIS"
 	ender.Nro = ALLTRIM(cliente.nro) &&"15"
 	ender.XBairro = ALLTRIM(cliente.xbairro) && "BONSUCESSO"
@@ -337,8 +337,8 @@ waitCenter("GetTotal")
     USE TOTAIS
     GOTO top       
              
-    *    	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
-	*ICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+    *    	result = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
+	*ICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
 	*ICMSTot.VBC = 0
 	*ICMSTot.VICMS = 0
 	*ICMSTot.VICMSDeson = 0
@@ -364,8 +364,8 @@ waitCenter("GetTotal")
 	*RELEASE result 
 	*RELEASE ICMSTot 
 	*RETURN GetTotal 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
-	ICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
+	ICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
 	ICMSTot.VBC = totais.vbc
 	ICMSTot.VICMS = totais.vicms
 	ICMSTot.VICMSDeson = totais.vicmsdeson
@@ -401,9 +401,9 @@ waitCenter("GetTransp")
     SELECT 7
     USE transp
     GOTO top
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
-	Transporta = CreateObject("Unimake.Business.DFe.Xml.NFe.Transporta")
-	Vol = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.Transp")
+	Transporta = CreateObject("Uni.Business.DFe.Xml.NFe.Transporta")
+	Vol = CreateObject("Uni.Business.DFe.Xml.NFe.Vol")
 
 	Transporta.XNome = transp.xnome
 	Transporta.XEnder = transp.xender
@@ -430,9 +430,9 @@ ENDFUNC
 FUNCTION GetCobr()
 waitCenter("GetCobr")
 
-   	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
-	Dup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
-	Fat = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
+   	result = CreateObject("Uni.Business.DFe.Xml.NFe.Cobr")
+	Dup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
+	Fat = CreateObject("Uni.Business.DFe.Xml.NFe.Fat")
   	Fat.NFat = ALLTRIM(dupl.nfat)
 	Fat.VOrig = dupl.vorig
 	Fat.VDesc = dupl.vdesc
@@ -453,13 +453,13 @@ FUNCTION GetPag()
 waitCenter("GetPag")
 
     IF mmopcao#4
-	   result = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
-	   DetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+	   result = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
+	   DetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
 	   DetPag.TPag = 15
 	   DetPag.VPag = XXPROD
 	ELSE
-       result = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
-	   DetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+       result = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
+	   DetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
 	   detpag.indPag=0
 	   DetPag.TPag = 90
 	   DetPag.VPag = 0.00
@@ -479,7 +479,7 @@ waitCenter("GetInfAdic")
     SELECT 9
     USE inforM
     GOTO top
-    result = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+    result = CreateObject("Uni.Business.DFe.Xml.NFe.InfAdic")
 	result.InfCpl = ALLTRIM(inform.OBS1)+;
 	ALLTRIM(inform.OBS2)+;
 	ALLTRIM(inform.OBS3)+;
@@ -503,7 +503,7 @@ ENDFUNC
 FUNCTION GetInfRespTec()
 waitCenter("GetInfRespTec")
 
-	result = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+	result = CreateObject("Uni.Business.DFe.Xml.NFe.InfRespTec")
 	result.CNPJ = "05413671000106"
 	result.XContato = "SML INFORMATICA M.E."
 	result.Email = "awbinfo23@gmail.com"
@@ -519,9 +519,9 @@ FUNCTION GetDet()
 
 waitCenter("GetDet")
 
-*	result = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+*	result = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 *	result.NItem = 1
-*	Prod = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+*	Prod = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
 *	Prod.CProd = "01042"
 *	Prod.CEAN = "SEM GTIN"
 *	Prod.XProd = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -540,9 +540,9 @@ waitCenter("GetDet")
 *	Prod.NItemPed = 1
 *    result.Prod = Prod
 
-       result = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+       result = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 	   result.NItem = vitem &&item
-	   prod = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+	   prod = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
 	   Prod.CProd = ALLTRIM(PRODUTOS.CPROD) &&"01042"
 	   Prod.CEAN = ALLTRIM(produtoS.cean) &&"SEM GTIN"
 	   Prod.XProd = ALLTRIM(produtoS.xprod) &&"NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -561,33 +561,33 @@ waitCenter("GetDet")
        Prod.NItemPed = 1&&produtoS.nitemped &&1
        xxprod=xxprod+vprod
 	   result.Prod = Prod
-	   Imposto = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+	   Imposto = CreateObject("Uni.Business.DFe.Xml.NFe.Imposto")
        Imposto.VTotTrib = vtrib &&TRIBUTO
        DO CASE
           CASE XICMS="101"
-               ICMS = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
-               ICMSSN101 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
+               ICMS = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
+               ICMSSN101 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN101")
                ICMSSN101.Orig = 0
                ICMSSN101.PCredSN = 0 &&2.8255
                ICMSSN101.VCredICMSSN = 0 &&2.4
                ICMS.ICMSSN101 = ICMSSN101
                Imposto.ICMS = ICMS
           CASE Xicms="500"
-               ICMS = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
-               ICMSSN500 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN500")
+               ICMS = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
+               ICMSSN500 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN500")
                ICMSSN500.Orig = 0
                ICMS.ICMSSN500 = ICMSSN500
                Imposto.ICMS = ICMS
           CASE Xicms="060"
-               ICMS = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
-               ICMS60 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS60")
+               ICMS = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
+               ICMS60 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS60")
                ICMS60.Orig = 0
                ICMS.ICMS60 = ICMS60
                Imposto.ICMS = ICMS
          
        ENDCASE
-       PIS = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
-       PISOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+       PIS = CreateObject("Uni.Business.DFe.Xml.NFe.PIS")
+       PISOutr = CreateObject("Uni.Business.DFe.Xml.NFe.PISOutr")
        PISOutr.CST = "99"
        
        PISOutr.VBC = 0.00
@@ -596,8 +596,8 @@ waitCenter("GetDet")
      	PIS.PISOutr = PISOutr
        Imposto.PIS = PIS
 
-       COFINS = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
-	   COFINSOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+       COFINS = CreateObject("Uni.Business.DFe.Xml.NFe.COFINS")
+	   COFINSOutr = CreateObject("Uni.Business.DFe.Xml.NFe.COFINSOutr")
        COFINSOutr.CST = "99"
        COFINSOutr.VBC = 0.00
        COFINSOutr.PCOFINS = 0.00
@@ -625,7 +625,7 @@ ENDFUNC
 FUNCTION GetFromFileNFe(arquivo)
 waitCenter("GetFromFileNFe")
     MESSAGEBOX(ARQUIVO)
-	NFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+	NFe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
 	GetFromFileNFe = NFe.LoadFromFile(arquivo)	
 	RELEASE NFe  
 	
@@ -643,7 +643,7 @@ DO CASE
    CASE DOW(data_sel) = 2	
         knomedia = "Segunda-Feira"
         CASE DOW(data_sel) = 3
-        	knomedia = "Terça-Feira"
+        	knomedia = "Terï¿½a-Feira"
         	CASE DOW(data_sel) = 4
         		knomedia = "Quarta-Feira"
         		CASE DOW(data_sel) = 5	
@@ -651,7 +651,7 @@ DO CASE
         		CASE DOW(data_sel) = 6	
         		knomedia = "Sexta-Feira"
         		CASE DOW(data_sel) = 7	
-        		knomedia = "Sábado"
+        		knomedia = "Sï¿½bado"
         		ENDCASE
         		RETURN knomedia
 
@@ -684,13 +684,13 @@ PROCEDURE waitCenter as VOID
 LPARAMETERS pctext as String, pntimeout as Integer
 LOCAL lnyy as Integer, lnxx as Integer
 
-* Calcula o número total de linhas
+* Calcula o nï¿½mero total de linhas
 m.lnxx = 1
 FOR m.lnyy = 1 TO MEMLINES( m.pctext )
   m.lnxx = MAX( m.lnxx, LEN( ALLTRIM( MLINE(m.pctext, m.lnxx) ) ) )
 NEXT
 
-* Calcula a posição central da tela
+* Calcula a posiï¿½ï¿½o central da tela
 m.lnyy = ( SROWS()/ 2 ) - ( (m.lnyy-1) / 2 )
 m.lnxx = ( SCOLS() / 2 ) - ( m.lnxx / 2 )
 
@@ -702,12 +702,12 @@ WAIT CLEAR
 IF VARTYPE( m.pntimeout ) = "N"
   *!* ---> Para ambiente de teste
   WAIT WINDOW m.pctext TIMEOUT m.pntimeout AT m.lnyy, m.lnxx-5
-  *!* ---> Para ambiente de produção
+  *!* ---> Para ambiente de produï¿½ï¿½o
   *!*WAIT WINDOW m.pctext TIMEOUT m.pntimeout AT m.lnyy+INT((SYSMETRIC(2)*3)/600), m.lnxx+INT((SYSMETRIC(1)*40)/800)
 ELSE
   *!* ---> Para ambiente de teste
   WAIT WINDOW m.pctext NOWAIT NOCLEAR AT m.lnyy, m.lnxx-5
-  *!* ---> Para ambiente de produção
+  *!* ---> Para ambiente de produï¿½ï¿½o
   *!*WAIT WINDOW m.pctext NOWAIT NOCLEAR AT m.lnyy+INT((SYSMETRIC(2)*3)/600), m.lnxx+INT((SYSMETRIC(1)*40)/800)
 ENDIF
 ENDPROC

@@ -12,7 +12,7 @@ Function CancelarNFeDesserializando()
    Local oEnvEvento, xmlString
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 0 // 0=nfe
    oConfiguracao:Servico = 5 // 5=Envio de evento
    oConfiguracao:CertificadoSenha = "12345678"
@@ -23,10 +23,10 @@ Function CancelarNFeDesserializando()
    
    Try 
     * Criar tag EnvEvento
-      oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")   
+      oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")   
    
     * Desserializar o XML no objeto a partir do arquivo no HD
-      oEnvEvento = oEnvEvento:LoadFromFile("D:\testenfe\xharbour\Unimake.DFe\xmlcancelamento-ped-eve.xml") 
+      oEnvEvento = oEnvEvento:LoadFromFile("D:\testenfe\xharbour\Uni.DFe\xmlcancelamento-ped-eve.xml") 
   
     * Desserializar o objeto a partir de uma string
       xmlString = '<?xml version="1.0" encoding="utf-8"?><envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe"><idLote>000000000000001</idLote><evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe"><infEvento Id="ID1101114119100611747300015055001000057928177984361001"><cOrgao>41</cOrgao><tpAmb>2</tpAmb><CNPJ>06117473000150</CNPJ><chNFe>41191006117473000150550010000579281779843610</chNFe><dhEvento>2022-07-06T08:06:00-03:00</dhEvento><tpEvento>110111</tpEvento><nSeqEvento>1</nSeqEvento><verEvento>1.00</verEvento><detEvento versao="1.00"><descEvento>Cancelamento</descEvento><nProt>010101010101010</nProt><xJust>Justificativa do cancelamento</xJust></detEvento></infEvento></evento></envEvento>'
@@ -46,7 +46,7 @@ Function CancelarNFeDesserializando()
 	  Wait   
    
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
       oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
 	  
 	  cls

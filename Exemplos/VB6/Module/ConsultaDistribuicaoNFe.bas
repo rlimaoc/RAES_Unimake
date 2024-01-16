@@ -5,16 +5,16 @@ Public Sub ConsultarDistribuicaoNFe()
 On Error GoTo erro
 Dim DistDFeInt, DistNSU, DistribuicaoDFe
 Dim nsu     As String: nsu = "000000000000000"
-Dim folder  As String: folder = "C:\temp\uninfe" ''<<<altere para um paste existente em sua máquina
+Dim folder  As String: folder = "C:\temp\uninfe" ''<<<altere para um paste existente em sua mï¿½quina
 
 Log.ClearLog
 
-Set DistDFeInt = CreateObject("Unimake.Business.DFe.xml.NFe.DistDFeInt")
-Set DistNSU = CreateObject("Unimake.Business.DFe.xml.NFe.DistNSU")
-Set DistribuicaoDFe = CreateObject("Unimake.Business.DFe.Servicos.NFe.DistribuicaoDFe")
+Set DistDFeInt = CreateObject("Uni.Business.DFe.xml.NFe.DistDFeInt")
+Set DistNSU = CreateObject("Uni.Business.DFe.xml.NFe.DistNSU")
+Set DistribuicaoDFe = CreateObject("Uni.Business.DFe.Servicos.NFe.DistribuicaoDFe")
 
 Do While True
-    Log.EscreveLog "Aguarde, consultando NSU número " & nsu, False
+    Log.EscreveLog "Aguarde, consultando NSU nï¿½mero " & nsu, False
     DistNSU.UltNSU = nsu
     
     With DistDFeInt
@@ -40,7 +40,7 @@ Do While True
     End If
 Loop
 
-Log.EscreveLog "Consulta de distribuição concluída com sucesso", False
+Log.EscreveLog "Consulta de distribuiï¿½ï¿½o concluï¿½da com sucesso", False
 
 Exit Sub
 erro:

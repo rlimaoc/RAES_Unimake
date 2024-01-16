@@ -14,7 +14,7 @@ Set oCertificado = CreateObject("Unimake.Security.Platform.CertificadoDigital")
 Set oCertificadoSelecionado = oCertificado.AbrirTelaSelecao()
 
 'Testar se for certificado A3
-Set oVerificarA3 = CreateObject("Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
+Set oVerificarA3 = CreateObject("Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
 
 ehA3 = oVerificarA3.IsA3 ((oCertificadoSelecionado))
 If ehA3 Then 
@@ -28,7 +28,7 @@ End if
 
 'Montar o objeto de configuração com informações mínimas 
 'para ser utilizado na hora de consumir o serviço
-Set oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+Set oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 oConfiguracao.TipoDFe = 4 '4 = MDFe
 oConfiguracao.CertificadoDigital = oCertificadoSelecionado
 
@@ -41,7 +41,7 @@ MsgBox "Nome Emitente: " + oMDFe.InfMDFe.Emit.XNome
 MsgBox "Chave MDFe: " + oMDFe.InfMDFe.Chave
 
 'Criar serviço de autorização e enviar o XML para SEFAZ
-Set oAutorizacaoSinc = CreateObject("Unimake.Business.DFe.Servicos.MDFe.AutorizacaoSinc")
+Set oAutorizacaoSinc = CreateObject("Uni.Business.DFe.Servicos.MDFe.AutorizacaoSinc")
 oAutorizacaoSinc.SetXMLConfiguracao (oMDFe), (oConfiguracao)
 oAutorizacaoSinc.Executar (oMDFe), (oConfiguracao)
 
@@ -52,6 +52,6 @@ MsgBox oAutorizacaoSinc.RetornoWSString
 'Serializar o XML do MDFe
 '----------------------------------------------------
 Function GetFromFileMDFe()
-   Dim MDFe: Set MDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.MDFe")
+   Dim MDFe: Set MDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.MDFe")
    Set GetFromFileMDFe = MDFe.LoadFromFile("C:\Users\Wandrey\Downloads\Telegram Desktop\31220437920833000180580010000000021000000020-mdfe.xml")
 End Function

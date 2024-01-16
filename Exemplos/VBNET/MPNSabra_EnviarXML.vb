@@ -7,9 +7,9 @@
         '     Exit Sub
 
 
-        Dim Xml = New Unimake.Business.DFe.Xml.NFe.EnviNFe
-        Dim NFe = New Unimake.Business.DFe.Xml.NFe.NFe
-        Dim InfNFe = New Unimake.Business.DFe.Xml.NFe.InfNFe
+        Dim Xml = New Uni.Business.DFe.Xml.NFe.EnviNFe
+        Dim NFe = New Uni.Business.DFe.Xml.NFe.NFe
+        Dim InfNFe = New Uni.Business.DFe.Xml.NFe.InfNFe
 
         '
         ' Lendo o arquivo WandreyNfe.xml
@@ -29,16 +29,16 @@
         Try
 
 
-            Xml.NFe.Add(Unimake.Business.DFe.Utility.XMLUtility.Deserializar(Of Unimake.Business.DFe.Xml.NFe.NFe)(Doc))
+            Xml.NFe.Add(Uni.Business.DFe.Utility.XMLUtility.Deserializar(Of Uni.Business.DFe.Xml.NFe.NFe)(Doc))
 
             '
-            '   Neste ponto está apresentando o erro "Variável de objeto ou variável com bloco não definida"
+            '   Neste ponto estï¿½ apresentando o erro "Variï¿½vel de objeto ou variï¿½vel com bloco nï¿½o definida"
             '
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
 
-        MsgBox("Não Passou da Deserialização")
+        MsgBox("Nï¿½o Passou da Deserializaï¿½ï¿½o")
 
 
 
@@ -55,15 +55,15 @@
         Try
 
 
-            Xml.NFe.Add(Unimake.Business.DFe.Utility.XMLUtility.Deserializar(Of Unimake.Business.DFe.Xml.NFe.EnviNFe)(Doc2))
+            Xml.NFe.Add(Uni.Business.DFe.Utility.XMLUtility.Deserializar(Of Uni.Business.DFe.Xml.NFe.EnviNFe)(Doc2))
 
             '
-            '   Neste ponto está apresentando o erro "Variável de objeto ou variável com bloco não definida"
+            '   Neste ponto estï¿½ apresentando o erro "Variï¿½vel de objeto ou variï¿½vel com bloco nï¿½o definida"
             '
             '
-            ' Se trocar a instrução para EnviNFe
-            'Xml.EnviNFe.Add(Unimake.Business.DFe.Utility.XMLUtility.Deserializar(Of Unimake.Business.DFe.Xml.NFe.EnviNFe)(Doc2))
-            ' Apresenta erro de não existir EnviNFe no XML (XML.EnviNFE)
+            ' Se trocar a instruï¿½ï¿½o para EnviNFe
+            'Xml.EnviNFe.Add(Uni.Business.DFe.Utility.XMLUtility.Deserializar(Of Uni.Business.DFe.Xml.NFe.EnviNFe)(Doc2))
+            ' Apresenta erro de nï¿½o existir EnviNFe no XML (XML.EnviNFE)
             '
 
         Catch ex As Exception
@@ -71,7 +71,7 @@
         End Try
 
 
-        MsgBox("Não Passou da Deserialização")
+        MsgBox("Nï¿½o Passou da Deserializaï¿½ï¿½o")
 
 
 End Sub

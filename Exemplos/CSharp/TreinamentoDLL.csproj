@@ -65,11 +65,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Uni.NFCom">
-      <HintPath>C:\repositorios\git\pessoal\Unimake\source\Uni.NFCom\Compilacao\netstandard2.0\Uni.NFCom.dll</HintPath>
-    </Reference>
-    <Reference Include="Unimake.Business.DFe, Version=2023.11.6.1651, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.DFe.20231106.1651.36\lib\net472\Unimake.Business.DFe.dll</HintPath>
+    <Reference Include="Uni.Business.DFe, Version=2023.11.6.1651, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Uni.DFe.20231106.1651.36\lib\net472\Uni.Business.DFe.dll</HintPath>
     </Reference>
     <Reference Include="Unimake.Cryptography, Version=2023.11.3.1515, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Unimake.Cryptography.20231103.1515.15\lib\netstandard2.0\Unimake.Cryptography.dll</HintPath>
@@ -89,16 +86,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormNFCom.cs">
+    <Compile Include="FormTestes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNFCom.Designer.cs">
-      <DependentUpon>FormNFCom.cs</DependentUpon>
+    <Compile Include="FormTestes.Designer.cs">
+      <DependentUpon>FormTestes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormNFCom.resx">
-      <DependentUpon>FormNFCom.cs</DependentUpon>
+    <EmbeddedResource Include="FormTestes.resx">
+      <DependentUpon>FormTestes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

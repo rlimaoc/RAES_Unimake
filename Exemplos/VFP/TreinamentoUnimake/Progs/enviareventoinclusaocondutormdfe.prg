@@ -1,27 +1,27 @@
 * ---------------------------------------------------------------------------------
-* Enviar evento de inclusão do condutor no MDFe
+* Enviar evento de inclusï¿½o do condutor no MDFe
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarEventoInclusaoCondutorMDFe()
    LOCAL oErro, oExceptionInterop
    LOCAL oConfiguracao
    LOCAL oEnvEvento, oEventoMDFe, oDetEventoCanc, oInfEvento
    
- * Criar configuração basica para consumir o serviço
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ï¿½o basica para consumir o serviï¿½o
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDfe = 4 && 4=MDFe
    oConfiguracao.CertificadoSenha = "12345678"
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag Evento
-   oEventoMDFe = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.EventoMDFe")
+   oEventoMDFe = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.EventoMDFe")
    oEventoMDFe.Versao = "3.00"
  
  * Criar tag DetEventoIncCondutor
-   oDetEventoIncCondutor = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.DetEventoIncCondutor") && ###
+   oDetEventoIncCondutor = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.DetEventoIncCondutor") && ###
    oDetEventoIncCondutor.VersaoEvento = "3.00"   
    
  * Criar grupo de tag Condutor
-   oCondutorMDFe = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.CondutorMDFe")
+   oCondutorMDFe = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.CondutorMDFe")
    oCondutorMDFe.XNome = "JOSE ALMEIDA"
    oCondutorMDFe.CPF = "00000000191"
    
@@ -29,13 +29,13 @@ FUNCTION EnviarEventoInclusaoCondutorMDFe()
    oDetEventoIncCondutor.EventoIncCondutor.AddCondutor(oCondutorMDFe)  
 
  * Criar tag InfEvento
-   oInfEvento = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.InfEvento")
+   oInfEvento = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.InfEvento")
  
  * Adicionar a tag DetEventoIncCondutor dentro da Tag DetEvento
    oInfEvento.DetEvento = oDetEventoIncCondutor
  
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+ * IMPORTANTE: Atualizaï¿½ï¿½o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
    oInfEvento.COrgao = 41 && UFBrasil.PR
    oInfEvento.ChMDFe = "41200210859283000185570010000005671227070615"
    oInfEvento.CNPJ = "10859283000185"
@@ -52,12 +52,12 @@ FUNCTION EnviarEventoInclusaoCondutorMDFe()
    MESSAGEBOX("<cOrgao>: " + STR(oEventoMDFe.InfEvento.COrgao,2))
    MESSAGEBOX("<chMDFe>: " + oEventoMDFe.InfEvento.ChMDFe)
    
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")   
    
    TRY 
     * Enviar evento
-      oRecepcaoEvento = CREATEOBJECT("Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento")
+      oRecepcaoEvento = CREATEOBJECT("Uni.Business.DFe.Servicos.MDFe.RecepcaoEvento")
       oRecepcaoEvento.Executar(oEventoMDFe,  oConfiguracao)
       
       eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
@@ -71,8 +71,8 @@ FUNCTION EnviarEventoInclusaoCondutorMDFe()
 	  
       MESSAGEBOX("CStat do Lote Retornado: " + ALLTRIM(STR(oRecepcaoEvento.Result.InfEvento.CStat,5)) + " - XMotivo: " + oRecepcaoEvento.Result.InfEvento.XMotivo)
  
-      IF oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo MDFe
-         oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe") &&Grava o XML de distribuição
+      IF oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respetivo MDFe
+         oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe") &&Grava o XML de distribuiï¿½ï¿½o
       ELSE
          * Foi rejeitado, fazer devidos tratamentos	  
       ENDIF

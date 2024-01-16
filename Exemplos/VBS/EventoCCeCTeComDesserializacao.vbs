@@ -5,13 +5,13 @@
  Dim oEventoCTe
 
  'Criar configuraçao básica para consumir o serviço
- Set oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ Set oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
  oConfiguracao.TipoDFe = 2 '2=CTe
  oConfiguracao.CertificadoSenha = "12345678"
  oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  'Criar tag do lote de eventos <eventoCTe>
- Set oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
+ Set oEventoCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCTe")
  
  'Desserializar o XML, que já existe no HD, no objeto.
  Set oEventoCTe = oEventoCTe.LoadFromFile("C:\projetos\uninfe\exemplos\CTe 3.00\cce35150107565416000104570000000012301000012300-ped-eve.xml")
@@ -23,7 +23,7 @@
  MsgBox oEventoCTe.InfEvento.DhEvento 'Demonstrar o CNPJ infomrado no XML
  
  'Enviar carta de correcao
- Set oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")
+ Set oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.CTe.RecepcaoEvento")
  oRecepcaoEvento.Executar (oEventoCTe),  (oConfiguracao)
   
  MsgBox oRecepcaoEvento.RetornoWSString

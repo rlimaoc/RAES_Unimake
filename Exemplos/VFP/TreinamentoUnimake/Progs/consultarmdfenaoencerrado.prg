@@ -1,29 +1,29 @@
 * ---------------------------------------------------------------------------------
-* Consultar MDFe´s Não Encerrados
+* Consultar MDFeï¿½s Nï¿½o Encerrados
 * ---------------------------------------------------------------------------------
 FUNCTION ConsultarMDFeNaoEncerrado()         
    LOCAL oConfiguracao, oExceptionInterop
    LOCAL oConsMDFeNaoEnc, oConsNaoEnc
 
- * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDfe = 4 && 4=MDFe
    oConfiguracao.CertificadoSenha = "12345678"
    oConfiguracao.CodigoUF = 41 && UFBrasil.PR
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    
-   oConsMDFeNaoEnc = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsMDFeNaoEnc")
+   oConsMDFeNaoEnc = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsMDFeNaoEnc")
    oConsMDFeNaoEnc.Versao = "3.00"
    oConsMDFeNaoEnc.TpAmb = 2 && TipoAmbiente.Homologacao
-   oConsMDFeNaoEnc.XServ = "CONSULTAR NÃO ENCERRADOS"
+   oConsMDFeNaoEnc.XServ = "CONSULTAR Nï¿½O ENCERRADOS"
    oConsMDFeNaoEnc.CNPJ = "10859283000185"
    
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
 
    TRY 
     * Enviar a consulta
-      oConsNaoEnc = CreateObject("Unimake.Business.DFe.Servicos.MDFe.ConsNaoEnc")
+      oConsNaoEnc = CreateObject("Uni.Business.DFe.Servicos.MDFe.ConsNaoEnc")
       oConsNaoEnc.Executar(oConsMDFeNaoEnc, oConfiguracao)
       
       MESSAGEBOX(oConsNaoEnc.RetornoWSString)

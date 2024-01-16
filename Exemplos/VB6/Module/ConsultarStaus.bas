@@ -7,12 +7,12 @@ Dim statusServico
 
 Log.ClearLog
 
-Set consStatServ = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsStatServ")
+Set consStatServ = CreateObject("Uni.Business.DFe.Xml.NFe.ConsStatServ")
 consStatServ.Versao = "4.00"
 consStatServ.CUF = UFBrasil.PR
 consStatServ.TpAmb = TpAmb
 
-Set statusServico = CreateObject("Unimake.Business.DFe.Servicos.NFe.StatusServico")
+Set statusServico = CreateObject("Uni.Business.DFe.Servicos.NFe.StatusServico")
 statusServico.Executar (consStatServ), (Config.InicializarConfiguracao(TipoDFe.NFe))
 
 Log.EscreveLog statusServico.RetornoWSString, True

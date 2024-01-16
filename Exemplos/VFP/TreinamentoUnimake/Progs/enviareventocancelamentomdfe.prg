@@ -6,30 +6,30 @@ FUNCTION EnviarEventoCancelamentoMDFe()
    LOCAL oConfiguracao
    LOCAL oEnvEvento, oEventoMDFe, oDetEventoCanc, oInfEvento
    
- * Criar configuração basica para consumir o serviço
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ï¿½o basica para consumir o serviï¿½o
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDfe = 4 && 4=MDFe
    oConfiguracao.CertificadoSenha = "12345678"
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"   
    
  * Criar tag Evento
-   oEventoMDFe = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.EventoMDFe")
+   oEventoMDFe = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.EventoMDFe")
    oEventoMDFe.Versao = "3.00"
    
  * Criar tag DetEventoCanc
-   oDetEventoCanc = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.DetEventoCanc")
+   oDetEventoCanc = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.DetEventoCanc")
    oDetEventoCanc.VersaoEvento = "3.00"
    oDetEventoCanc.NProt = "141200000007987"
    oDetEventoCanc.XJust = "Justificativa para cancelamento do MDFe de teste"
    
  * Criar tag InfEvento
-   oInfEvento = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.InfEvento")
+   oInfEvento = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.InfEvento")
    
  * Adicionar a tag DetEventoCanc dentro da Tag DetEvento
    oInfEvento.DetEvento = oDetEventoCanc
    
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+ * IMPORTANTE: Atualizaï¿½ï¿½o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
    oInfEvento.COrgao = 41 && UFBrasil.PR
    oInfEvento.ChMDFe = "41200210859283000185570010000005671227070615"
    oInfEvento.CNPJ = "10859283000185"
@@ -48,12 +48,12 @@ FUNCTION EnviarEventoCancelamentoMDFe()
    MESSAGEBOX("<nProt>: " + oEventoMDFe.InfEvento.DetEvento.NProt)
    MESSAGEBOX("<xJust>: " + oEventoMDFe.InfEvento.DetEvento.XJust)
    
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")   
    
    TRY 
     * Enviar evento
-      oRecepcaoEvento = CREATEOBJECT("Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento")
+      oRecepcaoEvento = CREATEOBJECT("Uni.Business.DFe.Servicos.MDFe.RecepcaoEvento")
       oRecepcaoEvento.Executar(oEventoMDFe, oConfiguracao)
       
       eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
@@ -67,8 +67,8 @@ FUNCTION EnviarEventoCancelamentoMDFe()
       
       MESSAGEBOX("CStat do Lote Retornado: " + ALLTRIM(STR(oRecepcaoEvento.Result.InfEvento.CStat,5)) + " - XMotivo: " + oRecepcaoEvento.Result.InfEvento.XMotivo)
       
-      IF oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo MDFe
-         oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe") &&Gravar o XML de distribuição na pasta informada
+      IF oRecepcaoEvento.Result.InfEvento.CStat == 135 && Recebido pelo Sistema de Registro de Eventos, com vinculaï¿½ï¿½o do evento no respetivo MDFe
+         oRecepcaoEvento.GravarXmlDistribuicao("d:\testenfe") &&Gravar o XML de distribuiï¿½ï¿½o na pasta informada
       ELSE
          * Foi rejeitado, fazer devidos tratamentos
       ENDIF

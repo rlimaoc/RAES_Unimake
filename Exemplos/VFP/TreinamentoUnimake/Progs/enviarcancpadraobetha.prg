@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Enviar cancelamento de NFSe padrão Betha (Município de Itapema-SC)
+* Enviar cancelamento de NFSe padrï¿½o Betha (Municï¿½pio de Itapema-SC)
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarCancPadraoBETHA()         
    LOCAL xmlCanc, oConfiguracao 
@@ -28,17 +28,17 @@ FUNCTION EnviarCancPadraoBETHA()
       xmlCanc = xmlCanc + AllTrim([  </Pedido>])
       xmlCanc = xmlCanc + AllTrim([</CancelarNfseEnvio>])
       
-   * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+   * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  2 && Produção
-      oConfiguracao.CodigoMunicipio = 4208302 && Código do IBGE de Itapema-SC ###
+      oConfiguracao.TipoAmbiente =  2 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 4208302 && Cï¿½digo do IBGE de Itapema-SC ###
       oConfiguracao.Servico = 24  && Servico.NFSeCancelarNfse
       oConfiguracao.SchemaVersao = "2.02"
       
-      oCancelarNfse = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.CancelarNfse")
+      oCancelarNfse = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.CancelarNfse")
       oCancelarNfse.Executar(xmlCanc, oConfiguracao)  
       
       MESSAGEBOX(oCancelarNfse.RetornoWSString)     

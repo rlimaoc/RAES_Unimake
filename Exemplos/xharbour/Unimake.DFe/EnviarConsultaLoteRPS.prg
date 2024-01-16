@@ -11,7 +11,7 @@ Function EnviarConsultaLoteRPS()
    Local oConsultaLote, cArqXML, cStr
 
  * Criar o objeto de configuração mínima
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 5 //5=NFSe
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao:CertificadoSenha = "12345678"
@@ -24,7 +24,7 @@ Function EnviarConsultaLoteRPS()
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try         
-      cArqXML := "D:\testenfe\xharbour\Unimake.DFe\ConsultaLote-ped-loterps.xml"
+      cArqXML := "D:\testenfe\xharbour\Uni.DFe\ConsultaLote-ped-loterps.xml"
 	  cStr := Memoread(cArqXML)
 	  cStr := SubStr(cStr, 4)
      
@@ -37,7 +37,7 @@ Function EnviarConsultaLoteRPS()
 	  wait
 	  cls 
 	  
-	  oConsultaLote := CreateObject("Unimake.Business.DFe.Servicos.NFSe.ConsultaLote")
+	  oConsultaLote := CreateObject("Uni.Business.DFe.Servicos.NFSe.ConsultaLote")
       oConsultaLote:Executar(cStr, oConfiguracao)
 	  
 	  ? oConsultaLote:RetornoWSString

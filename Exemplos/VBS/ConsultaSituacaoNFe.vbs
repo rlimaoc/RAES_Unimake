@@ -6,19 +6,19 @@ Dim procEventoNFe
 
 'Montar o objeto de configuração com informações mínimas 
 'para ser utilizado na hora de consumir o serviço
-Set configuracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+Set configuracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 configuracao.TipoDFe = 0 'NFe
 configuracao.CertificadoSenha = "12345678"
 configuracao.CertificadoArquivo = "D:\projetos\UnimakePV.pfx"
 
 'Montar o XML de consulta status do serviço
-Set consSitNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNFe")
+Set consSitNFe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsSitNFe")
 consSitNFe.Versao = "4.00"
 consSitNFe.TpAmb = 2 '1-Produção 2-Homologação
 consSitNFe.ChNFe = "31221025975590000107550010000083851000841778"
 
 'Consumir o serviço
-Set consultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")
+Set consultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo")
 consultaProtocolo.Executar (consSitNFe),(configuracao)
 
 'Demonstrar mensagens na tela com o retorno da SEFAZ

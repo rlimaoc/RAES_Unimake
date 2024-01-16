@@ -20,14 +20,14 @@ Function GerarXmlDistribuicaoEvento()
    Local nomeArqDistribEventoCanc, xmlEventoCanc
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 0 // 0=nfe
    oConfiguracao:Servico = 5 // 5=Envio de evento
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento:Versao = "1.00"
    oEnvEvento:IdLote = "000000000000001"
 
@@ -35,17 +35,17 @@ Function GerarXmlDistribuicaoEvento()
  * Criar tags do evento sequencia 1
  * -------------------------------------------------
  * Criar tag Evento
-   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento = CreateObject("Uni.Business.DFe.Xml.NFe.Evento")
    oEvento:Versao = "1.00"
  
  * Criar tag DetEventoCanc
-   oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCanc")
+   oDetEventoCanc = CreateObject("Uni.Business.DFe.Xml.NFe.DetEventoCanc")
    oDetEventoCanc:Versao = "1.00"
    oDetEventoCanc:NProt = "141230000370455"
    oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
 
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.NFe.InfEvento")
  
  * Adicionar a tag DetEventoCanc dentro da Tag DetEvento
    oInfEvento:DetEvento = oDetEventoCanc
@@ -88,7 +88,7 @@ Function GerarXmlDistribuicaoEvento()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.NFe.RecepcaoEvento")
       oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
 
       ? "CStat do Lote Retornado:", oRecepcaoEvento:Result:CStat, "- XMotivo:", oRecepcaoEvento:Result:XMotivo
@@ -107,16 +107,16 @@ Function GerarXmlDistribuicaoEvento()
                     Exit
 
                CASE 573 //Duplicidade de evento (já foi enviado anteriormente, vamos gerar o XML de distribuição a partir da consulta situação)
-			        oConsSitNFe := CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNFe")
+			        oConsSitNFe := CreateObject("Uni.Business.DFe.Xml.NFe.ConsSitNFe")
 					oConsSitNFe:Versao := "4.00"
 					oConsSitNFe:TpAmb := 2 //TipoAmbiente.Homologacao
 					oConsSitNFe:ChNFe := chaveNFe
 										
-					oConfigConsSitNFe := CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+					oConfigConsSitNFe := CreateObject("Uni.Business.DFe.Servicos.Configuracao")
                     oConfigConsSitNFe:CertificadoSenha   := "12345678"
                     oConfigConsSitNFe:CertificadoArquivo := "C:\Projetos\certificados\UnimakePV.pfx"
 
-                    oConsultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")
+                    oConsultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo")
 					oConsultaProtocolo:Executar(oConsSitNFe,  oConfigConsSitNFe)
 					
                     if oConsultaProtocolo:Result:GetProcEventoNFeCount() > 0

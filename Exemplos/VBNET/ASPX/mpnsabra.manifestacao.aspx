@@ -278,10 +278,10 @@ youtext.text = ""
 
 Dim EnvEvento, RecepcaoEvento, Evento, InfEvento, DetEventoManif, CStat
  
- EnvEvento = New Unimake.Business.DFe.Xml.NFe.EnvEvento
- Evento = New Unimake.Business.DFe.Xml.NFe.Evento
- InfEvento = New Unimake.Business.DFe.Xml.NFe.InfEvento
- DetEventoManif = New Unimake.Business.DFe.Xml.NFe.DetEventoManif
+ EnvEvento = New Uni.Business.DFe.Xml.NFe.EnvEvento
+ Evento = New Uni.Business.DFe.Xml.NFe.Evento
+ InfEvento = New Uni.Business.DFe.Xml.NFe.InfEvento
+ DetEventoManif = New Uni.Business.DFe.Xml.NFe.DetEventoManif
 
 With DetEventoManif
     .Versao = "1.00"
@@ -308,7 +308,7 @@ EnvEvento.Evento.Add(Evento)
 EnvEvento.Versao = "1.00"
 EnvEvento.IdLote = "000000000000001"
 
-RecepcaoEvento = New Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento , Configuracao)
+RecepcaoEvento = New Uni.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento , Configuracao)
 
 RecepcaoEvento.Executar 
 

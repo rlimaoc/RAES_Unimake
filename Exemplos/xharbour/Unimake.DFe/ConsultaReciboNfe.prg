@@ -1,26 +1,26 @@
 * ---------------------------------------------------------------------------------
-* Consumindo o serviço de consulta recibo da NFe
+* Consumindo o serviï¿½o de consulta recibo da NFe
 * ---------------------------------------------------------------------------------
 Function ConsultaReciboNfe()
    Local InicializarConfiguracao
    Local ConsReciNFe
    Local retAutorizacao
 
- * Criar configuraçao básica para consumir o serviço
-   InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o
+   InicializarConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    InicializarConfiguracao:TipoDfe = 0 // 0=nfe
    InicializarConfiguracao:Servico = 2 // 2=Consulta Recibo
    InicializarConfiguracao:CertificadoSenha = "12345678"
    InicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
   * Criar XML
-   ConsReciNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
+   ConsReciNFe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsReciNFe")
    ConsReciNFe:Versao = "4.00"
-   ConsReciNFe:TpAmb  = 2  // Homologação
-   ConsReciNFe:NRec = "411234567890123" // número do recibo
+   ConsReciNFe:TpAmb  = 2  // Homologaï¿½ï¿½o
+   ConsReciNFe:NRec = "411234567890123" // nï¿½mero do recibo
    
-  * Consumir o serviço
-    retAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")
+  * Consumir o serviï¿½o
+    retAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.RetAutorizacao")
     retAutorizacao:Executar(ConsReciNFe,InicializarConfiguracao)
 
    ? "XML Retornado pela SEFAZ"

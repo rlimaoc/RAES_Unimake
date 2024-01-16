@@ -7,8 +7,8 @@ FUNCTION EnviarGNRE()
    LOCAL oItensGNRE, oItem, oDocumentoOrigem, oValor
    LOCAL oLoteRecepcao, oConfigConsLote, oConsultaResultadoLote, oTConsLoteGNRE 
 
- * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o
+   oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao.TipoDfe = 8 && TipoDFe.GNRE
    oConfiguracao.TipoEmissao = 1 && TipoEmissao.Normal
    oConfiguracao.TipoAmbiente = 2 && TipoAmbiente.Homologacao
@@ -19,13 +19,13 @@ FUNCTION EnviarGNRE()
  * Criar XML  
  
  * Criar grupo de tag TLoteGNRE
-   oTLoteGNRE = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.TLoteGNRE")   
+   oTLoteGNRE = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.TLoteGNRE")   
    
  * Criar grupo de tag Guias  
-   oGuias = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.Guias")
+   oGuias = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.Guias")
    
  * Criar tag TDadosGNRE  
-   oTDadosGNRE = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.TDadosGNRE")
+   oTDadosGNRE = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.TDadosGNRE")
    oTDadosGNRE.Versao = "2.00"
    oTDadosGNRE.UfFavorecida = 41 && UFBrasil.PR
    oTDadosGNRE.TipoGNRE = 0 && TipoGuiaGNRE.Simples
@@ -33,14 +33,14 @@ FUNCTION EnviarGNRE()
    oTDadosGNRE.DataPagamento = DATETIME()
    
  * Criar grupo de tag ContribuinteEmitente  
-   oContribuinteEmitente = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.ContribuinteEmitente")
+   oContribuinteEmitente = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.ContribuinteEmitente")
    
  * Criar grupo de tag Identificacao  
-   oIdentificacao = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.Identificacao")
+   oIdentificacao = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.Identificacao")
    oIdentificacao.CNPJ = "07666666000166"
    oIdentificacao.IE = "9335665656"
    
-   oContribuinteEmitente.Identificacao = oIdentificacao && Atualizar conteúdo do grupo de tag identificacao
+   oContribuinteEmitente.Identificacao = oIdentificacao && Atualizar conteï¿½do do grupo de tag identificacao
    
    oContribuinteEmitente.RazaoSocial = "TESTE EMPRESA PARA ENVIO DA GNRE"
    oContribuinteEmitente.Endereco = "XXX XXXXXXX XXXXX"
@@ -49,42 +49,42 @@ FUNCTION EnviarGNRE()
    oContribuinteEmitente.CEP = "90399899"
    oContribuinteEmitente.Telefone = "04456566566"
 
-   oTDadosGNRE.ContribuinteEmitente = oContribuinteEmitente && Atualizar conteúdo do grupo de tag ContribuinteEmitente   
+   oTDadosGNRE.ContribuinteEmitente = oContribuinteEmitente && Atualizar conteï¿½do do grupo de tag ContribuinteEmitente   
    
  * Criar Grupo de tag ItensGNRE
-   oItensGNRE = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.ItensGNRE")
+   oItensGNRE = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.ItensGNRE")
    
  * Criar grupo de tag Item  
-   oItem = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.Item")
+   oItem = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.Item")
    oItem.Receita = "100099"
    oItem.DataVencimento = DATETIME()
    
-   oDocumentoOrigem = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.DocumentoOrigem")
+   oDocumentoOrigem = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.DocumentoOrigem")
    oDocumentoOrigem.Tipo = "10"
    oDocumentoOrigem.Value = "41210807666666000166550010001234551123455553"
    oItem.DocumentoOrigem = oDocumentoOrigem && Atualizar conteudo do grupo de tag Documento Origem
 
  * Criar grupo de tag Valor
-   oValor = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.Valor")
+   oValor = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.Valor")
    oValor.Tipo = 0 && ItemValorTipo.Item11
    oValor.ValorOriginal = 116.24
    
-   oItem.AddValor(oValor) && Atualizar conteúdo do grupo de tag Valor
+   oItem.AddValor(oValor) && Atualizar conteï¿½do do grupo de tag Valor
    
-   oItensGNRE.AddItem(oItem) && Atualizar conteúdo do grupo de tag Item
+   oItensGNRE.AddItem(oItem) && Atualizar conteï¿½do do grupo de tag Item
    
    oTDadosGNRE.ItensGNRE = oItensGNRE && Atualizar conteudo do grupo de tag ItensGNRE
     
-   oGuias.AddTDadosGNRE(oTDadosGNRE) && Atualizar conteúdo do grupo de tag TDadosGNRE
+   oGuias.AddTDadosGNRE(oTDadosGNRE) && Atualizar conteï¿½do do grupo de tag TDadosGNRE
 
-   oTLoteGNRE.Guias = oGuias && Atualizar o conteúdo do grupo de tag Guias
+   oTLoteGNRE.Guias = oGuias && Atualizar o conteï¿½do do grupo de tag Guias
 
  
- * Criar objeto para pegar exceção do lado do CSHARP
+ * Criar objeto para pegar exceï¿½ï¿½o do lado do CSHARP
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")
 
    TRY
-      oLoteRecepcao = CREATEOBJECT("Unimake.Business.DFe.Servicos.GNRE.LoteRecepcao")
+      oLoteRecepcao = CREATEOBJECT("Uni.Business.DFe.Servicos.GNRE.LoteRecepcao")
       oLoteRecepcao.Executar(oTLoteGNRE, oConfiguracao)
       
       MESSAGEBOX(oLoteRecepcao.GetConteudoXMLAssinado())
@@ -92,10 +92,10 @@ FUNCTION EnviarGNRE()
       MESSAGEBOX(oLoteRecepcao.RetornoWSString)
       
       IF oLoteRecepcao.Result.SituacaoRecepcao.Codigo == "100"
-       * Aguardar 30 segundos para consultar o resultado do lote, é o que solicita o manual
+       * Aguardar 30 segundos para consultar o resultado do lote, ï¿½ o que solicita o manual
          
-       * Criar configuraçao básica para consumir o serviço de consulta do resultado do envio da GNRE
-         oConfigConsLote = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+       * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o de consulta do resultado do envio da GNRE
+         oConfigConsLote = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
          oConfigConsLote.TipoDfe = 8 && TipoDFe.GNRE
          oConfigConsLote.TipoEmissao = 1 && TipoEmissao.Normal
          oConfigConsLote.TipoAmbiente = 2 && TipoAmbiente.Homologacao
@@ -104,12 +104,12 @@ FUNCTION EnviarGNRE()
          oConfigConsLote.CertificadoSenha = "12345678"
          
        * Criar o XML da consulta
-         oTConsLoteGNRE = CREATEOBJECT("Unimake.Business.DFe.Xml.GNRE.TConsLoteGNRE")
+         oTConsLoteGNRE = CREATEOBJECT("Uni.Business.DFe.Xml.GNRE.TConsLoteGNRE")
          oTConsLoteGNRE.Ambiente = 2 && TipoAmbiente.Homologacao
          oTConsLoteGNRE.NumeroRecibo = "0000000000" && oLoteRecepcao.Result.Recibo.Numero
          oTConsLoteGNRE.IncluirPDFGuias = 1 && SimNaoLetra.Sim
          
-         oConsultaResultadoLote = CREATEOBJECT("Unimake.Business.DFe.Servicos.GNRE.ConsultaResultadoLote")
+         oConsultaResultadoLote = CREATEOBJECT("Uni.Business.DFe.Servicos.GNRE.ConsultaResultadoLote")
          oConsultaResultadoLote.Executar(oTConsLoteGNRE , oConfigConsLote)
          
          MESSAGEBOX(oConsultaResultadoLote.RetornoWSString)
@@ -125,7 +125,7 @@ FUNCTION EnviarGNRE()
                  oConsultaResultadoLote.GravarXmlRetorno(@"d:\testenfe", xmlCons.NumeroRecibo + "-procgnre.xml");
                  oConsultaResultadoLote.GravarPDFGuia(@"d:\testenfe", "GuiaGNRE.pdf");
                  
-               * Criar as configurações 
+               * Criar as configuraï¿½ï¿½es 
                  oUnidanfeConfiguration = CreateObject("Unimake.Unidanfe.Configurations.UnidanfeConfiguration")   
                  oUnidanfeConfiguration.Arquivo = "D:\testenfe\41211207638784000127550050000001761815064891-procgnre.xml" 
                  oUnidanfeConfiguration.Visualizar = .T.
@@ -136,7 +136,7 @@ FUNCTION EnviarGNRE()
                  oUnidanfeServices = CreateObject("Unimake.Unidanfe.UnidanfeServices")
                  oUnidanfeServices.Execute(oUnidanfeConfiguration)  
                
-            CASE oConsultaResultadoLote.Result.SituacaoProcess.Codigo = "403" && Lote processado com pendências ou Lote com pendência de tempo de processamento. As Guias com situação 4 (campo < situacaoGuia > para a versão 2.00) podem levar em média 20 minutos, e no máximo 1 hora para serem processadas.
+            CASE oConsultaResultadoLote.Result.SituacaoProcess.Codigo = "403" && Lote processado com pendï¿½ncias ou Lote com pendï¿½ncia de tempo de processamento. As Guias com situaï¿½ï¿½o 4 (campo < situacaoGuia > para a versï¿½o 2.00) podem levar em mï¿½dia 20 minutos, e no mï¿½ximo 1 hora para serem processadas.
                  * Analisar pendencias
                
             CASE oConsultaResultadoLote.Result.SituacaoProcess.Codigo = "404" && Erro no processamento do lote.

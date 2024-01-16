@@ -16,30 +16,30 @@ FUNCTION EPECEnviarXMLNFe()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuracao basica para consumir o servico
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig.TipoDfe = 0 && 0=nfe
    oConfig.TipoEmissao = 1 && 1=TipoEmissao.NORMAL
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"
    
  * Criar a tag <enviNFe>
-   oEnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oEnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oEnviNFe.Versao = "4.00"
    oEnviNFe.IdLote = "000000000000001"
    oEnviNFe.IndSinc = 1 && 1=Sim 0=Nao
    
  * Criar a tag <NFe>  
-   oNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   oNfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
    oEnviNFe.AddNFe(oNFe.LoadFromFile("D:\testenfe\epec\41230606117473000150550030000000064860795147-nfe.xml"))
 
    TRY 
-   * Criar o objeto para consumir o serviço, mas vamos somente pegar o XML e não vamos enviar
-     oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   * Criar o objeto para consumir o serviï¿½o, mas vamos somente pegar o XML e nï¿½o vamos enviar
+     oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
      oAutorizacao.SetXMLConfiguracao(oEnviNFe, oConfig)
      
-   * Guardar o XML da NFe já assinada para transmitirmos sem mudar nada depois que o serviço voltar ao normal.
-   * XML tem que ser guardado e este que deve ser transmitido para evitar diferenças entre a NFe ou CTe e o evento de EPEC
+   * Guardar o XML da NFe jï¿½ assinada para transmitirmos sem mudar nada depois que o serviï¿½o voltar ao normal.
+   * XML tem que ser guardado e este que deve ser transmitido para evitar diferenï¿½as entre a NFe ou CTe e o evento de EPEC
      notaAssinada = oAutorizacao.GetConteudoNFeAssinada(0)
      
      MessageBox(notaAssinada) && Demonstrar o XML da nota assinada na tela
@@ -53,7 +53,7 @@ FUNCTION EPECEnviarXMLNFe()
          * Gravar XML de distribuicao em uma pasta (NFe com o protocolo de autorizacao anexado)
            oAutorizacao.GravarXmlDistribuicao("d:\testenfe")
 			
-		 * Pegar a string do XML de distribuição
+		 * Pegar a string do XML de distribuiï¿½ï¿½o
            docProcNFe = oAutorizacao.GetNFeProcResults(chaveNFe)
 		   MESSAGEBOX(docProcNFe)
 

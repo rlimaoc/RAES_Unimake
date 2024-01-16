@@ -93,7 +93,7 @@ Function TesteDiversoCertificado()
   	   ? "Setar o PIN do A3 para nao precisar informar manualmente"
 	   ?
 	   
-	   oCertA3 = CreateObject("Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
+	   oCertA3 = CreateObject("Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
 	   
 	   //Ver se é um certificado A3
 	   If oCertA3:IsA3(oCertSel1)
@@ -128,7 +128,7 @@ Function MostrarDados(oCert, oCertSel)
    ? "Certificado vencido?.: ", oCert:Vencido(oCertSel)
    
  * Verificar se o certificado é A1 ou A3
-   oVerificarA3 = CreateObject("Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
+   oVerificarA3 = CreateObject("Uni.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
    If oVerificarA3:IsA3(oCertSel)
       ? "Tipo do certificado digital e A3."
    Else

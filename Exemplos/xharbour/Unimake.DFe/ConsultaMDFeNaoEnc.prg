@@ -11,14 +11,14 @@ Function ConsultaMDFeNaoEnc()
    Local oConfiguracao, oConsMDFeNaoEnc, oConsNaoEnc
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 4 && 4=MDFe
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CodigoUF = 41 && UFBrasil.PR
    oConfiguracao:CertificadoArquivo = "D:\projetos\certificados\TESTECERT.pfx"
 
  * Criar o XML de consulta
-   oConsMDFeNaoEnc = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsMDFeNaoEnc")
+   oConsMDFeNaoEnc = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsMDFeNaoEnc")
    oConsMDFeNaoEnc:Versao = "3.00"
    oConsMDFeNaoEnc:TpAmb = 1 && TipoAmbiente.Homologacao
    oConsMDFeNaoEnc:CNPJ = "00000000000000"
@@ -28,7 +28,7 @@ Function ConsultaMDFeNaoEnc()
    
    Try 
     * Enviar a consulta
-      oConsNaoEnc = CreateObject("Unimake.Business.DFe.Servicos.MDFe.ConsNaoEnc")
+      oConsNaoEnc = CreateObject("Uni.Business.DFe.Servicos.MDFe.ConsNaoEnc")
       oConsNaoEnc:Executar(oConsMDFeNaoEnc, oConfiguracao)
 	  
       ? "XML retornado pela SEFAZ:"

@@ -18,8 +18,8 @@ Function DesserializarXMLNFeCompra()
    
    Try 
     * Criar o objeto NfeProc e Desserializar o XML de distribuição da NFe
-      oNfeProc = CreateObject("Unimake.Business.DFe.Xml.NFe.NfeProc")   
-      oNfeProc = oNfeProc:LoadFromFile("D:\testenfe\xharbour\Unimake.DFe\35190932267992000104550010000011721160462508-procNFe.xml")      
+      oNfeProc = CreateObject("Uni.Business.DFe.Xml.NFe.NfeProc")   
+      oNfeProc = oNfeProc:LoadFromFile("D:\testenfe\xharbour\Uni.DFe\35190932267992000104550010000011721160462508-procNFe.xml")      
 
     * Chave da NFe
 	  oInfNFe = oNfeProc:Nfe:GetInfNFe(0)

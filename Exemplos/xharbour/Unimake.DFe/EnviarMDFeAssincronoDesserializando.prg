@@ -13,23 +13,23 @@ Function EnviarMDFeAssincronoDesserializando()
    Local oRetAutorizacao, oProtMDFe
    
  * Criar o objeto de configuração mínima
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 4 //4=MDFe
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao:CertificadoSenha = "12345678"   
   
  * Criar o XML do MDFe   
    //Criar a tag <enviMDFe>
-   oEnviMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.EnviMDFe")
+   oEnviMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.EnviMDFe")
    oEnviMDfe:Versao = "3.00"
    oEnviMDFe:IdLote = "000000000000001"
    
    //Criar a tag <mdfe> e suas filhas a partir de uma desserialização do XML já existe em uma pasta
-   oMDFe := CreateObject("Unimake.Business.DFe.Xml.MDFe.MDFe")
-   oEnviMDFe:MDFe = oMDFe:LoadFromFile("D:\testenfe\xharbour\Unimake.DFe\mdfe.xml")
+   oMDFe := CreateObject("Uni.Business.DFe.Xml.MDFe.MDFe")
+   oEnviMDFe:MDFe = oMDFe:LoadFromFile("D:\testenfe\xharbour\Uni.DFe\mdfe.xml")
    
    //Criar a tag <mdfe> e suas filhas a partir de uma desserialização de uma string de XML
-   //oMDFe := CreateObject("Unimake.Business.DFe.Xml.MDFe.MDFe")
+   //oMDFe := CreateObject("Uni.Business.DFe.Xml.MDFe.MDFe")
    //oEnviMDFe:MDFe = oMDFe:LoadFromXML("string_do_xml...")     
    
  * Resgatar alguns dados do Objeto do XML para demostrar como funciona
@@ -49,7 +49,7 @@ Function EnviarMDFeAssincronoDesserializando()
 
    Try
     * Criar o objeto para consumir o serviço de autorização do MDFe
-      oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.MDFe.Autorizacao")
+      oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.MDFe.Autorizacao")
 	  oAutorizacao:SetXMLConfiguracao(oEnviMDFe, oConfiguracao)
 
 	  //O conteúdo do XML assinado deve ser gravado na base de dados para ser recuperado 
@@ -87,19 +87,19 @@ Function EnviarMDFeAssincronoDesserializando()
 		 
 		 If oAutorizacao:Result:CStat == 103 //Lotel Recebido com Sucesso
           * Criar objeto de configuração minima para consumir o serviço
-            oConfigRec = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+            oConfigRec = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
             oConfigRec:TipoDFe = 4 //4=MDFe
             oConfigRec:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
             oConfigRec:CertificadoSenha = "12345678"
 
 	      * Criar XML de consulta Recibo do MDFe
-		    oConsReciMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.ConsReciMDFe")
+		    oConsReciMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.ConsReciMDFe")
 			oConsReciMDFe:Versao = "3.00"
 			oConsReciMDFe:TpAmb = 2 //Homologação
 			oConsReciMDFe:NRec = oAutorizacao:Result:InfRec:NRec          
 			
 	      * Criar o objeto para consumir o serviço de consulta recibo		
-		    oRetAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.MDFe.RetAutorizacao")
+		    oRetAutorizacao = CreateObject("Uni.Business.DFe.Servicos.MDFe.RetAutorizacao")
 			oRetAutorizacao:Executar(oConsReciMDFe, oConfigRec)			
 			
 			? "XML retornado pela SEFAZ na consulta recibo:"

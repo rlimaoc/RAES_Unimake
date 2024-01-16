@@ -12,25 +12,25 @@ Function EnviarCCeCTe()
    Local oDetEventoCCE, oEventoCCeCTe, oInfCorrecao, oInfEvento, oRecepcaoEvento
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 2 // 0=CTe
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag do lote de eventos <eventoCTe>
-   oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
+   oEventoCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCTe")
    oEventoCTe:Versao = "3.00"
    
  * Criar tag <detEvento>
-   oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.CTe.DetEventoCCE")
+   oDetEventoCCE = CreateObject("Uni.Business.DFe.Xml.CTe.DetEventoCCE")
    oDetEventoCCE:VersaoEvento = "3.00"
     
  * Criar várias correções dentro do evento
  * Criar a tag <evCCeCTe>
-   oEventoCCeCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCCeCTe")
+   oEventoCCeCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCCeCTe")
  
  * Criar a tag <infCorrecao> da 1a correção
-   oInfCorrecao = CreateObject("Unimake.Business.DFe.Xml.CTe.InfCorrecao")
+   oInfCorrecao = CreateObject("Uni.Business.DFe.Xml.CTe.InfCorrecao")
    oInfCorrecao:GrupoAlterado = "ide"
    oInfCorrecao:CampoAlterado = "cfop"
    oInfCorrecao:ValorAlterado = "6353"
@@ -40,7 +40,7 @@ Function EnviarCCeCTe()
    oEventoCCeCTe:AddInfCorrecao(oInfCorrecao)
  
  * Criar a tag <infCorrecao> da 2a correção
-   oInfCorrecao = CreateObject("Unimake.Business.DFe.Xml.CTe.InfCorrecao")
+   oInfCorrecao = CreateObject("Uni.Business.DFe.Xml.CTe.InfCorrecao")
    oInfCorrecao:GrupoAlterado = "ide"
    oInfCorrecao:CampoAlterado = "cfop"
    oInfCorrecao:ValorAlterado = "6352"
@@ -50,7 +50,7 @@ Function EnviarCCeCTe()
    oEventoCCeCTe:AddInfCorrecao (oInfCorrecao)  
  
  * Criar a tag <infCorrecao> da 3a correção
-   oInfCorrecao = CreateObject("Unimake.Business.DFe.Xml.CTe.InfCorrecao")
+   oInfCorrecao = CreateObject("Uni.Business.DFe.Xml.CTe.InfCorrecao")
    oInfCorrecao:GrupoAlterado = "ide"
    oInfCorrecao:CampoAlterado = "cfop"
    oInfCorrecao:ValorAlterado = "6351"
@@ -63,7 +63,7 @@ Function EnviarCCeCTe()
    oDetEventoCCe:EventoCCeCTe = oEventoCCeCTe
  
  * Criar tag <infEvento>
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.CTe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.CTe.InfEvento")
  
  * Adicionar o Objeto oDetEventoCCE dentro do objeto DetEvento
    oInfEvento:DetEvento = oDetEventoCCE
@@ -94,7 +94,7 @@ Function EnviarCCeCTe()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.CTe.RecepcaoEvento")
       oRecepcaoEvento:SetXMLConfiguracao(oEventoCTe, oConfiguracao)
 	  
 	  ? oRecepcaoEvento:GetConteudoXMLAssinado()

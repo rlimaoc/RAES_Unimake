@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Gerar XML da NFe e enviar no modo Assíncrono
+* Gerar XML da NFe e enviar no modo Assï¿½ncrono
 * ---------------------------------------------------------------------------------
 Function EnviarNfeAssincrono()
    Local oConfig
@@ -16,27 +16,27 @@ Function EnviarNfeAssincrono()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuracao basica para consumir o servico
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig.TipoDfe = 0 && 0=nfe
    oConfig.TipoEmissao = 1 && 1=Normal
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"
    
  * Criar a tag <enviNFe>
-   oEnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oEnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oEnviNFe.Versao = "4.00"
    oEnviNFe.IdLote = "000000000000001"
    oEnviNFe.IndSinc = 0 && 1=Sim 0=Nao   **DIFERENTE AQUI 1 PARA 0
    
  * Criar a tag <NFe>  
-   oNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   oNfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
  * Criar tag InfNfe
-   oInfNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
+   oInfNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InfNFe")
    oInfNFe.Versao = "4.00"
 
  * cria tag Ide
-   oIde = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
+   oIde = CreateObject("Uni.Business.DFe.Xml.NFe.Ide")
    oIde.CUF = 41 && Brasil.PR
    oIde.NatOp = "VENDA PRODUC.DO ESTABELEC"
    oIde.Mod = 55 && NFe
@@ -60,7 +60,7 @@ Function EnviarNfeAssincrono()
    oInfNFe.Ide = oIde
 
  * criar tag Emit
-   oEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.Emit")
+   oEmit = CreateObject("Uni.Business.DFe.Xml.NFe.Emit")
    oEmit.CNPJ  = "06117473000150"
    oEmit.XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
    oEmit.XFant = "UNIMAKE - PARANAVAI"
@@ -69,7 +69,7 @@ Function EnviarNfeAssincrono()
    oEmit.CNAE  = "6202300"
    oEmit.CRT   = 1 && CRT.SimplesNacional
 
-   oEnderEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+   oEnderEmit = CreateObject("Uni.Business.DFe.Xml.NFe.EnderEmit")
    oEnderEmit.XLgr    = "RUA PAULO ANTONIO COSTA"
    oEnderEmit.Nro     = "575"
    oEnderEmit.XBairro = "CENTRO"
@@ -86,14 +86,14 @@ Function EnviarNfeAssincrono()
    oInfNfe.Emit = oEmit
    
  * criar tag Dest
-   oDest = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
+   oDest = CreateObject("Uni.Business.DFe.Xml.NFe.Dest")
    oDest.CNPJ      = "04218457000128"
    oDest.XNome     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
    oDest.IndIEDest = 1 && IndicadorIEDestinatario.ContribuinteICMS,
    oDest.IE        = "582614838110"
    oDest.Email     = "janelaorp@janelaorp.com.br"
    
-   oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+   oEnderDest = CreateObject("Uni.Business.DFe.Xml.NFe.EnderDest")
    oEnderDest.XLgr    = "AVENIDA DA SAUDADE"
    oEnderDest.Nro     = "1555"
    oEnderDest.XBairro = "CAMPOS ELISEOS"
@@ -111,10 +111,10 @@ Function EnviarNfeAssincrono()
    
    For I = 1 To 3 && 3 produtos para teste    
      * criar tag Det
-       oDet = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+       oDet = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 	   oDet.NItem = I
 	   
-       oProd          = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+       oProd          = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
        oProd.CProd    = AllTrim(Str(I,5))
        oProd.CEAN     = "SEM GTIN"
        oProd.XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -133,7 +133,7 @@ Function EnviarNfeAssincrono()
        oProd.NItemPed = 1
 
 *	 * criar a tag <DI> - tem como ter mais de uma tag DI, vou criar duas para ficar de exemplo, esta Ã© a primeira
-*	   oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
+*	   oDI = CreateObject("Uni.Business.DFe.Xml.NFe.DI")
 *	   oDI.CExportador = ""
 *      oDI.CNPJ = ""
 *      oDI.DDesemb = DateTime()
@@ -143,7 +143,7 @@ Function EnviarNfeAssincrono()
 *	   oDI.NDI = "1222"
 *	   
 *	 * Criar tag <adi>
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -151,7 +151,7 @@ Function EnviarNfeAssincrono()
 *	   oDI.AddAdi(oAdi)
 *
 *	 * Criar tag <adi> -> Posso ter mais de uma tag <adi> entÃ£o vou criar uma segunda vez para ficar o exemplo
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -162,7 +162,7 @@ Function EnviarNfeAssincrono()
 *	   oProd.AddDI(oDI)
 *
 *	 * criar a tag <DI> - Segunda tag <DI>
-*	   oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
+*	   oDI = CreateObject("Uni.Business.DFe.Xml.NFe.DI")
 *	   oDI.CExportador = ""
 *      oDI.CNPJ = ""
 *      oDI.DDesemb = DateTime()
@@ -172,7 +172,7 @@ Function EnviarNfeAssincrono()
 *	   oDI.NDI = "1222"
 *	   
 *	 * Criar tag <adi>
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -180,7 +180,7 @@ Function EnviarNfeAssincrono()
 *	   oDI.AddAdi(oAdi)
 *
 *	 * Criar tag <adi> -> Posso ter mais de uma tag <adi> entÃ£o vou criar uma segunda vez para ficar o exemplo
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -194,14 +194,14 @@ Function EnviarNfeAssincrono()
        oDet.Prod = oProd
 	   
      * criar tag Imposto
-       oImposto          = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+       oImposto          = CreateObject("Uni.Business.DFe.Xml.NFe.Imposto")
        oImposto.VTotTrib = 12.63
 	   
      * criar tag Icms
-       oICMS             = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
+       oICMS             = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
 	   
      * criar tag ICMSSN101
-       oICMSSN101            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
+       oICMSSN101            = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN101")
        oICMSSN101.Orig       = 0 && OrigemMercadoria.Nacional
        oICMSSN101.PCredSN     = 2.8255
        oICMSSN101.VCredICMSSN = 2.40
@@ -210,7 +210,7 @@ Function EnviarNfeAssincrono()
        oICMS.ICMSSN101 = oICMSSN101
 	   
 *	 * criar tag ICMS00   
-*      oICMS00 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS00")
+*      oICMS00 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS00")
 *      oICMS00.CST = "00"
 *      oICMS00.Orig = 0 && OrigemMercadoria.Nacional
 *      oICMS00.ModBC = 3 && ModalidadeBaseCalculoICMS.ValorOperacao
@@ -224,7 +224,7 @@ Function EnviarNfeAssincrono()
 * 	   oICMS.ICMS00 = oICMS00
 *
 *	 * criar tag ICMS40
-*      oICMS40 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS40")
+*      oICMS40 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS40")
 *      oICMS40.CST = "40"
 *      oICMS40.MotDesICMS = 7 && MotivoDesoneracaoICMS.SUFRAMA
 *      oICMS40.Orig = 0 && OrigemMercadoria.Nacional
@@ -234,7 +234,7 @@ Function EnviarNfeAssincrono()
 * 	   oICMS.ICMS40 = oICMS40
 *
 *	 * criar tag ICMS20
-*      oICMS20 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS20")
+*      oICMS20 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS20")
 *      oICMS20.CST = "20"
 *      oICMS20.ModBC = 3 && ModalidadeBaseCalculoICMS.ValorOperacao
 *      oICMS20.MotDesICMS = 7 && MotivoDesoneracaoICMS.SUFRAMA
@@ -252,7 +252,7 @@ Function EnviarNfeAssincrono()
 * 	   oICMS.ICMS20 = oICMS20
 *	   
 *	 * criar tag ICMS51
-*      oICMS51 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS51")
+*      oICMS51 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS51")
 *      oICMS51.CST = "51"
 *      oICMS51.ModBC = 3 && ModalidadeBaseCalculoICMS.ValorOperacao
 *      oICMS51.Orig = 0 && OrigemMercadoria.Nacional
@@ -277,17 +277,17 @@ Function EnviarNfeAssincrono()
        oImposto.Icms = oICMS
 	   
      * criar tag PIS
-       oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")       
+       oPIS           = CreateObject("Uni.Business.DFe.Xml.NFe.PIS")       
        
 *     * crirar tag PISNT
-*       oPISNT = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.PISNT")  
+*       oPISNT = CREATEOBJECT("Uni.Business.DFe.Xml.NFe.PISNT")  
 *       oPISNT.CST = "07" && Pode ser CST 04 ou 07
        
 *     * adicionar a tag PISNT dentro da tag PIS
 *       oPIS.PISNT = oPISNT         
 
      * criar tag PISOutr
-       oPISOutr      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+       oPISOutr      = CreateObject("Uni.Business.DFe.Xml.NFe.PISOutr")
        oPISOutr.CST  = "99"
        oPISOutr.VBC  = 0.00
        oPISOutr.PPIS = 0.00
@@ -300,10 +300,10 @@ Function EnviarNfeAssincrono()
        oImposto.PIS = oPIS
 
      * criar tag COFINS
-       oCOFINS      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
+       oCOFINS      = CreateObject("Uni.Business.DFe.Xml.NFe.COFINS")
 
      * criar tag COFINSOutr
-       oCOFINSOutr         = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+       oCOFINSOutr         = CreateObject("Uni.Business.DFe.Xml.NFe.COFINSOutr")
        oCOFINSOutr.CST     = "99"
        oCOFINSOutr.VBC     = 0.00
        oCOFINSOutr.PCOFINS = 0.00
@@ -319,11 +319,11 @@ Function EnviarNfeAssincrono()
        oDet.Imposto = oImposto
 	   
 *	 * Criar tag <impostoDevol>
-*	   oImpostoDevol = CreateObject("Unimake.Business.DFe.Xml.NFe.ImpostoDevol")
+*	   oImpostoDevol = CreateObject("Uni.Business.DFe.Xml.NFe.ImpostoDevol")
 *	   oImpostoDevol.PDevol = 0.00
 *	   
 *	 * Criar tag <IPI>
-*      oIPIDevol = CreateObject("Unimake.Business.DFe.Xml.NFe.IPIDevol")
+*      oIPIDevol = CreateObject("Uni.Business.DFe.Xml.NFe.IPIDevol")
 *	   oIPIDevol.VIPIDevol = 0.00
 	   
 *	 * Adicionar o grupo de tag <IPI> dentro do grupo <impostoDevol>
@@ -337,10 +337,10 @@ Function EnviarNfeAssincrono()
    Next I
    
  * Criar tag Total
-   oTotal = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
+   oTotal = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
 
  * Criar tag ICMSTot
-   oICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+   oICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
    oICMSTot.VBC = 0
    oICMSTot.VICMS = 0
    oICMSTot.VICMSDeson = 0
@@ -369,11 +369,11 @@ Function EnviarNfeAssincrono()
    oInfNfe.Total = oTotal
    
  * Criar a tag Transp  
-   oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
+   oTransp = CreateObject("Uni.Business.DFe.Xml.NFe.Transp")
    oTransp.ModFrete = 0 && ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
 
  * Criar a tag Vol
-   oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+   oVol       = CreateObject("Uni.Business.DFe.Xml.NFe.Vol")
    oVol.QVol  = 1
    oVol.Esp   = "LU"
    oVol.Marca = "UNIMAKE"
@@ -387,17 +387,17 @@ Function EnviarNfeAssincrono()
    oInfNfe.Transp = oTransp
 
  * Criar tag Cobr 
-   oCobr = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
+   oCobr = CreateObject("Uni.Business.DFe.Xml.NFe.Cobr")
 
  * Criar tag Fat 
-   oFat  = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
+   oFat  = CreateObject("Uni.Business.DFe.Xml.NFe.Fat")
    oFat.NFat = "057910"
    oFat.VOrig = 254.70
    oFat.VDesc = 0
    oFat.VLiq = 254.70
 
  * Criar tag Dup (parcela 1)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
    oDup.NDup  = "001"
    oDup.DVenc = Date()
    oDup.VDup  = 127.35
@@ -406,7 +406,7 @@ Function EnviarNfeAssincrono()
    OCobr.AddDup(oDup)
 
  * Criar tag Dup (parcela 2)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
    oDup.NDup  = "002"
    oDup.DVenc = Date()
    oDup.VDup  = 127.35
@@ -421,10 +421,10 @@ Function EnviarNfeAssincrono()
    oInfNfe.Cobr = oCobr
 
  * criar tag Pag
-   oPag = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
+   oPag = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
 
  * criar tag DetPag (pode ter mais que uma, sÃ³ foi criada uma como exemplo)
-   oDetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+   oDetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
    oDetPag.IndPag = 0 && IndicadorPagamento.PagamentoVista
    oDetPag.TPag   = 1 && MeioPagamento.Dinheiro
    oDetPag.VPag   = 254.70
@@ -436,14 +436,14 @@ Function EnviarNfeAssincrono()
    oInfNFe.Pag = oPag
 
  * criar tag InfAdic
-   oInfAdic = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+   oInfAdic = CreateObject("Uni.Business.DFe.Xml.NFe.InfAdic")
    oInfAdic.InfCpl = "Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008"
  
  * adicionar a tag InfAdic dentro da tag InfNfe
    oInfNFe.InfAdic = oInfAdic
 
  * criar tag InfRespTec
-   oInfRespTec = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+   oInfRespTec = CreateObject("Uni.Business.DFe.Xml.NFe.InfRespTec")
    oInfRespTec.CNPJ     = "06117473000150"
    oInfRespTec.XContato = "Ze das Couves"
    oInfRespTec.Email    = "zedascouves@gmail.com"
@@ -466,7 +466,7 @@ Function EnviarNfeAssincrono()
    MessageBox("Chave da NFe:" + chaveNFe)
 
  * Consumir o serviÃ§o (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
    
  * Criar objeto para pegar excecao do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
@@ -492,28 +492,28 @@ Function EnviarNfeAssincrono()
       MessageBox(AllTrim(Str(oAutorizacao.Result.CStat,5)) + " " +oAutorizacao.Result.XMotivo)
 	  
 	  if oAutorizacao.Result.CStat == 103 && 103 = Lote Recebido com Sucesso   **DIFERENTE AQUI 104 para 103
-	   * Criar o objeto de configuração mínimo para consumir o serviço de consulta recibo
-         oConfigRec                    = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+	   * Criar o objeto de configuraï¿½ï¿½o mï¿½nimo para consumir o serviï¿½o de consulta recibo
+         oConfigRec                    = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
          oConfigRec.TipoDFe            = 0 && TipoDFe.NFe
          oConfigRec.CertificadoSenha   = "12345678"
          oConfigRec.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
        * Fazer a consulta do recibo do lote enviado	para ver se a(s) nota(s) foi(ram) autorizada(s)
-         oConsReciNFe   = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
+         oConsReciNFe   = CreateObject("Uni.Business.DFe.Xml.NFe.ConsReciNFe")
          oConsReciNFe.Versao = "4.00"
          oConsReciNFe.TpAmb  = 2 && TipoAmbiente.Homologacao
          oConsReciNFe.NRec   = oAutorizacao.Result.InfRec.NRec
 		 
-         oRetAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")
+         oRetAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.RetAutorizacao")
          oRetAutorizacao.Executar(oConsReciNFe, oConfigRec)
 
        * Vamos ver a string do XML retornado pela SEFAZ
          MESSAGEBOX(oRetAutorizacao.RetornoWSString)
 	    
-       * Vamos verificar se o status do lote enviado está como processado com sucesso
+       * Vamos verificar se o status do lote enviado estï¿½ como processado com sucesso
 	     IF oRetAutorizacao.Result.CStat = 104 && Lote processado com sucesso
-          * Informar para o objeto de autorização qual é o resultado das notas. É necessário esta informação para que 
-          * a classe tenha informações para juntar NFe com seu protocolo na hora de gerar o XML de distribuição.
+          * Informar para o objeto de autorizaï¿½ï¿½o qual ï¿½ o resultado das notas. ï¿½ necessï¿½rio esta informaï¿½ï¿½o para que 
+          * a classe tenha informaï¿½ï¿½es para juntar NFe com seu protocolo na hora de gerar o XML de distribuiï¿½ï¿½o.
 	        oAutorizacao.RetConsReciNFe = oRetAutorizacao.Result
 	        
           * Agora vamos pegar o protocolo de todas as notas enviadas no lote, nota a nota.
@@ -525,21 +525,21 @@ Function EnviarNfeAssincrono()
               * Salvar XML de distribuicao das notas enviadas na pasta informada  
 			    Try
                    if oProtNFe.InfProt.CStat == 100 &&100=NFe Autorizada				
-                    * Gravar o XML de distribuição em uma pasta
+                    * Gravar o XML de distribuiï¿½ï¿½o em uma pasta
 				      oAutorizacao.GravarXmlDistribuicao("d:\testenfe")				      
 				  
                     * Demonstrar a chave da NFe pegando do protocolo retornado
                       MESSAGEBOX(oProtNFe.InfProt.NProt)
 				      MESSAGEBOX(oProtNFe.InfProt.chNFe)
 				  
-   		            * Pegar a string do XML de distribuição para gravar na base de dados
+   		            * Pegar a string do XML de distribuiï¿½ï¿½o para gravar na base de dados
 		              docProcNFe = oAutorizacao.GetNFeProcResults(oProtNFe.InfProt.chNFe)
 		              
 		              MESSAGEBOX(docProcNFe)
 		              
-		            * Gravar o XML de distribuição com um nome diferente do sugerido pela DLL
+		            * Gravar o XML de distribuiï¿½ï¿½o com um nome diferente do sugerido pela DLL
 		            *  
-			        * Nome do XML de distribuição gerado pela DLL segue o o seguinte padrão:
+			        * Nome do XML de distribuiï¿½ï¿½o gerado pela DLL segue o o seguinte padrï¿½o:
 			        *   41220606117473000150550010000580151230845956-procnfe.xml
 			        *
 			        * Vamos mudar e deixar ele assim, por exemplo:
@@ -561,8 +561,8 @@ Function EnviarNfeAssincrono()
 				EndTry
 			Next I	        	        
 	     ELSE
-	        * Pode ser que o lote já tenha sido rejeitado na sua totalidade, tem que fazer os devidos tratamentos
-	        * Ou pode ser que o lote esteja em processamento, então tem que efetuar a consulta recibo novamente mais tarde
+	        * Pode ser que o lote jï¿½ tenha sido rejeitado na sua totalidade, tem que fazer os devidos tratamentos
+	        * Ou pode ser que o lote esteja em processamento, entï¿½o tem que efetuar a consulta recibo novamente mais tarde
 	     ENDIF
 	  endif
 	  

@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Consumindo o serviço de consulta a situacao da NFe
+* Consumindo o serviï¿½o de consulta a situacao da NFe
 * ---------------------------------------------------------------------------------
 Function InutilizarNumeroNfe()
    Local InicializarConfiguracao
@@ -7,19 +7,19 @@ Function InutilizarNumeroNfe()
    Local InutNFeInfInut
    Local inutilizacao
 
- * Criar configuraçao básica para consumir o serviço
-   InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o
+   InicializarConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    InicializarConfiguracao:TipoDfe = 0 // 0=nfe
    InicializarConfiguracao:Servico = 3 // 3=Inutilizacao de numero da NFE
    InicializarConfiguracao:CertificadoSenha = "12345678"
    InicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar XML
-   InutNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFe")
+   InutNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFe")
    InutNFe:Versao = "4.00"
    
-   InutNFeInfInut = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFeInfInut")
-   InutNFeInfInut:TpAmb  = 2  // Homologação
+   InutNFeInfInut = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFeInfInut")
+   InutNFeInfInut:TpAmb  = 2  // Homologaï¿½ï¿½o
    InutNFeInfInut:Ano = "19"
    InutNFeInfInut:CNPJ = "06117473000150"
    InutNFeInfInut:CUF = 41 // PR
@@ -30,8 +30,8 @@ Function InutilizarNumeroNfe()
    InutNFeInfInut:XJust = "Justificativa da inutilizacao de teste"   
    InutNfe:InfInut = InutNFeInfInut
 
- * Consumir o serviço
-   inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")
+ * Consumir o serviï¿½o
+   inutilizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Inutilizacao")
    inutilizacao:Executar(InutNFe,InicializarConfiguracao)
 
    ? "XML Retornado pela SEFAZ"

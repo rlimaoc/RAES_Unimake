@@ -4,10 +4,10 @@ Dim exceptionInterop
 Dim statusServico
 
 '----------------------------------------------------
-'Criar configuração básica para consumir o serviço
+'Criar configuraï¿½ï¿½o bï¿½sica para consumir o serviï¿½o
 '----------------------------------------------------
 
-Set config = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+Set config = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 config.CertificadoSenha = "12345678"
 config.CertificadoArquivo = "d:\projetos\UnimakePV.pfx"
 config.TipoDfe = 0
@@ -15,22 +15,22 @@ config.TipoDfe = 0
 '----------------------------------------------------
 ' Criar XML
 '----------------------------------------------------
-Set consStatServ = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsStatServ")
+Set consStatServ = CreateObject("Uni.Business.DFe.Xml.NFe.ConsStatServ")
 consStatServ.Versao = "4.00"
-consStatServ.TpAmb  = 2 'Homologação
+consStatServ.TpAmb  = 2 'Homologaï¿½ï¿½o
 consStatServ.CUF    = 41 ' PR
 
 Set exceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
-MsgBox "Exceção do CSHARP: " + exceptionInterop.GetMessage()
+MsgBox "Exceï¿½ï¿½o do CSHARP: " + exceptionInterop.GetMessage()
 
-'Consumir o serviço
-Set statusServico = CreateObject("Unimake.Business.DFe.Servicos.NFe.StatusServico")
+'Consumir o serviï¿½o
+Set statusServico = CreateObject("Uni.Business.DFe.Servicos.NFe.StatusServico")
 
 On Error Resume Next
 statusServico.Executar (consStatServ), (config)
 
 if	Err.Number <> 0 then
-	MsgBox "Exceção do VBScript: " + Err.Description
-	MsgBox "Exceção do CSHARP: " + exceptionInterop.GetMessage()
+	MsgBox "Exceï¿½ï¿½o do VBScript: " + Err.Description
+	MsgBox "Exceï¿½ï¿½o do CSHARP: " + exceptionInterop.GetMessage()
 end if 
 

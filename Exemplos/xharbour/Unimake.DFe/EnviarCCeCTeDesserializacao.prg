@@ -12,13 +12,13 @@ Function EnviarCCeCTeDesserializacao()
    Local oDetEventoCCE, oEventoCCeCTe, oInfCorrecao, oInfEvento, oRecepcaoEvento
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 2 // 0=CTe
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag do lote de eventos <eventoCTe>
-   oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
+   oEventoCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EventoCTe")
    
  * Desserializar o XML no Objeto  
    oEventoCTe = oEventoCTe:LoadFromFile("C:\projetos\uninfe\exemplos\CTe 3.00\cce35150107565416000104570000000012301000012300-ped-eve.xml")
@@ -36,7 +36,7 @@ Function EnviarCCeCTeDesserializacao()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.CTe.RecepcaoEvento")
       oRecepcaoEvento:SetXMLConfiguracao(oEventoCTe, oConfiguracao)
 	  
 	  ? oRecepcaoEvento:GetConteudoXMLAssinado()

@@ -1,6 +1,6 @@
 ****************************************************************************************************************************
 cChaveEncerra = "ID110112"+*chavedamdfe*+"01"
-oinfEvento = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.infEvento")
+oinfEvento = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.infEvento")
 WITH oinfEvento 
 	.Id 	    = cChaveEncerra 
 	.cOrgao	    = 
@@ -12,7 +12,7 @@ WITH oinfEvento
 	.nSeqEvento = 1
 ENDWITH 
 ****************************************************************************************************************************
-odetEventoEncMDFe = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.DetEventoEncMDFe")
+odetEventoEncMDFe = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.DetEventoEncMDFe")
 WITH odetEventoEncMDFe
 	.VersaoEvento = "3.00"
 	.descEvento = "Encerramento"
@@ -24,7 +24,7 @@ ENDWITH
 oinfEvento.detevento = odetEventoEncMDFe 
 
 
-oEventoMDFE = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.EventoMdfe")
+oEventoMDFE = CREATEOBJECT("Uni.Business.DFe.Xml.MDFe.EventoMdfe")
 
 WITH oEventoMDFE 
 	.Versao    = "3.00"
@@ -33,13 +33,13 @@ ENDWITH
 
 oXmlEvento = oEventoMDFE 
 
-InicializarConfiguracao = Createobject("Unimake.Business.DFe.Servicos.Configuracao")
+InicializarConfiguracao = Createobject("Uni.Business.DFe.Servicos.Configuracao")
 InicializarConfiguracao.CertificadoSenha = "1234"
 InicializarConfiguracao.CertificadoArquivo = "F:\pontovenda\certificado\batista2022.pfx"
 InicializarConfiguracao.TipoDFe = 4
 inicializarConfiguracao.CodigoUF = 35
 
-oreceEvento = CREATEOBJECT("Unimake.Business.DFe.servicos.Mdfe.RecepcaoEvento")
+oreceEvento = CREATEOBJECT("Uni.Business.DFe.servicos.Mdfe.RecepcaoEvento")
 oreceevento.Executar(oXmlEvento,inicializarConfiguracao)
 MESSAGEBOX(m.oreceevento.RetornoWSString())
 messagebox(m.oreceevento.ProcEventoMDFeResult.RetEventoMDFe.InfEvento.CStat)

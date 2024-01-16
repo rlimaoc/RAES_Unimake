@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Enviar cancelamento de NFSe padrão Paulistana (Município de São Paulo)
+* Enviar cancelamento de NFSe padrï¿½o Paulistana (Municï¿½pio de Sï¿½o Paulo)
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarCancPadraoPAULISTANA()         
    LOCAL xmlCanc, oConfiguracao 
@@ -31,17 +31,17 @@ FUNCTION EnviarCancPadraoPAULISTANA()
       xmlCanc = xmlCanc + AllTrim([	</Detalhe>])
       xmlCanc = xmlCanc + AllTrim([</PedidoCancelamentoNFe>])
 
-   * Consumir o serviço de consulta
-      oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+   * Consumir o serviï¿½o de consulta
+      oConfiguracao = CREATEOBJECT("Uni.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
       oConfiguracao.CertificadoSenha = "12345678"   
-      oConfiguracao.TipoAmbiente =  1 && Produção
-      oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
+      oConfiguracao.TipoAmbiente =  1 && Produï¿½ï¿½o
+      oConfiguracao.CodigoMunicipio = 3550308 && Cï¿½digo do IBGE de Sï¿½o Paulo-SP
       oConfiguracao.Servico = 46  && Servico.NFSeCancelamentoNfe
       oConfiguracao.SchemaVersao = "2.00"
       
-      oCancelamentoNfe = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.CancelamentoNfe")
+      oCancelamentoNfe = CREATEOBJECT("Uni.Business.DFe.Servicos.NFSe.CancelamentoNfe")
       oCancelamentoNfe.Executar(xmlCanc, oConfiguracao)  
       
       MESSAGEBOX(oCancelamentoNfe.RetornoWSString)     

@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Consumindo o serviço de consulta a situacao da NFe
+* Consumindo o serviï¿½o de consulta a situacao da NFe
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
@@ -11,25 +11,25 @@ Function ConsultaSituacaoNfe()
    Local oConsSitNfe, oErro, oExceptionInterop
    Local oConsultaProtocolo
 
- * Criar configuraçao básica para consumir o serviço
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ * Criar configuraï¿½ao bï¿½sica para consumir o serviï¿½o
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig:TipoDfe = 0 // 0=nfe
    oConfig:Servico = 1 // 1=Situacao da NFE
    oConfig:CertificadoSenha = "12345678"
    oConfig:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar XML
-   oConsSitNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNfe")
+   oConsSitNfe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsSitNfe")
    oConsSitNfe:Versao = "4.00"
-   oConsSitNfe:TpAmb  = 2  // Homologação
+   oConsSitNfe:TpAmb  = 2  // Homologaï¿½ï¿½o
    oConsSitNfe:ChNfe  = "412001061174730001505500100006066414037532101" // Chave da NFE 
    
-   //Criar objeto para pegar exceção do CSHARP
+   //Criar objeto para pegar exceï¿½ï¿½o do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
    
    Try   
-    * Consumir o serviço
-      oConsultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")
+    * Consumir o serviï¿½o
+      oConsultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo")
       oConsultaProtocolo:Executar(oConsSitNfe,oConfig)
 
       ? "XML Retornado pela SEFAZ"
@@ -42,14 +42,14 @@ Function ConsultaSituacaoNfe()
       ?
 	  
    Catch oErro
-      //Demonstrar exceções geradas no proprio Harbour, se existir.
+      //Demonstrar exceï¿½ï¿½es geradas no proprio Harbour, se existir.
 	  ? "ERRO"
 	  ? "===="
 	  ? "Falha ao tentar consultar o status do servico."
       ? oErro:Description
       ? oErro:Operation
 	  
-	  //Demonstrar a exceção do CSHARP
+	  //Demonstrar a exceï¿½ï¿½o do CSHARP
 	  ?
       ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
       ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()

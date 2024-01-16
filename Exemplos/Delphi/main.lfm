@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Height = 437
   Top = 203
   Width = 822
-  Caption = 'Como utilizar a DLL Unimake.DFe para envio de NFe, NFCe, CTe, etc.'
+  Caption = 'Como utilizar a DLL Uni.DFe para envio de NFe, NFCe, CTe, etc.'
   ClientHeight = 437
   ClientWidth = 822
   OnCreate = FormCreate

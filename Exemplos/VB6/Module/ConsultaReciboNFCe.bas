@@ -6,8 +6,8 @@ Dim ConsReciNFe, retAutorizacao
 
 Log.ClearLog
 
-Set ConsReciNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
-Set retAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.RetAutorizacao")
+Set ConsReciNFe = CreateObject("Uni.Business.DFe.Xml.NFe.ConsReciNFe")
+Set retAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFCe.RetAutorizacao")
 
 With ConsReciNFe
     .Versao = "4.00"

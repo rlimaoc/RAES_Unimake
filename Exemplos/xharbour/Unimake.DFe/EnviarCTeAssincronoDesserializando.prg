@@ -11,7 +11,7 @@ Function EnviarCTeAssincronoDesserializando()
    Local oEnviCTe, oCTe
    
  * Criar o objeto de configuração mínima
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 2 //2=CTe
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao:CertificadoSenha = "12345678"   
@@ -19,12 +19,12 @@ Function EnviarCTeAssincronoDesserializando()
  * Criar o XML do CTe
  
    //Criar grupo de tag <enviCTe> 
-   oEnviCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EnviCTe")
+   oEnviCTe = CreateObject("Uni.Business.DFe.Xml.CTe.EnviCTe")
    oEnviCTe:Versao = "3.00"
    oEnviCTe:IdLote = "000000000000001"
    
    //Criar grupo de tag <CTe>
-   oCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.CTe")   
+   oCTe = CreateObject("Uni.Business.DFe.Xml.CTe.CTe")   
    oEnviCTe:AddCTe(oCTe:LoadFromFile("c:\projetos\uninfe\exemplos\CTe 3.00\43120178408960000182570010000000041000000047-cte.xml"))
    
    //Como deserializar partindo da string do XML
@@ -49,7 +49,7 @@ Function EnviarCTeAssincronoDesserializando()
    
    Try 
     * Criar o objeto para consumir o serviço de autorização do CTe
-      oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.CTe.Autorizacao")
+      oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.CTe.Autorizacao")
       oAutorizacao:SetXMLConfiguracao(oEnviCTe, oConfiguracao)
 	  
 	  //O conteúdo do XML assinado deve ser gravado na base de dados para ser recuperado 
@@ -92,19 +92,19 @@ Function EnviarCTeAssincronoDesserializando()
             ?
 			
 			//Criar a configuração minima para realizar a consulta recibo
-            oConfigRec = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+            oConfigRec = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
             oConfigRec:TipoDFe = 2 // TipoDFe.CTe
             oConfigRec:CertificadoSenha = "12345678"
             oConfigRec:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
             //Criar o XML de consulta recibo
-            oConsReciCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.ConsReciCTe")
+            oConsReciCTe = CreateObject("Uni.Business.DFe.Xml.CTe.ConsReciCTe")
             oConsReciCTe:Versao = "3.00"
             oConsReciCTe:TpAmb = 2 // TipoAmbiente.Homologacao
             oConsReciCTe:NRec = oAutorizacao:Result:InfRec:NRec
 			
 			//Enviar a consulta do Recibo
-            oRetAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.CTe.RetAutorizacao")
+            oRetAutorizacao = CreateObject("Uni.Business.DFe.Servicos.CTe.RetAutorizacao")
             oRetAutorizacao:Executar(oConsReciCTe, oConfigRec)
 			
 			//Tratar o retorno da consulta do recibo

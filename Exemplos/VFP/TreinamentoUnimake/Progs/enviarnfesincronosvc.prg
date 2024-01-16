@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Gerar XML da NFe e enviar no modo síncrono
+* Gerar XML da NFe e enviar no modo sï¿½ncrono
 * ---------------------------------------------------------------------------------
 Function EnviarNfeSincronoSVC()
    Local oConfig
@@ -16,27 +16,27 @@ Function EnviarNfeSincronoSVC()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuracao basica para consumir o servico
-   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfig.TipoDfe = 0 && 0=nfe
    oConfig.TipoEmissao = 7 && 6=SVCAN 7=SVCRS
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"
    
  * Criar a tag <enviNFe>
-   oEnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oEnviNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oEnviNFe.Versao = "4.00"
    oEnviNFe.IdLote = "000000000000001"
    oEnviNFe.IndSinc = 1 && 1=Sim 0=Nao
    
  * Criar a tag <NFe>  
-   oNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   oNfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    
  * Criar tag InfNfe
-   oInfNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
+   oInfNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InfNFe")
    oInfNFe.Versao = "4.00"
 
  * cria tag Ide
-   oIde = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
+   oIde = CreateObject("Uni.Business.DFe.Xml.NFe.Ide")
    oIde.CUF = 41 && Brasil.PR
    oIde.NatOp = "VENDA PRODUC.DO ESTABELEC"
    oIde.Mod = 55 && NFe
@@ -60,7 +60,7 @@ Function EnviarNfeSincronoSVC()
    oInfNFe.Ide = oIde
 
  * criar tag Emit
-   oEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.Emit")
+   oEmit = CreateObject("Uni.Business.DFe.Xml.NFe.Emit")
    oEmit.CNPJ  = "06117473000150"
    oEmit.XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
    oEmit.XFant = "UNIMAKE - PARANAVAI"
@@ -69,7 +69,7 @@ Function EnviarNfeSincronoSVC()
    oEmit.CNAE  = "6202300"
    oEmit.CRT   = 1 && CRT.SimplesNacional
 
-   oEnderEmit = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderEmit")
+   oEnderEmit = CreateObject("Uni.Business.DFe.Xml.NFe.EnderEmit")
    oEnderEmit.XLgr    = "RUA PAULO ANTONIO COSTA"
    oEnderEmit.Nro     = "575"
    oEnderEmit.XBairro = "CENTRO"
@@ -86,14 +86,14 @@ Function EnviarNfeSincronoSVC()
    oInfNfe.Emit = oEmit
    
  * criar tag Dest
-   oDest = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
+   oDest = CreateObject("Uni.Business.DFe.Xml.NFe.Dest")
    oDest.CNPJ      = "04218457000128"
    oDest.XNome     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
    oDest.IndIEDest = 1 && IndicadorIEDestinatario.ContribuinteICMS,
    oDest.IE        = "582614838110"
    oDest.Email     = "janelaorp@janelaorp.com.br"
    
-   oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+   oEnderDest = CreateObject("Uni.Business.DFe.Xml.NFe.EnderDest")
    oEnderDest.XLgr    = "AVENIDA DA SAUDADE"
    oEnderDest.Nro     = "1555"
    oEnderDest.XBairro = "CAMPOS ELISEOS"
@@ -111,10 +111,10 @@ Function EnviarNfeSincronoSVC()
    
    For I = 1 To 3 && 3 produtos para teste    
      * criar tag Det
-       oDet = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+       oDet = CreateObject("Uni.Business.DFe.Xml.NFe.Det")
 	   oDet.NItem = I
 	   
-       oProd          = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+       oProd          = CreateObject("Uni.Business.DFe.Xml.NFe.Prod")
        oProd.CProd    = AllTrim(Str(I,5))
        oProd.CEAN     = "SEM GTIN"
        oProd.XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
@@ -133,7 +133,7 @@ Function EnviarNfeSincronoSVC()
        oProd.NItemPed = 1
 
 *	 * criar a tag <DI> - tem como ter mais de uma tag DI, vou criar duas para ficar de exemplo, esta Ã© a primeira
-*	   oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
+*	   oDI = CreateObject("Uni.Business.DFe.Xml.NFe.DI")
 *	   oDI.CExportador = ""
 *      oDI.CNPJ = ""
 *      oDI.DDesemb = DateTime()
@@ -143,7 +143,7 @@ Function EnviarNfeSincronoSVC()
 *	   oDI.NDI = "1222"
 *	   
 *	 * Criar tag <adi>
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -151,7 +151,7 @@ Function EnviarNfeSincronoSVC()
 *	   oDI.AddAdi(oAdi)
 *
 *	 * Criar tag <adi> -> Posso ter mais de uma tag <adi> entÃ£o vou criar uma segunda vez para ficar o exemplo
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -162,7 +162,7 @@ Function EnviarNfeSincronoSVC()
 *	   oProd.AddDI(oDI)
 *
 *	 * criar a tag <DI> - Segunda tag <DI>
-*	   oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
+*	   oDI = CreateObject("Uni.Business.DFe.Xml.NFe.DI")
 *	   oDI.CExportador = ""
 *      oDI.CNPJ = ""
 *      oDI.DDesemb = DateTime()
@@ -172,7 +172,7 @@ Function EnviarNfeSincronoSVC()
 *	   oDI.NDI = "1222"
 *	   
 *	 * Criar tag <adi>
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -180,7 +180,7 @@ Function EnviarNfeSincronoSVC()
 *	   oDI.AddAdi(oAdi)
 *
 *	 * Criar tag <adi> -> Posso ter mais de uma tag <adi> entÃ£o vou criar uma segunda vez para ficar o exemplo
-*      oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+*      oAdi = CreateObject("Uni.Business.DFe.Xml.NFe.Adi")
 *      oAdi.CFabricante = ""
 *      oAdi.NDraw = "12344"
 *
@@ -194,14 +194,14 @@ Function EnviarNfeSincronoSVC()
        oDet.Prod = oProd
 	   
      * criar tag Imposto
-       oImposto          = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+       oImposto          = CreateObject("Uni.Business.DFe.Xml.NFe.Imposto")
        oImposto.VTotTrib = 12.63
 	   
      * criar tag Icms
-       oICMS             = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
+       oICMS             = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS")
 	   
      * criar tag ICMSSN101
-       oICMSSN101            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
+       oICMSSN101            = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSSN101")
        oICMSSN101.Orig       = 0 && OrigemMercadoria.Nacional
        oICMSSN101.PCredSN     = 2.8255
        oICMSSN101.VCredICMSSN = 2.40
@@ -210,7 +210,7 @@ Function EnviarNfeSincronoSVC()
        oICMS.ICMSSN101 = oICMSSN101
 	   
 *	 * criar tag ICMS00   
-*      oICMS00 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS00")
+*      oICMS00 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS00")
 *      oICMS00.CST = "00"
 *      oICMS00.Orig = 0 && OrigemMercadoria.Nacional
 *      oICMS00.ModBC = 3 && ModalidadeBaseCalculoICMS.ValorOperacao
@@ -224,7 +224,7 @@ Function EnviarNfeSincronoSVC()
 * 	   oICMS.ICMS00 = oICMS00
 *
 *	 * criar tag ICMS40
-*      oICMS40 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS40")
+*      oICMS40 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS40")
 *      oICMS40.CST = "40"
 *      oICMS40.MotDesICMS = 7 && MotivoDesoneracaoICMS.SUFRAMA
 *      oICMS40.Orig = 0 && OrigemMercadoria.Nacional
@@ -234,7 +234,7 @@ Function EnviarNfeSincronoSVC()
 * 	   oICMS.ICMS40 = oICMS40
 *
 *	 * criar tag ICMS20
-*      oICMS20 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS20")
+*      oICMS20 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS20")
 *      oICMS20.CST = "20"
 *      oICMS20.ModBC = 3 && ModalidadeBaseCalculoICMS.ValorOperacao
 *      oICMS20.MotDesICMS = 7 && MotivoDesoneracaoICMS.SUFRAMA
@@ -252,7 +252,7 @@ Function EnviarNfeSincronoSVC()
 * 	   oICMS.ICMS20 = oICMS20
 *	   
 *	 * criar tag ICMS51
-*      oICMS51 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS51")
+*      oICMS51 = CreateObject("Uni.Business.DFe.Xml.NFe.ICMS51")
 *      oICMS51.CST = "51"
 *      oICMS51.ModBC = 3 && ModalidadeBaseCalculoICMS.ValorOperacao
 *      oICMS51.Orig = 0 && OrigemMercadoria.Nacional
@@ -277,10 +277,10 @@ Function EnviarNfeSincronoSVC()
        oImposto.Icms = oICMS
 	   
      * criar tag PIS
-       oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
+       oPIS           = CreateObject("Uni.Business.DFe.Xml.NFe.PIS")
 
      * criar tag PISOutr
-       oPISOutr      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+       oPISOutr      = CreateObject("Uni.Business.DFe.Xml.NFe.PISOutr")
        oPISOutr.CST  = "99"
        oPISOutr.VBC  = 0.00
        oPISOutr.PPIS = 0.00
@@ -293,10 +293,10 @@ Function EnviarNfeSincronoSVC()
        oImposto.PIS = oPIS
 
      * criar tag COFINS
-       oCOFINS      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
+       oCOFINS      = CreateObject("Uni.Business.DFe.Xml.NFe.COFINS")
 
      * criar tag COFINSOutr
-       oCOFINSOutr         = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+       oCOFINSOutr         = CreateObject("Uni.Business.DFe.Xml.NFe.COFINSOutr")
        oCOFINSOutr.CST     = "99"
        oCOFINSOutr.VBC     = 0.00
        oCOFINSOutr.PCOFINS = 0.00
@@ -312,11 +312,11 @@ Function EnviarNfeSincronoSVC()
        oDet.Imposto = oImposto
 	   
 *	 * Criar tag <impostoDevol>
-*	   oImpostoDevol = CreateObject("Unimake.Business.DFe.Xml.NFe.ImpostoDevol")
+*	   oImpostoDevol = CreateObject("Uni.Business.DFe.Xml.NFe.ImpostoDevol")
 *	   oImpostoDevol.PDevol = 0.00
 *	   
 *	 * Criar tag <IPI>
-*      oIPIDevol = CreateObject("Unimake.Business.DFe.Xml.NFe.IPIDevol")
+*      oIPIDevol = CreateObject("Uni.Business.DFe.Xml.NFe.IPIDevol")
 *	   oIPIDevol.VIPIDevol = 0.00
 	   
 *	 * Adicionar o grupo de tag <IPI> dentro do grupo <impostoDevol>
@@ -330,10 +330,10 @@ Function EnviarNfeSincronoSVC()
    Next I
    
  * Criar tag Total
-   oTotal = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
+   oTotal = CreateObject("Uni.Business.DFe.Xml.NFe.Total")
 
  * Criar tag ICMSTot
-   oICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+   oICMSTot = CreateObject("Uni.Business.DFe.Xml.NFe.ICMSTot")
    oICMSTot.VBC = 0
    oICMSTot.VICMS = 0
    oICMSTot.VICMSDeson = 0
@@ -362,11 +362,11 @@ Function EnviarNfeSincronoSVC()
    oInfNfe.Total = oTotal
    
  * Criar a tag Transp  
-   oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
+   oTransp = CreateObject("Uni.Business.DFe.Xml.NFe.Transp")
    oTransp.ModFrete = 0 && ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
 
  * Criar a tag Vol
-   oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+   oVol       = CreateObject("Uni.Business.DFe.Xml.NFe.Vol")
    oVol.QVol  = 1
    oVol.Esp   = "LU"
    oVol.Marca = "UNIMAKE"
@@ -380,17 +380,17 @@ Function EnviarNfeSincronoSVC()
    oInfNfe.Transp = oTransp
 
  * Criar tag Cobr 
-   oCobr = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
+   oCobr = CreateObject("Uni.Business.DFe.Xml.NFe.Cobr")
 
  * Criar tag Fat 
-   oFat  = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
+   oFat  = CreateObject("Uni.Business.DFe.Xml.NFe.Fat")
    oFat.NFat = "057910"
    oFat.VOrig = 254.70
    oFat.VDesc = 0
    oFat.VLiq = 254.70
 
  * Criar tag Dup (parcela 1)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
    oDup.NDup  = "001"
    oDup.DVenc = Date()
    oDup.VDup  = 127.35
@@ -399,7 +399,7 @@ Function EnviarNfeSincronoSVC()
    OCobr.AddDup(oDup)
 
  * Criar tag Dup (parcela 2)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup = CreateObject("Uni.Business.DFe.Xml.NFe.Dup")
    oDup.NDup  = "002"
    oDup.DVenc = Date()
    oDup.VDup  = 127.35
@@ -414,10 +414,10 @@ Function EnviarNfeSincronoSVC()
    oInfNfe.Cobr = oCobr
 
  * criar tag Pag
-   oPag = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
+   oPag = CreateObject("Uni.Business.DFe.Xml.NFe.Pag")
 
  * criar tag DetPag (pode ter mais que uma, sÃ³ foi criada uma como exemplo)
-   oDetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+   oDetPag = CreateObject("Uni.Business.DFe.Xml.NFe.DetPag")
    oDetPag.IndPag = 0 && IndicadorPagamento.PagamentoVista
    oDetPag.TPag   = 1 && MeioPagamento.Dinheiro
    oDetPag.VPag   = 254.70
@@ -429,14 +429,14 @@ Function EnviarNfeSincronoSVC()
    oInfNFe.Pag = oPag
 
  * criar tag InfAdic
-   oInfAdic = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+   oInfAdic = CreateObject("Uni.Business.DFe.Xml.NFe.InfAdic")
    oInfAdic.InfCpl = "Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008"
  
  * adicionar a tag InfAdic dentro da tag InfNfe
    oInfNFe.InfAdic = oInfAdic
 
  * criar tag InfRespTec
-   oInfRespTec = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+   oInfRespTec = CreateObject("Uni.Business.DFe.Xml.NFe.InfRespTec")
    oInfRespTec.CNPJ     = "06117473000150"
    oInfRespTec.XContato = "Ze das Couves"
    oInfRespTec.Email    = "zedascouves@gmail.com"
@@ -459,7 +459,7 @@ Function EnviarNfeSincronoSVC()
    MessageBox("Chave da NFe:" + chaveNFe)
 
  * Consumir o serviÃ§o (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
    
  * Criar objeto para pegar excecao do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
@@ -489,7 +489,7 @@ Function EnviarNfeSincronoSVC()
           * Gravar XML de distribuicao em uma pasta (NFe com o protocolo de autorizacao anexado)
             oAutorizacao.GravarXmlDistribuicao("d:\testenfe")
 			
-		  * Pegar a string do XML de distribuição
+		  * Pegar a string do XML de distribuiï¿½ï¿½o
             docProcNFe = oAutorizacao.GetNFeProcResults(chaveNFe)
 			MessageBox(docProcNFe)
 

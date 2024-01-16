@@ -3,14 +3,14 @@
 * ---------------------------------------------------------------------------------
 
 * Criar configuraçao básica para consumir o serviço
-InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+InicializarConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
 InicializarConfiguracao.CertificadoSenha = "XXXXX"
 InicializarConfiguracao.CertificadoArquivo = "D:\Temp\Certificado.pfx"
 
 
 * Criar XML
-InutNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFe")
-InutNFeInfInut = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFeInfInut")
+InutNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFe")
+InutNFeInfInut = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFeInfInut")
 
 InutNFeInfInut.Ano = "19"
 InutNFeInfInut.CNPJ = "06117473000150"
@@ -25,7 +25,7 @@ InutNFe.Versao = "4.00"
 InutNFe.InfInut = InutNFeInfInut
 
 * Consumir o serviço
-Inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")
+Inutilizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Inutilizacao")
 Inutilizacao.Executar(InutNFe,InicializarConfiguracao)
 
 MESSAGEBOX(Inutilizacao.RetornoWSString)

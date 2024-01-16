@@ -12,7 +12,7 @@ Public Sub XMLDistribuicaoNFCe()
 
     Dim xmlNFe
 
-    Set xmlNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+    Set xmlNFe = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
     xmlNFe.Versao = "4.00"
     xmlNFe.IdLote = "000000000000001"
     xmlNFe.IndSinc = 1
@@ -22,10 +22,10 @@ Public Sub XMLDistribuicaoNFCe()
     
 '---------------------------------------------------------------------------------------------------------------
     '-------------------------------------
-    ' Criar o XML da consulta situação da NFe
+    ' Criar o XML da consulta situaï¿½ï¿½o da NFe
     '-------------------------------------
     Dim xmlConsSit
-    Set xmlConsSit = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNFe")
+    Set xmlConsSit = CreateObject("Uni.Business.DFe.Xml.NFe.ConsSitNFe")
     xmlConsSit.Versao = "4.00"
     xmlConsSit.TpAmb = 2
     xmlConsSit.ChNFe = "31220525975590000107650010000723331000735927"    '"41200106117473000150550010000606641403753210"
@@ -33,10 +33,10 @@ Public Sub XMLDistribuicaoNFCe()
 
 '---------------------------------------------------------------------------------------------------------------
     '-------------------------------------
-    ' Criar uma configuração básica para efetuarmos a consulta situação da NFe pela sua chave.
+    ' Criar uma configuraï¿½ï¿½o bï¿½sica para efetuarmos a consulta situaï¿½ï¿½o da NFe pela sua chave.
     '-------------------------------------
     Dim localConfig
-    Set localConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+    Set localConfig = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
     localConfig.TipoDFe = 1
     localConfig.CSC = "26dfd008794772f3d44dbe7626d1088d"
     localConfig.CSCIDToken = 1
@@ -49,21 +49,21 @@ Public Sub XMLDistribuicaoNFCe()
 
 '---------------------------------------------------------------------------------------------------------------
     '-------------------------------------
-    'Criar o serviço para consumir o serviço de consulta protocolo
+    'Criar o serviï¿½o para consumir o serviï¿½o de consulta protocolo
     '-------------------------------------
     Dim consultaProtocolo
-    Set consultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo")
+    Set consultaProtocolo = CreateObject("Uni.Business.DFe.Servicos.NFCe.ConsultaProtocolo")
     consultaProtocolo.Executar (xmlConsSit), (localConfig)
 
 '---------------------------------------------------------------------------------------------------------------
 
     '-------------------------------------
-    'Criar objeto para consumir o serviço de envio da NFe para finalizar a nota gerando o arquivo de distribuição
+    'Criar objeto para consumir o serviï¿½o de envio da NFe para finalizar a nota gerando o arquivo de distribuiï¿½ï¿½o
     '-------------------------------------
 
     If (consultaProtocolo.result.CStat = 100) Then
         Dim autorizacao, RetConsReciNFe
-        Set autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Autorizacao")
+        Set autorizacao = CreateObject("Uni.Business.DFe.Servicos.NFCe.Autorizacao")
         autorizacao.SetXMLConfiguracao (xmlNFe), (localConfig)
         RetConsReciNFe = Null
         autorizacao.AddRetConsSitNFes (consultaProtocolo.result)

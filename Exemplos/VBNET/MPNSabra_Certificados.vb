@@ -12,7 +12,7 @@
 
         If VRetorna = True Then
 
-            Dim Xml = New Unimake.Business.DFe.Xml.NFe.ConsStatServ
+            Dim Xml = New Uni.Business.DFe.Xml.NFe.ConsStatServ
 
             Xml.versao = Versao
             Xml.cUF = CUF
@@ -30,9 +30,9 @@
 
             '            Dim StatusServico
             If TipoNF = 55 Then
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
             Else
-                Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
+                Autorizacao = New Uni.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
 
             End If
 
@@ -126,7 +126,7 @@
             Exit Sub
         End If
 
-        Dim Xml = New Unimake.Business.DFe.Xml.NFe.ConsStatServ
+        Dim Xml = New Uni.Business.DFe.Xml.NFe.ConsStatServ
 
         Xml.versao = Versao
         Xml.cUF = CUF
@@ -137,9 +137,9 @@
         '      Dim StatusServico
         If TipoNF = 55 Then
 
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
 
         End If
 

@@ -12,13 +12,13 @@ Function EncerramentoMDFe()
    Local oEnvEvento, oEventoMDFe, oDetEventoEncMDFe, oInfEvento
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 4 // 4=MDFe
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
-   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento = CreateObject("Uni.Business.DFe.Xml.NFe.EnvEvento")
    oEnvEvento:Versao = "3.00"
    oEnvEvento:IdLote = "000000000000001"
 
@@ -26,12 +26,12 @@ Function EncerramentoMDFe()
  * Criar tags do evento sequencia
  * -------------------------------------------------
  * Criar tag Evento
-   oEventoMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.EventoMDFe")
+   oEventoMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.EventoMDFe")
    oEventoMDFe:Versao = "3.00"
  
  * Criar tag DetEventoEncMDFe
  //NEW
-   oDetEventoEncMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.DetEventoEncMDFe")
+   oDetEventoEncMDFe = CreateObject("Uni.Business.DFe.Xml.MDFe.DetEventoEncMDFe")
    oDetEventoEncMDFe:VersaoEvento = "3.00"
    oDetEventoEncMDFe:NProt = "141200000007987"
    oDetEventoEncMDFe:CMun = 3106200
@@ -39,7 +39,7 @@ Function EncerramentoMDFe()
    oDetEventoEncMDFe:DtEnc = DateTime()
 
  * Criar tag InfEvento
-   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.MDFe.InfEvento")
+   oInfEvento = CreateObject("Uni.Business.DFe.Xml.MDFe.InfEvento")
  
  * Adicionar a tag DetEventoCanc dentro da Tag DetEvento
    oInfEvento:DetEvento = oDetEventoEncMDFe
@@ -71,7 +71,7 @@ Function EncerramentoMDFe()
    
    Try 
     * Enviar evento
-      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento")
+      oRecepcaoEvento = CreateObject("Uni.Business.DFe.Servicos.MDFe.RecepcaoEvento")
       oRecepcaoEvento:Executar(oEventoMDFe,  oConfiguracao)
       
 	  //Demonstrar o XML retornado pela SEFAZ

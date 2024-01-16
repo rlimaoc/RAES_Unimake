@@ -1,7 +1,7 @@
 ﻿Module MPNSabra_ConsultarSituacaoNFe
     Public Sub ConsultarSituacaoNF()
 
-        Dim Xml = New Unimake.Business.DFe.Xml.NFe.ConsSitNFe
+        Dim Xml = New Uni.Business.DFe.Xml.NFe.ConsSitNFe
 
         Xml.versao = Versao
         Xml.TpAmb = TPAmb
@@ -17,9 +17,9 @@
 
         '  Dim ConsultaProtocolo
         If TipoNF = 55 Then
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
         Else
-            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
+            Autorizacao = New Uni.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
         End If
 
         Resposta = TestarAutorizacao()

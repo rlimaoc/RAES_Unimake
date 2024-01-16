@@ -6,9 +6,9 @@ Dim InutNFe, InutNFeInfInut, Inutilizacao
 
 Log.ClearLog
 
-Set InutNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFe")
-Set InutNFeInfInut = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFeInfInut")
-Set Inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Inutilizacao")
+Set InutNFe = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFe")
+Set InutNFeInfInut = CreateObject("Uni.Business.DFe.Xml.NFe.InutNFeInfInut")
+Set Inutilizacao = CreateObject("Uni.Business.DFe.Servicos.NFCe.Inutilizacao")
 
 With InutNFeInfInut
     .Ano = "19"
@@ -31,10 +31,10 @@ Log.EscreveLog Inutilizacao.RetornoWSString, True
 Log.EscreveLog Inutilizacao.result.InfInut.XMotivo, False
 
 ''retornos da Inutilizacao.result.InfInut.CStat
-''    102: //Inutilização homologada
+''    102: //Inutilizaï¿½ï¿½o homologada
 ''    Inutilizacao.GravarXmlDistribuicao(@"c:\testenfe\");
 ''
-'' outros //Inutilização rejeitada
+'' outros //Inutilizaï¿½ï¿½o rejeitada
 ''        inutilizacao.GravarXmlDistribuicao(@"c:\testenfe\");
 
 Exit Sub

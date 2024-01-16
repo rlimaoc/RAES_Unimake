@@ -11,13 +11,13 @@ Function ConsultarGTIN()
    Local oConfiguracao, oConsGTIN, oCcgConsGTIN
    
  * Criar configuraçao básica para consumir o serviço
-   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDfe = 10 // 10=CCG
    oConfiguracao:CertificadoSenha = "12345678"
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar o XML da Consulta GTIN
-   oConsGTIN = CreateObject("Unimake.Business.DFe.Xml.CCG.ConsGTIN")
+   oConsGTIN = CreateObject("Uni.Business.DFe.Xml.CCG.ConsGTIN")
    oConsGTIN:Versao = "1.00"
    oConsGTIN:GTIN = "7896015516031"
 
@@ -26,7 +26,7 @@ Function ConsultarGTIN()
    
    Try 
     * Enviar o XML de consulta
-	  oCcgConsGTIN = CreateObject("Unimake.Business.DFe.Servicos.CCG.CcgConsGTIN")
+	  oCcgConsGTIN = CreateObject("Uni.Business.DFe.Servicos.CCG.CcgConsGTIN")
 	  oCcgConsGTIN:Executar(oConsGTIN, oConfiguracao) 
 	  
       ? "XML retornado pela SEFAZ:"

@@ -4,14 +4,14 @@ ENDIF
 VerificarVencimentoCertificado()
 ConfiguracaoAtual(0,1)
 
-DistDFeInt = CreateObject("Unimake.Business.DFe.xml.NFe.DistDFeInt")
-DistNSU = CreateObject("Unimake.Business.DFe.xml.NFe.DistNSU")
-DistribuicaoDFe = CreateObject("Unimake.Business.DFe.Servicos.NFe.DistribuicaoDFe")
+DistDFeInt = CreateObject("Uni.Business.DFe.xml.NFe.DistDFeInt")
+DistNSU = CreateObject("Uni.Business.DFe.xml.NFe.DistNSU")
+DistribuicaoDFe = CreateObject("Uni.Business.DFe.Servicos.NFe.DistribuicaoDFe")
 
 nsu = "000000000000000"
 
 DO WHILE .T.
-    WAIT WINDOW "Aguarde, consultando NSU número " + nsu NOWAIT
+    WAIT WINDOW "Aguarde, consultando NSU nï¿½mero " + nsu NOWAIT
     DistNSU.UltNSU = nsu
     DistDFeInt.Versao = "1.01"
     DistDFeInt.TpAmb = 2

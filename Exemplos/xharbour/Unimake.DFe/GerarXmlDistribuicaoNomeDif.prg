@@ -15,7 +15,7 @@ Function GerarXmlDistribuicaoNomeDif()
    Local NomeArqDistribuicao, nHandle
 
  * Criar configuraçao básica para consumir o serviço
-   oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oInicializarConfiguracao = CreateObject("Uni.Business.DFe.Servicos.Configuracao")
    
    oInicializarConfiguracao:TipoDfe = 0 // 0=nfe
    oInicializarConfiguracao:Servico = 6 // 6=Autorização Nfe
@@ -24,17 +24,17 @@ Function GerarXmlDistribuicaoNomeDif()
    oInicializarConfiguracao:CertificadoSenha = "12345678"
 
  * Criar XML (Tag EnviNFe)  
-   oXml = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
+   oXml = CreateObject("Uni.Business.DFe.Xml.NFe.EnviNFe")
    oXml:Versao = "4.00"
    oXml:IdLote = "000000000000001"
    oXml:IndSinc = 1 // 1=Sim 0=Nao
    
  * Criar a tag NFe e deserializar o XML já gravado no HD para já preencher o objeto para envio
-   onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   onfe = CreateObject("Uni.Business.DFe.Xml.NFe.NFe")
    oXml:AddNFe(oNFe:LoadFromFile("D:\testenfe\notateste-nfe.xml"))
    
  * Consumir o serviço (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   oAutorizacao = CreateObject("Uni.Business.DFe.Servicos.NFe.Autorizacao")
    
    // Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
