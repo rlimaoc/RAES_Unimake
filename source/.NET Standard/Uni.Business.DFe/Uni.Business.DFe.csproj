@@ -2257,6 +2257,9 @@
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retmdatamah_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retparam_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\sncmtypes.xsd" />
+	</ItemGroup>
+  
+	<ItemGroup>
 		<EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFComTiposBasico_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\consSitNFCom_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFCom\consStatServNFComTiposBasico_v1.00.xsd" />

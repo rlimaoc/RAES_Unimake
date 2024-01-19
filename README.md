@@ -14,6 +14,9 @@ Antes de utilizar essa DLL, atente-se para as alterações em [Breaking Changes]
 
 ## Alterações
 
++ 2024-01-17
+  1. Alterado o enum ModeloNFPapel para ModeloNFImpresso
+
 + 2024-01-16
   1. Alterado o nome do projeto para Uni.DFe (para não gerar conflitos e futura compatibilidade)
   1. Importados os esquemas mais recentes do site da NFCom

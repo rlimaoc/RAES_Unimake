@@ -1,9 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
-using Uni.Business.DFe.Xml.CTe;
-using Uni.Business.DFe.Xml.EFDReinf;
-using Uni.Business.DFe.Xml.GNRE;
-using Uni.Business.DFe.Xml.NFe;
 
 namespace Uni.Business.DFe.Servicos
 {
@@ -8744,12 +8740,12 @@ namespace Uni.Business.DFe.Servicos
 
     #endregion
 
-    #region Modelo da NF Papel (21 e 22)
+    #region Modelo da NF Impresso (21 e 22)
 
     /// <summary>
-    /// Modelo da NF Papel (21 e 22)
+    /// Modelo da NF Impresso (21 e 22)
     /// </summary>
-    public enum ModeloNFPapel
+    public enum ModeloNFImpresso
     {
         /// <summary>
         /// Nota Fiscal de Comunicação

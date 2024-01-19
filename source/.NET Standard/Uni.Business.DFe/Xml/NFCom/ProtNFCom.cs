@@ -33,7 +33,7 @@ namespace Uni.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Un.NFCom.Xml.NFCom.InfProt")]
+    [ProgId("Un.Business.DFe.Xml.NFCom.InfProt")]
     [ComVisible(true)]
 #endif
     public class InfProt
@@ -50,6 +50,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         [XmlElement("chNFCom")]
         public string ChNFCom { get; set; }
 
+        #region DhRecbto
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -67,6 +68,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             set => DhRecbto = DateTimeOffset.Parse(value);
 #endif
         }
+        #endregion
 
         [XmlElement("nProt")]
         public string NProt { get; set; }
@@ -83,7 +85,7 @@ namespace Uni.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Un.NFCom.Xml.NFCom.InfFisco")]
+    [ProgId("Un.Business.DFe.Xml.NFCom.InfFisco")]
     [ComVisible(true)]
 #endif
     public class InfFisco
