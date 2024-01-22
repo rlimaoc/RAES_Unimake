@@ -27,7 +27,7 @@ namespace Uni.Business.DFe.Utility
         #region Public Structs
 
         /// <summary>
-        /// Estrutura para recuperar o conteúdo separadamente da chave do DFe (NFe, CTe, NFCe, MDfe, etc...)
+        /// Estrutura para recuperar o conteúdo separadamente da chave do DFe (NFe, CTe, NFCe, MDfe, NFCom, etc...)
         /// </summary>
 #if INTEROP
         public class ConteudoChaveDFe
@@ -88,6 +88,11 @@ namespace Uni.Business.DFe.Utility
             /// </summary>
             public UFBrasil UFEmissor { get; set; }
 
+            /// <summary>
+            /// Código do site autorizador da NFCom
+            /// </summary>
+            public int NSiteAutoriz { get; set; }
+
             #endregion Public Properties
         }
 
@@ -141,7 +146,7 @@ namespace Uni.Business.DFe.Utility
         #region Public Methods
 
         /// <summary>
-        /// Gerar o dígito da chave da NFe, CTe, MDFe ou NFCe
+        /// Gerar o dígito da chave da NFe, CTe, MDFe, NFCe ou NFCom
         /// </summary>
         /// <param name="chave">Chave do DFe (sem o dígito) que deve ser calculado o dígito verificador.</param>
         /// <returns>Dígito verificador</returns>
@@ -155,7 +160,7 @@ namespace Uni.Business.DFe.Utility
             int i, j, Digito;
             const string PESO = "4329876543298765432987654329876543298765432";
 
-            chave = chave.Replace("NFe", "").Replace("CTe", "").Replace("MDFe", "");
+            chave = chave.Replace("NFe", "").Replace("CTe", "").Replace("MDFe", "").Replace("NFCom", "");
 
             if (chave.Length != 43)
             {
@@ -189,7 +194,7 @@ namespace Uni.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Executa uma verificação simples para garantir que a chave do DFe (NFe, CTe, MDfe, NFCe, CTeOS) é valida, se tiver erros retorna exceção.
+        /// Executa uma verificação simples para garantir que a chave do DFe (NFe, CTe, MDfe, NFCe, CTeOS, NFCom) é valida, se tiver erros retorna exceção.
         /// </summary>
         /// <param name="chave">Chave do DFe a ser verificada</param>
         /// <example>
@@ -533,6 +538,10 @@ namespace Uni.Business.DFe.Utility
             {
                 tipoDFe = TipoDFe.CFe;
             }
+            else if (xml.Contains("<mod>62</mod>"))
+            {
+                tipoDFe = TipoDFe.NFCom;
+            }
 
             return tipoDFe;
         }
@@ -572,6 +581,10 @@ namespace Uni.Business.DFe.Utility
 
                 case "65":
                     tipoDFe = TipoDFe.NFCe;
+                    break;
+
+                case "62":
+                    tipoDFe = TipoDFe.NFCom;
                     break;
 
                 case "67":
@@ -760,8 +773,38 @@ namespace Uni.Business.DFe.Utility
             return tipoEventoNFe;
         }
 
+
         /// <summary>
-        /// De acordo com os dados do XML será detectado de qual tipo ele é: XML de NFe, CTe, Consulta Status, Consulta Situação, Evento, etc...
+        /// Detectar qual o tipo de evento do documento fiscal eletrônico do XML
+        /// </summary>
+        /// <param name="xml">XML a ser analisado</param>
+        /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
+        public static TipoEventoNFCom DetectEventoNFComType(XmlDocument xml) => DetectEventoNFComType(xml.OuterXml);
+
+        /// <summary>
+        /// Detectar qual o tipo de evento do documento fiscal eletrônico do XML
+        /// </summary>
+        /// <param name="xml">XML a ser analisado</param>
+        /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
+        public static TipoEventoNFCom DetectEventoNFComType(string xml)
+        {
+            var tipoEventoNFCom = TipoEventoNFCom.Desconhecido;
+
+            if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
+            {
+                return tipoEventoNFCom;
+            }
+
+            if (xml.Contains("<tpEvento>110111</tpEvento>"))
+            {
+                tipoEventoNFCom = TipoEventoNFCom.Cancelamento;
+            }
+
+            return tipoEventoNFCom;
+        }
+
+        /// <summary>
+        /// De acordo com os dados do XML será detectado de qual tipo ele é: XML de NFe, CTe, NFCom, Consulta Status, Consulta Situação, Evento, etc...
         /// </summary>
         public static TipoXML DetectXMLType(XmlDocument xmlDoc)
         {
@@ -891,6 +934,30 @@ namespace Uni.Business.DFe.Utility
 
                 #endregion XML do MDFe
 
+                #region XML NFCom
+
+                case "consStatServNFCom":
+                    tipoXML = TipoXML.NFComStatusServico;
+                    break;
+
+                case "consSitNFCom":
+                    tipoXML = TipoXML.NFComConsultaSituacao;
+                    break;
+
+                case "envEventoNFCom":
+                    tipoXML = TipoXML.NFComEnvioEvento;
+                    break;
+
+                case "NFCom":
+                    tipoXML = TipoXML.NFCom;
+                    break;
+
+                case "nfcomProc":
+                    tipoXML = TipoXML.NFComDistribuicao;
+                    break;
+
+                #endregion XML NFCom
+
                 default:
                     break;
             }
@@ -899,7 +966,7 @@ namespace Uni.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Extrair conteúdo da chave do documento fiscal eletrônico (NFe, NFCe, CTe, MDFe, etc...) com elementos separados.
+        /// Extrair conteúdo da chave do documento fiscal eletrônico (NFe, NFCe, CTe, MDFe, NFCom, etc...) com elementos separados.
         /// </summary>
         /// <param name="chave">Chave do DFe para extrair o conteúdo</param>
         /// <returns>Estrutura contendo o valor de cada elemento que compõe a chave do DFe</returns>
@@ -915,7 +982,8 @@ namespace Uni.Business.DFe.Utility
         /// Console.WriteLine(conteudo.Serie); //Output: 11
         /// Console.WriteLine(conteudo.NumeroDoctoFiscal); //Output: 6
         /// Console.WriteLine(conteudo.TipoEmissao); //Output: ContingenciaOffLine
-        /// Console.WriteLine(conteudo.CodigoNumerico); //Output: 12345678
+        /// Console.WriteLine(conteudo.NSiteAutoriz); //Output: 1 (Somente para NFCom)
+        /// Console.WriteLine(conteudo.CodigoNumerico); //Output: 1234567
         /// Console.WriteLine(conteudo.DigitoVerificador); //Output: 7
         ///
         /// </example>
@@ -935,23 +1003,37 @@ namespace Uni.Business.DFe.Utility
                 DigitoVerificador = Convert.ToInt32(chave.Substring(43, 1))
             };
 
+            if (conteudo.Modelo == ModeloDFe.NFCom)
+            {
+                conteudo.NSiteAutoriz = Convert.ToInt32(conteudo.CodigoNumerico.Substring(0, 1));
+                conteudo.CodigoNumerico = conteudo.CodigoNumerico.Substring(2);
+            }
+
             return conteudo;
         }
 
         /// <summary>
-        /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, etc...
+        /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, NFCom, etc...
         /// </summary>
-        /// <param name="numeroNF">Número da NF, CT ou MDF</param>
+        /// <param name="numeroNF">Número da NF, CT, MDF ou NFCom</param>
+        /// <param name="isNFCom">Se gera o código para NFCom (default = false)</param>
         /// <returns>Código numérico</returns>
-        public static int GerarCodigoNumerico(int numeroNF)
+        public static int GerarCodigoNumerico(int numeroNF, bool isNFCom = false)
         {
             var retorno = 0;
 
             while (retorno == 0)
             {
                 var rnd = new Random(numeroNF);
-
-                retorno = Convert.ToInt32(rnd.Next(1, 99999999).ToString("00000000"));
+                
+                if (isNFCom)
+                {
+                    retorno = Convert.ToInt32(rnd.Next(1, 9999999).ToString("0000000"));
+                }
+                else
+                {
+                    retorno = Convert.ToInt32(rnd.Next(1, 99999999).ToString("00000000"));
+                }
             }
 
             return retorno;
@@ -961,7 +1043,7 @@ namespace Uni.Business.DFe.Utility
         /// Busca o número da chave do Documento Fiscal Eletrônico no XML do Documento Fiscal Eletrônico
         /// </summary>
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
-        /// <returns>Chave do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, etc...)</returns>
+        /// <returns>Chave do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, NFCom, etc...)</returns>
         public static string GetChaveDFe(string xml) => GetChaveDFe(xml, DetectDFeType(xml));
 
         /// <summary>
@@ -969,7 +1051,7 @@ namespace Uni.Business.DFe.Utility
         /// </summary>
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
         /// <param name="typeDFe">Tipo do DFe</param>
-        /// <returns>Chave do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, etc...)</returns>
+        /// <returns>Chave do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, NFCom, etc...)</returns>
         public static string GetChaveDFe(string xml, TipoDFe typeDFe)
         {
             var typeString = "";
@@ -992,6 +1074,10 @@ namespace Uni.Business.DFe.Utility
 
                 case TipoDFe.CFe:
                     typeString = "CFe";
+                    break;
+
+                case TipoDFe.NFCom:
+                    typeString = "NFCom";
                     break;
             }
 
@@ -1180,6 +1266,35 @@ namespace Uni.Business.DFe.Utility
         }
 
         /// <summary>
+        /// Busca o número da chave do Documento Fiscal Eletrônico no XML do Documento Fiscal Eletrônico
+        /// </summary>
+        /// <param name="xml">Conteúdo do XML para busca da chave</param>
+        /// <returns>Chave do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, NFCom, etc...)</returns>
+        public static string GetChaveEventoNFCom(string xml) => GetChaveEventoNFCom(xml, DetectEventoNFComType(xml));
+
+        /// <summary>
+        /// Busca o número da chave do Documento Fiscal Eletrônico no XML do Documento Fiscal Eletrônico
+        /// </summary>
+        /// <param name="xml">Conteúdo do XML para busca da chave</param>
+        /// <param name="typeEventoDFe">Tipo do Evento DFe</param>
+        /// <returns>Chave do evento do DFe (Documento Fiscal Eletrônico = NFe, NFCe, CTe, NFCom, etc...)</returns>
+        public static string GetChaveEventoNFCom(string xml, TipoEventoNFCom typeEventoDFe)
+        {
+            var typeString = "";
+
+            switch (typeEventoDFe)
+            {
+                case TipoEventoNFCom.Cancelamento:
+                    typeString = "110111";
+                    break;
+            }
+
+            var pedacinhos = xml.Split(new string[] { $"Id=\"ID{typeString}" }, StringSplitOptions.None);
+
+            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
+        }
+
+        /// <summary>
         /// Serializar o objeto (Converte o objeto para XML)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
@@ -1335,7 +1450,7 @@ namespace Uni.Business.DFe.Utility
         #endregion Public Methods
 
         /// <summary>
-        /// Gerar a chave dos seguintes documentos fiscais eletrônicos: NFe, NFCe, CTe, MFDe e CTeOS.
+        /// Gerar a chave dos seguintes documentos fiscais eletrônicos: NFe, NFCe, CTe, MFDe, CTeOS e NFCom.
         /// </summary>
         /// <param name="cUF">UF do emitente</param>
         /// <param name="dhEmi">Data de emissão do documento</param>
@@ -1345,22 +1460,43 @@ namespace Uni.Business.DFe.Utility
         /// <param name="nNF">Número da nota fiscal</param>
         /// <param name="tpEmis">Tipo de emissão (Tag tpEmis)</param>
         /// <param name="cNF">Código numérico randômico (Deixe em branco ou nulo para que a DLL gera este código para você)</param>
+        /// <param name="nSiteAutoriz">Número do eite de autorização da NFCom (se existir apenas um único site, o valor será 0 (zero)</param>
         /// <returns>Retorna a chave, completa, do documento fiscal eletrônico com o dígito verificar calculado e concatenado a chave</returns>
-        public static string MontarChaveDFe(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, string cNF = "")
+        public static string MontarChaveDFe(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, string cNF = "", int nSiteAutoriz = 0)
         {
             if (string.IsNullOrWhiteSpace(cNF))
             {
-                cNF = XMLUtility.GerarCodigoNumerico(nNF).ToString("00000000");
+                if (mod == ModeloDFe.NFCom)
+                    cNF = XMLUtility.GerarCodigoNumerico(nNF).ToString("0000000");
+                else
+                    cNF = XMLUtility.GerarCodigoNumerico(nNF).ToString("00000000");
             }
 
-            var chaveDFe = ((int)cUF).ToString() +
-                dhEmi.ToString("yyMM") +
-                cnpjcpf.PadLeft(14, '0') +
-                ((int)mod).ToString().PadLeft(2, '0') +
-                serie.ToString().PadLeft(3, '0') +
-                nNF.ToString().PadLeft(9, '0') +
-                ((int)tpEmis).ToString() +
-                cNF.PadLeft(8, '0');
+            var chaveDFe = string.Empty;
+
+            if (mod == ModeloDFe.NFCom)
+            {
+                chaveDFe = ((int)cUF).ToString() +
+                    dhEmi.ToString("yyMM") +
+                    cnpjcpf.PadLeft(14, '0') +
+                    ((int)mod).ToString().PadLeft(2, '0') +
+                    serie.ToString().PadLeft(3, '0') +
+                    nNF.ToString().PadLeft(9, '0') +
+                    ((int)tpEmis).ToString() +
+                    nSiteAutoriz.ToString() +
+                    cNF.PadLeft(7, '0');
+            }
+            else
+            {
+                chaveDFe = ((int)cUF).ToString() +
+                    dhEmi.ToString("yyMM") +
+                    cnpjcpf.PadLeft(14, '0') +
+                    ((int)mod).ToString().PadLeft(2, '0') +
+                    serie.ToString().PadLeft(3, '0') +
+                    nNF.ToString().PadLeft(9, '0') +
+                    ((int)tpEmis).ToString() +
+                    cNF.PadLeft(8, '0');
+            }
 
             var cDV = XMLUtility.CalcularDVChave(chaveDFe);
 
@@ -1381,7 +1517,7 @@ namespace Uni.Business.DFe.Utility
     public class XMLUtilityInterop
     {
         /// <summary>
-        /// Gerar a chave dos seguintes documentos fiscais eletrônicos: NFe, NFCe, CTe, MFDe e CTeOS.
+        /// Gerar a chave dos seguintes documentos fiscais eletrônicos: NFe, NFCe, CTe, MFDe, CTeOS e NFCom.
         /// </summary>
         /// <param name="cUF">UF do emitente</param>
         /// <param name="dhEmi">Data de emissão do documento</param>
@@ -1391,18 +1527,19 @@ namespace Uni.Business.DFe.Utility
         /// <param name="nNF">Número da nota fiscal</param>
         /// <param name="tpEmis">Tipo de emissão (Tag tpEmis)</param>
         /// <param name="cNF">Código numérico randômico (Deixe em branco ou nulo para que a DLL gera este código para você)</param>
+        /// <param name="nSiteAutoriz">Número do eite de autorização da NFCom (se existir apenas um único site, o valor será 0 (zero)</param>
         /// <returns>Retorna a chave, completa, do documento fiscal eletrônico com o dígito verificar calculado e concatenado a chave</returns>
-        public string MontarChaveDFe(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, string cNF = "") => XMLUtility.MontarChaveDFe(cUF, dhEmi, cnpjcpf, mod, serie, nNF, tpEmis, cNF);
+        public string MontarChaveDFe(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, string cNF = "", nSiteAutoriz = 0) => XMLUtility.MontarChaveDFe(cUF, dhEmi, cnpjcpf, mod, serie, nNF, tpEmis, cNF, nSiteAutoriz);
 
         /// <summary>
-        /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, etc...
+        /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, NFCom, etc...
         /// </summary>
         /// <param name="numeroNF">Número da NF, CT ou MDF</param>
         /// <returns>Código numérico</returns>
         public int GerarCodigoNumerico(int numeroNF) => XMLUtility.GerarCodigoNumerico(numeroNF);
 
         /// <summary>
-        /// Gerar o dígito da chave da NFe, CTe, MDFe ou NFCe
+        /// Gerar o dígito da chave da NFe, CTe, MDFem, NFCe ou NFCom
         /// </summary>
         /// <param name="chave">Chave do DFe (sem o dígito) que deve ser calculado o dígito verificador.</param>
         /// <returns>Dígito verificador</returns>

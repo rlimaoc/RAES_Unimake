@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-  <Heranca>SVAN.xml</Heranca>
+	<Heranca>SVRS.xml</Heranca>
 </Configuracoes>

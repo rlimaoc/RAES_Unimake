@@ -41,7 +41,7 @@ namespace Uni.DFe.Test
             private set => ThrowHelper.Instance.Throw(new Exception("Não é possível atribuir um certificado digital! Somente resgate o valor da propriedade que o certificado é definido automaticamente."));
         }
 
-        public static string CNPJEmpresaCertificado { get; set; } = "06117473000150";
-        public static UFBrasil UFEmpresaCertificado { get; set; } = UFBrasil.PR;
+        public static string CNPJEmpresaCertificado { get; set; } = "26871414000180";
+        public static UFBrasil UFEmpresaCertificado { get; set; } = UFBrasil.SP;
     }
 }

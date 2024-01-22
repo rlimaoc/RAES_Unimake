@@ -14,6 +14,9 @@ Antes de utilizar essa DLL, atente-se para as alterações em [Breaking Changes]
 
 ## Alterações
 
++ 2024-01-24
+  1. Criados os arquivos XML de configuração dos estados
+
 + 2024-01-17
   1. Alterado o enum ModeloNFPapel para ModeloNFImpresso
 

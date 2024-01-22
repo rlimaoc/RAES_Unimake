@@ -6678,6 +6678,40 @@ namespace Uni.Business.DFe.Servicos
 
         #endregion 
 
+        #region NFCom
+
+        /// <summary>
+        /// XML de consulta status do serviço da NFCom
+        /// </summary>
+        [Description("XML de consulta status do serviço da NFCom")]
+        NFComStatusServico = 0,
+
+        /// <summary>
+        /// XML de consulta situação da NFCom
+        /// </summary>
+        [Description("XML de consulta situação da NFCom")]
+        NFComConsultaSituacao = 1,
+
+        /// <summary>
+        /// XML de envio de evento da NFCom
+        /// </summary>
+        [Description("XML de envio de evento da NFCom")]
+        NFComEnvioEvento = 2,
+
+        /// <summary>
+        /// XML individual da NFCom
+        /// </summary>
+        [Description("XML individual da NFCom")]
+        NFCom = 3,
+
+        /// <summary>
+        /// XML de distribuição da NFCom com protocolo de autorização anexado
+        /// </summary>
+        [Description("XML de distribuição da NFCom com protocolo de autorização anexado")]
+        NFComDistribuicao = 4,
+
+        #endregion 
+
         /// <summary>
         /// Não foi possível identificar o tipo do XML
         /// </summary>

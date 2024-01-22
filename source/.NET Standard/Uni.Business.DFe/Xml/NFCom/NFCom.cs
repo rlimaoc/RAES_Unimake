@@ -334,6 +334,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         [XmlElement("nNF")]
         public int NNF { get; set; }
 
+        #region CNF
         [XmlElement("cNF")]
         public string CNF
         {
@@ -347,7 +348,7 @@ namespace Uni.Business.DFe.Xml.NFCom
                         throw new Exception("Defina o conteúdo da TAG <nNF>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
 
-                    retorno = XMLUtility.GerarCodigoNumerico(NNF).ToString("0000000");
+                    retorno = XMLUtility.GerarCodigoNumerico(NNF, true).ToString("0000000");
                 }
                 else
                 {
@@ -358,6 +359,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             }
             set => CNFField = value;
         }
+        #endregion
 
         [XmlElement("cDV")]
         public int CDV { get; set; }
@@ -441,8 +443,8 @@ namespace Uni.Business.DFe.Xml.NFCom
         public bool ShouldSerializeIndPrePago() => (int)IndPrePago == 1;
         public bool ShouldSerializeIndCessaoMeiosRede() => (int)IndCessaoMeiosRede == 1;
         public bool ShouldSerializeIndNotaEntrada() => (int)IndNotaEntrada == 1;
-        public bool ShouldSerializeDhCont() => DhCont != null && !string.IsNullOrWhiteSpace(XJust);
-        public bool ShouldSerializeXJust() => DhCont != null && !string.IsNullOrWhiteSpace(XJust);
+        public bool ShouldSerializeDhContField() => !string.IsNullOrWhiteSpace(DhContField) && !string.IsNullOrWhiteSpace(XJust);
+        public bool ShouldSerializeXJust() => !string.IsNullOrWhiteSpace(DhContField) && !string.IsNullOrWhiteSpace(XJust);
 
         #endregion
     }
@@ -578,14 +580,93 @@ namespace Uni.Business.DFe.Xml.NFCom
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfcom")]
-    public class EnderDest : TEndereco { }
+    public class EnderDest
+    {
+        private string XLgrField;
+        private string XCplField;
+        private string NroField;
+        private string XBairroField;
+        private string XMunField;
+        private string XPaisField = "BRASIL";
+
+        [XmlElement("xLgr")]
+        public string XLgr
+        {
+            get => XLgrField;
+            set => XLgrField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+        }
+
+        [XmlElement("nro")]
+        public string Nro
+        {
+            get => NroField;
+            set => NroField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+        }
+
+        [XmlElement("xCpl")]
+        public string XCpl
+        {
+            get => XCplField;
+            set => XCplField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+        }
+
+        [XmlElement("xBairro")]
+        public string XBairro
+        {
+            get => XBairroField;
+            set => XBairroField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+        }
+
+        [XmlElement("cMun")]
+        public int CMun { get; set; }
+
+        [XmlElement("xMun")]
+        public string XMun
+        {
+            get => XMunField;
+            set => XMunField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+        }
+
+        [XmlElement("CEP")]
+        public string CEP { get; set; }
+
+        [XmlElement("UF")]
+        public UFBrasil UF { get; set; }
+
+        [XmlElement("cPais")]
+        public int CPais { get; set; } = 1058;
+
+        [XmlElement("xPais")]
+        public string XPais
+        {
+            get => XPaisField;
+            set => XPaisField = value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+        }
+
+        [XmlElement("fone")]
+        public string Fone { get; set; }
+
+        [XmlElement("email")]
+        public string Email { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
+        public bool ShouldSerializeCPais() => CPais > 0;
+        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
+
+        public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
+        public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
+
+        #endregion 
+    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Uni.Business.DFe.Xml.NFCom.Assinante")]
     [ComVisible(true)]
 #endif
-    [Serializable()]
+        [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfcom")]
     public class Assinante
     {
@@ -2574,7 +2655,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         public UFBrasil UF { get; set; }
 
         [XmlElement("cPais")]
-        public int CPais { get; set; } = 1048;
+        public int CPais { get; set; }
 
         [XmlElement("xPais")]
         public string XPais
