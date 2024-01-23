@@ -10,7 +10,7 @@ namespace Uni.DFe.Test.NFCom62
     /// <summary>
     /// Testar o serviço de envio da NFCom
     /// </summary>
-    public class AutorizacaoTest
+    public class RecepcaoTest
     {
         /// <summary>
         /// Enviar uma NFCom no modo síncrono somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
@@ -21,7 +21,8 @@ namespace Uni.DFe.Test.NFCom62
         [Theory]
         [Trait("DFe", "NFCom")]
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
-        public void EnviarNFCeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
+        public void EnviarNFComSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             var xml = new NFCom
             {
@@ -37,7 +38,7 @@ namespace Uni.DFe.Test.NFCom62
                             TpAmb = tipoAmbiente,
                             Mod = ModeloDFe.NFCom,
                             Serie = 666,
-                            NNF = 57962,
+                            NNF = 1,
                             DhEmi = DateTime.Now,
                             TpEmis = TipoEmissao.Normal,
                             NSiteAutoriz = 0,
@@ -181,7 +182,6 @@ namespace Uni.DFe.Test.NFCom62
                 }
             };
 
-
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.NFCom,
@@ -192,7 +192,7 @@ namespace Uni.DFe.Test.NFCom62
                 CSCIDToken = 1
             };
 
-            var autorizacao = new Autorizacao(xml, configuracao);
+            var autorizacao = new Recepcao(xml, configuracao);
             autorizacao.Executar();
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());

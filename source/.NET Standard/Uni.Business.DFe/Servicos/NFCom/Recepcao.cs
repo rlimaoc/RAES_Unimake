@@ -16,10 +16,10 @@ namespace Uni.Business.DFe.Servicos.NFCom
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Uni.Business.DFe.Servicos.NFCom.Autorizacao")]
+    [ProgId("Uni.Business.DFe.Servicos.NFCom.Recepcao")]
     [ComVisible(true)]
 #endif
-    public class Autorizacao : ServicoBase, IInteropService<Xml.NFCom.NFCom>
+    public class Recepcao : ServicoBase, IInteropService<Xml.NFCom.NFCom>
     {
         #region Private Fields
 
@@ -280,7 +280,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
         /// </summary>
         /// <param name="nfCom">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public Autorizacao(Xml.NFCom.NFCom nfCom, Configuracao configuracao) : this()
+        public Recepcao(Xml.NFCom.NFCom nfCom, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
@@ -293,7 +293,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao() : base() { }
+        public Recepcao() : base() { }
 
         #endregion Public Constructors
 

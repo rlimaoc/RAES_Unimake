@@ -37,7 +37,7 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
     </RecepcaoEvento>
-    <Autorizacao versao="1.00">
+    <Recepcao versao="1.00">
       <Descricao>Recepção da nota fiscal fatura de comunicação</Descricao>
       <WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoProducao>
@@ -50,6 +50,6 @@
       <TagAtributoID>infNFCom</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
-    </Autorizacao>
+    </Recepcao>
   </Servicos>
 </Configuracoes>
