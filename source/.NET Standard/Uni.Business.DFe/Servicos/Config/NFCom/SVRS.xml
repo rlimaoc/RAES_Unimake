@@ -32,8 +32,8 @@
       <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionHomologacao>
       <WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionProducao>
       <SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>eventoNFCom</TagAssinatura>
+      <TagAtributoID>infEventoNFCom</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
     </RecepcaoEvento>
@@ -46,8 +46,8 @@
       <UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/NFCom/QRCode</UrlQrCodeHomologacao>
       <UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/NFCom/QRCode</UrlQrCodeProducao>
       <SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>NFCom</TagAssinatura>
+      <TagAtributoID>infNFCom</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
     </Autorizacao>

@@ -666,7 +666,7 @@ namespace Uni.Business.DFe.Xml.NFCom
     [ProgId("Uni.Business.DFe.Xml.NFCom.Assinante")]
     [ComVisible(true)]
 #endif
-        [Serializable()]
+    [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfcom")]
     public class Assinante
     {

@@ -35,6 +35,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         [XmlElement("xMotivo")]
         public string XMotivo { get; set; }
 
+        #region CUF
         [XmlIgnore]
         public UFBrasil CUF { get; set; }
 
@@ -44,6 +45,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             get => (int)CUF;
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
+        #endregion
 
         [XmlElement("protNFCom")]
         public ProtNFCom ProtNFCom { get; set; }

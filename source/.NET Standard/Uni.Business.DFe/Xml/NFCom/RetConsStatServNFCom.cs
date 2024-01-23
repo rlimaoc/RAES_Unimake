@@ -42,6 +42,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        #region DhRecbto
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -59,10 +60,12 @@ namespace Uni.Business.DFe.Xml.NFCom
             set => DhRecbto = DateTimeOffset.Parse(value);
 #endif
         }
+        #endregion
 
         [XmlElement("tMed")]
         public int TMed { get; set; }
 
+        #region DhRetorno
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRetorno { get; set; }
@@ -81,6 +84,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             set => DhRetorno = DateTimeOffset.Parse(value);
 #endif
         }
+        #endregion
 
         [XmlElement("xObs")]
         public string XObs { get; set; }

@@ -4,9 +4,13 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Xml.Schema;
+using System.Xml;
 using System.Xml.Serialization;
 using Uni.Business.DFe.Servicos;
-using Uni.Business.DFe.Xml.CTe;
+using Uni.Business.DFe.Utility;
 
 namespace Uni.Business.DFe.Xml.NFCom
 {
@@ -18,11 +22,14 @@ namespace Uni.Business.DFe.Xml.NFCom
     [XmlRoot("eventoNFCom", Namespace = "http://www.portalfiscal.inf.br/nfcom", IsNullable = false)]
     public class EventoNFCom : XMLBase
     {
+        [XmlElement("infEvento", Order = 0)]
+        public InfEvento InfEvento { get; set; }
+
+        [XmlElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#", Order = 1)]
+        public Signature Signature { get; set; }
+
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
-
-        [XmlElement("infEvento")]
-        public InfEvento InfEvento { get; set; }
     }
 
 #if INTEROP
@@ -30,8 +37,8 @@ namespace Uni.Business.DFe.Xml.NFCom
     [ProgId("Uni.Business.DFe.Xml.NFCom.InfEvento")]
     [ComVisible(true)]
 #endif
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfecom")]
-    [XmlRoot("infEvento", Namespace = "http://www.portalfiscal.inf.br/nfcom", IsNullable = false)]
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class InfEvento
     {
         #region Private Fields
@@ -41,7 +48,8 @@ namespace Uni.Business.DFe.Xml.NFCom
         #endregion Private Fields
 
         #region Public Properties
-        
+
+        #region COrgao
         [XmlIgnore]
         public UFBrasil COrgao { get; set; }
 
@@ -51,6 +59,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             get => (int)COrgao;
             set => COrgao = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
+        #endregion
 
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
@@ -61,6 +70,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         [XmlElement("chNFCom")]
         public string ChNFCom { get; set; }
 
+        #region DhEvento
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEvento { get; set; }
@@ -77,8 +87,8 @@ namespace Uni.Business.DFe.Xml.NFCom
 #else
             set => DhEvento = DateTimeOffset.Parse(value);
 #endif
-
         }
+        #endregion
 
         [XmlElement("tpEvento")]
         public TipoEventoNFCom TpEvento { get; set; }
@@ -131,6 +141,142 @@ namespace Uni.Business.DFe.Xml.NFCom
         }
 
         #endregion Public Constructors
+    }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Uni.Business.DFe.Xml.NFCom.EventoDetalhe")]
+    [ComVisible(true)]
+#endif
+    [XmlInclude(typeof(DetEventoCanc))]
+    public class EventoDetalhe : IXmlSerializable
+    {
+        #region Internal Properties
+
+        internal XmlReader XmlReader { get; set; }
+
+        private static readonly List<string> hasField = new List<string>
+        {
+            "COrgaoAutor",
+        };
+
+        private static readonly BindingFlags bindingFlags = BindingFlags.Public |
+            BindingFlags.Instance |
+            BindingFlags.IgnoreCase;
+
+        #endregion Internal Properties
+
+        #region Internal Methods
+
+        internal virtual void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            var type = GetType();
+
+            if (XmlReader.HasAttributes)
+            {
+                if (XmlReader.GetAttribute("versao") != "")
+                {
+                    var pi = type.GetProperty("versao", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+                    pi?.SetValue(this, XmlReader.GetAttribute("versao"));
+                }
+            }
+
+            while (XmlReader.Read())
+            {
+                if (XmlReader.NodeType != XmlNodeType.Element)
+                {
+                    continue;
+                }
+
+                SetValue(type);
+            }
+        }
+
+        internal virtual void SetValue(Type type)
+        {
+            var pi = GetPropertyInfo(type);
+
+            if (pi == null)
+            {
+                return;
+            }
+
+            SetValue(pi);
+        }
+
+        internal virtual void SetValue(PropertyInfo pi) =>
+            pi?.SetValue(this, Converter.ToAny(XmlReader.GetValue<object>(XmlReader.Name), pi.PropertyType));
+
+        protected internal PropertyInfo GetPropertyInfo(Type type)
+        {
+            var pi = hasField.Exists(w => w.ToLower() == XmlReader.Name.ToLower()) ?
+                                type.GetProperty(XmlReader.Name + "Field", bindingFlags) :
+                                type.GetProperty(XmlReader.Name, bindingFlags);
+            return pi;
+        }
+
+        #endregion Internal Methods
+
+        #region Public Properties
+
+        [XmlElement("descEvento", Order = 0)]
+        public virtual string DescEvento { get; set; }
+
+        [XmlAttribute(AttributeName = "versao", DataType = "token")]
+        public virtual string Versao { get; set; }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
+        public XmlSchema GetSchema() => default;
+
+        public void ReadXml(XmlReader reader) => XmlReader = reader;
+
+        public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versao", Versao);
+
+        #endregion Public Methods
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Uni.Business.DFe.Xml.NFCom.DetEventoCanc")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCanc : EventoDetalhe
+    {
+        #region Public Properties
+
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Cancelamento";
+
+        [XmlElement("nProt", Order = 1)]
+        public string NProt { get; set; }
+
+        [XmlElement("xJust", Order = 2)]
+        public string XJust { get; set; }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+            <descEvento>{DescEvento}</descEvento>
+            <nProt>{NProt}</nProt>
+            <xJust>{XJust}</xJust>");
+        }
+
+        #endregion Public Methods
     }
 }

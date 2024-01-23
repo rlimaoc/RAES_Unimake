@@ -13,11 +13,11 @@ namespace Uni.DFe.Test.NFCom62
     public class AutorizacaoTest
     {
         /// <summary>
-        /// Enviar uma NFe no modo síncrono somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Enviar uma NFCom no modo síncrono somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua o envio por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
-        /// <param name="ufBrasil">UF para onde deve ser enviado a NFe</param>
-        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a NFe</param>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a NFCom</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a NFCom</param>
         [Theory]
         [Trait("DFe", "NFCom")]
         [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
