@@ -1102,13 +1102,14 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeICMS00() => (int)IndSemCST == 1 && ICMS00 != null;
-        public bool ShouldSerializeICMS20() => (int)IndSemCST == 1 && ICMS20 != null;
-        public bool ShouldSerializeICMS40() => (int)IndSemCST == 1 && ICMS40 != null;
-        public bool ShouldSerializeICMS51() => (int)IndSemCST == 1 && ICMS51 != null;
-        public bool ShouldSerializeICMS90() => (int)IndSemCST == 1 && ICMS90 != null;
-        public bool ShouldSerializeICMSSN() => (int)IndSemCST == 1 && ICMSSN != null;
-        public bool ShouldSerializeICMSUFDest() => (int)IndSemCST == 1 && ICMSUFDest != null;
+        public bool ShouldSerializeIndSemCST() => IndSemCST > 0;
+        public bool ShouldSerializeICMS00() => IndSemCST == 0 && ICMS00 != null;
+        public bool ShouldSerializeICMS20() => IndSemCST == 0 && ICMS20 != null;
+        public bool ShouldSerializeICMS40() => IndSemCST == 0 && ICMS40 != null;
+        public bool ShouldSerializeICMS51() => IndSemCST == 0 && ICMS51 != null;
+        public bool ShouldSerializeICMS90() => IndSemCST == 0 && ICMS90 != null;
+        public bool ShouldSerializeICMSSN() => IndSemCST == 0 && ICMSSN != null;
+        public bool ShouldSerializeICMSUFDest() => IndSemCST == 0 && ICMSUFDest != null;
         public bool ShouldSerializePIS() => PIS != null;
         public bool ShouldSerializeCOFINS() => COFINS != null;
         public bool ShouldSerializeFUST() => FUST != null;
@@ -1192,8 +1193,8 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         #region ShouldSerialize
 
-        public bool ShouldSerializePFCP() => PFCP > 0 && VFCP > 0;
-        public bool ShouldSerializeVFCP() => PFCP > 0 && VFCP > 0;
+        public bool ShouldSerializePFCP() => Convert.ToDouble(VFCP) >= 0;
+        public bool ShouldSerializeVFCP() => Convert.ToDouble(PFCP) >= 0;
 
         #endregion
     }
@@ -1299,10 +1300,10 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVICMSDeson() => VICMSDeson > 0 && !string.IsNullOrWhiteSpace(CBenef);
-        public bool ShouldSerializeCBenef() => VICMSDeson > 0 && !string.IsNullOrWhiteSpace(CBenef);
-        public bool ShouldSerializePFCP() => PFCP > 0 && VFCP > 0;
-        public bool ShouldSerializeVFCP() => PFCP > 0 && VFCP > 0;
+        public bool ShouldSerializeVICMSDeson() => !string.IsNullOrWhiteSpace(CBenef);
+        public bool ShouldSerializeCBenef() => Convert.ToDouble(VICMSDeson) >= 0;
+        public bool ShouldSerializePFCP() => Convert.ToDouble(VFCP) >= 0;
+        public bool ShouldSerializeVFCP() => Convert.ToDouble(PFCP) >= 0;
 
         #endregion
     }
@@ -1336,8 +1337,8 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVICMSDeson() => VICMSDeson > 0 && !string.IsNullOrWhiteSpace(CBenef);
-        public bool ShouldSerializeCBenef() => VICMSDeson > 0 && !string.IsNullOrWhiteSpace(CBenef);
+        public bool ShouldSerializeVICMSDeson() => !string.IsNullOrWhiteSpace(CBenef);
+        public bool ShouldSerializeCBenef() => Convert.ToDouble(VICMSDesonField) >= 0;
 
         #endregion
     }
@@ -1371,8 +1372,8 @@ namespace Uni.Business.DFe.Xml.NFCom
  
         #region ShouldSerialize
 
-        public bool ShouldSerializeVICMSDeson() => VICMSDeson > 0 && !string.IsNullOrWhiteSpace(CBenef);
-        public bool ShouldSerializeCBenef() => VICMSDeson > 0 && !string.IsNullOrWhiteSpace(CBenef);
+        public bool ShouldSerializeVICMSDesonField() => !string.IsNullOrWhiteSpace(CBenef);
+        public bool ShouldSerializeCBenef() => Convert.ToDouble(VICMSDesonField) >= 0;
 
         #endregion
     }
@@ -1425,12 +1426,55 @@ namespace Uni.Business.DFe.Xml.NFCom
         }
         #endregion
 
+        #region VICMSDeson
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+        #endregion
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        #region PFCP
+        [XmlIgnore]
+        public double PFCP { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCPField
+        {
+            get => PFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => PFCP = Converter.ToDouble(value);
+        }
+        #endregion
+
+        #region VFCP
+        [XmlIgnore]
+        public double VFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCPField
+        {
+            get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCP = Converter.ToDouble(value);
+        }
+        #endregion
+
         #region ShouldSerialize
 
-        public bool ShouldSerializeVBC() => VBC > 0 && PICMS > 0 && VICMS > 0;
-        public bool ShouldSerializePICMS() => VBC > 0 && PICMS > 0 && VICMS > 0;
-        public bool ShouldSerializeVICMS() => VBC > 0 && PICMS > 0 && VICMS > 0;
-
+        public bool ShouldSerializePICMS() => Convert.ToDouble(VBC) >= 0 && Convert.ToDouble(VICMS) >= 0;
+        public bool ShouldSerializeVBC() => Convert.ToDouble(PICMS) >= 0 && Convert.ToDouble(VICMS) > 0;
+        public bool ShouldSerializeVICMS() => Convert.ToDouble(PICMS) > 0 && Convert.ToDouble(VBC) >= 0;
+        public bool ShouldSerializeVICMSDeson() => !string.IsNullOrWhiteSpace(CBenef);
+        public bool ShouldSerializeCBenef() => Convert.ToDouble(VICMSDeson) >= 0;
+        public bool ShouldSerializePFCP() => Convert.ToDouble(VFCP) >= 0;
+        public bool ShouldSerializeVFCP() => Convert.ToDouble(PFCP) >= 0;
+        
         #endregion
     }
 
@@ -1931,19 +1975,32 @@ namespace Uni.Business.DFe.Xml.NFCom
         }
         #endregion
 
+        #region VFCP
+        [XmlIgnore]
+        public double VFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCPField
+        {
+            get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCP = Converter.ToDouble(value);
+        }
+        #endregion
+        
         [XmlElement("gProc")]
         public List<GProc> GProc { get; set; }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVDescField() => VDesc > 0;
-        public bool ShouldSerializeVOutroField() => VOutro > 0;
+        public bool ShouldSerializeVDescField() => Convert.ToDouble(VDesc) >= 0;
+        public bool ShouldSerializeVOutroField() => Convert.ToDouble(VOutro) >= 0;
         public bool ShouldSerializeIndDevolucao() => (int)IndDevolucao == 1;
-        public bool ShouldSerializeVBC() => VBC > 0;
-        public bool ShouldSerializePICMS() => PICMS > 0;
-        public bool ShouldSerializeVICMS() => VICMS > 0;
-        public bool ShouldSerializeVPISField() => VPIS > 0;
-        public bool ShouldSerializeVCOFINSField() => VCOFINS > 0;
+        public bool ShouldSerializeVBC() => Convert.ToDouble(VBC) >= 0;
+        public bool ShouldSerializePICMS() => Convert.ToDouble(PICMS) >= 0;
+        public bool ShouldSerializeVICMS() => Convert.ToDouble(VICMS) >= 0;
+        public bool ShouldSerializeVPISField() => Convert.ToDouble(VPIS) >= 0;
+        public bool ShouldSerializeVCOFINSField() => Convert.ToDouble(VCOFINS) >= 0;
+        public bool ShouldSerializeVFCPField() => Convert.ToDouble(VFCP) >= 0;
 
         #endregion    
     }
@@ -2675,7 +2732,6 @@ namespace Uni.Business.DFe.Xml.NFCom
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
         public bool ShouldSerializeCPais() => CPais > 0;
         public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
-
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 

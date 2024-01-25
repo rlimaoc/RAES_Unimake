@@ -187,9 +187,15 @@ namespace Uni.DFe.Test.NFCom62
                 TipoDFe = TipoDFe.NFCom,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital,
-                CodigoUF = (int)ufBrasil,
+                //CodigoUF = (int)ufBrasil,
                 CSC = "121233",
-                CSCIDToken = 1
+                CSCIDToken = 1,
+                RequestURIHomologacao = "https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx",
+                WebActionHomologacao = "http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao",
+                UrlQrCodeHomologacao = "https://dfe-portal.svrs.rs.gov.br/NFCom/QRCode",
+                TagAssinatura = "NFCom",
+                TagAtributoID = "infNFCom",
+                SchemaArquivo = "nfcom_v{0}.xsd",
             };
 
             var autorizacao = new Recepcao(xml, configuracao);

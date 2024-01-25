@@ -9241,6 +9241,11 @@ namespace Uni.Business.DFe.Servicos
         CreditosAntecipacao = 500501,
 
         /// <summary>
+        /// 0500601 - Repasse de Pré=Pago
+        /// </summary>
+        RepassePrePago = 500601,
+
+        /// <summary>
         /// 1200101	- Item lançado em outra NFCom - Cobrança centralizada
         /// </summary>
         CobrancaCentralizada = 1200101,
