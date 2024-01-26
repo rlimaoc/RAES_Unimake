@@ -36,6 +36,7 @@
       <TagAtributoID>infEventoNFCom</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
+      <GZIPCompress>true</GZIPCompress>
     </RecepcaoEvento>
     <Recepcao versao="1.00">
       <Descricao>Recepção da nota fiscal fatura de comunicação</Descricao>
@@ -50,6 +51,7 @@
       <TagAtributoID>infNFCom</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
+      <GZIPCompress>true</GZIPCompress>
     </Recepcao>
   </Servicos>
 </Configuracoes>
