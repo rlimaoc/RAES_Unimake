@@ -238,7 +238,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
         /// <summary>
         /// Propriedade contendo o XML da NFCom com o protocolo de autorização anexado - Funciona somente para envio síncrono
         /// </summary>
-        public NfcomProc NfeProcResult
+        public NfcomProc NfcomProcResult
         {
             get
             {
