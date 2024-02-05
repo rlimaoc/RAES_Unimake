@@ -4,8 +4,7 @@
 	<xs:include schemaLocation="eventoNFComTiposBasico_v1.00.xsd"/>
 	<xs:element name="evCancNFCom">
 		<xs:annotation>
-			<xs:documentation>Schema XML de validação do evento do cancelamento 
-110111</xs:documentation>
+			<xs:documentation>Schema XML de validação do evento do cancelamento 110111</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>

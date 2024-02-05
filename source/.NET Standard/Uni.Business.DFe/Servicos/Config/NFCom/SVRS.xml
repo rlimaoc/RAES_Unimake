@@ -31,12 +31,18 @@
       <WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionHomologacao>
       <WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionProducao>
-      <SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
+      <SchemasEspecificos>
+        <Tipo>
+          <ID>110111</ID>
+          <SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>evCancNFCom_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+      </SchemasEspecificos>
       <TagAssinatura>eventoNFCom</TagAssinatura>
-      <TagAtributoID>infEventoNFCom</TagAtributoID>
+      <TagAtributoID>infEvento</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
-      <GZIPCompress>true</GZIPCompress>
     </RecepcaoEvento>
     <Recepcao versao="1.00">
       <Descricao>Recepção da nota fiscal fatura de comunicação</Descricao>

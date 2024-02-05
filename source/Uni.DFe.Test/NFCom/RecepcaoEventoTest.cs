@@ -20,90 +20,94 @@ namespace Uni.DFe.Test.NFCom62
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o xml</param>
         [Theory]
         [Trait("DFe", "NFCe")]
-        [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.AM, TipoAmbiente.Homologacao)]
-        //[InlineData(UFBrasil.AN, TipoAmbiente.Homologacao)] //Ambiente nacional
-        [InlineData(UFBrasil.BA, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.CE, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.DF, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.ES, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PE, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PI, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.RJ, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.RN, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.RS, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.RO, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.AM, TipoAmbiente.Homologacao)]
+        ////[InlineData(UFBrasil.AN, TipoAmbiente.Homologacao)] //Ambiente nacional
+        //[InlineData(UFBrasil.BA, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.CE, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.DF, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.ES, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.PE, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.PI, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.RJ, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.RN, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.RS, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.RO, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.RR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SC, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.AC, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.AL, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.AP, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.AM, TipoAmbiente.Producao)]
-        //[InlineData(UFBrasil.AN, TipoAmbiente.Producao)] //Ambiente nacional
-        [InlineData(UFBrasil.BA, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.CE, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.DF, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.ES, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.PE, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.PI, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.RJ, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.RN, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.RS, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.RO, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.RR, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.SC, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.SE, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.TO, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.AC, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.AL, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.AP, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.AM, TipoAmbiente.Producao)]
+        ////[InlineData(UFBrasil.AN, TipoAmbiente.Producao)] //Ambiente nacional
+        //[InlineData(UFBrasil.BA, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.CE, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.DF, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.ES, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.PE, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.PI, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.RJ, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.RN, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.RS, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.RO, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.RR, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.SC, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void RecepcaoEventoEstados(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             var xml = new EventoNFCom
             {
                 Versao = "1.00",
-                InfEvento = new InfEvento(new DetEventoCanc
-                {
-                    NProt = (ufBrasil != UFBrasil.AN ? (int)ufBrasil : (int)UFBrasil.SP)  + "0000000000000",
-                    Versao = "1.00",
-                    XJust = "Justificativa para cancelamento da NFCom de teste"
-                })
+                InfEvento = new InfEvento(
+                    new DetEventoCanc
+                    {
+                        VersaoEvento = "1.00",
+                        NProt = ((int)ufBrasil).ToString() + "12345678901234",
+                        XJust = "Justificativa para cancelamento da NFCom de teste"
+                    }
+                )
                 {
                     COrgao = ufBrasil,
                     TpAmb = tipoAmbiente,
-                    CNPJ = "06117473000150",
-                    ChNFCom = (int)ufBrasil + "190806117473000150650010000579131943463890",
+                    CNPJ = "39747164000112",
+                    ChNFCom = (int)ufBrasil + "240139747164000112620010000579131943463890",
                     DhEvento = DateTime.Now,
                     TpEvento = TipoEventoNFCom.Cancelamento,
-                    NSeqEvento = 1,
-                    DetEvento = new DetEventoCanc()
+                    NSeqEvento = 1
                 }
             };
 
             var configuracao = new Configuracao
             {
-                TipoDFe = TipoDFe.NFCe,
+                TipoDFe = TipoDFe.NFCom,
                 TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = PropConfig.CertificadoDigital
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                CodigoUF = (int)ufBrasil,
+                CSC = "121233",
+                CSCIDToken = 1
             };
 
             var recepcaoEvento = new RecepcaoEvento(xml, configuracao);

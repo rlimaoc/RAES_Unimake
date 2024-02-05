@@ -24,14 +24,13 @@
 										<xs:annotation>
 											<xs:documentation>Código da UF de emissão e autorização da NFCom</xs:documentation>
 											<xs:documentation>Código da UF de emissão e autorização do Documento Fiscal. Utilizar a
-Tabela do IBGE de código de unidades da federação.</xs:documentation>
+											Tabela do IBGE de código de unidades da federação.</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="tpAmb" type="TAmb">
 										<xs:annotation>
 											<xs:documentation>Tipo do Ambiente</xs:documentation>
-											<xs:documentation>1 - Produção; 
-2 - Homologação</xs:documentation>
+											<xs:documentation>1 - Produção; 2 - Homologação</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="mod" type="TModNFCom">
@@ -85,16 +84,14 @@ Tabela do IBGE de código de unidades da federação.</xs:documentation>
 									<xs:element name="tpEmis" type="TtpEmis">
 										<xs:annotation>
 											<xs:documentation>Forma de emissão do Documento Fiscal </xs:documentation>
-											<xs:documentation>1 - Normal
-; 2 - Contingência</xs:documentation>
+											<xs:documentation>1 - Normal; 2 - Contingência</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="nSiteAutoriz">
 										<xs:annotation>
 											<xs:documentation>Identificação do número do Site do Autorizador de recepção da NFCom</xs:documentation>
 											<xs:documentation>Se o autorizador da NFCom possuir apenas um site deverá ser informado com Zero (0), em caso de Autorizador trabalhar com múltiplos sites indicar o número do site para qual foi endereçada a NFCOM (1 a 9).
-
-Observação: o ambiente autorizador que trabalhar com mais de um Site deverá divulgar para cada endereço de site qual número correspondente de nSiteAutoriz o contribuinte pode usar</xs:documentation>
+											Observação: o ambiente autorizador que trabalhar com mais de um Site deverá divulgar para cada endereço de site qual número correspondente de nSiteAutoriz o contribuinte pode usar</xs:documentation>
 										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
@@ -111,9 +108,10 @@ Observação: o ambiente autorizador que trabalhar com mais de um Site deverá d
 									<xs:element name="finNFCom" type="TFinNFCom">
 										<xs:annotation>
 											<xs:documentation>Finalidade de emissão da NFCom</xs:documentation>
-											<xs:documentation>0- NFCom Normal; 
-3 - NFCom de Substituição; 
-4 - NFCom de Ajuste;</xs:documentation>
+											<xs:documentation>
+											0- NFCom Normal; 
+											3 - NFCom de Substituição; 
+											4 - NFCom de Ajuste;</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="tpFat" type="TFatNFCom">
@@ -152,7 +150,7 @@ Observação: o ambiente autorizador que trabalhar com mais de um Site deverá d
 										<xs:annotation>
 											<xs:documentation>Indicador de Sessão de Meios de Rede.</xs:documentation>
 											<xs:documentation>Uma vez informado (valor = 1), essa tag dispensa geração do grupo Fatura.
-Apenas para notas dos tipos Normal e Substituição com tipo de faturamento normal</xs:documentation>
+											Apenas para notas dos tipos Normal e Substituição com tipo de faturamento normal</xs:documentation>
 										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
@@ -179,8 +177,7 @@ Apenas para notas dos tipos Normal e Substituição com tipo de faturamento norm
 									</xs:element>
 									<xs:sequence minOccurs="0">
 										<xs:annotation>
-											<xs:documentation>Informar apenas
-para tpEmis diferente de 1</xs:documentation>
+											<xs:documentation>Informar apenas para tpEmis diferente de 1</xs:documentation>
 										</xs:annotation>
 										<xs:element name="dhCont" type="TDateTimeUTC">
 											<xs:annotation>
@@ -231,10 +228,11 @@ para tpEmis diferente de 1</xs:documentation>
 									<xs:element name="CRT" type="TCRT">
 										<xs:annotation>
 											<xs:documentation>Código do Regime Tributário</xs:documentation>
-											<xs:documentation>Informar: 1=Simples Nacional; 
-2=Simples Nacional, excesso sublimite de receita bruta;
-3=Regime Normal. 
-</xs:documentation>
+											<xs:documentation>Informar:
+											1=Simples Nacional; 
+											2=Simples Nacional, excesso sublimite de receita bruta;
+											3=Regime Normal. 
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="xNome">
@@ -301,7 +299,7 @@ para tpEmis diferente de 1</xs:documentation>
 											<xs:annotation>
 												<xs:documentation>Identificação do destinatário outros</xs:documentation>
 												<xs:documentation>Identificação do destinatário não obrigado a inscrição do CPF tais como estrangeiro, indígena e quilombola;
-Em caso de não contar CPF do assinante, informar o RG</xs:documentation>
+												Em caso de não contar CPF do assinante, informar o RG</xs:documentation>
 											</xs:annotation>
 											<xs:simpleType>
 												<xs:restriction base="xs:string">
@@ -316,14 +314,12 @@ Em caso de não contar CPF do assinante, informar o RG</xs:documentation>
 									<xs:element name="indIEDest" type="TIndIEDest">
 										<xs:annotation>
 											<xs:documentation>Indicador da IE do Destinatário</xs:documentation>
-											<xs:documentation>1 - Contribuinte ICMS (informar a IE do destinatário); 
-
-2 - Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS;
-
- 9 - Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS. 
-
-Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag IE do destinatário com o literal ISENTO.
-</xs:documentation>
+											<xs:documentation>
+												1 - Contribuinte ICMS (informar a IE do destinatário); 
+												2 - Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS;
+												9 - Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS. 
+												Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag IE do destinatário com o literal ISENTO.
+											</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="IE" type="TIeDest" minOccurs="0">
@@ -372,15 +368,16 @@ Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag
 									<xs:element name="tpAssinante" type="TAssinante">
 										<xs:annotation>
 											<xs:documentation>Tipo de assinante</xs:documentation>
-											<xs:documentation>1-Comercial;
-2-Industrial;
-3-Residencial/Pessoa Física;
-4-Produtor Rural;
-5-Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; 	
-6-Prestador de serviço de telecomunicação responsável pelo recolhimento do imposto incidente sobre a cessão dos meios de rede do prestador do serviço ao usuário final, nos termos do Convênio ICMS 17/13 ;	
-7-Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;	
-8-Igrejas e Templos de qualquer natureza ;
-99-Outros não especificados anteriormente 	</xs:documentation>
+											<xs:documentation>
+											1-Comercial;
+											2-Industrial;
+											3-Residencial/Pessoa Física;
+											4-Produtor Rural;
+											5-Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95; 	
+											6-Prestador de serviço de telecomunicação responsável pelo recolhimento do imposto incidente sobre a cessão dos meios de rede do prestador do serviço ao usuário final, nos termos do Convênio ICMS 17/13 ;	
+											7-Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94 ;	
+											8-Igrejas e Templos de qualquer natureza ;
+											99-Outros não especificados anteriormente 	</xs:documentation>
 										</xs:annotation>
 									</xs:element>
 									<xs:element name="tpServUtil" type="TUtilizacao">
@@ -416,8 +413,7 @@ Nota: No caso de Contribuinte Isento de Inscrição (indIEDest=2) informar a tag
 									</xs:element>
 									<xs:sequence minOccurs="0">
 										<xs:annotation>
-											<xs:documentation>Identifica o terminal principal do contrato
-Sequencia XML</xs:documentation>
+											<xs:documentation>Identifica o terminal principal do contrato Sequencia XML</xs:documentation>
 										</xs:annotation>
 										<xs:element name="NroTermPrinc">
 											<xs:annotation>
@@ -434,15 +430,13 @@ Sequencia XML</xs:documentation>
 										<xs:element name="cUFPrinc" type="TCodUfIBGE">
 											<xs:annotation>
 												<xs:documentation>Código da UF de habilitação do terminal</xs:documentation>
-												<xs:documentation> Utilizar a
-Tabela do IBGE de código de unidades da federação.</xs:documentation>
+												<xs:documentation> Utilizar a Tabela do IBGE de código de unidades da federação.</xs:documentation>
 											</xs:annotation>
 										</xs:element>
 									</xs:sequence>
 									<xs:sequence minOccurs="0" maxOccurs="unbounded">
 										<xs:annotation>
-											<xs:documentation>Identifica os terminais adicionais do contrato
-Sequencia XML</xs:documentation>
+											<xs:documentation>Identifica os terminais adicionais do contrato Sequencia XML</xs:documentation>
 										</xs:annotation>
 										<xs:element name="NroTermAdic">
 											<xs:annotation>
@@ -539,11 +533,12 @@ Sequencia XML</xs:documentation>
 										<xs:element name="motSub" type="TMotSub">
 											<xs:annotation>
 												<xs:documentation>Motivo da substituição</xs:documentation>
-												<xs:documentation>01 – Erro de Preço
-02 – Erro Cadastral
-03 – Decisão Judicial
-04 - Erro de Tributação
-05 - Descontinuidade do Serviço</xs:documentation>
+												<xs:documentation>
+												01 – Erro de Preço
+												02 – Erro Cadastral
+												03 – Decisão Judicial
+												04 - Erro de Tributação
+												05 - Descontinuidade do Serviço</xs:documentation>
 											</xs:annotation>
 										</xs:element>
 									</xs:sequence>
@@ -626,10 +621,7 @@ Sequencia XML</xs:documentation>
 													<xs:element name="uMed" type="TUMedItem">
 														<xs:annotation>
 															<xs:documentation>Unidade Básica de Medida</xs:documentation>
-															<xs:documentation>1=Minuto
-; 2=MB; 
-3=GB; 
-4=UN</xs:documentation>
+															<xs:documentation>1=Minuto; 2=MB; 3=GB; 4=UN</xs:documentation>
 														</xs:annotation>
 													</xs:element>
 													<xs:element name="qFaturada" type="TDec_1100_1104">
@@ -800,9 +792,7 @@ Sequencia XML</xs:documentation>
 																						<xs:element name="cBenef">
 																							<xs:annotation>
 																								<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
- item.
-</xs:documentation>
+																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao item.</xs:documentation>
 																							</xs:annotation>
 																							<xs:simpleType>
 																								<xs:restriction base="xs:string">
@@ -839,8 +829,7 @@ Sequencia XML</xs:documentation>
 																					<xs:element name="CST">
 																						<xs:annotation>
 																							<xs:documentation>Classificação Tributária do serviço</xs:documentation>
-																							<xs:documentation>40=Isenta; 41=Não tributada;
-</xs:documentation>
+																							<xs:documentation>40=Isenta; 41=Não tributada;</xs:documentation>
 																						</xs:annotation>
 																						<xs:simpleType>
 																							<xs:restriction base="xs:string">
@@ -862,9 +851,7 @@ Sequencia XML</xs:documentation>
 																						<xs:element name="cBenef">
 																							<xs:annotation>
 																								<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
-item.
-</xs:documentation>
+																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao item.</xs:documentation>
 																							</xs:annotation>
 																							<xs:simpleType>
 																								<xs:restriction base="xs:string">
@@ -908,9 +895,7 @@ item.
 																						<xs:element name="cBenef">
 																							<xs:annotation>
 																								<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
-item.
-</xs:documentation>
+																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao item.</xs:documentation>
 																							</xs:annotation>
 																							<xs:simpleType>
 																								<xs:restriction base="xs:string">
@@ -973,9 +958,7 @@ item.
 																						<xs:element name="cBenef">
 																							<xs:annotation>
 																								<xs:documentation>Código de Benefício Fiscal na UF aplicado ao item</xs:documentation>
-																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
-item.
-</xs:documentation>
+																								<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao item.</xs:documentation>
 																							</xs:annotation>
 																							<xs:simpleType>
 																								<xs:restriction base="xs:string">
@@ -1077,9 +1060,7 @@ item.
 																				<xs:element name="cBenefUFDest" minOccurs="0">
 																					<xs:annotation>
 																						<xs:documentation>Código de Benefício Fiscal na UF destino aplicado ao item</xs:documentation>
-																						<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao
-item.
-</xs:documentation>
+																						<xs:documentation>Código de Benefício Fiscal utilizado pela UF, aplicado ao item.</xs:documentation>
 																					</xs:annotation>
 																					<xs:simpleType>
 																						<xs:restriction base="xs:string">
@@ -1097,9 +1078,8 @@ item.
 																	<xs:annotation>
 																		<xs:documentation>Sem Situação Tributária para o ICMS</xs:documentation>
 																		<xs:documentation>Informar para itens que não tenham nenhuma relação com o ICMS.
-Quando informado o item NÃO PODE ter CFOP informado
-
-Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMSXX</xs:documentation>
+																		Quando informado o item NÃO PODE ter CFOP informado
+																		Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMSXX</xs:documentation>
 																	</xs:annotation>
 																	<xs:simpleType>
 																		<xs:restriction base="xs:string">
@@ -1118,13 +1098,14 @@ Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMS
 																		<xs:element name="CST">
 																			<xs:annotation>
 																				<xs:documentation>classificação Tributária do PIS</xs:documentation>
-																				<xs:documentation>01 – Tributável com alíquota básica
-02 – Tributável com alíquota diferenciada
-06 – Tributável com alíquota zero
-07 – Operação isenta de contribuição
-08 – Operação sem incidência da contribuição
-09 – Operação com suspensão da contribuição  
-49 – Outras operações de saída</xs:documentation>
+																				<xs:documentation>
+																				01 – Tributável com alíquota básica
+																				02 – Tributável com alíquota diferenciada
+																				06 – Tributável com alíquota zero
+																				07 – Operação isenta de contribuição
+																				08 – Operação sem incidência da contribuição
+																				09 – Operação com suspensão da contribuição  
+																				49 – Outras operações de saída</xs:documentation>
 																			</xs:annotation>
 																			<xs:simpleType>
 																				<xs:restriction base="xs:string">
@@ -1166,14 +1147,15 @@ Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMS
 																		<xs:element name="CST">
 																			<xs:annotation>
 																				<xs:documentation>classificação Tributária do COFINS</xs:documentation>
-																				<xs:documentation>01 – Tributável com alíquota básica
-02 – Tributável com alíquota diferenciada
-06 – Tributável com alíquota zero
-07 – Operação isenta de contribuição
-08 – Operação sem incidência da contribuição
-09 – Operação com suspensão da contribuição  
-49 – Outras operações de saída
-</xs:documentation>
+																				<xs:documentation>
+																				01 – Tributável com alíquota básica
+																				02 – Tributável com alíquota diferenciada
+																				06 – Tributável com alíquota zero
+																				07 – Operação isenta de contribuição
+																				08 – Operação sem incidência da contribuição
+																				09 – Operação com suspensão da contribuição  
+																				49 – Outras operações de saída
+																				</xs:documentation>
 																			</xs:annotation>
 																			<xs:simpleType>
 																				<xs:restriction base="xs:string">
@@ -1415,9 +1397,11 @@ Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMS
 													<xs:element name="tpRessarc" type="TRessarcimento">
 														<xs:annotation>
 															<xs:documentation>Tipo de Ressarcimento</xs:documentation>
-															<xs:documentation>1 - Cobrança Indevida
-2 - Interrupção
-99 - Outros</xs:documentation>
+															<xs:documentation>
+															1 - Cobrança Indevida
+															2 - Interrupção
+															99 - Outros
+															</xs:documentation>
 														</xs:annotation>
 													</xs:element>
 													<xs:element name="dRef" type="TData">
@@ -1489,15 +1473,14 @@ Se informado esse grupo o schema não permite informar nenhum dos grupos de ICMS
 										<xs:annotation>
 											<xs:documentation>Chave de Acesso da NFCom anterior </xs:documentation>
 											<xs:documentation>Informar chave de acesso de referencia anterior
-TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA</xs:documentation>
+											TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA</xs:documentation>
 										</xs:annotation>
 									</xs:attribute>
 									<xs:attribute name="nItemAnt" use="optional">
 										<xs:annotation>
 											<xs:documentation>Número do item da NFCom anterior</xs:documentation>
 											<xs:documentation>Informar nro do item da chave de acesso de referencia anterior
-
-TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA</xs:documentation>
+											TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REFERENCIADA</xs:documentation>
 										</xs:annotation>
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
@@ -1792,7 +1775,7 @@ TAG OPCIONAL, DEVE SER INFORMADA APENAS NOS CASOS PREVISTOS DE NOTA ANTERIOR REF
 												<xs:annotation>
 													<xs:documentation>Código da UF do emitente centralizador</xs:documentation>
 													<xs:documentation>Código da UF do emitente do Documento Fiscal. Utilizar a
-Tabela do IBGE de código de unidades da federação.</xs:documentation>
+													Tabela do IBGE de código de unidades da federação.</xs:documentation>
 												</xs:annotation>
 											</xs:element>
 										</xs:sequence>
@@ -2281,9 +2264,7 @@ Tabela do IBGE de código de unidades da federação.</xs:documentation>
 					<xs:sequence>
 						<xs:element name="tpAmb" type="TAmb">
 							<xs:annotation>
-								<xs:documentation>Identificação do Ambiente:
-1 - Produção
-2 - Homologação</xs:documentation>
+								<xs:documentation>Identificação do Ambiente: 1 - Produção; 2 - Homologação</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="verAplic" type="TVerAplic">
@@ -2361,9 +2342,7 @@ Tabela do IBGE de código de unidades da federação.</xs:documentation>
 		<xs:sequence>
 			<xs:element name="tpAmb" type="TAmb">
 				<xs:annotation>
-					<xs:documentation>Identificação do Ambiente:
-1 - Produção
-2 - Homologação</xs:documentation>
+					<xs:documentation>Identificação do Ambiente: 1 - Produção; 2 - Homologação</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cUF" type="TCodUfIBGE">
@@ -2401,9 +2380,7 @@ Tabela do IBGE de código de unidades da federação.</xs:documentation>
 		<xs:sequence>
 			<xs:element name="tpAmb" type="TAmb">
 				<xs:annotation>
-					<xs:documentation>Identificação do Ambiente:
-1 - Produção
-2 - Homologação</xs:documentation>
+					<xs:documentation>Identificação do Ambiente: 1 - Produção; 2 - Homologação</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="cUF" type="TCodUfIBGE">
@@ -2572,8 +2549,7 @@ Tabela do IBGE de código de unidades da federação.</xs:documentation>
 					<xs:annotation>
 						<xs:documentation>Hash do token do código de segurança do responsável técnico</xs:documentation>
 						<xs:documentation>O hashCSRT é o resultado das funções SHA-1 e base64 do token CSRT fornecido pelo fisco + chave de acesso do DF-e. (Implementação em futura NT)
-
-Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary</xs:documentation>
+						Observação: 28 caracteres são representados no schema como 20 bytes do tipo base64Binary</xs:documentation>
 					</xs:annotation>
 					<xs:simpleType>
 						<xs:restriction base="xs:base64Binary">

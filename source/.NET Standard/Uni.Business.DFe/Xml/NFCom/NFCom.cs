@@ -751,7 +751,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         public bool ShouldSerializeDContratoFimField() => DContratoFim.IsNullOrEmpty();
         public bool ShouldSerializeNroTermPrinc() => !string.IsNullOrWhiteSpace(NroTermPrinc) && CUFPrincField > 0;
         public bool ShouldSerializeCUFPrincField() => !string.IsNullOrWhiteSpace(NroTermPrinc) && CUFPrincField > 0;
-        public bool ShouldSerializeTermAdic() => TermAdic != null || TermAdic.Count > 0;
+        public bool ShouldSerializeTermAdic() => TermAdic != null && TermAdic.Count > 0;
 
         #endregion
     }

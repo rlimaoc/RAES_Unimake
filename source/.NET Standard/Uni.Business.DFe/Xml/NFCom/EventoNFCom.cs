@@ -38,7 +38,7 @@ namespace Uni.Business.DFe.Xml.NFCom
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfcom")]
     public class InfEvento
     {
         #region Private Fields
@@ -120,7 +120,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         [XmlAttribute(DataType = "ID")]
         public string Id
         {
-            get => "ID" + ((int)TpEvento).ToString() + ChNFCom + NSeqEvento.ToString("00");
+            get => "ID" + ((int)TpEvento).ToString() + ChNFCom + NSeqEvento.ToString("000");
             set => _ = value;
         }
 
@@ -179,10 +179,10 @@ namespace Uni.Business.DFe.Xml.NFCom
 
             if (XmlReader.HasAttributes)
             {
-                if (XmlReader.GetAttribute("versao") != "")
+                if (XmlReader.GetAttribute("versaoEvento") != "")
                 {
-                    var pi = type.GetProperty("versao", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
-                    pi?.SetValue(this, XmlReader.GetAttribute("versao"));
+                    var pi = type.GetProperty("versaoEvento", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+                    pi?.SetValue(this, XmlReader.GetAttribute("versaoEvento"));
                 }
             }
 
@@ -227,8 +227,8 @@ namespace Uni.Business.DFe.Xml.NFCom
         [XmlElement("descEvento", Order = 0)]
         public virtual string DescEvento { get; set; }
 
-        [XmlAttribute(AttributeName = "versao", DataType = "token")]
-        public virtual string Versao { get; set; }
+        [XmlAttribute(AttributeName = "versaoEvento", DataType = "token")]
+        public virtual string VersaoEvento { get; set; }
 
         #endregion Public Properties
 
@@ -238,7 +238,7 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         public void ReadXml(XmlReader reader) => XmlReader = reader;
 
-        public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versao", Versao);
+        public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versaoEvento", VersaoEvento);
 
         #endregion Public Methods
     }
@@ -249,7 +249,7 @@ namespace Uni.Business.DFe.Xml.NFCom
     [ComVisible(true)]
 #endif
     [Serializable]
-    [XmlRoot(ElementName = "detEvento")]
+    [XmlRoot("evCancNFCom")]
     public class DetEventoCanc : EventoDetalhe
     {
         #region Public Properties
@@ -263,6 +263,13 @@ namespace Uni.Business.DFe.Xml.NFCom
         [XmlElement("xJust", Order = 2)]
         public string XJust { get; set; }
 
+        #region ShouldSerialize
+
+        public bool ShouldSerializeNProt() => NProt.IsNullOrEmpty();
+        public bool ShouldSerializeXJust() => XJust.IsNullOrEmpty();
+
+        #endregion
+
         #endregion Public Properties
 
         #region Public Methods
@@ -271,10 +278,20 @@ namespace Uni.Business.DFe.Xml.NFCom
         {
             base.WriteXml(writer);
 
-            writer.WriteRaw($@"
-            <descEvento>{DescEvento}</descEvento>
-            <nProt>{NProt}</nProt>
-            <xJust>{XJust}</xJust>");
+            writer.WriteRaw($@"<evCancNFCom>");
+            writer.WriteRaw($@"<descEvento>{DescEvento}</descEvento>");
+            
+            if (NProt.IsNullOrEmpty() == false)
+            {
+                writer.WriteRaw($@"<nProt>{NProt}</nProt>");
+            }
+
+            if (XJust.IsNullOrEmpty() == false)
+            {
+                writer.WriteRaw($@"<xJust>{XJust}</xJust>");
+            }
+
+            writer.WriteRaw($@"</evCancNFCom>");
         }
 
         #endregion Public Methods

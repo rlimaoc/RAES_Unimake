@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Xml;
 using Uni.Business.DFe.Servicos.Interop;
 using Uni.Business.DFe.Utility;
@@ -32,7 +33,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
             var validar = new ValidarSchema();
             validar.Validar(xml, TipoDFe.NFCom.ToString() + "." + schemaArquivo, targetNS);
 
-            if (!validar.Success)
+            if (validar.Success == false)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
@@ -71,6 +72,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
 
             var schemaArquivo = string.Empty;
             var schemaArquivoEspecifico = string.Empty;
+            var schemaTagEspecifica = string.Empty;
 
             if (Configuracoes.SchemasEspecificos.Count > 0)
             {
@@ -80,6 +82,19 @@ namespace Uni.Business.DFe.Servicos.NFCom
                 schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
             }
 
+            #region Pega TAG correspondente ao schema específico
+
+            var regex = new Regex("^[A-Za-z]+");
+            var match = regex.Match(schemaArquivoEspecifico);
+
+            if (match.Success)
+            {
+                schemaTagEspecifica = match.Groups[0].Value;
+            }
+
+            #endregion Pega TAG correspondente ao schema específico
+
+
             #region Validar o XML geral
 
             ValidarXMLEvento(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
@@ -88,20 +103,23 @@ namespace Uni.Business.DFe.Servicos.NFCom
 
             #region Validar a parte específica de cada evento
 
-            var listEvento = ConteudoXML.GetElementsByTagName("evento");
+            var listEvento = ConteudoXML.GetElementsByTagName("eventoNFCom");
             for (var i = 0; i < listEvento.Count; i++)
             {
                 var elementEvento = (XmlElement)listEvento[i];
-
                 if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
                 {
                     var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
                     if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
                     {
-                        var xmlEspecifico = new XmlDocument();
-                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].OuterXml);
+                        var elementDetEvento = (XmlElement)elementInfEvento.GetElementsByTagName("detEvento")[0];
+                        if (elementDetEvento.GetElementsByTagName(schemaTagEspecifica)[0] != null)
+                        {
+                            var xmlEspecifico = new XmlDocument();
+                            xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName(schemaTagEspecifica)[0].OuterXml);
 
-                        ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+                            ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+                        }
                     }
                 }
             }
@@ -117,6 +135,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
             base.XmlValidarConteudo();
 
             var xml = EventoNFCom;
+            var validado = false;
 
             var tpEvento = xml.InfEvento.TpEvento;
 
@@ -152,9 +171,12 @@ namespace Uni.Business.DFe.Servicos.NFCom
                 case TipoEventoNFCom.LiberacaoPrazoCancelamento:
                     descEvento = "Liberação Prazo Cancelamento";
                     break;
+                default:
+                    validado = true;
+                    break;
             }
 
-            if (!xml.InfEvento.DetEvento.DescEvento.Equals(descEvento))
+            if (validado == false && xml.InfEvento.DetEvento.DescEvento.Equals(descEvento) == false)
             {
                 throw new Exception(msgException.Replace("$", descEvento));
             }
@@ -171,14 +193,15 @@ namespace Uni.Business.DFe.Servicos.NFCom
         {
             get
             {
-                var retorno = new List<ProcEventoNFCom>();
-
-                retorno.Add(new ProcEventoNFCom
+                var retorno = new List<ProcEventoNFCom>
                 {
-                    Versao = EventoNFCom.Versao,
-                    EventoNFCom = EventoNFCom,
-                    RetEventoNFCom = Result
-                });
+                    new ProcEventoNFCom
+                    {
+                        Versao = EventoNFCom.Versao,
+                        EventoNFCom = EventoNFCom,
+                        RetEventoNFCom = Result
+                    }
+                };
 
                 return retorno;
             }
@@ -200,11 +223,8 @@ namespace Uni.Business.DFe.Servicos.NFCom
                 {
                     InfEvento = new InfEventoRetEvento
                     {
-                        DetEvento = new DetEventoCanc
-                        {
-                            NProt = "0",
-                            XJust = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
-                        }
+                        CStat = 0,
+                        XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
                     }
                 };
             }
