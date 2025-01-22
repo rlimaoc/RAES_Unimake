@@ -14,12 +14,12 @@ namespace Uni.DFe.Test
         /// <summary>
         /// Caminho do certificado digital A1
         /// </summary>
-        private static string PathCertificadoDigital { get; set; } = @"G:\Certificados\Atacadusado_PV.pfx";
+        private static string PathCertificadoDigital { get; set; } = @"C:\Repositorios\Certificados\2024@Surf_surf.pfx";
 
         /// <summary>
         /// Senha de uso do certificado digital A1
         /// </summary>
-        private static string SenhaCertificadoDigital { get; set; } = "19601964";
+        private static string SenhaCertificadoDigital { get; set; } = "2024@Surf";
 
         private static X509Certificate2 CertificadoDigitalField;
 

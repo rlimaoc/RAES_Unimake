@@ -60,7 +60,8 @@ namespace Uni.Business.DFe.Xml.NFCom
             var xmlElementRetEvento = (XmlElement)xmlElementEvento.GetElementsByTagName("retEventoNFCom")[0];
             xmlElementRetEvento.SetAttribute("xmlns", attribute.Namespace);
 
-            var xmlElementRetEventoInfEvento = (XmlElement)xmlElementRetEvento.GetElementsByTagName("infEventoNFCom")[0];
+            //var xmlElementRetEventoInfEvento = (XmlElement)xmlElementRetEvento.GetElementsByTagName("infEventoNFCom")[0];
+            var xmlElementRetEventoInfEvento = (XmlElement)xmlElementRetEvento.GetElementsByTagName("infEvento")[0];
             xmlElementRetEventoInfEvento.SetAttribute("xmlns", attribute.Namespace);
 
             return xmlDocument;
@@ -68,7 +69,7 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         public override void ReadXml(XmlDocument document)
         {
-            var nodeListEvento = document.GetElementsByTagName("evento");
+            var nodeListEvento = document.GetElementsByTagName("eventoNFCom");
 
             if (nodeListEvento != null)
             {
@@ -80,7 +81,7 @@ namespace Uni.Business.DFe.Xml.NFCom
                 }
             }
 
-            var nodeListRetEvento = document.GetElementsByTagName("retEvento");
+            var nodeListRetEvento = document.GetElementsByTagName("retEventoNFCom");
             if (nodeListRetEvento.Count > 0)
             {
                 RetEventoNFCom = XMLUtility.Deserializar<RetEventoNFCom>(((XmlElement)nodeListRetEvento[0]).OuterXml);

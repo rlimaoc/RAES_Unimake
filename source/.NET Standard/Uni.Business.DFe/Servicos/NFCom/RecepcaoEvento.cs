@@ -9,7 +9,7 @@ using Uni.Exceptions;
 
 namespace Uni.Business.DFe.Servicos.NFCom
 {
-     /// <summary>
+    /// <summary>
     /// Enviar o XML de eventos da NFCom para o web-service
     /// </summary>
 #if INTEROP
@@ -198,14 +198,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
 
                 return new RetEventoNFCom
                 {
-                    InfEvento = new InfEventoRetEvento
-                    {
-                        DetEvento = new DetEventoCanc
-                        {
-                            NProt = "0",
-                            XJust = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
-                        }
-                    }
+                    InfEvento = new InfEventoRetEvento()
                 };
             }
         }

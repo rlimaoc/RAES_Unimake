@@ -4,12 +4,9 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Uni.Business.DFe.Servicos;
-using Uni.Business.DFe.Xml.NFCom;
-using Uni.Business.DFe.Xml;
 
 namespace Uni.Business.DFe.Xml.NFCom
 {

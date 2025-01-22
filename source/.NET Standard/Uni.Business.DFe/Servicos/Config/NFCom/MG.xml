@@ -1,4 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-  <Heranca>SVRS.xml</Heranca>
+    <Servicos ID="NFCom">
+        <StatusServico versao="1.00">
+            <Descricao>Consulta situação do serviço da nota fiscal fatura de comunicação</Descricao>
+            <WebEnderecoHomologacao>https://hnfcom.fazenda.mg.gov.br/nfcom/services/NFComStatusServico</WebEnderecoHomologacao>
+            <WebEnderecoProducao></WebEnderecoProducao>
+            <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico</WebActionHomologacao>
+            <WebActionProducao></WebActionProducao>
+            <SchemaArquivo>consStatServNFCom_v{0}.xsd</SchemaArquivo>
+            <TagAssinatura></TagAssinatura>
+            <TagAtributoID></TagAtributoID>
+            <TagLoteAssinatura></TagLoteAssinatura>
+            <TagLoteAtributoID></TagLoteAtributoID>
+        </StatusServico>
+        <ConsultaProtocolo versao="1.00">
+            <Descricao>Consulta situação da nota fiscal fatura de comunicação</Descricao>
+            <WebEnderecoHomologacao>https://hnfcom.fazenda.mg.gov.br/nfcom/services/NFComConsulta</WebEnderecoHomologacao>
+            <WebEnderecoProducao></WebEnderecoProducao>
+            <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta</WebActionHomologacao>
+            <WebActionProducao></WebActionProducao>
+            <SchemaArquivo>consSitNFCom_v{0}.xsd</SchemaArquivo>
+            <TagAssinatura></TagAssinatura>
+            <TagAtributoID></TagAtributoID>
+            <TagLoteAssinatura></TagLoteAssinatura>
+            <TagLoteAtributoID></TagLoteAtributoID>
+        </ConsultaProtocolo>
+        <RecepcaoEvento versao="1.00">
+            <Descricao>Recepção de eventos</Descricao>
+            <WebEnderecoHomologacao>https://hnfcom.fazenda.mg.gov.br/nfcom/services/NFComRecepcaoEvento</WebEnderecoHomologacao>
+            <WebEnderecoProducao></WebEnderecoProducao>
+            <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionHomologacao>
+            <WebActionProducao></WebActionProducao>
+            <SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
+            <TagAssinatura>eventoNFCom</TagAssinatura>
+            <TagAtributoID>infEventoNFCom</TagAtributoID>
+            <TagLoteAssinatura></TagLoteAssinatura>
+            <TagLoteAtributoID></TagLoteAtributoID>
+            <GZIPCompress>true</GZIPCompress>
+        </RecepcaoEvento>
+        <Recepcao versao="1.00">
+            <Descricao>Recepção da nota fiscal fatura de comunicação</Descricao>
+            <WebEnderecoHomologacao>https://hnfcom.fazenda.mg.gov.br/nfcom/services/NFComRecepcao</WebEnderecoHomologacao>
+            <WebEnderecoProducao></WebEnderecoProducao>
+            <WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionHomologacao>
+            <WebActionProducao></WebActionProducao>
+            <UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnfcom/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+            <UrlQrCodeProducao></UrlQrCodeProducao>
+            <SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
+            <TagAssinatura>NFCom</TagAssinatura>
+            <TagAtributoID>infNFCom</TagAtributoID>
+            <TagLoteAssinatura></TagLoteAssinatura>
+            <TagLoteAtributoID></TagLoteAtributoID>
+            <GZIPCompress>true</GZIPCompress>
+        </Recepcao>
+    </Servicos>
 </Configuracoes>

@@ -2,7 +2,7 @@
 
 #if INTEROP
 // The result of the expression is always the same since a value of this type is never equal to 'null'
-#pragma warning disable CS0472 
+#pragma warning disable CS0472
 #endif
 
 #if INTEROP
@@ -17,7 +17,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using Uni.Business.DFe.Servicos;
 using Uni.Business.DFe.Utility;
-using Uni.Business.DFe.Xml.EFDReinf;
 
 namespace Uni.Business.DFe.Xml.NFCom
 {
@@ -658,7 +657,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-        #endregion 
+        #endregion
     }
 
 #if INTEROP
@@ -1369,7 +1368,7 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         [XmlElement("cBenef")]
         public string CBenef { get; set; }
- 
+
         #region ShouldSerialize
 
         public bool ShouldSerializeVICMSDesonField() => !string.IsNullOrWhiteSpace(CBenef);
@@ -1474,7 +1473,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         public bool ShouldSerializeCBenef() => Convert.ToDouble(VICMSDeson) >= 0;
         public bool ShouldSerializePFCP() => Convert.ToDouble(VFCP) >= 0;
         public bool ShouldSerializeVFCP() => Convert.ToDouble(PFCP) >= 0;
-        
+
         #endregion
     }
 
@@ -1986,7 +1985,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             set => VFCP = Converter.ToDouble(value);
         }
         #endregion
-        
+
         [XmlElement("gProc")]
         public List<GProc> GProc { get; set; }
 
@@ -2002,7 +2001,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         public bool ShouldSerializeVCOFINSField() => Convert.ToDouble(VCOFINS) >= 0;
         public bool ShouldSerializeVFCPField() => Convert.ToDouble(VFCP) >= 0;
 
-        #endregion    
+        #endregion
     }
 
 #if INTEROP
@@ -2120,7 +2119,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VCOFINS
         [XmlIgnore]
         public double VCOFINS { get; set; }
-       
+
         [XmlElement("vCOFINS")]
         public string VCOFINSField
         {
@@ -2132,7 +2131,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region PIS
         [XmlIgnore]
         public double VPIS { get; set; }
-        
+
         [XmlElement("vPIS")]
         public string VPISField
         {
@@ -2144,7 +2143,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VFUNTTEL
         [XmlIgnore]
         public double VFUNTTEL { get; set; }
-        
+
         [XmlElement("vFUNTTEL")]
         public string VFUNTTELField
         {
@@ -2156,7 +2155,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VFUST
         [XmlIgnore]
         public double VFUST { get; set; }
-        
+
         [XmlElement("vFUST")]
         public string VFUSTField
         {
@@ -2171,7 +2170,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VDec
         [XmlIgnore]
         public double VDesc { get; set; }
-        
+
         [XmlElement("vDesc")]
         public string VDescField
         {
@@ -2183,7 +2182,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VOutro
         [XmlIgnore]
         public double VOutro { get; set; }
-       
+
         [XmlElement("vOutro")]
         public string VOutroField
         {
@@ -2195,7 +2194,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VNF
         [XmlIgnore]
         public double VNF { get; set; }
-        
+
         [XmlElement("vNF")]
         public string VNFField
         {
@@ -2217,7 +2216,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VBC
         [XmlIgnore]
         public double VBC { get; set; }
-       
+
         [XmlElement("vBC")]
         public string VBCField
         {
@@ -2229,7 +2228,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VICMS
         [XmlIgnore]
         public double VICMS { get; set; }
-       
+
         [XmlElement("vICMS")]
         public string VICMSField
         {
@@ -2241,7 +2240,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VICMSDeson
         [XmlIgnore]
         public double VICMSDeson { get; set; }
-        
+
         [XmlElement("vICMSDeson")]
         public string VICMSDesonField
         {
@@ -2253,7 +2252,7 @@ namespace Uni.Business.DFe.Xml.NFCom
         #region VFCP
         [XmlIgnore]
         public double VFCP { get; set; }
-       
+
         [XmlElement("vFCP")]
         public string VFCPField
         {

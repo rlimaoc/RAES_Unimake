@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<procEventoNFCom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1.00"
+        xmlns="http://www.portalfiscal.inf.br/nfcom">
+    <eventoNFCom versao="1.00">
+        <infEvento Id="ID11011142250199999999999999620000000000001999999990001">
+            <cOrgao>42</cOrgao>
+            <tpAmb>1</tpAmb>
+            <CNPJ>99999999999999</CNPJ>
+            <chNFCom>42250199999999999999620000000000001999999990</chNFCom>
+            <dhEvento>2025-01-01T15:01:27-03:00</dhEvento>
+            <tpEvento>110111</tpEvento>
+            <nSeqEvento>1</nSeqEvento>
+            <detEvento versaoEvento="1.00">
+                <evCancNFCom>
+                    <descEvento>Cancelamento</descEvento>
+                    <nProt>1234500000060789</nProt>
+                    <xJust>Nota fiscal emitida com erros</xJust>
+                </evCancNFCom>
+            </detEvento>
+        </infEvento>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod
+                    Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+                <Reference URI="#ID11011142250199999999999999620000000000001999999990001">
+                    <Transforms>
+                        <Transform
+                            Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                    <DigestValue>/UB4WrmSAZXfqNa0PN6g1KZ/Bb4=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>
+                PQ/R29g4AreIrrr5bXp6IL8jxVkOeScBW9GAONWUXjoPxRe54x1VJN/eF9KfcSUcHZUV/55lyi8zG3xi+ZIpGoPbHNnLD6K87cszkF908Fw1EPgrikH3rJk4OML7q5DjT6gKdFoYq1x4Q8vi+KFZX9/uP2nf1swjN/QWWTBsKCN7T2i6aS4rwFC251271s/jTxZE1XmZMQsYoId9Hb/4lTX2uF6B/VpWfBW0XQl83JuN5/xtmHJI0VkSrAX1HxS0BhtOUDDQ8FNq1uTTEqSIM17Ng+WFr3wV9Kvejy+j2Zp/NUE5wbr1RsTydkNiiO2j2HUyylNVpdEWPZFOX3DYzg==
+            </SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>
+                        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
+                    </X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </eventoNFCom>
+    <retEventoNFCom versao="1.00">
+        <infEvento Id="ID1234500000060789">
+            <tpAmb>2</tpAmb>
+            <verAplic>RS20240708154531</verAplic>
+            <cOrgao>42</cOrgao>
+            <cStat>135</cStat>
+            <xMotivo>Evento registrado e vinculado a NFCom </xMotivo>
+            <chNFCom>42250199999999999999620000000000001999999990</chNFCom>
+            <tpEvento>110111</tpEvento>
+            <xEvento>Cancelamento</xEvento>
+            <nSeqEvento>1</nSeqEvento>
+            <dhRegEvento>2025-01-01T15:01:38-03:00</dhRegEvento>
+            <nProt>1234500000060789</nProt>
+        </infEvento>
+    </retEventoNFCom>
+</procEventoNFCom>

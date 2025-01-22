@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Xml.Schema;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using Uni.Business.DFe.Servicos;
 using Uni.Business.DFe.Utility;
@@ -104,7 +104,7 @@ namespace Uni.Business.DFe.Xml.NFCom
             {
                 switch (TpEvento)
                 {
-                    case 0: 
+                    case 0:
                         _detEvento = value;
                         break;
                     case TipoEventoNFCom.Cancelamento:
@@ -128,7 +128,7 @@ namespace Uni.Business.DFe.Xml.NFCom
 
         #region Public Constructors
 
-        public InfEvento() {}
+        public InfEvento() { }
 
         public InfEvento(EventoDetalhe detEvento)
         {

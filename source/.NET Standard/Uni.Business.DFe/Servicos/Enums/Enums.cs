@@ -394,7 +394,7 @@ namespace Uni.Business.DFe.Servicos
         /// 64 - Consulta Requerimento de Cancelamento da NFSe
         /// </summary>
         [Description("Consulta Requerimento de Cancelamento NFSe")]
-        NFSeConsultarRequerimentoCancelamento= 64,
+        NFSeConsultarRequerimentoCancelamento = 64,
 
         /// <summary>
         /// 65 - Consulta status serviço NFCom
@@ -451,7 +451,7 @@ namespace Uni.Business.DFe.Servicos
         /// </summary>
         Desconhecido = -1,
         /// <summary>
-        /// 0 - NF-e - Nota Fiscal Eletrônica 
+        /// 0 - NF-e - Nota Fiscal Eletrônica
         /// </summary>
         NFe = 0,
         /// <summary>
@@ -504,7 +504,7 @@ namespace Uni.Business.DFe.Servicos
         NFCom = 12
     }
 
-    #endregion       
+    #endregion
 
     #region UF
 
@@ -1067,7 +1067,7 @@ namespace Uni.Business.DFe.Servicos
         ComprovanteEntrega = 110180,
 
         /// <summary>
-        /// 110181 - Cancelamento Comprovante de Entrega do CTe 
+        /// 110181 - Cancelamento Comprovante de Entrega do CTe
         /// </summary>
         [XmlEnum("110181")]
         CancelamentoComprovanteEntrega = 110181,
@@ -2108,7 +2108,7 @@ namespace Uni.Business.DFe.Servicos
     public enum ModalidadeFrete
     {
         /// <summary>
-        /// 0=Contratação do Frete por conta do Remetente (CIF); 
+        /// 0=Contratação do Frete por conta do Remetente (CIF);
         /// </summary>
         [XmlEnum("0")]
         ContratacaoFretePorContaRemetente_CIF = 0,
@@ -2171,7 +2171,7 @@ namespace Uni.Business.DFe.Servicos
 
     /// <summary>
     /// Bandeira da operadora de cartão de crédito e/ou débito
-    /// </summary>    
+    /// </summary>
     public enum BandeiraOperadoraCartao
     {
         /// <summary>
@@ -2414,31 +2414,31 @@ namespace Uni.Business.DFe.Servicos
 
         /// <summary>
         /// 15=Boleto Bancário
-        /// </summary> 
+        /// </summary>
         [XmlEnum("15")]
         BoletoBancario = 15,
 
         /// <summary>
         /// 16=Depósito Bancário
-        /// </summary> 
+        /// </summary>
         [XmlEnum("16")]
         DepositoBancario = 16,
 
         /// <summary>
         /// 17=Pagamento Instantâneo (PIX)
-        /// </summary> 
+        /// </summary>
         [XmlEnum("17")]
         PagamentoInstantaneo = 17,
 
         /// <summary>
         /// 18=Transferência bancária, Carteira Digital
-        /// </summary> 
+        /// </summary>
         [XmlEnum("18")]
         TransferenciaBancaria = 18,
 
         /// <summary>
         /// 19=Programa de fidelidade, Cashback, Crédito Virtual
-        /// </summary> 
+        /// </summary>
         [XmlEnum("19")]
         ProgramaFidelidade = 19,
 
@@ -3689,7 +3689,7 @@ namespace Uni.Business.DFe.Servicos
 
     #endregion
 
-    #region Indicador da exigibilidade do ISS 
+    #region Indicador da exigibilidade do ISS
 
     /// <summary>
     /// Indicador de Exigibilidade do ISSQN
@@ -5055,7 +5055,7 @@ namespace Uni.Business.DFe.Servicos
         BateriasMetalLitioSecaoIIdaPI970 = 15,
 
         /// <summary>
-        /// 99 - outro (especificar no campo observações) 
+        /// 99 - outro (especificar no campo observações)
         /// </summary>
         [XmlEnum("99")]
         Outro = 99
@@ -5536,239 +5536,239 @@ namespace Uni.Business.DFe.Servicos
     {
         /// <summary>
         /// ufFavorecida
-        /// </summary>        
+        /// </summary>
         ufFavorecida,
         /// <summary>
         /// contribuinteEmitente
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente,
         /// <summary>
         /// contribuinteEmitente_identificacao
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_identificacao,
         /// <summary>
         /// contribuinteEmitente_identificacao_CPF
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_identificacao_CPF,
         /// <summary>
         /// contribuinteEmitente_identificacao_CNPJ
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_identificacao_CNPJ,
         /// <summary>
         /// contribuinteEmitente_identificacao_IE
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_identificacao_IE,
         /// <summary>
         /// contribuinteEmitente_razaoSocial
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_razaoSocial,
         /// <summary>
         /// contribuinteEmitente_endereco
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_endereco,
         /// <summary>
         /// contribuinteEmitente_municipio
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_municipio,
         /// <summary>
         /// contribuinteEmitente_uf
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_uf,
         /// <summary>
         /// contribuinteEmitente_cep
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_cep,
         /// <summary>
         /// contribuinteEmitente_telefone
-        /// </summary>        
+        /// </summary>
         contribuinteEmitente_telefone,
         /// <summary>
         /// itensGNRE
-        /// </summary>        
+        /// </summary>
         itensGNRE,
         /// <summary>
         /// item
-        /// </summary>        
+        /// </summary>
         item,
         /// <summary>
         /// item_receita
-        /// </summary>        
+        /// </summary>
         item_receita,
         /// <summary>
         /// item_detalhamentoReceita
-        /// </summary>        
+        /// </summary>
         item_detalhamentoReceita,
         /// <summary>
         /// item_documentoOrigem
-        /// </summary>        
+        /// </summary>
         item_documentoOrigem,
         /// <summary>
         /// item_produto
-        /// </summary>        
+        /// </summary>
         item_produto,
         /// <summary>
         /// item_referencia
-        /// </summary>        
+        /// </summary>
         item_referencia,
         /// <summary>
         /// item_referencia_periodo
-        /// </summary>        
+        /// </summary>
         item_referencia_periodo,
         /// <summary>
         /// item_referencia_mes
-        /// </summary>        
+        /// </summary>
         item_referencia_mes,
         /// <summary>
         /// item_referencia_ano
-        /// </summary>        
+        /// </summary>
         item_referencia_ano,
         /// <summary>
         /// item_referencia_parcela
-        /// </summary>        
+        /// </summary>
         item_referencia_parcela,
         /// <summary>
         /// item_dataVencimento
-        /// </summary>        
+        /// </summary>
         item_dataVencimento,
         /// <summary>
         /// item_valorPrincipal
-        /// </summary>        
+        /// </summary>
         item_valorPrincipal,
         /// <summary>
         /// item_valorPrincipalFecp
-        /// </summary>        
+        /// </summary>
         item_valorPrincipalFecp,
         /// <summary>
         /// item_valorAtualizacaoMonetaria
-        /// </summary>        
+        /// </summary>
         item_valorAtualizacaoMonetaria,
         /// <summary>
         /// item_valorAtualizacaoMonetariaFecp
-        /// </summary>        
+        /// </summary>
         item_valorAtualizacaoMonetariaFecp,
         /// <summary>
         /// item_valorJuros
-        /// </summary>        
+        /// </summary>
         item_valorJuros,
         /// <summary>
         /// item_valorJurosFecp
-        /// </summary>        
+        /// </summary>
         item_valorJurosFecp,
         /// <summary>
         /// item_valorMulta
-        /// </summary>        
+        /// </summary>
         item_valorMulta,
         /// <summary>
         /// item_valorMultaFecp
-        /// </summary>        
+        /// </summary>
         item_valorMultaFecp,
         /// <summary>
         /// item_valorTotal
-        /// </summary>        
+        /// </summary>
         item_valorTotal,
         /// <summary>
         /// item_valorTotalFecp
-        /// </summary>        
+        /// </summary>
         item_valorTotalFecp,
         /// <summary>
         /// item_convenio
-        /// </summary>        
+        /// </summary>
         item_convenio,
         /// <summary>
         /// item_contribuinteDestinatario
-        /// </summary>        
+        /// </summary>
         item_contribuinteDestinatario,
         /// <summary>
         /// item_contribuinteDestinatario_identificacao
-        /// </summary>        
+        /// </summary>
         item_contribuinteDestinatario_identificacao,
         /// <summary>
         /// item_contribuinteDestinatario_identificacao_CNPJ
-        /// </summary>        
+        /// </summary>
         item_contribuinteDestinatario_identificacao_CNPJ,
         /// <summary>
         /// item_contribuinteDestinatario_identificacao_CPF
-        /// </summary>        
+        /// </summary>
         item_contribuinteDestinatario_identificacao_CPF,
         /// <summary>
         /// item_contribuinteDestinatario_identificacao_IE
-        /// </summary>        
+        /// </summary>
         item_contribuinteDestinatario_identificacao_IE,
         /// <summary>
         /// item_contribuinteDestinatario_razaoSocial
-        /// </summary>        
+        /// </summary>
         item_contribuinteDestinatario_razaoSocial,
         /// <summary>
         /// item_contribuinteDestinatario_municipio
-        /// </summary>        
+        /// </summary>
         item_contribuinteDestinatario_municipio,
         /// <summary>
         /// item_camposExtras
-        /// </summary>        
+        /// </summary>
         item_camposExtras,
         /// <summary>
         /// item_camposExtras_campoExtra
-        /// </summary>        
+        /// </summary>
         item_camposExtras_campoExtra,
         /// <summary>
         /// item_camposExtras_campoExtra_codigo
-        /// </summary>        
+        /// </summary>
         item_camposExtras_campoExtra_codigo,
         /// <summary>
         /// item_camposExtras_campoExtra_valor
-        /// </summary>        
+        /// </summary>
         item_camposExtras_campoExtra_valor,
         /// <summary>
         /// valorGNRE
-        /// </summary>        
+        /// </summary>
         valorGNRE,
         /// <summary>
         /// dataPagamento
-        /// </summary>        
+        /// </summary>
         dataPagamento,
         /// <summary>
         /// identificadorGuia
-        /// </summary>        
+        /// </summary>
         identificadorGuia,
         /// <summary>
         /// dataLimitePagamento
-        /// </summary>        
+        /// </summary>
         dataLimitePagamento,
         /// <summary>
         /// informacoesComplementares
-        /// </summary>        
+        /// </summary>
         informacoesComplementares,
         /// <summary>
         /// informacoesComplementares_informacao
-        /// </summary>        
+        /// </summary>
         informacoesComplementares_informacao,
         /// <summary>
         /// nossoNumero
-        /// </summary>        
+        /// </summary>
         nossoNumero,
         /// <summary>
         /// dadosPagamento
-        /// </summary>        
+        /// </summary>
         dadosPagamento,
         /// <summary>
         /// dadosPagamento_data
-        /// </summary>        
+        /// </summary>
         dadosPagamento_data,
         /// <summary>
         /// dadosPagamento_autenticacao
-        /// </summary>        
+        /// </summary>
         dadosPagamento_autenticacao,
         /// <summary>
         /// dadosPagamento_banco
-        /// </summary>        
+        /// </summary>
         dadosPagamento_banco,
         /// <summary>
         /// dadosPagamento_agencia
-        /// </summary>        
+        /// </summary>
         dadosPagamento_agencia,
         /// <summary>
         /// linhaDigitavel
-        /// </summary>        
+        /// </summary>
         linhaDigitavel,
         /// <summary>
         /// valor
@@ -6233,7 +6233,7 @@ namespace Uni.Business.DFe.Servicos
         COPLAN = 9,
 
         /// <summary>
-        /// Próprio Joinville SC 
+        /// Próprio Joinville SC
         /// </summary>
         [Description("Próprio Joinville SC")]
         PROPRIOJOINVILLESC = 10,
@@ -6347,13 +6347,13 @@ namespace Uni.Business.DFe.Servicos
         GIAP = 28,
 
         /// <summary>
-        /// EQUIPLANO 
+        /// EQUIPLANO
         /// </summary>
         [Description("EQUIPLANO")]
         EQUIPLANO = 29,
 
         /// <summary>
-        /// MEMORY 
+        /// MEMORY
         /// </summary>
         [Description("MEMORY")]
         MEMORY = 30,
@@ -6566,7 +6566,7 @@ namespace Uni.Business.DFe.Servicos
         [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
         NFeDistribuicao = 9,
 
-        #endregion 
+        #endregion
 
         #region CTe
 
@@ -6624,7 +6624,7 @@ namespace Uni.Business.DFe.Servicos
         [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
         CTeDistribuicao = 19,
 
-        #endregion 
+        #endregion
 
         #region MDFe
 
@@ -6676,7 +6676,7 @@ namespace Uni.Business.DFe.Servicos
         [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
         MDFeDistribuicao = 27,
 
-        #endregion 
+        #endregion
 
         #region NFCom
 
@@ -6710,7 +6710,7 @@ namespace Uni.Business.DFe.Servicos
         [Description("XML de distribuição da NFCom com protocolo de autorização anexado")]
         NFComDistribuicao = 4,
 
-        #endregion 
+        #endregion
 
         /// <summary>
         /// Não foi possível identificar o tipo do XML
@@ -6985,7 +6985,7 @@ namespace Uni.Business.DFe.Servicos
     public enum TipoMotivoInsucessoEntrega
     {
         /// <summary>
-        /// 1 - Recebedor não foi encontrado 
+        /// 1 - Recebedor não foi encontrado
         /// </summary>
         [XmlEnum("1")]
         RecebedorNaoEncontrado = 1,
@@ -7574,7 +7574,7 @@ namespace Uni.Business.DFe.Servicos
     #region Tipo Repasse
     /// <summary>
     /// Tipo de repasse, conforme tabela:
-    /// 1-Patrocinio, 2-Licenciamento de marcas e símbolos, 3 - Publicidade, 4 - Propaganda, 5 - Transmissão de espetáculos. 
+    /// 1-Patrocinio, 2-Licenciamento de marcas e símbolos, 3 - Publicidade, 4 - Propaganda, 5 - Transmissão de espetáculos.
     /// </summary>
     public enum TipoRepasse
     {
@@ -7862,7 +7862,7 @@ namespace Uni.Business.DFe.Servicos
 
     #region Tipo de Ingresso.
     /// <summary>
-    /// Tipo de Ingresso. 
+    /// Tipo de Ingresso.
     /// </summary>
     public enum TipoDeIngresso
     {
@@ -7894,7 +7894,7 @@ namespace Uni.Business.DFe.Servicos
 
     #region Tipo de Receita.
     /// <summary>
-    /// Tipo de Receita. 
+    /// Tipo de Receita.
     /// </summary>
     public enum TipoReceita
     {
@@ -8179,7 +8179,7 @@ namespace Uni.Business.DFe.Servicos
         InstituicaoDeEducacao = 2,
 
         /// <summary>
-        /// 3 - Instituição de caráter filantrópico, recreativo, cultural, científico e às associações civis, a que se refere o art. 15 da Lei nº 9.532, de 1997. 
+        /// 3 - Instituição de caráter filantrópico, recreativo, cultural, científico e às associações civis, a que se refere o art. 15 da Lei nº 9.532, de 1997.
         /// Informação a ser prestada exclusivamente por órgãos da Administração Pública Federal Direta, autarquias e fundações da Administração Pública Federal, empresas públicas, sociedades de economia mista, ou demais entidades em que a que União detenha maioria do capital social sujeito a voto, recebe recursos do Tesouro Nacional e está obrigada a registrar a execução orçamentária no Siafi
         /// </summary>
         [XmlEnum("3")]
@@ -8722,7 +8722,7 @@ namespace Uni.Business.DFe.Servicos
 
     #endregion
 
-    #region Tipo de Seriviço Utilizado da NFCom
+    #region Tipo de Serviço Utilizado da NFCom
 
     /// <summary>
     /// Tipo de Seriviço Utilizado

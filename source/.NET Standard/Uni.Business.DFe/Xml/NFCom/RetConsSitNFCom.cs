@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using System.Xml;
-using Uni.Business.DFe.Utility;
+using System.Xml.Serialization;
 using Uni.Business.DFe.Servicos;
+using Uni.Business.DFe.Utility;
 
 namespace Uni.Business.DFe.Xml.NFCom
 {

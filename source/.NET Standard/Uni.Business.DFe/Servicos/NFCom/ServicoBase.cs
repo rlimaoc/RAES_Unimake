@@ -62,7 +62,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
 
         /// <summary>
         /// Executar o serviço
-        /// </summary>       
+        /// </summary>
 #if INTEROP
         [ComVisible(false)]
 #endif

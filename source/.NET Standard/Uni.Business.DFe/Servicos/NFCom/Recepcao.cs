@@ -52,7 +52,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
                 NFCom.InfNFComSupl = new InfNFComSupl();
 
                 var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
-                string paramLinkQRCode = 
+                string paramLinkQRCode =
                     "?chNFCom=" + NFCom.InfNFCom[0].Chave +
                     "&tpAmb=" + ((int)NFCom.InfNFCom[0].Ide.TpAmb).ToString();
 
@@ -238,7 +238,7 @@ namespace Uni.Business.DFe.Servicos.NFCom
         /// <summary>
         /// Propriedade contendo o XML da NFCom com o protocolo de autorização anexado - Funciona somente para envio síncrono
         /// </summary>
-        public NfcomProc NfeProcResult
+        public NfcomProc NfcomProcResult
         {
             get
             {

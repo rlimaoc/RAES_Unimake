@@ -2,14 +2,12 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.IO;
 using System.Xml;
 using Uni.Business.DFe.Security;
 using Uni.Business.DFe.Utility;
-using Uni.Business.DFe.Xml;
-using Uni.Exceptions;
 using Uni.Business.DFe.Validator;
-using Unimake.Business.Security;
-using System.IO;
+using Uni.Business.DFe.Xml;
 
 namespace Uni.Business.DFe.Servicos
 {
@@ -38,8 +36,8 @@ namespace Uni.Business.DFe.Servicos
         /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
         private void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
-            
-                if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
+
+            if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
             {
                 if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
                 {
@@ -133,14 +131,14 @@ namespace Uni.Business.DFe.Servicos
             }
 
             //Esta linha tem que ficar fora do if acima, pois tem que carregar esta parte, independente, pois o que é carregado sempre é automático. Mudar isso, vai gerar falha no UNINFE, principalmente no envio dos eventos, onde eu defino as configurações manualmente. Wandrey 07/12/2020
-           Configuracoes.Load(GetType().Name);
+            Configuracoes.Load(GetType().Name);
 
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Uni.DFe");
 
             //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
-                _ = ConteudoXMLAssinado;
-            }
-            
+            _ = ConteudoXMLAssinado;
+        }
+
         #endregion Protected Internal Methods
 
         #region Public Properties
